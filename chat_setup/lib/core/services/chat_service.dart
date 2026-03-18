@@ -31,6 +31,22 @@ class ChatService {
     await _filterDeletedUsers(chatId);
   }
 
+  Future<void> ensureSelfChatExists(String userId) async {
+    final chatId = getChatId(userId, userId);
+    final ref = _chats.doc(chatId);
+    final doc = await ref.get();
+
+    if (!doc.exists) {
+      await ref.set({
+        'members': [userId],
+        'createdAt': FieldValue.serverTimestamp(),
+        'lastMessage': 'Welcome to your private space!',
+        'lastMessageTime': FieldValue.serverTimestamp(),
+        'isSelfChat': true,
+      });
+    }
+  }
+
   Future<void> ensureChatExists({
     required String chatId,
     required List<String> members,

@@ -43,14 +43,8 @@ class _ChatInputBarState extends State<ChatInputBar> {
       child: Container(
         padding: const EdgeInsets.fromLTRB(8, 6, 8, 10),
         decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 6,
-              offset: const Offset(0, -2),
-            ),
-          ],
+          color: Colors.white.withOpacity(0.9),
+          border: Border(top: BorderSide(color: Colors.grey.withOpacity(0.1))),
         ),
         child: Row(
           children: [
@@ -75,10 +69,10 @@ class _ChatInputBarState extends State<ChatInputBar> {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF0F2F5),
-                  borderRadius: BorderRadius.circular(22),
+                  color: const Color(0xFFF2F3F7),
+                  borderRadius: BorderRadius.circular(24),
                 ),
                 child: Row(
                   children: [
@@ -119,7 +113,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 ),
               ),
             ),
-            const SizedBox(width: 6),
+            const SizedBox(width: 8),
             GestureDetector(
               onTap: () async {
                 if (!hasText) {
@@ -137,12 +131,25 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 setState(() => hasText = false);
                 await chatCtrl.stopTyping();
               },
-              child: CircleAvatar(
-                radius: 22,
-                backgroundColor: const Color.fromARGB(255, 0, 128, 64),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: hasText ? const Color(0xFF007AFF) : Colors.grey.shade200,
+                  shape: BoxShape.circle,
+                  boxShadow: hasText ? [
+                    BoxShadow(
+                      color: const Color(0xFF007AFF).withOpacity(0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    )
+                  ] : null,
+                ),
                 child: Icon(
                   hasText ? Icons.send : Icons.mic,
-                  color: Colors.white,
+                  color: hasText ? Colors.white : Colors.grey.shade600,
+                  size: 20,
                 ),
               ),
             ),

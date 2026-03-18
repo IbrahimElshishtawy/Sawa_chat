@@ -13,6 +13,8 @@ import '../../controllers/chat/chat_controller.dart';
 import '../../controllers/call/call_controller.dart';
 import '../../controllers/call/call_history_controller.dart';
 import '../../controllers/settings/settings_controller.dart';
+import '../../core/services/ai_base_service.dart';
+import '../../core/services/openai_service.dart';
 
 class InitialBinding extends Bindings {
   @override
@@ -41,5 +43,8 @@ class InitialBinding extends Bindings {
     Get.lazyPut(() => CallController(), fenix: true);
     Get.lazyPut(() => CallHistoryController(), fenix: true);
     Get.lazyPut(() => SettingsController(), fenix: true);
+
+    // AI Service - Provider Agnostic registration
+    Get.lazyPut<AIService>(() => OpenAiService(apiKey: 'YOUR_API_KEY_HERE'), fenix: true);
   }
 }
