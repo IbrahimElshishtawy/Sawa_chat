@@ -7,12 +7,14 @@ class ChatItem {
   final String otherUserId;
   final String otherUserName;
   final String? lastMessage;
+  final bool isSelfChat;
 
   ChatItem({
     required this.id,
     required this.otherUserId,
     required this.otherUserName,
     this.lastMessage,
+    this.isSelfChat = false,
   });
 }
 
@@ -44,23 +46,37 @@ class ChatsController extends GetxController {
           for (final doc in snapshot.docs) {
             final data = doc.data();
             final members = List<String>.from(data['members'] ?? []);
-            final otherUserId = members.firstWhere((id) => id != myId);
+            final isSelfChat = data['isSelfChat'] ?? (members.length == 1 && members.contains(myId));
 
-            // اسم الطرف الآخر (مبسّط – تقدر تحسنه لاحقًا)
-            final userDoc = await _firestore
-                .collection('users')
-                .doc(otherUserId)
-                .get();
+            String otherUserId = myId;
+            String otherUserName = 'Saved Messages';
+
+            if (!isSelfChat) {
+              otherUserId = members.firstWhere((id) => id != myId, orElse: () => myId);
+              final userDoc = await _firestore
+                  .collection('users')
+                  .doc(otherUserId)
+                  .get();
+              otherUserName = userDoc.data()?['name'] ?? 'مستخدم';
+            }
 
             items.add(
               ChatItem(
                 id: doc.id,
                 otherUserId: otherUserId,
-                otherUserName: userDoc.data()?['name'] ?? 'مستخدم',
+                otherUserName: otherUserName,
                 lastMessage: data['lastMessage'],
+                isSelfChat: isSelfChat,
               ),
             );
           }
+
+          // Pin self-chat to top
+          items.sort((a, b) {
+            if (a.isSelfChat) return -1;
+            if (b.isSelfChat) return 1;
+            return 0;
+          });
 
           chats.value = items;
         });

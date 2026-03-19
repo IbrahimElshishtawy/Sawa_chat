@@ -19,6 +19,12 @@ class UserModel {
   final int followersCount;
   final int followingCount;
 
+  // Professional fields
+  final String? jobTitle;
+  final String? company;
+  final String? industry;
+  final String? professionalBio;
+
   final String plan;
   final DateTime? planExpiry;
 
@@ -40,6 +46,10 @@ class UserModel {
     this.postsCount = 0,
     this.followersCount = 0,
     this.followingCount = 0,
+    this.jobTitle,
+    this.company,
+    this.industry,
+    this.professionalBio,
     this.plan = 'free',
     this.planExpiry,
   });
@@ -59,6 +69,10 @@ class UserModel {
       postsCount: map['postsCount'] ?? 0,
       followersCount: map['followersCount'] ?? 0,
       followingCount: map['followingCount'] ?? 0,
+      jobTitle: map['jobTitle'],
+      company: map['company'],
+      industry: map['industry'],
+      professionalBio: map['professionalBio'],
       plan: map['plan'] ?? 'free',
       planExpiry: map['planExpiry'] != null
           ? (map['planExpiry'] as Timestamp).toDate()
@@ -80,6 +94,10 @@ class UserModel {
       'postsCount': postsCount,
       'followersCount': followersCount,
       'followingCount': followingCount,
+      'jobTitle': jobTitle,
+      'company': company,
+      'industry': industry,
+      'professionalBio': professionalBio,
       'plan': plan,
       'planExpiry': planExpiry,
     };
@@ -102,6 +120,10 @@ class UserModel {
     int? postsCount,
     int? followersCount,
     int? followingCount,
+    String? jobTitle,
+    String? company,
+    String? industry,
+    String? professionalBio,
     String? plan,
     DateTime? planExpiry,
   }) {
@@ -123,6 +145,10 @@ class UserModel {
       postsCount: postsCount ?? this.postsCount,
       followersCount: followersCount ?? this.followersCount,
       followingCount: followingCount ?? this.followingCount,
+      jobTitle: jobTitle ?? this.jobTitle,
+      company: company ?? this.company,
+      industry: industry ?? this.industry,
+      professionalBio: professionalBio ?? this.professionalBio,
       plan: plan ?? this.plan,
       planExpiry: planExpiry ?? this.planExpiry,
     );

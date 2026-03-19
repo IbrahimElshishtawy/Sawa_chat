@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Primary
-  static const Color primary = Color(0xFF2C688E);
-  static const Color secondary = Color(0xFF4FA3D1);
+  // Primary - Sphere Premium Palette
+  static const Color primary = Color(0xFF1A1A1A); // Deep Obsidian
+  static const Color secondary = Color(0xFF007AFF); // iOS Blue
 
-  // Light
-  static const Color lightBackground = Color(0xFFF5F7FA);
+  // Light - Soft UI Minimal
+  static const Color lightBackground = Color(0xFFF8F9FB);
   static const Color lightCard = Colors.white;
   static const Color lightText = Color(0xFF1E1E1E);
 

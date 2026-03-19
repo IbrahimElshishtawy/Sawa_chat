@@ -7,11 +7,23 @@ class AppTheme {
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.lightBackground,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primary,
-      foregroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
+      foregroundColor: AppColors.primary,
       elevation: 0,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: AppColors.primary,
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'SF Pro Display',
+      ),
     ),
     cardColor: AppColors.lightCard,
+    cardTheme: CardTheme(
+      elevation: 2,
+      shadowColor: Colors.black.withOpacity(0.05),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+    ),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(color: AppColors.lightText),
     ),

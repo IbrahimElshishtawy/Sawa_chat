@@ -26,9 +26,23 @@ class ChatsPage extends StatelessWidget {
             final chat = chats[index];
 
             return ListTile(
-              leading: CircleAvatar(child: Text(chat.otherUserName[0])),
-              title: Text(chat.otherUserName),
-              subtitle: Text(chat.lastMessage ?? ''),
+              leading: CircleAvatar(
+                backgroundColor: chat.isSelfChat ? Colors.blue.shade100 : null,
+                child: chat.isSelfChat
+                  ? const Icon(Icons.bookmark, color: Colors.blue)
+                  : Text(chat.otherUserName[0]),
+              ),
+              title: Text(
+                chat.otherUserName,
+                style: TextStyle(
+                  fontWeight: chat.isSelfChat ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
+              subtitle: Text(
+                chat.lastMessage ?? '',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               onTap: () {
                 Get.to(
                   () => ChatPage(
