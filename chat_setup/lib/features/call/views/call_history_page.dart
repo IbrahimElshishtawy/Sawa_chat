@@ -1,8 +1,8 @@
+import 'package:chat_setup/core/models/call_model.dart';
 import 'package:chat_setup/features/call/controllers/call_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/models/call_model.dart';
 
 class CallHistoryPage extends StatelessWidget {
   const CallHistoryPage({super.key});

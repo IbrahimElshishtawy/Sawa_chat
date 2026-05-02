@@ -1,11 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:chat_setup/core/models/call_model.dart';
 import 'package:chat_setup/features/call/views/video_call_page.dart';
 import 'package:chat_setup/features/call/views/voice_call_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:chat_setup/features/call/controllers/call_controller.dart';
-import '../../core/models/call_model.dart';
 
 class IncomingCallPage extends StatelessWidget {
   final CallModel call;

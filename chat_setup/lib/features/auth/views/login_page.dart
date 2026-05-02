@@ -1,4 +1,8 @@
+import 'package:chat_setup/features/auth/views/widgets/auth_animation.dart';
+import 'package:chat_setup/features/auth/views/widgets/auth_background.dart';
 import 'package:chat_setup/features/auth/views/widgets/confirm_page.dart';
+import 'package:chat_setup/features/auth/views/widgets/login_button.dart';
+import 'package:chat_setup/features/auth/views/widgets/login_form.dart';
 import 'package:chat_setup/features/auth/views/widgets/login_form_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,10 +10,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:chat_setup/features/auth/controllers/auth_controller.dart';
 import 'register_page.dart';
-import 'widget/auth_background.dart';
-import 'widget/auth_animation.dart';
-import 'widget/login_form.dart';
-import 'widget/login_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'package:chat_setup/features/auth/views/login_page.dart';
+import 'package:chat_setup/features/home/views/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../home/home_page.dart';
-import '../auth/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -39,7 +39,7 @@ class _SplashPageState extends State<SplashPage>
 
     _controller.forward();
 
-    _timer = Timer(const Duration(seconds: 2), _goNext);
+    _timer = Timer(const Duration(seconds: 3), _goNext);
   }
 
   void _goNext() {
@@ -67,7 +67,7 @@ class _SplashPageState extends State<SplashPage>
   Widget build(BuildContext context) {
     final isDark =
         WidgetsBinding.instance.platformDispatcher.platformBrightness ==
-        Brightness.dark;
+            Brightness.dark;
 
     return Scaffold(
       backgroundColor: isDark ? Colors.black : const Color(0xFFF6F7F9),

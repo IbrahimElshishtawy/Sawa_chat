@@ -1,11 +1,12 @@
 import 'dart:io';
 
+import 'package:chat_setup/core/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../core/models/user_model.dart';
+
 import '../../../core/services/user_service.dart';
 
 class UserController extends GetxController {

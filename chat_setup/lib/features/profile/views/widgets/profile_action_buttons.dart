@@ -1,9 +1,10 @@
+import 'package:chat_setup/features/chat/views/chat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:chat_setup/features/social/controllers/friend_controller.dart';
 import 'package:chat_setup/features/social/controllers/follow_controller.dart';
 import 'package:chat_setup/features/chat/controllers/chat_controller.dart';
-import '../../chat/chat_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileActionButtons extends StatelessWidget {

@@ -1,7 +1,8 @@
+import 'package:chat_setup/core/models/group_model.dart';
+import 'package:chat_setup/core/models/message_model.dart' show MessageModel;
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../core/models/group_model.dart';
-import '../../core/models/message_model.dart';
+
 import '../../../core/services/group_service.dart';
 
 class GroupController extends GetxController {

@@ -1,9 +1,10 @@
+
+import 'package:chat_setup/core/models/channel_model.dart';
+import 'package:chat_setup/core/models/message_model.dart';
+import 'package:chat_setup/core/services/channel_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
-import '../../core/models/channel_model.dart';
-import '../../core/models/message_model.dart';
-import '../../../core/services/channel_service.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class ChannelController extends GetxController {
   final ChannelService _service = ChannelService();
@@ -37,13 +38,12 @@ class ChannelController extends GetxController {
     if (myId == null) return;
 
     final message = MessageModel(
-      id: '',
+      id: '', 
       text: text,
       senderId: myId,
-      senderName: _auth.currentUser?.displayName ?? 'مستخدم',
-      receiverId: '', // Channels don't have a single receiver
       createdAt: DateTime.now(),
-      isSeen: false,
+      isSeen: false, 
+      receiverId: channelId,
     );
 
     await _service.sendChannelMessage(channelId: channelId, message: message);

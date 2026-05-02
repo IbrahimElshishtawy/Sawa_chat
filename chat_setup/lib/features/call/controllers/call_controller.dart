@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'package:chat_setup/core/models/call_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-import '../../core/models/call_model.dart';
+
 import '../../../core/services/call_service.dart';
 
 class CallController extends GetxController {

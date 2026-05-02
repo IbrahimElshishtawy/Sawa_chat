@@ -14,8 +14,7 @@ class ChatApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Chat App',
 
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+   
       themeMode: ThemeMode.light, // default
 
       initialRoute: AppRoutes.splash,

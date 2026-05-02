@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
 import 'dart:async';
+import 'package:chat_setup/core/models/call_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-import '../../core/models/call_model.dart';
 import '../../../core/services/call_service.dart';
 
 class CallHistoryController extends GetxController {

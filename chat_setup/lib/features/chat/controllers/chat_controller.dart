@@ -1,8 +1,9 @@
 import 'dart:io';
 
+import 'package:chat_setup/core/models/message_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import '../../core/models/message_model.dart';
+
 import '../../../core/services/chat_service.dart';
 import '../../../core/services/FileUploadService.dart';
 import '../../../core/services/AudioRecordingService.dart';

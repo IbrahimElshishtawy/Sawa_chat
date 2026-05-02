@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:contacts_service/contacts_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../models/user_model.dart';
 
@@ -16,13 +17,11 @@ class UserService {
   /// 🔹 UPDATE user
   Future<void> updateUser(UserModel user) async {
     // التحقق من أن الإيميل أو الرقم ليس مكررًا قبل التحديث
-    final emailExists = await _users
-        .where('email', isEqualTo: user.email)
-        .get();
+    final emailExists =
+        await _users.where('email', isEqualTo: user.email).get();
 
-    final phoneExists = await _users
-        .where('phone', isEqualTo: user.phone)
-        .get();
+    final phoneExists =
+        await _users.where('phone', isEqualTo: user.phone).get();
 
     if (emailExists.docs.isNotEmpty) {
       throw Exception('Email already exists');

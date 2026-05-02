@@ -1,9 +1,8 @@
 import 'package:chat_setup/features/auth/views/widgets/auth_animation.dart';
+import 'package:chat_setup/features/auth/views/widgets/auth_background.dart';
+import 'package:chat_setup/features/auth/views/widgets/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'widget/auth_background.dart';
-import 'widget/register_form.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});

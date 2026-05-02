@@ -1,11 +1,12 @@
+import 'package:chat_setup/features/chat/views/groups_page.dart';
+import 'package:chat_setup/features/community/views/community_page.dart';
 import 'package:chat_setup/features/home/views/chats_home_page.dart';
+import 'package:chat_setup/features/notifications/views/notifications_page.dart';
+import 'package:chat_setup/features/profile/views/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:chat_setup/features/core_features/controllers/navigation_controller.dart';
-import '../group/groups_page.dart';
-import '../community/community_page.dart';
-import '../notifications/notifications_page.dart';
-import '../profile/profile_page.dart';
+
 import 'widgets/floating_nav_bar.dart';
 
 class HomePage extends StatelessWidget {

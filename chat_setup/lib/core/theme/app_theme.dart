@@ -43,14 +43,7 @@ class AppTheme {
         thickness: 1,
         space: 1,
       ),
-      cardTheme: CardTheme(
-        color: AppColors.surfaceLight,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppColors.dividerLight, width: 0.5),
-        ),
-      ),
+     
     );
   }
 
@@ -94,14 +87,7 @@ class AppTheme {
         thickness: 1,
         space: 1,
       ),
-      cardTheme: CardTheme(
-        color: AppColors.surfaceDark,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppColors.dividerDark, width: 0.5),
-        ),
-      ),
+    
     );
   }
 }
