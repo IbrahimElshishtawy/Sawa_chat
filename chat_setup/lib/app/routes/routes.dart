@@ -1,24 +1,25 @@
-import 'package:chat_setup/app/bindings/auth_bindings.dart';
-import 'package:chat_setup/app/bindings/social_binding.dart';
-import 'package:chat_setup/app/bindings/home_binding.dart';
-import 'package:chat_setup/screens/contants_user/Friend_Page.dart';
+import 'package:chat_setup/features/auth/bindings/auth_bindings.dart';
+import 'package:chat_setup/features/social/bindings/social_binding.dart';
+import 'package:chat_setup/features/home/bindings/home_binding.dart';
+import 'package:chat_setup/features/social/views/Friend_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'route_animations.dart';
 
-// Screens (استخدم المسارات الجديدة فقط)
-import '../../screens/splash/splash_page.dart';
-import '../../screens/auth/login_page.dart';
-import '../../screens/auth/register_page.dart';
-import '../../screens/home/home_page.dart';
-import '../../screens/profile/profile_page.dart';
-import '../../screens/settings/settings_page.dart';
-import '../../screens/chat/chat_page.dart';
-import '../../screens/group/groups_page.dart';
-import '../../screens/community/community_page.dart';
-import '../../screens/notifications/notifications_page.dart';
-import '../../screens/call/call_history_page.dart';
+// Screens
+import '../../features/splash/views/splash_page.dart';
+import '../../features/auth/views/login_page.dart';
+import '../../features/auth/views/register_page.dart';
+import '../../features/home/views/home_page.dart';
+import '../../features/profile/views/profile_page.dart';
+import '../../features/settings/views/settings_page.dart';
+import '../../features/chat/views/chat_page.dart';
+import '../../features/chat/views/groups_page.dart';
+import '../../features/community/views/community_page.dart';
+import '../../features/notifications/views/notifications_page.dart';
+import '../../features/call/views/call_history_page.dart';
+import '../../features/chat/views/chatbot_page.dart';
 
 class AppRoutes {
   // ===== Route Names =====
@@ -38,6 +39,7 @@ class AppRoutes {
   static const notifications = '/notifications';
 
   static const callHistory = '/call-history';
+  static const chatbot = '/chatbot';
 
   // ===== Pages =====
   static final pages = <GetPage>[
@@ -112,5 +114,6 @@ class AppRoutes {
 
     // Call History
     GetPage(name: callHistory, page: () => const CallHistoryPage()),
+    GetPage(name: chatbot, page: () => ChatbotPage()),
   ];
 }
