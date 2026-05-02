@@ -15,14 +15,6 @@ class ChannelController extends GetxController {
     final myId = uid;
     if (myId == null) return;
 
-    final channel = ChannelModel(
-      id: '', // Firestore will generate ID if we use add(), but here we might want to specify or use doc().set()
-      name: name,
-      description: description,
-      ownerId: myId,
-      admins: [myId],
-      createdAt: DateTime.now(),
-    );
 
     // If we want auto-generated ID:
     final docRef = FirebaseFirestore.instance.collection('channels').doc();
