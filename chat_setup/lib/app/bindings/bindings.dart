@@ -1,18 +1,18 @@
-import 'package:chat_setup/controllers/notification/notification_controller.dart';
-import 'package:chat_setup/controllers/presence/presence_controller.dart';
-import 'package:chat_setup/controllers/social/follow_controller.dart';
-import 'package:chat_setup/controllers/social/friend_controller.dart'
+import 'package:chat_setup/features/notifications/controllers/notification_controller.dart';
+import 'package:chat_setup/features/core_features/controllers/presence_controller.dart';
+import 'package:chat_setup/features/social/controllers/follow_controller.dart';
+import 'package:chat_setup/features/social/controllers/friend_controller.dart'
     show FriendController;
-import 'package:chat_setup/controllers/user/user_controller.dart';
+import 'package:chat_setup/features/profile/controllers/user_controller.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/auth/auth_controller.dart';
-import '../../controllers/theme/theme_controller.dart';
-import '../../controllers/navigation/navigation_controller.dart';
-import '../../controllers/chat/chat_controller.dart';
-import '../../controllers/call/call_controller.dart';
-import '../../controllers/call/call_history_controller.dart';
-import '../../controllers/settings/settings_controller.dart';
+import '../../features/auth/controllers/auth_controller.dart';
+import '../../features/core_features/controllers/theme_controller.dart';
+import '../../features/core_features/controllers/navigation_controller.dart';
+import '../../features/chat/controllers/chat_controller.dart';
+import '../../features/call/controllers/call_controller.dart';
+import '../../features/call/controllers/call_history_controller.dart';
+import '../../features/settings/controllers/settings_controller.dart';
 import '../../core/services/ai_base_service.dart';
 import '../../core/services/openai_service.dart';
 
