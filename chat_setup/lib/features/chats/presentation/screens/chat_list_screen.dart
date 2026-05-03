@@ -1,3 +1,4 @@
+import 'package:chat_setup/core/mock/sample_data.dart';
 import 'package:flutter/material.dart';
 
 class ChatListScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class ChatListScreen extends StatelessWidget {
           _buildSearchBar(context),
           Expanded(
             child: ListView.builder(
-              itemCount: 15,
+              itemCount: sampleChats.length,
               itemBuilder: (context, index) {
                 return _buildChatTile(context, index);
               },
@@ -66,18 +67,17 @@ class ChatListScreen extends StatelessWidget {
   }
 
   Widget _buildChatTile(BuildContext context, int index) {
-    final isGroup = index % 4 == 0;
-    final isChannel = index % 5 == 0;
+    final chat = sampleChats[index];
     return ListTile(
       leading: CircleAvatar(
         radius: 28,
-        backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=$index'),
-        child: isGroup
+        backgroundImage: NetworkImage(chat.avatarUrl),
+        child: chat.isGroup
             ? const Align(
                 alignment: Alignment.bottomRight,
                 child: Icon(Icons.group, size: 16, color: Colors.white),
               )
-            : isChannel
+            : chat.isChannel
                 ? const Align(
                     alignment: Alignment.bottomRight,
                     child: Icon(Icons.campaign, size: 16, color: Colors.white),
@@ -89,14 +89,14 @@ class ChatListScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              isGroup ? 'Flutter Devs Group' : isChannel ? 'Official Channel' : 'User $index',
+              chat.title,
               style: const TextStyle(fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
             ),
           ),
           const SizedBox(width: 8),
           Text(
-            '10:4$index AM',
+            chat.time,
             style: TextStyle(
               color: Theme.of(context).textTheme.bodySmall?.color,
               fontSize: 12,
@@ -107,12 +107,25 @@ class ChatListScreen extends StatelessWidget {
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 4.0),
         child: Text(
-          'This is a preview of the last message sent in this conversation...',
+          chat.subtitle,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(color: Theme.of(context).textTheme.bodySmall?.color),
         ),
       ),
+      trailing: chat.unreadCount > 0
+          ? Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.redAccent,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                chat.unreadCount.toString(),
+                style: const TextStyle(color: Colors.white, fontSize: 12),
+              ),
+            )
+          : null,
       onTap: () {},
     );
   }
