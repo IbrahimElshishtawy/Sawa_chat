@@ -24,7 +24,8 @@ class HomeScreen extends StatelessWidget {
               height: 100,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 itemCount: sampleStories.length,
                 itemBuilder: (context, index) {
                   final story = sampleStories[index];
@@ -42,12 +43,14 @@ class HomeScreen extends StatelessWidget {
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
-                            border: Border.all(color: Colors.transparent, width: 2),
+                            border:
+                                Border.all(color: Colors.transparent, width: 2),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: CircleAvatar(
-                              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                              backgroundColor:
+                                  Theme.of(context).scaffoldBackgroundColor,
                               child: CircleAvatar(
                                 radius: 28,
                                 backgroundImage: NetworkImage(story.avatarUrl),
@@ -109,7 +112,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Text(
                         post.timeAgo,
-                        style: const TextStyle(color: Colors.grey, fontSize: 12),
+                        style:
+                            const TextStyle(color: Colors.grey, fontSize: 12),
                       ),
                     ],
                   )
@@ -123,13 +127,15 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(height: 12),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(post.imageUrl, fit: BoxFit.cover, height: 180, width: double.infinity),
+            child: Image.network(post.imageUrl,
+                fit: BoxFit.cover, height: 180, width: double.infinity),
           ),
           const SizedBox(height: 12),
           Row(
             children: [
               _buildInteractionIcon(Icons.favorite_border, '${post.likes}'),
-              _buildInteractionIcon(Icons.chat_bubble_outline, '${post.comments}'),
+              _buildInteractionIcon(
+                  Icons.chat_bubble_outline, '${post.comments}'),
               _buildInteractionIcon(Icons.repeat, '${post.shares}'),
               _buildInteractionIcon(Icons.send_outlined, ''),
             ],
@@ -148,7 +154,8 @@ class HomeScreen extends StatelessWidget {
           Icon(icon, size: 20, color: Colors.grey[600]),
           if (count.isNotEmpty) ...[
             const SizedBox(width: 4),
-            Text(count, style: TextStyle(color: Colors.grey[600], fontSize: 13)),
+            Text(count,
+                style: TextStyle(color: Colors.grey[600], fontSize: 13)),
           ]
         ],
       ),
