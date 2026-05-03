@@ -1,5 +1,6 @@
 import 'package:chat_setup/core/mock/sample_data.dart';
 import 'package:flutter/material.dart';
+import 'chat_screen.dart';
 
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({super.key});
@@ -114,8 +115,11 @@ class ChatListScreen extends StatelessWidget {
           style: TextStyle(color: Theme.of(context).textTheme.bodySmall?.color),
         ),
       ),
-      trailing: chat.unreadCount > 0
-          ? Container(
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (chat.unreadCount > 0)
+            Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                 color: Colors.redAccent,
@@ -125,9 +129,37 @@ class ChatListScreen extends StatelessWidget {
                 chat.unreadCount.toString(),
                 style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
-            )
-          : null,
-      onTap: () {},
+            ),
+          if (chat.isGroup)
+            PopupMenuButton<String>(
+              onSelected: (value) {
+                switch (value) {
+                  case 'archive':
+                    // Archive group
+                    break;
+                  case 'leave':
+                    // Leave group
+                    break;
+                  case 'delete':
+                    // Delete group
+                    break;
+                }
+              },
+              itemBuilder: (context) => [
+                const PopupMenuItem(value: 'archive', child: Text('Archive')),
+                const PopupMenuItem(value: 'leave', child: Text('Leave Group')),
+                const PopupMenuItem(value: 'delete', child: Text('Delete')),
+              ],
+            ),
+        ],
+      ),
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => ChatScreen(chat: chat),
+          ),
+        );
+      },
     );
   }
 }

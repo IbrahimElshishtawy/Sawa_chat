@@ -77,7 +77,6 @@ dependencies:
   camera: ^0.12.0+1
   firebase_messaging: ^16.2.0
   permission_handler: ^12.0.1
-  contacts_service: ^0.6.3
   animated_text_kit: ^4.3.0
   agora_rtc_engine: ^6.5.3
 

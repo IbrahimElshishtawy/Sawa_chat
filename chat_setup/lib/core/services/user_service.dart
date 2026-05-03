@@ -1,7 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:contacts_service/contacts_service.dart';
-import 'package:permission_handler/permission_handler.dart';
 import '../models/user_model.dart';
 
 class UserService {
@@ -150,36 +147,9 @@ class UserService {
   // ======================
 
   Future<List<UserModel>> syncContacts() async {
-    final status = await Permission.contacts.request();
-    if (status != PermissionStatus.granted) {
-      throw Exception('Contacts permission not granted');
-    }
-
-    final contacts = await ContactsService.getContacts();
-    final phoneNumbers = contacts
-        .expand((c) => c.phones ?? [])
-        .map((p) => p.value?.replaceAll(RegExp(r'\D'), ''))
-        .where((p) => p != null && p.isNotEmpty)
-        .cast<String>()
-        .toSet();
-
-    if (phoneNumbers.isEmpty) return [];
-
-    final matchingUsers = <UserModel>[];
-    final phoneList = phoneNumbers.toList();
-
-    // Firestore whereIn limit is 30
-    for (var i = 0; i < phoneList.length; i += 30) {
-      final chunk = phoneList.sublist(
-        i,
-        i + 30 > phoneList.length ? phoneList.length : i + 30,
-      );
-      final snap = await _users.where('phone', whereIn: chunk).get();
-      matchingUsers.addAll(
-        snap.docs.map((d) => UserModel.fromMap(d.id, d.data())),
-      );
-    }
-
-    return matchingUsers;
+    // contacts_service plugin is removed because it is not compatible with the
+    // current Android embedding and AGP version. If you need contact sync,
+    // replace it with a compatible package like flutter_contacts.
+    return [];
   }
 }
