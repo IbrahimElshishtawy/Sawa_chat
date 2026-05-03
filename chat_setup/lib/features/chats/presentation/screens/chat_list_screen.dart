@@ -48,7 +48,8 @@ class ChatListScreen extends StatelessWidget {
         child: Row(
           children: [
             const SizedBox(width: 8),
-            Icon(Icons.search, color: Theme.of(context).textTheme.bodyMedium?.color),
+            Icon(Icons.search,
+                color: Theme.of(context).textTheme.bodyMedium?.color),
             const SizedBox(width: 8),
             const Expanded(
               child: TextField(

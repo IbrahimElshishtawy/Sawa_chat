@@ -114,7 +114,8 @@ final samplePosts = <SamplePost>[
     username: 'Amira H.',
     avatarUrl: 'https://i.pravatar.cc/150?img=32',
     timeAgo: '2h',
-    content: 'قمت بمشاركة بعض النصائح الجديدة لتطوير واجهات فلاتر، جربوها وشاركوني رأيكم.',
+    content:
+        'قمت بمشاركة بعض النصائح الجديدة لتطوير واجهات فلاتر، جربوها وشاركوني رأيكم.',
     imageUrl: 'https://picsum.photos/seed/post1/400/200',
     likes: 1240,
     comments: 45,
@@ -124,7 +125,8 @@ final samplePosts = <SamplePost>[
     username: 'Sara M.',
     avatarUrl: 'https://i.pravatar.cc/150?img=12',
     timeAgo: '4h',
-    content: 'اليوم كان يوم رائع للعمل على تطبيق دردشة جديد، وواجهنا تحديات متعة.',
+    content:
+        'اليوم كان يوم رائع للعمل على تطبيق دردشة جديد، وواجهنا تحديات متعة.',
     imageUrl: 'https://picsum.photos/seed/post2/400/200',
     likes: 860,
     comments: 30,
