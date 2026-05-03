@@ -71,7 +71,8 @@ class _ChatScreenState extends State<ChatScreen> {
               }
             },
             itemBuilder: (context) => [
-              const PopupMenuItem(value: 'permissions', child: Text('Permissions')),
+              const PopupMenuItem(
+                  value: 'permissions', child: Text('Permissions')),
               const PopupMenuItem(value: 'settings', child: Text('Settings')),
               const PopupMenuItem(value: 'react', child: Text('React')),
             ],
@@ -85,7 +86,8 @@ class _ChatScreenState extends State<ChatScreen> {
               reverse: true,
               itemCount: _messages.length,
               itemBuilder: (context, index) {
-                return _buildMessageBubble(_messages[_messages.length - 1 - index], index % 2 == 0);
+                return _buildMessageBubble(
+                    _messages[_messages.length - 1 - index], index % 2 == 0);
               },
             ),
           ),
@@ -191,7 +193,8 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             IconButton(icon: const Icon(Icons.thumb_up), onPressed: () {}),
             IconButton(icon: const Icon(Icons.favorite), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.emoji_emotions), onPressed: () {}),
+            IconButton(
+                icon: const Icon(Icons.emoji_emotions), onPressed: () {}),
           ],
         ),
         actions: [

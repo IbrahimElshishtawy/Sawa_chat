@@ -1,5 +1,5 @@
 import 'package:chat_setup/features/chats/presentation/screens/chat_list_screen.dart';
-import 'package:chat_setup/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:chat_setup/features/dashboard/presentation/screens/profile_screen.dart';
 import 'package:chat_setup/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const ChatListScreen(),
     const Center(child: Text('Notifications Placeholder')),
-    const DashboardScreen(), // Profile/Dashboard
+    const ProfileScreen(), // Profile
   ];
 
   @override

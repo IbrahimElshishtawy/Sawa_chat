@@ -321,7 +321,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
               children: [
                 const CircleAvatar(
                   radius: 20,
-                  backgroundImage: NetworkImage('https://via.placeholder.com/40'),
+                  backgroundImage:
+                      NetworkImage('https://via.placeholder.com/40'),
                 ),
                 const SizedBox(width: 12),
                 const Text(
@@ -349,7 +350,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),
-                      child: Image.network(_selectedImages[index], width: 100, height: 100, fit: BoxFit.cover),
+                      child: Image.network(_selectedImages[index],
+                          width: 100, height: 100, fit: BoxFit.cover),
                     );
                   },
                 ),
