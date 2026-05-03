@@ -27,3 +27,27 @@ plugins {
 }
 
 include(":app")
+
+// Workaround for plugins without namespace attribute (AGP 8.0+)
+gradle.beforeProject {
+    if (this != rootProject) {
+        afterEvaluate {
+            val androidExtension = extensions.findByName("android")
+            if (androidExtension != null && !this.plugins.hasPlugin("com.android.application")) {
+                try {
+                    val extension = androidExtension as com.android.build.gradle.BaseExtension
+                    if (extension.namespace == null) {
+                        val pkgName = if (plugins.hasPlugin("com.android.library")) {
+                            "com.example.${this.name.replace(":", ".")}"
+                        } else {
+                            "com.example.${this.name.replace(":", ".")}"
+                        }
+                        extension.namespace = pkgName
+                    }
+                } catch (e: Exception) {
+                    // Ignore if extension cannot be cast
+                }
+            }
+        }
+    }
+}
