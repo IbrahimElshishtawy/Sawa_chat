@@ -1,0 +1,285 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Group Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Design System Tokens & Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002109",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed": "#acedff",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-secondary-container": "#006172",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary-container": "#007e37",
+                    "primary": "#004ac6",
+                    "on-background": "#0b1c30",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#2563eb",
+                    "surface-tint": "#0053db",
+                    "secondary": "#00687a",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "on-surface-variant": "#434655",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "surface-dim": "#cbdbf5",
+                    "outline": "#737686",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary": "#006229",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-container": "#57dffe",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .glass { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .chat-bubble-sender { background: linear-gradient(135deg, #004ac6, #00687a); }
+        
+        /* Animated gradient for atmospheric background */
+        .mesh-gradient {
+            background-color: #f8f9ff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(172, 237, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 104, 122, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(180, 197, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(37, 99, 235, 0.05) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface mesh-gradient min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm px-container-mobile h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">arrow_back</button>
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A premium group avatar consisting of multiple overlapping glass-like circular icons with vibrant teal and blue hues, reflecting a modern tech community vibe. Soft lighting highlights the translucent layers and premium finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNXBdy01l2yRff5tHkXlPdPvpDasA9otAwJTRV9wdvxNnIQv-66SvAlOljbCrCVzEL7exLKOkMD94JGt1Roaq3tfzGIW5ptD9tH5pL1BxGiU44c0A7wyhYvw1FWrNhN95pA1TzNV86xBjuR_MdmvltZe6myz725VI3WhYXzMYIxX1aG9Mw-NlXSm6AJhD7fYQTM9rRzsCNZX1TCw_i0YAnTv7dc6ZjcLkZYqYjJbAZE9pL52cqC3BavJiMUX9nHhzX-dD55qIAwbs">
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary border-2 border-surface rounded-full"></span>
+</div>
+<div>
+<h1 class="font-title-lg text-title-lg text-primary font-bold">Design Pioneers</h1>
+<p class="font-label-md text-label-md text-outline">128 members, 42 online</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-primary-container text-on-primary-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">phone_in_talk</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Topics Navigation -->
+<nav class="fixed top-16 left-0 w-full z-40 bg-surface/60 backdrop-blur-md px-container-mobile py-3 flex items-center gap-2 overflow-x-auto scroll-hide">
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+            General
+        </button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined text-sm">palette</span>
+            UI/UX Assets
+        </button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined text-sm">code</span>
+            Dev Updates
+        </button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined text-sm">campaign</span>
+            Events
+        </button>
+</nav>
+<!-- Chat Canvas -->
+<main class="flex-1 pt-32 pb-24 px-container-mobile flex flex-col gap-stack-gap-md max-w-4xl mx-auto w-full">
+<!-- Date Divider -->
+<div class="flex justify-center my-stack-gap-lg">
+<span class="bg-surface-container-high/50 px-4 py-1 rounded-full text-label-md font-label-md text-outline">Today</span>
+</div>
+<!-- Group Poll Message -->
+<div class="flex flex-col gap-2 max-w-[85%] self-start">
+<div class="flex items-center gap-2 ml-1">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="A professional studio portrait of a female creative director with a warm smile, soft lighting, and a minimalist gray background. She wears modern glasses and has a creative, approachable aura." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP943bqCWZk3ve0bWwnNTYGyDDLGRyRVIPXfsFx1iAp8D_a2_YyyNk8DjnYL425TXkEB--CQdn-tg4Dejy7QF0wMJK7C4gyUJmGdxLj9-83R02wZtcLIHHKIoZdZer2TaKdlO2FtibDvIAhko_oLYn3j3XLb6KDX6BoDSH5Hhq5bR_lVhghrjIVthhsEZKpAZvZSFz_meXE06ScGa6C_R6SsShJgkaj0IiFKpF4yGia5fkOB9njYl1rP0XXCOMIPnMp6C6Aox6AIM">
+<span class="font-label-md text-label-md font-bold text-on-surface">Elena Rodriguez</span>
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] px-1.5 py-0.5 rounded-md font-bold tracking-wider">ADMIN</span>
+</div>
+<div class="bg-white dark:bg-surface-container-lowest p-4 rounded-2xl rounded-tl-sm shadow-sm border border-outline-variant/10">
+<p class="font-body-md text-body-md mb-4">Hey team! Which branding concept should we pitch to the client tomorrow? 🚀</p>
+<div class="space-y-3">
+<div class="relative group cursor-pointer active:scale-[0.98] transition-transform">
+<div class="absolute inset-y-0 left-0 bg-secondary-container/30 rounded-lg transition-all" style="width: 65%;"></div>
+<div class="relative flex items-center justify-between p-3 border border-outline-variant/30 rounded-lg">
+<span class="font-label-md text-label-md flex items-center gap-2"><span class="material-symbols-outlined text-secondary">radio_button_checked</span> Concept A: Minimal Blue</span>
+<span class="font-label-md text-label-md text-secondary font-bold">65%</span>
+</div>
+</div>
+<div class="relative group cursor-pointer active:scale-[0.98] transition-transform">
+<div class="absolute inset-y-0 left-0 bg-surface-container-high rounded-lg transition-all" style="width: 35%;"></div>
+<div class="relative flex items-center justify-between p-3 border border-outline-variant/30 rounded-lg">
+<span class="font-label-md text-label-md flex items-center gap-2"><span class="material-symbols-outlined text-outline">radio_button_unchecked</span> Concept B: Fluid Orange</span>
+<span class="font-label-md text-label-md text-outline">35%</span>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between border-t border-outline-variant/20 pt-3">
+<span class="text-label-sm font-label-sm text-outline">24 votes • Ends in 2h</span>
+<button class="text-primary font-label-md text-label-md font-bold">Retract Vote</button>
+</div>
+</div>
+<span class="text-[10px] text-outline ml-1">10:42 AM</span>
+</div>
+<!-- Shared File Message -->
+<div class="flex flex-col gap-2 max-w-[85%] self-start">
+<div class="flex items-center gap-2 ml-1">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="Close up photo of a young male designer with trendy headphones around his neck, looking intently at a screen. Soft blue and teal light from the monitor reflects on his face, highlighting a focused, technical workspace atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgqtRRow_QKkLt7xyp1jEHoaQzk_wVKWLXgn8fH79pRIC_NSi0Sh2yYhJkECquwQA_6YhF31B3rHrGE6Kk0Lm-U88fEHWG910zF_k0b2O382Im8CxhXRtXIRg5ypR_MKfWK_3KZs4mJIrccVE2divvL7KD5iUe_rAHA35D0d87WTHxSS9q48P9IuzPdt_AztOZ9mhMGuGb3-bsEzE_oIeVb4DMmXyfgjVecBtLokpuh8nwvABCzVTfGU1a_jp1DM9VJV7wFaRdjFY">
+<span class="font-label-md text-label-md font-bold text-on-surface">Liam Chen</span>
+</div>
+<div class="bg-white dark:bg-surface-container-lowest p-3 rounded-2xl rounded-tl-sm shadow-sm border border-outline-variant/10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md font-bold text-on-surface truncate">Brand_Guidelines_V2.fig</p>
+<p class="font-label-sm text-label-sm text-outline">12.4 MB • Figma Document</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<span class="text-[10px] text-outline ml-1">10:45 AM</span>
+</div>
+<!-- Recipient Message (Simple) -->
+<div class="flex flex-col gap-2 max-w-[85%] self-start">
+<div class="flex items-center gap-2 ml-1">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="A modern portrait of a person with creative accessories, smiling warmly in a bright, sunlit office space with blurred plants in the background. The mood is professional yet relaxed and energetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCITMSG3uCh05nax2tvGcqLiDCfupFgdS1aItJbRk2fKS4oOZEXqjW_Mr1kXzrrBKQnHia4yf_92CWRngBY-bX31pey3HwfiaYXWk3kSJtJObNZk9qrQv-C9hO4jRnbiJaRmJcRxnboxvSvXEUIsPcQx0_naZz61nRP9ulLZCUr6c-PspgvAHAeGsR1oNCpuv2g6SOG7TVDFCkUw7I3GhvYICqRflhbNe11m9rO6d_hACJ_X-UHWngCs3_dv9dnxligjXkX5EnSgo4">
+<span class="font-label-md text-label-md font-bold text-on-surface">Sarah J.</span>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 p-3.5 rounded-2xl rounded-tl-sm shadow-sm">
+<p class="font-body-md text-body-md">Just reviewed Concept A. The translucency effects in the logo are exactly what we were aiming for. Great work Liam! 🙌</p>
+</div>
+<span class="text-[10px] text-outline ml-1">10:48 AM</span>
+</div>
+<!-- Sender Message -->
+<div class="flex flex-col gap-1 max-w-[85%] self-end items-end">
+<div class="chat-bubble-sender p-3.5 rounded-2xl rounded-tr-sm shadow-lg">
+<p class="font-body-md text-body-md text-white">Thanks Sarah! I'll add the final touches to the file now. Ready for the voice sync?</p>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="text-[10px] text-outline">10:50 AM</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar / Chat Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl px-4 pt-2 pb-safe h-20 flex items-center gap-3">
+<button class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-1 bg-slate-100 dark:bg-slate-800 rounded-full h-11 flex items-center px-4 border border-outline-variant/20">
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md placeholder:text-outline" placeholder="Message Design Pioneers..." type="text">
+<button class="flex items-center justify-center text-outline hover:text-primary transition-colors ml-2">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+</div>
+<button class="w-11 h-11 flex-shrink-0 flex items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</footer>
+<!-- Floating Quick Actions (FAB) -->
+<!-- Supressed on detail/chat screen as per mandate: "Contextual FAB Suppression" -->
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.active\\:scale-95').forEach(button => {
+            button.addEventListener('touchstart', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('touchend', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+        
+        // Auto-scroll to bottom of chat
+        window.scrollTo(0, document.body.scrollHeight);
+    </script>
+</body></html>

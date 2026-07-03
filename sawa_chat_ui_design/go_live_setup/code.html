@@ -1,0 +1,286 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Go Live Setup - Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#0b1c30",
+                        "surface-tint": "#0053db",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-secondary-container": "#006172",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#57dffe",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline": "#737686",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#acedff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#00687a",
+                        "on-surface-variant": "#434655",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-primary-container": "#eeefff",
+                        "inverse-primary": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#001f26",
+                        "tertiary": "#006229",
+                        "surface-bright": "#f8f9ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "tertiary-container": "#007e37",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-surface": "#213145",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#eff4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-margin": "40px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "20px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px",
+                        "container-padding-tablet": "32px",
+                        "unit": "4px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d3e4fe;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-32 overflow-x-hidden custom-scrollbar">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-sm px-container-mobile h-16 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary">Go Live Setup</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of a creative creator, soft key lighting, vibrant blue and white minimalist background, 8k resolution, high-end photography style, representing a premium Sawa user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG03Fng2RZ6Vz2UlJ-DHyvXFNbQWEodrlmTOdROMq7ogFfOValhLrQ-Rxjh9HC6sRoucm9B3OffvSF_-GNNFAb-GScjoOLbCrJOnegtaU7V0XNFlI6FudlJHOxrzAdae7J8MELHe3iljDEpkXdJNJFaorHeHAwhzeqOjJYvO-0CES3q7PNMowbBsLEpylj747zvmNpApxcwOgMqZqFtDZpHX1GgKW0N_BWemQ8BHqoRxbRI9DlyKCvan72kuXjjwkSnJzyVYk9IeI">
+</div>
+</header>
+<main class="mt-20 px-container-mobile max-w-2xl mx-auto space-y-stack-gap-lg">
+<!-- Cover Image Upload Area -->
+<section class="relative group">
+<div class="w-full aspect-[16/9] rounded-3xl bg-surface-container-high overflow-hidden border-2 border-dashed border-outline-variant flex flex-col items-center justify-center transition-all group-hover:border-primary">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity" data-alt="A cinematic, wide-angle shot of a minimalist home studio setup with neon accent lighting in soft blues and cyans. High-quality digital rendering, shallow depth of field, premium tech aesthetic with organic curves." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCBGHl3uwUqnZ8Un7fXwJNWTxyu-FvE-74qPTWfK9Xfza2z0iRvInaZHSZ5sFa9cqp6cTyxLx7Wu-h4gb1xlnWKlQw8_7LpLJKsuEw0rcG1HRsqsOw0H4TLjQtOglIrR_3KEmvqoe4uxNc4gq6u9Uhg8R_zeoXkCvPHkKjlsM6TxCoDXsshqtEdehQeBs00oIzWfw3K3nD9hoPhUxK5X7dSjlKUefkbK7o6ORMKER10k7p_cIn47KP5drLMtTNmX9wL8_qQVBxfdew')"></div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-4xl">add_a_photo</span>
+</div>
+<span class="font-title-lg text-title-lg text-primary font-bold">Add Cover Image</span>
+<p class="font-label-md text-label-md text-outline">16:9 ratio recommended</p>
+</div>
+</div>
+</section>
+<!-- Stream Information Fields -->
+<section class="space-y-stack-gap-md">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Stream Title</label>
+<input class="w-full h-14 px-4 rounded-2xl bg-surface-container border-none focus:ring-2 focus:ring-primary text-body-lg font-body-lg placeholder:text-outline transition-all" placeholder="What are you streaming about?" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Description</label>
+<textarea class="w-full p-4 rounded-2xl bg-surface-container border-none focus:ring-2 focus:ring-primary text-body-md font-body-md placeholder:text-outline resize-none transition-all" placeholder="Tell your viewers more about this stream..." rows="3"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-stack-gap-md">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Category</label>
+<div class="relative">
+<select class="w-full h-14 pl-4 pr-10 rounded-2xl bg-surface-container border-none focus:ring-2 focus:ring-primary text-body-md font-body-md appearance-none">
+<option>Lifestyle</option>
+<option>Gaming</option>
+<option>Education</option>
+<option>Music</option>
+<option>Shopping</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Privacy</label>
+<div class="relative">
+<select class="w-full h-14 pl-4 pr-10 rounded-2xl bg-surface-container border-none focus:ring-2 focus:ring-primary text-body-md font-body-md appearance-none">
+<option>Public</option>
+<option>Friends Only</option>
+<option>Private</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">lock</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Feature Toggles -->
+<section class="bg-surface-container-lowest rounded-3xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] space-y-6">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider">Stream Settings</h3>
+<!-- Toggle: Enable Comments -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">chat_bubble</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Enable Comments</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Allow viewers to chat in real-time</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-14 h-8 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle: Enable Gifts -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant">redeem</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Enable Gifts</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Receive support from your community</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-14 h-8 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle: Shopping Mode -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed-variant">shopping_bag</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Shopping Mode</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tag and sell products live</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-14 h-8 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</section>
+</main>
+<!-- Bottom Action Button Fixed -->
+<div class="fixed bottom-0 left-0 w-full glass-panel px-container-mobile pt-4 pb-10 z-50">
+<div class="max-w-2xl mx-auto">
+<button class="w-full h-16 bg-gradient-to-r from-primary to-secondary text-on-primary rounded-full font-bold text-title-lg shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
+                Start Streaming
+            </button>
+</div>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const parent = e.target.closest('div.flex');
+                if (e.target.checked) {
+                    parent.style.transform = 'scale(1.02)';
+                } else {
+                    parent.style.transform = 'scale(1)';
+                }
+                setTimeout(() => {
+                    parent.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // Form focus states
+        const inputs = document.querySelectorAll('input[type="text"], textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

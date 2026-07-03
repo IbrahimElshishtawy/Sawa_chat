@@ -1,0 +1,238 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sawa Chat - Welcome</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d3e4fe",
+                    "outline": "#737686",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#0b1c30",
+                    "primary-container": "#2563eb",
+                    "on-secondary-container": "#006172",
+                    "surface": "#f8f9ff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "primary": "#004ac6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#57dffe",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#acedff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#001f26",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c3c6d7",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#0053db",
+                    "tertiary-container": "#007e37",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface-variant": "#434655",
+                    "tertiary": "#006229",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-sm": "8px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        vertical-align: middle;
+      }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .btn-hover-effect {
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .btn-hover-effect:active {
+        transform: scale(0.96);
+      }
+
+      /* Subtle floating animation for the hero image */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Header (Suppressed navigation as per task requirements for welcome/onboarding) -->
+<header class="fixed top-0 left-0 w-full h-20 px-container-mobile flex items-center justify-between z-50">
+<div class="text-title-lg font-title-lg font-bold text-primary">Sawa</div>
+</header>
+<main class="relative min-h-screen flex flex-col items-center justify-center px-container-mobile pt-20 pb-12 overflow-hidden">
+<!-- Background Atmospheric Element -->
+<div class="absolute top-1/4 -right-24 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-80 h-80 bg-secondary-container/20 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- 3D Illustration Container -->
+<div class="relative w-full max-w-sm aspect-square mb-stack-gap-lg flex items-center justify-center">
+<div class="animate-float w-full h-full relative z-10">
+<img class="w-full h-full object-contain" data-alt="A premium 3D isometric illustration of a floating glass globe representing global connection. Intricate glowing network lines wrap around the sphere, with translucent chat bubbles and social icons floating nearby. The style is hyper-clean and minimalist with soft claymorphism textures, featuring a professional color palette of bright blues, soft teals, and pristine white. The lighting is soft and cinematic, creating a sense of sophisticated technological harmony." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5HbfwXLWiNg4pGJlhCdXWxkVxmGpDz4Fv5ZNE1fFNrKSVQ5BagyNpIAkj7ILbGcAjqcq5y9O7iR4mwE_UbwojPp5JOdgrgf3tNTcATnL-WaZAhmXkN3fc-IlpRKDHHsen7_CKvGqT6gqsZR26LY34jDVjT6VQpIkFgFMCD26rgqk77nYONeo9Ohoco5vJKJQuiNfV8FR1PKbmjbBerXI9cNzsUqAwEFhma7dz1ZQ7LrNH936U-DktRNSfpj5x8WskxXtOAPMS3jQ">
+</div>
+<!-- Decorative ring behind illustration -->
+<div class="absolute inset-0 rounded-full border-[1.5px] border-primary/5 scale-125 pointer-events-none"></div>
+<div class="absolute inset-0 rounded-full border-[1px] border-secondary/10 scale-110 pointer-events-none"></div>
+</div>
+<!-- Content Area -->
+<div class="text-center space-y-stack-gap-sm max-w-md z-10">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface tracking-tight">
+                Welcome to Sawa Chat
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant px-4">
+                Everything you need in one place.
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="w-full max-w-sm mt-stack-gap-lg space-y-4 z-10 px-4">
+<button class="btn-hover-effect w-full h-14 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-title-lg text-title-lg flex items-center justify-center shadow-lg shadow-primary/20">
+                Continue
+            </button>
+<button class="btn-hover-effect w-full h-14 rounded-full border-[1.5px] border-outline-variant text-primary font-title-lg text-title-lg flex items-center justify-center hover:bg-surface-variant/20 transition-colors">
+                Already have an account
+            </button>
+</div>
+<!-- Language Selector Footer -->
+<footer class="mt-auto pt-12 pb-safe w-full flex justify-center z-10">
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-surface-variant/30 transition-all text-on-surface-variant font-label-md text-label-md" id="langSelector">
+<span class="material-symbols-outlined text-[20px]" data-icon="language">language</span>
+<span>English (US)</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Dropdown Menu (Hidden by default) -->
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 glass-card border border-outline-variant/10 rounded-2xl shadow-xl py-2 opacity-0 translate-y-4 pointer-events-none transition-all duration-300" id="langDropdown">
+<div class="px-4 py-2 hover:bg-primary-container/10 text-primary cursor-pointer font-label-md">English (US)</div>
+<div class="px-4 py-2 hover:bg-primary-container/10 text-on-surface-variant cursor-pointer font-label-md">العربية</div>
+<div class="px-4 py-2 hover:bg-primary-container/10 text-on-surface-variant cursor-pointer font-label-md">Français</div>
+<div class="px-4 py-2 hover:bg-primary-container/10 text-on-surface-variant cursor-pointer font-label-md">Español</div>
+</div>
+</div>
+</footer>
+</main>
+<!-- JavaScript for Interactions -->
+<script>
+        const langBtn = document.getElementById('langSelector');
+        const langDropdown = document.getElementById('langDropdown');
+        let isDropdownOpen = false;
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isDropdownOpen = !isDropdownOpen;
+            if (isDropdownOpen) {
+                langDropdown.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                langDropdown.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                langDropdown.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                langDropdown.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+
+        document.addEventListener('click', () => {
+            if (isDropdownOpen) {
+                langDropdown.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                langDropdown.classList.remove('opacity-100', 'translate-y-0');
+                isDropdownOpen = false;
+            }
+        });
+
+        // Basic button feedback logic
+        const buttons = document.querySelectorAll('.btn-hover-effect');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.filter = 'brightness(1.05)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.filter = 'brightness(1)';
+            });
+        });
+    </script>
+</body></html>

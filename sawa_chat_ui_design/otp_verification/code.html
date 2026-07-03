@@ -1,0 +1,251 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>OTP Verification | Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#0b1c30",
+                        "primary-container": "#2563eb",
+                        "on-secondary-container": "#006172",
+                        "surface": "#f8f9ff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "primary": "#004ac6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container": "#e5eeff",
+                        "secondary-container": "#57dffe",
+                        "secondary": "#00687a",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#acedff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#001f26",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#007e37",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002109",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "tertiary": "#006229",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-dim": "#cbdbf5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-tablet": "32px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-sm": "8px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "container-padding-mobile": "20px",
+                        "section-margin": "40px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .otp-input:focus {
+            box-shadow: 0 0 0 2px theme('colors.primary');
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .otp-input {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Atmospheric Background Shader -->
+
+<!-- Top App Bar (Modified for transactional focus - suppressed according to "The Destination Rule") -->
+<!-- We hide the standard TopAppBar to prioritize the OTP focus -->
+<main class="relative z-10 w-full max-w-md px-container-mobile flex flex-col items-center">
+<!-- Illustration/Icon Area -->
+<div class="mb-stack-gap-lg animate-fade-in" style="animation-delay: 0.1s">
+<div class="w-20 h-20 rounded-[28px] bg-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary-container text-[40px]">
+                    phonelink_lock
+                </span>
+</div>
+</div>
+<!-- Content Area -->
+<div class="text-center mb-stack-gap-lg animate-fade-in" style="animation-delay: 0.2s">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">
+                Verify your phone
+            </h1>
+<p class="font-body-md text-body-md text-outline">
+                We sent a 6-digit code to <span class="text-on-surface font-semibold">+1 234 *** 789</span>
+</p>
+</div>
+<!-- OTP Input Group -->
+<div class="flex gap-2 mb-stack-gap-lg animate-fade-in" id="otp-container" style="animation-delay: 0.3s">
+<input autocomplete="one-time-code" autofocus="" class="otp-input w-12 h-14 md:w-14 md:h-16 text-center text-title-lg font-title-lg bg-surface-container-low border-none rounded-xl focus:ring-0 outline-none" inputmode="numeric" maxlength="1" type="text">
+<input class="otp-input w-12 h-14 md:w-14 md:h-16 text-center text-title-lg font-title-lg bg-surface-container-low border-none rounded-xl focus:ring-0 outline-none" inputmode="numeric" maxlength="1" type="text">
+<input class="otp-input w-12 h-14 md:w-14 md:h-16 text-center text-title-lg font-title-lg bg-surface-container-low border-none rounded-xl focus:ring-0 outline-none" inputmode="numeric" maxlength="1" type="text">
+<input class="otp-input w-12 h-14 md:w-14 md:h-16 text-center text-title-lg font-title-lg bg-surface-container-low border-none rounded-xl focus:ring-0 outline-none" inputmode="numeric" maxlength="1" type="text">
+<input class="otp-input w-12 h-14 md:w-14 md:h-16 text-center text-title-lg font-title-lg bg-surface-container-low border-none rounded-xl focus:ring-0 outline-none" inputmode="numeric" maxlength="1" type="text">
+<input class="otp-input w-12 h-14 md:w-14 md:h-16 text-center text-title-lg font-title-lg bg-surface-container-low border-none rounded-xl focus:ring-0 outline-none" inputmode="numeric" maxlength="1" type="text">
+</div>
+<!-- Timer and Resend -->
+<div class="flex flex-col items-center gap-2 mb-section-margin animate-fade-in" style="animation-delay: 0.4s">
+<div class="font-label-md text-label-md text-primary font-bold bg-primary/10 px-4 py-1.5 rounded-full" id="countdown">
+                00:59
+            </div>
+<button class="font-label-md text-label-md text-outline disabled:opacity-50 transition-colors" id="resend-btn" disabled="">
+                Resend Code
+            </button>
+</div>
+<!-- Primary Action -->
+<div class="w-full animate-fade-in" style="animation-delay: 0.5s">
+<button class="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary font-title-lg text-title-lg rounded-2xl shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
+                Verify
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">
+                    arrow_forward
+                </span>
+</button>
+</div>
+<!-- Help Link -->
+<p class="mt-8 font-label-md text-label-md text-outline animate-fade-in" style="animation-delay: 0.6s">
+            Having trouble? <a class="text-primary font-bold hover:underline" href="#">Contact Support</a>
+</p>
+</main>
+<!-- Interactive Script for OTP Flow -->
+<script>
+        const inputs = document.querySelectorAll('.otp-input');
+        const countdownEl = document.getElementById('countdown');
+        const resendBtn = document.getElementById('resend-btn');
+
+        // Handle OTP Input focus shifting
+        inputs.forEach((input, index) => {
+            input.addEventListener('keyup', (e) => {
+                if (e.key >= 0 && e.key <= 9) {
+                    if (index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                } else if (e.key === 'Backspace') {
+                    if (index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                }
+            });
+
+            // Prevent non-numeric characters
+            input.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            });
+        });
+
+        // Simple Countdown Timer
+        let timeLeft = 59;
+        const timer = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                countdownEl.classList.add('hidden');
+                resendBtn.disabled = false;
+                resendBtn.classList.remove('text-outline');
+                resendBtn.classList.add('text-primary', 'font-bold', 'hover:opacity-80');
+            } else {
+                let seconds = timeLeft < 10 ? '0' + timeLeft : timeLeft;
+                countdownEl.textContent = `00:${seconds}`;
+                timeLeft--;
+            }
+        }, 1000);
+
+        // Micro-interaction: Visual feedback on verify press
+        const verifyBtn = document.querySelector('button.bg-gradient-to-r');
+        verifyBtn.addEventListener('click', () => {
+            const code = Array.from(inputs).map(i => i.value).join('');
+            if (code.length === 6) {
+                verifyBtn.innerHTML = `<span class="material-symbols-outlined animate-spin">progress_activity</span>`;
+                setTimeout(() => {
+                    verifyBtn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> Verified`;
+                    verifyBtn.classList.remove('from-primary', 'to-primary-container');
+                    verifyBtn.classList.add('bg-tertiary-container');
+                }, 1500);
+            }
+        });
+    </script>
+</body></html>

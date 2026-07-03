@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa — Appearance Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#1a2c42",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#2563eb",
+                    "on-primary-container": "#eeefff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-variant": "#213145",
+                    "secondary-container": "#57dffe",
+                    "inverse-surface": "#f8f9ff",
+                    "outline": "#8e919f",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-bright": "#1a2c42",
+                    "surface": "#0b1c30",
+                    "inverse-on-surface": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-container-lowest": "#061324",
+                    "surface-container-highest": "#314259",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary": "#4cd7f6",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary-fixed": "#001f26",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#007e37",
+                    "surface-container-high": "#213145",
+                    "on-secondary-container": "#006172",
+                    "tertiary": "#4ae176",
+                    "surface-dim": "#0b1c30",
+                    "on-surface": "#ffffff",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#93000a",
+                    "background": "#0b1c30",
+                    "outline-variant": "#434655",
+                    "surface-container-low": "#112236",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-tint": "#2563eb",
+                    "on-secondary": "#00363f",
+                    "primary-container": "#004ac6",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #0b1c30;
+        }
+        .glass {
+            background: rgba(11, 28, 48, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid #0b1c30;
+        }
+        .preview-chat-container {
+            background-size: cover;
+            background-position: center;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl border-b border-white/5 shadow-lg">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/30 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-white">Appearance</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHr8xoYk2pabI6fc4mKi57qkNUAU61LkRGEsdXoxtFRemcBbw6LzOz3GmpD_7CG-cxiVqW8Uz5KMrbV2vZowsR4dkgcxcSKFRXOPZ7wUr5NOTlQtC_TZ0mDbZYm92E1YAs4TlB9keesz7kO1W1V-VTuElraEE7mgMXJRzbFC3H1H2WZQdfp9AHVUNLgWBtQ-Cm5y-PSkt-HoSoOdl5MFzp7qnBZktoTavmLVpTpZ0W3Z3G1EhdmQfdVWUOFQ9Rk9hF_5EQoqO7VXU"/>
+</div>
+</header>
+<main class="pt-20 px-container-mobile max-w-2xl mx-auto space-y-6">
+<!-- Live Preview Section -->
+<section class="mt-4">
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-3 px-1">Live Preview</h2>
+<div class="preview-chat-container w-full h-48 rounded-3xl overflow-hidden relative border border-white/5 shadow-2xl" id="chatPreview" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl_Y1jghfQWoWEaoP6zVEtHaQx__DVo5apWgd4K9ubtn2x8FoobBboK9zyyLIxkh8_BLQeqxuIYKzsH5dP-b5JeiqaSq5HYm96qlWxET53chAmBqNxMsqdUvVR1EUtYqR1FN25_aNpUvKMEr_pKThSnviqwWobc72EbfqQgLdYavl8AL2ORF4VQ-1AhvUp5WCdyTfGR9L45bwo_6MFLTM4wAp0R0lc6nore_Q8nfzEVgw6tUPzuPrJCtDdSWnIh_ZiG4lE60li-I0')">
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="relative h-full p-6 flex flex-col justify-center gap-4">
+<div class="flex flex-col items-start max-w-[80%]">
+<div class="bg-surface-container-high text-white px-4 py-2 rounded-2xl rounded-bl-none shadow-md">
+<p class="font-body-md text-body-md">Hey! How does the new theme look?</p>
+</div>
+<span class="text-[10px] text-outline mt-1 ml-1">10:42 AM</span>
+</div>
+<div class="flex flex-col items-end max-w-[80%] self-end">
+<div class="bg-primary text-white px-4 py-2 rounded-2xl rounded-br-none shadow-md">
+<p class="font-body-md text-body-md" id="previewText">It looks incredibly sharp and fluid!</p>
+</div>
+<span class="text-[10px] text-outline mt-1 mr-1">10:43 AM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Theme Mode Selection -->
+<section class="space-y-3">
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider px-1">Theme Mode</h2>
+<div class="grid grid-cols-3 gap-3">
+<button class="theme-toggle flex flex-col items-center gap-3 p-4 bg-surface-container-low border-2 border-transparent rounded-2xl transition-all active:scale-95 group hover:bg-surface-container-high" data-mode="light" onclick="setTheme('light')">
+<div class="w-12 h-12 rounded-full bg-slate-200 shadow-inner flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">light_mode</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Light</span>
+</button>
+<button class="theme-toggle flex flex-col items-center gap-3 p-4 bg-surface-container-low border-2 border-primary/60 rounded-2xl transition-all active:scale-95 group" data-mode="dark" onclick="setTheme('dark')">
+<div class="w-12 h-12 rounded-full bg-slate-800 shadow-inner flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">dark_mode</span>
+</div>
+<span class="font-label-md text-label-md text-white font-bold">Dark</span>
+</button>
+<button class="theme-toggle flex flex-col items-center gap-3 p-4 bg-surface-container-low border-2 border-transparent rounded-2xl transition-all active:scale-95 group hover:bg-surface-container-high" data-mode="system" onclick="setTheme('system')">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-slate-200 to-slate-800 shadow-inner flex items-center justify-center text-white">
+<span class="material-symbols-outlined">settings_brightness</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">System</span>
+</button>
+</div>
+</section>
+<!-- AMOLED Mode -->
+<section class="p-4 bg-surface-container-low rounded-2xl flex items-center justify-between border border-white/5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-black border border-white/10 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">invert_colors</span>
+</div>
+<div>
+<h3 class="font-title-lg text-[16px] text-white">AMOLED Mode</h3>
+<p class="font-body-md text-[13px] text-outline">True black background for OLED screens</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</section>
+<!-- Accent Colors -->
+<section class="space-y-3">
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider px-1">Accent Color</h2>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-2xl border border-white/5 overflow-x-auto gap-4 no-scrollbar">
+<button class="w-10 h-10 rounded-full bg-[#2563eb] border-2 border-[#0b1c30] ring-2 ring-primary flex-shrink-0 active:scale-90 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-[#006229] border-2 border-transparent flex-shrink-0 active:scale-90 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-[#ba1a1a] border-2 border-transparent flex-shrink-0 active:scale-90 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-[#00687a] border-2 border-transparent flex-shrink-0 active:scale-90 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-[#6750a4] border-2 border-transparent flex-shrink-0 active:scale-90 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-[#7d5260] border-2 border-transparent flex-shrink-0 active:scale-90 transition-transform"></button>
+<div class="w-px h-6 bg-white/10 mx-2 flex-shrink-0"></div>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-white">colorize</span>
+</button>
+</div>
+</section>
+<!-- Font Size Slider -->
+<section class="p-4 bg-surface-container-low rounded-2xl border border-white/5 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-title-lg text-[16px] text-white">Text Size</h3>
+<span class="font-label-md text-label-md text-primary bg-primary/20 px-2 py-0.5 rounded-full" id="fontSizeLabel">15px</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[12px] font-bold text-outline">A</span>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" id="fontSizeSlider" max="22" min="12" type="range" value="15"/>
+<span class="text-[20px] font-bold text-outline">A</span>
+</div>
+</section>
+<!-- Wallpaper Selection -->
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider">Chat Wallpaper</h2>
+<button class="text-primary font-label-md hover:underline">Change All</button>
+</div>
+<div class="grid grid-cols-4 gap-3">
+<div class="aspect-[9/16] rounded-xl overflow-hidden border-2 border-primary active:scale-95 transition-transform cursor-pointer relative shadow-lg">
+<img alt="Default Dark Wallpaper" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCYOwYSz82I79TsdVQ3tn0VvariXLRTP4JCU_T79ke7ONorNvzCRB_-0N7C6kwjVU-rlLB1235dEdAE_EK-UboZTh4eTLLzH1FT9YT2biRBkOr2upBVHN3KOyiY4tuGTjntZbSnfQLz_nUUhthNJ9STCtyLy3tmRCABkslqB-o8oXqAAIBFJ5iaAycghh8gGJo7EtpxKRfTfnItW9mjXePMWgw6kBop5Au0NNix6fZsxQE5tdJ8qLNbdoeoWMSfVVBxp1QJakMtjM"/>
+<div class="absolute inset-0 flex items-center justify-center bg-primary/30">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1">check_circle</span>
+</div>
+</div>
+<div class="aspect-[9/16] rounded-xl overflow-hidden border-2 border-transparent active:scale-95 transition-transform cursor-pointer shadow-md">
+<img alt="Botanical Wallpaper" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_2P815HiIRIO5FVLuztfHYwBcMVE_2-pbdZMbReveHUPbBeQX5e9jShX2sBsud9K7brJfS5FhOn9zvJYSVsJLB6opfr7E0KJ5Lp6PGOF4WD-qovaysMfQsZzDqqSbLc4Puh4YHMLmIIDbvgQJfunT4ohUFL3lur_nbvuJRxT6Loj2KuVDGyk0A1-nJg8sf_g5PMk6nfLfsXXHWOJaZLTbuDWpIo72hAdVBa-nkqY-SiodsHpjyVX8tFhZdRMEsBkJDB1vIVB55MY"/>
+</div>
+<div class="aspect-[9/16] rounded-xl overflow-hidden border-2 border-transparent active:scale-95 transition-transform cursor-pointer shadow-md">
+<img alt="Minimalist Wallpaper" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9EOPAhM3a-gHBSGRMjNV4_KYLiUYnTn0iZ8sRCfaDkMBAJjcO9uFNQVsU2ePIz2zq62YS2cR9tP6fxaTbtEiwf_ofykalA_uNkNB9dKhO_MKoRzsplnyobzf_2QsihGFxE8E3X4QMNTwX3EKfIhqEcd4epPM7T4S-b_lRL7i6ou16mnH_MJt1kn0WmGup2TH_Ax6y4PXflhct_ekCfDtWhueXNT4fYuav2B0cLQhuXon-huAHyOgUhhQKDOY3cyKI2qWgEndgIyc"/>
+</div>
+<div class="aspect-[9/16] rounded-xl overflow-hidden border-2 border-transparent bg-surface-container-high flex flex-col items-center justify-center gap-1 active:scale-95 transition-transform cursor-pointer border-dashed border-white/20">
+<span class="material-symbols-outlined text-outline">add_photo_alternate</span>
+<span class="text-[10px] text-outline font-medium">Custom</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<button class="flex flex-col items-center justify-center text-outline hover:text-white rounded-full transition-colors w-16 h-16 active:scale-90">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:text-white rounded-full transition-colors w-16 h-16 active:scale-90">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:text-white rounded-full transition-colors w-16 h-16 active:scale-90">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold rounded-full transition-colors w-16 h-16 active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+<script>
+    const fontSizeSlider = document.getElementById('fontSizeSlider');
+    const fontSizeLabel = document.getElementById('fontSizeLabel');
+    const previewText = document.getElementById('previewText');
+
+    fontSizeSlider.addEventListener('input', (e) => {
+        const val = e.target.value;
+        fontSizeLabel.textContent = `${val}px`;
+        previewText.style.fontSize = `${val}px`;
+        previewText.parentElement.parentElement.parentElement.querySelectorAll('p').forEach(p => {
+            p.style.fontSize = `${val}px`;
+        });
+    });
+
+    function setTheme(mode) {
+        const html = document.documentElement;
+        const buttons = document.querySelectorAll('.theme-toggle');
+        
+        buttons.forEach(btn => {
+            btn.classList.remove('border-primary/60');
+            btn.classList.add('border-transparent');
+            const span = btn.querySelector('span:not(.material-symbols-outlined)');
+            if (span) span.classList.remove('text-white', 'font-bold');
+            if (span) span.classList.add('text-on-surface-variant');
+
+            if (btn.getAttribute('data-mode') === mode) {
+                btn.classList.remove('border-transparent');
+                btn.classList.add('border-primary/60');
+                if (span) {
+                    span.classList.remove('text-on-surface-variant');
+                    span.classList.add('text-white', 'font-bold');
+                }
+            }
+        });
+
+        // Forced dark mode as per user request, but maintaining logic if they click
+        if (mode === 'light') {
+            html.classList.remove('dark');
+        } else {
+            html.classList.add('dark');
+        }
+    }
+
+    const colorButtons = document.querySelectorAll('button.rounded-full.w-10');
+    colorButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            colorButtons.forEach(b => {
+                b.classList.remove('ring-2', 'ring-primary', 'border-[#0b1c30]');
+                b.classList.add('border-transparent');
+            });
+            btn.classList.add('ring-2', 'ring-primary', 'border-[#0b1c30]');
+            btn.classList.remove('border-transparent');
+        });
+    });
+
+    // Default to Dark Mode as per request
+    setTheme('dark');
+</script>
+</body></html>

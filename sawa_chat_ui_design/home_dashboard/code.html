@@ -1,0 +1,435 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa - Home Dashboard</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .story-gradient {
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            background-color: #f8f9ff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#0b1c30",
+                        "primary-container": "#2563eb",
+                        "on-secondary-container": "#006172",
+                        "surface": "#f8f9ff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "primary": "#004ac6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container": "#e5eeff",
+                        "secondary-container": "#57dffe",
+                        "secondary": "#00687a",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#acedff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#001f26",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#007e37",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002109",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "tertiary": "#006229",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-dim": "#cbdbf5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-tablet": "32px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-sm": "8px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "container-padding-mobile": "20px",
+                        "section-margin": "40px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-primary text-[24px]">search</span>
+</button>
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa</h1>
+<div class="flex items-center gap-3">
+<button class="hover:opacity-80 transition-opacity relative active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-outline text-[24px]">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-outline text-[24px]">chat_bubble</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant ml-1 cursor-pointer ring-2 ring-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of a diverse, modern young adult with a friendly expression. They are wearing a stylish minimal outfit. The background is a soft, blurry gradient of light blue and white, perfectly fitting a premium light-mode social media interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDocwxWXaMCb4w_3L-jsezHGLAG97GXD4gp3PShG3YP5Vs5dItCPaZgcUmNXkeUfuP3OvhZfOr-sybXHhv_LUfk1bW982PPBao8dgN8yPOhZryh3D9BEGdeQZqdKYtxTJ_Zyk2jY_6yngMA4Bff2_ECNDBBUlULPZ24iJisAwGfJO6WSJY0gpDCSNTJedcL1H69JO54_5xqa21WonmVrcNsbbj4yV1Os5u7kgfoLwuSROUJO6vVnWiZG5H-AvAfnAMRKqBssi5kfvM">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-28 min-h-screen">
+<!-- Stories Section -->
+<section class="mb-stack-gap-lg">
+<div class="flex overflow-x-auto gap-3 px-container-mobile hide-scrollbar">
+<!-- Create Story -->
+<div class="flex-shrink-0 w-28 h-44 rounded-[24px] overflow-hidden relative shadow-sm border border-outline-variant/30 group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-resolution close-up of a smiling young woman with natural light hitting her face, standing in a sun-drenched modern apartment. The aesthetic is clean, bright, and organic, consistent with high-end social media stories." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkAdCo5EAAXNSu1gLbr-dp9zyxoepwQxKnOtum94MgwcR-v7mOG2MpJTb5s9KohqYiTe3c6YYI0QX_S97QiGKm5GETHgy5c4HXHWfKIkVMvE8w5Tc58AmRaGv_rk8_U0j9nOFlHa5zQaM5fJHrrkpAK1YPtrf8uYLVFqOpyia74fGkS9q_R7QpIT9D2cKqR6KHwzgeKPfecmhlzmWQgIf6--ViFVhw6EhT2ZNTe6CI-A-4O_jWQtocO2Sl3KIWsa8R-Gv6lWX93E0">
+<div class="absolute inset-0 bg-black/20"></div>
+<div class="absolute bottom-0 w-full p-2 flex flex-col items-center">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center -mt-6 border-4 border-surface shadow-md">
+<span class="material-symbols-outlined text-white text-sm">add</span>
+</div>
+<span class="text-white font-label-md text-label-md mt-1">Add Story</span>
+</div>
+</div>
+<!-- Story 1 -->
+<div class="flex-shrink-0 w-28 h-44 rounded-[24px] overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A vibrant landscape of a tropical beach during sunrise with soft pastel colors in the sky. The lighting is golden and airy. This represents a user's travel story, maintaining a premium, aspirational lifestyle feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT_pG7YWNwJ63uHxZmdnFVFFg6ab6VTGu_az1XRnNR_VKmzb63Tg-tkXlZVrUcdUl1IHQjv1xn61-_JCc8NU4qJM6DKNquC5WyYu7_C6xn23MjiXqv3mD2JY21MoQBZl9rt0niE2Oz4RgaBmty2pOZRvxWenXm_CK0_Dg4-FFNpF0pQT05StRcqSIqVEofRsqjIdvYeKOfwgT_Yrf0j8euPBzb3a7oJ4MwcdHO7Pp8BueNHZuygnRRQAeqxylOCuddznfRuCwWdfA">
+<div class="absolute inset-0 story-gradient"></div>
+<div class="absolute top-2 left-2 w-8 h-8 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young person wearing trendy glasses and a colorful knit sweater, looking off-camera. The background is a soft bokeh of city lights. High-quality digital photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgo9f_Mb-qEJ5iPs0HWV1rwz1Y7Ef2kw-sdzBnySsj5_gnDl1Coxm-ujWEbN7LFnUjltaBgd5o1KlmLXyx9lnBz4IzbsTRITjYxytxR-TyxMNnJmz4D4OFKtFeL9be4naTiHWWDzlYqdoFmqZqQfYdMqfQ4HHGG1Duq3GyQ-N-5lplplKCNcazgIvr4_arEPT7VLnhiIGPeic3TxSQX6YokDRhmUjcrABNdaK2H0qqT6sKbun4jV7frT2HOy8fpOnn4fvj_U2YkQo">
+</div>
+<span class="absolute bottom-2 left-3 text-white font-label-md text-label-md truncate w-20">Aria</span>
+</div>
+<!-- Story 2 -->
+<div class="flex-shrink-0 w-28 h-44 rounded-[24px] overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a sleek, futuristic metallic sculpture in a modern art gallery. The lighting is crisp with soft shadows, highlighting clean lines and architectural elegance. The palette is dominated by whites and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoG1mCyg02CX-UN3LuFBO6JYttlPoTty_4P0mYwdMmRgdyItvvq2zntTUzUqX19F3fdn6IFqEyfu_kPKVl0sgau_ulkzFOO37_wGgS3VIMlsDiJhRwz2g17vUSFFYcZ1nNzDcyrD7um-cfN3eLZ0rSjDQ3erAcBBjrFaqXywXWFEipaudoavngyZQfWNjHeGR0veqfhGuWeikzAQOh3ulQeBEDpwoST6BrZhT-s3j6O4DPNOvnuuEWtn61HLYo-9-2KAaLpFZQu4I">
+<div class="absolute inset-0 story-gradient"></div>
+<div class="absolute top-2 left-2 w-8 h-8 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Studio portrait of a smiling man with a neat beard, wearing a charcoal grey t-shirt. The lighting is professional and soft, with a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJAK9q1Bhw0IZh97VTIloTlj0A-vx1dVRn8fo0XgGzpk3W55nFif8224jtZ11Nmq2K5miLcK9lmMCLdGLr4Lhpx4ZoFlRaSkTNKCLUucj1vMGGQw8JeMIAUB20TPuay9TMJAjPwD_meMNfyt1YSrbekzV-NoAhLjUVX4gVky0KXJzAFLQiSR73gvJPXITAFPxwAY52ySkDD8wPY-2472z-JDCDMZzGjeLEcZnV5-J-kzdCMHvmyk3yff94iFyEcfxL-MUVTpfbFZo">
+</div>
+<span class="absolute bottom-2 left-3 text-white font-label-md text-label-md truncate w-20">Julian</span>
+</div>
+<!-- Story 3 -->
+<div class="flex-shrink-0 w-28 h-44 rounded-[24px] overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A high-end restaurant scene showing a beautifully plated minimalist dessert on a marble table. Soft evening light filters through a window. The mood is sophisticated and luxurious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhByTPVk716YixpaHvR4yPe6zCvpuNNtODn9w-yY0cOXbMETBNjCTripHsc667r9lcb_JQ0EWlSCZ-3KQuQwgix9hVkGE4IAvpbCdQ2EjuDhe2ByNUYRGx9170qxoVzbnJR7UO0WEac80tBs8CEBZnfVYlaHHi0loaFTXQiZrr52wO3FsvUHRUk8Md46m-oUeWZUo5WjTwUu_YM7DrJDyerZDwMLd19QqxMWitjkHvC_HbfqhpqmaUGVzKpHLP56GqpkiWkjtTPcI">
+<div class="absolute inset-0 story-gradient"></div>
+<div class="absolute top-2 left-2 w-8 h-8 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile picture of a stylish woman with long dark hair, wearing a white silk blouse. Neutral background with natural side lighting that accentuates her features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNtyEvdkfDynfh6bxnDNONPuGrek_ZyKEQWhIUzONattmrO8hW1oZvGUpK__EDWxIivYB_aEGr9hxREMJg3Arq3ikHhpovSjk2shbPhm0Kg3HbHjN-NQH0EyIDN4DLT1rnb92J3jGgRgFWSH7Kk_BwJyUqHD8-tmtTxLLFSSK_bwJXwfqwmGBMTg7-t6hhZgdEbiIsEBEF_mFP55pY7x8N9NnjJAPg4rxHjw-8zxpXnwK2PCwDM8_qnz4_pJoaj1ltIetDJrQKir4">
+</div>
+<span class="absolute bottom-2 left-3 text-white font-label-md text-label-md truncate w-20">Sophia</span>
+</div>
+<!-- Story 4 -->
+<div class="flex-shrink-0 w-28 h-44 rounded-[24px] overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A view from an airplane window over a range of snow-capped mountains at dusk. The sky is a gradient of deep purple and orange. Dramatic and inspiring travel photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhQDijS_mnFTxbrY7GdJyiSRYiPQvi-AJHqZmgCYUwbm7NuU2-e--szdFsAYaR3F-LM1W4wpr0AGNKYv9R4DMWpNB90i7zb4u0mo4ox-dqfUZWE0OIEF-7r9G5zdOKAKgDUGrttvZqyj3CZPkDT8Jo5kfWpxXahMnRel51SZDqiPs5JzEu0zD-4Bcg_J6XpdwOpXM17P2ywA-Y-TvSQmQQn-dVwPKZjjoqlKdo-YD4WMq5Xd-sfWEdG6Colq0gvXl2AeZQcFio11A">
+<div class="absolute inset-0 story-gradient"></div>
+<div class="absolute top-2 left-2 w-8 h-8 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young creator in a tech-focused studio environment with neon accent lighting. Modern, edgy, and high-quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnm2XTIAEZ0NB2PuCs1R8P-gYU66DcwW1p_aXN5OEyBfxJWGqRUXEIlUXypVwi6EFQrwqTByEoo6l3IXtWabJ5Ee83PpVIBu_R-_OBOZ3CcWTBnlFInjHObYHMDB0tv4Zd4Gvqs-U-gIQqELvCXo_BWe2J1wnn8U41TRGiHHJSMplrZ1V07n6irBF2l8Yccjcz8K3kUrRkmGIMt48PQUOUJyi3nGKF5mBRb8W-nJxsXnXs5KxYpgJIqXluoCK4eYx3JFenR_7t4nw">
+</div>
+<span class="absolute bottom-2 left-3 text-white font-label-md text-label-md truncate w-20">Marcus</span>
+</div>
+</div>
+</section>
+<!-- Main Feed -->
+<div class="max-w-2xl mx-auto px-container-mobile space-y-gutter">
+<!-- Feed Post 1 (Image + Text) -->
+<article class="bg-surface-container-lowest rounded-[28px] shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A close-up profile picture of an architect in a black turtleneck, looking thoughtful. Behind him is a blurred wall with architectural blueprints. The aesthetic is professional and creative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSzI6qu6ewSweQPVndjo5FPPP2rOEUBafUEv14p5deoU3ZCPNkZ6agvmm54eJBoghvsV0PJbEkEYNIjsyNtOWOtoGvEXvtqyN1S9P11-Sy2LMjaqKTEVKKzJHTUIQj9L22z3wsuRVJ4CNSCgiR4KFQvV7Pqk2WDiSPkEptQk3euv--djR0GRjEcYAZRcUQEYAWdYCJQoHL4mdbH-wWq2SXwWz6aBAL4gYq0plTS3_H_t3POdfsJwUm3z8obj18qSMEf-e-nrrdb68">
+</div>
+<div>
+<p class="font-title-lg text-label-md text-on-surface font-bold leading-tight">Liam Henderson</p>
+<p class="text-outline font-label-sm text-label-sm">2 hours ago • New York</p>
+</div>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-variant/20">
+<span class="material-symbols-outlined text-outline">more_horiz</span>
+</button>
+</div>
+<div class="px-4 pb-3">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Just wrapped up the first phase of the modular city project. The way natural light interacts with these structures is better than the renders suggested! ✨
+                    </p>
+</div>
+<div class="relative w-full aspect-video">
+<img class="w-full h-full object-cover" data-alt="A stunning architectural shot of a modern modular glass building with lush green trees integrated into its balconies. The sky is bright blue and clear. The lighting creates dynamic shadows on the building's geometric surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS7BrCAFIKGdNJoUG6nAI4SML508_b2m-M3S-5MhdKef1t16p3iUZCUYYetOpxonCIobf_Ll7sDTdU7KCfB3UKfJWxcFgUSGtkLWgcqoCjN8B7Q58hHVRyDluiI24WQtTTLMZvDGgOqEpN1SSWtToWaOYPNk6q5BKwbmlynKMQYwj-pxJtU-9roew1rrOEicOjx5xfoVCNhVVAb8xUYh0C1ol5TnTuVn1N_N1M18a23WAMzSShDG9_TEg1fsmgcrgQ3h6bOU953lg">
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 hover:opacity-70 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-primary text-[22px]">favorite</span>
+<span class="text-label-md font-label-md text-on-surface-variant">1.2k</span>
+</button>
+<button class="flex items-center gap-1.5 hover:opacity-70 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">chat_bubble</span>
+<span class="text-label-md font-label-md text-on-surface-variant">84</span>
+</button>
+<button class="flex items-center gap-1.5 hover:opacity-70 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">share</span>
+</button>
+</div>
+<div class="flex items-center gap-1 bg-secondary-container/10 px-3 py-1.5 rounded-full border border-secondary-container/30">
+<span class="material-symbols-outlined text-secondary text-[18px]">shopping_bag</span>
+<span class="text-secondary font-bold text-label-md">$1,200</span>
+</div>
+</div>
+</article>
+<!-- Marketplace Recommendation Bento Card -->
+<section class="bg-surface-container-high/40 rounded-[28px] p-6 border border-primary-container/10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Marketplace Picks</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">See all</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface rounded-2xl p-2 shadow-sm group">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A top-down view of high-end wireless noise-canceling headphones in matte black, placed on a clean wooden desk with a small green succulent in a white pot. Minimalist tech photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs-K-iktv654R1t5Hrsocf4OYabHsAD8pPOY9Ce1sTgMZI9wV2p3HdBhx9Bucrbm-vhdfuMqY4SxXuOTlSCw_aJz6st73_3A2IDqDg5B5gWUJiEa68e0XE_ojnztEmMmZ4DEiImlaUwmrxO3kuDhu-aSXDMdO1TfPNC1ql6AZYVhwcaXKYOZbpgDMXz7Bg3locnv_shxT6oAlOMlLj7TGhSeR-muOP-eAjA7RPItgi7FMg8uUQZWapVKZVkuGhE9BWaaXYOvOQwWs">
+</div>
+<p class="text-label-md font-bold truncate">Premium Audio H1</p>
+<p class="text-primary font-bold text-label-sm">$299</p>
+</div>
+<div class="bg-surface rounded-2xl p-2 shadow-sm group">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A stylish, minimal smart watch with a sage green band, displayed against a soft white background. The watch face shows a clean, artistic digital dial. Sophisticated commercial photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqJsYf1VMkUb3BnDuhKl28KPuEemYDxPHxge136PY47Q20UlE9QHRzxNk386G7PURfydfb3l4NJ8gCQsCcBErJQ3YTtZMwiBy_QZFYO67g28QflvYRU2WZ6yySMViXYqU2nD9M2WesnpM7ifuIcqxE54aWncJPijRThXjNK77fHiPsb2ef0NZd-qS_2MtElO9AZ3qXuxWKdhpvaGtnCqdUiy7s3UUUAxfO1KOSSwvPQS-Ms30PWkuttl-HdQVMUFE32Sfl1FYeP5U">
+</div>
+<p class="text-label-md font-bold truncate">Nova Smart Watch</p>
+<p class="text-primary font-bold text-label-sm">$185</p>
+</div>
+</div>
+</section>
+<!-- Feed Post 2 (Text Only) -->
+<article class="bg-surface-container-lowest rounded-[28px] shadow-sm border border-outline-variant/10 p-5">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A portrait of a cheerful software engineer with curly hair, wearing a navy polo shirt. He's standing in front of a white wall with a soft window light. Friendly and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnsl7ZTzewelQjIPe9iY9_eNbo48zV6aupqwZ2zKj_Xg0MqSwEvbSKgDsr6M09PhBZHMbJFikxLj0Tt1izDSUkM9xCWidJLLVcHvV2HL3vEKwJcF6D9NlVdJFt9w_pjhwLzJ-gwGhbXxrKFqyBMLyd7RHZDSwtMEk4qTotRm1n3-Td_lDRhcZsMNaTOGFf6qZ07mEj6dPjnErUp6VNoYHHqFHJVi_B3qKSrKoixHEr4H7gqbMXYsGo_hOtHY_R7IJGNdDpGWaD4wY">
+</div>
+<div>
+<p class="font-title-lg text-label-md text-on-surface font-bold leading-tight">Daniel Chen</p>
+<p class="text-outline font-label-sm text-label-sm">5 hours ago</p>
+</div>
+</div>
+<p class="font-body-md text-body-lg text-on-surface mb-4 leading-relaxed">
+                    "The best way to predict the future is to create it." Just finished reading a fascinating paper on decentralized AI nodes. The potential for community-driven computing is huge! 🚀
+                </p>
+<div class="flex items-center gap-6 pt-2">
+<button class="flex items-center gap-1.5 hover:opacity-70 active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">favorite</span>
+<span class="text-label-md font-label-md text-on-surface-variant">342</span>
+</button>
+<button class="flex items-center gap-1.5 hover:opacity-70 active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">chat_bubble</span>
+<span class="text-label-md font-label-md text-on-surface-variant">21</span>
+</button>
+<button class="flex items-center gap-1.5 hover:opacity-70 active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">share</span>
+</button>
+</div>
+</article>
+<!-- Community Suggestions -->
+<section class="bg-inverse-surface text-inverse-on-surface rounded-[28px] p-6 shadow-lg">
+<h3 class="font-headline-md text-headline-md mb-4">Suggested Groups</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-primary-fixed-dim">
+<img class="w-full h-full object-cover" data-alt="An abstract icon representating digital art and creativity, with flowing colorful shapes and bright vibrant colors against a dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDDacgJD3MSQHp6nxO0A8OY8Gf3vBlOJpd9e8maiHtCv46RuOXBsqec9W-7d50p-zabOsWi74TUjWTla04YhQAOI7B_KRZLLeqqYIs9DxE4DTLIWMoX-o3fviYQDtJfHcBif17XqpS5gyedJXkb5AQYyH-i5NQroNDEQIQuKCj9C88CNsK67E34MGpFfrAV-aKWRM3SWyyVW6wJJtLmAAcW-aFhkjxwVBG5Ki5DRhCiEmyCoJBKPJC17No3tnOgxaVzpX_bQSefAc">
+</div>
+<div>
+<p class="font-bold text-label-md">Digital Artists Hub</p>
+<p class="text-outline-variant text-label-sm">4.2k Members</p>
+</div>
+</div>
+<button class="bg-surface text-on-surface px-4 py-1.5 rounded-full font-bold text-label-md active:scale-95 transition-transform">Join</button>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-tertiary-fixed-dim">
+<img class="w-full h-full object-cover" data-alt="A sleek icon representing clean tech and sustainability, featuring a minimal leaf design within a circuit board pattern. Emerald green and silver colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHbDe8zbvqHn9e9eofQxaFk61p4AIf588UrJ_Ez-XAplOj8IbTW9zsVMwMTVL0J7hwY-wQhte901ToK2ect5DigMEOcAuzvCAxoPzYaXeReFEs3HFgqs-WT9khdlTD7NPauo173ojXQfltNDib_qhOpRFyvMzu9qDLKOxHyKJeGcbl2gusQYEvieqlG3j0sc3HEivg35yOjo03f7zAnDuiovgVs0tEu54faCV_Dx7mBi4L7JzK5yyFImQz6xlUqXDgaB1QgCx5vL4">
+</div>
+<div>
+<p class="font-bold text-label-md">Eco Innovations</p>
+<p class="text-outline-variant text-label-sm">1.8k Members</p>
+</div>
+</div>
+<button class="bg-surface text-on-surface px-4 py-1.5 rounded-full font-bold text-label-md active:scale-95 transition-transform">Join</button>
+</div>
+</div>
+</section>
+<!-- Feed Post 3 (Video Placeholder) -->
+<article class="bg-surface-container-lowest rounded-[28px] shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young travel blogger with long blonde hair and a sun-kissed complexion, wearing a straw hat and smiling. Bright, airy lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVQlRKuKgOoTDS2-jg1jJukSU3YBlNB3p7rmF6bUaAG47mvsuoy42wxs7IRrDlGpkdJV5f8Tttcht2dLmm_vncMA6JWP7sFdCkpAD2d2od4JXm1LTA9_DDM5Nsh4kcft_sb1FeSnYe8_cX1ulzaSQ4jbSBaaeBkIAAPNsMjpnL475YryCHt-nIXAN8DSPl9PM_8oB72b4IXTdmkUm_Ony9NTYna8D6-5OAK9issLT7rsav-bnm9w5_V_p6FJsegp5vKdY1n4T9TUA">
+</div>
+<div>
+<p class="font-title-lg text-label-md text-on-surface font-bold leading-tight">Elena Rivera</p>
+<p class="text-outline font-label-sm text-label-sm">Just now • Bali</p>
+</div>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-variant/20">
+<span class="material-symbols-outlined text-outline">more_horiz</span>
+</button>
+</div>
+<div class="relative w-full aspect-video bg-surface-dim">
+<img class="w-full h-full object-cover brightness-75" data-alt="A beautiful drone shot of a hidden waterfall in a lush green rainforest. The water is crystalline and the light filters through the dense canopy in rays. Soft, misty atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCTn5C1COrSZJXSUbafuCopLUhhPUCRXsRnmFEmlizNytS2EalUJ5apK_dG1pAXA5q61bdNBPKtVQ6MZX-uRZS2cgTBUhvEXEiDpo9xydmP1aZ0-_mICb1h_2-xELTXs6cCHrGMUVjQKoo3GNbCjkakAtol_21wCtLg1ILWeeTzO8HtJBfy5SNe6588PqzkFi-w9m6HFFirLHseguSP9SRKSw57tl3WDeYWmQ3lyBhF0if6Jx_jkXZf0HiQ1q-NMk8SfG0tJpyLkw">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[48px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 hover:opacity-70 active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">favorite</span>
+<span class="text-label-md font-label-md text-on-surface-variant">45</span>
+</button>
+<button class="flex items-center gap-1.5 hover:opacity-70 active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">chat_bubble</span>
+<span class="text-label-md font-label-md text-on-surface-variant">12</span>
+</button>
+<button class="flex items-center gap-1.5 hover:opacity-70 active:scale-95">
+<span class="material-symbols-outlined text-outline text-[22px]">share</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-container-mobile w-14 h-14 bg-primary text-white rounded-2xl shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:bg-surface-variant/20 rounded-full transition-colors w-16 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 py-1" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-0.5">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 py-1" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-0.5">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 py-1" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm mt-0.5">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 py-1" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-0.5">Groups</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.96)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Safe area padding for bottom nav
+        const updateBottomNav = () => {
+            const isIphoneWithNotch = window.innerHeight > 800; // Rough heuristic
+            const nav = document.querySelector('nav');
+            if(isIphoneWithNotch) {
+                nav.style.paddingBottom = '24px';
+            }
+        };
+        updateBottomNav();
+    </script>
+</body></html>

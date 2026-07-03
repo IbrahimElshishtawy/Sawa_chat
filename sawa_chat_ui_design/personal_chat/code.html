@@ -1,0 +1,312 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Chat - Personal Conversation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed": "#002109",
+                "on-error-container": "#93000a",
+                "inverse-surface": "#213145",
+                "surface-container": "#e5eeff",
+                "secondary-fixed": "#acedff",
+                "surface-container-high": "#dce9ff",
+                "surface-container-low": "#eff4ff",
+                "on-tertiary-fixed-variant": "#005321",
+                "on-secondary-container": "#006172",
+                "inverse-primary": "#b4c5ff",
+                "tertiary-container": "#007e37",
+                "primary": "#004ac6",
+                "on-background": "#0b1c30",
+                "inverse-on-surface": "#eaf1ff",
+                "on-tertiary-container": "#c1ffc5",
+                "on-secondary": "#ffffff",
+                "error": "#ba1a1a",
+                "primary-container": "#2563eb",
+                "surface-tint": "#0053db",
+                "secondary": "#00687a",
+                "background": "#f8f9ff",
+                "on-secondary-fixed": "#001f26",
+                "on-surface-variant": "#434655",
+                "on-surface": "#0b1c30",
+                "on-primary-fixed": "#00174b",
+                "surface-dim": "#cbdbf5",
+                "outline": "#737686",
+                "on-error": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed-dim": "#4cd7f6",
+                "on-secondary-fixed-variant": "#004e5c",
+                "on-primary-container": "#eeefff",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed-dim": "#4ae176",
+                "tertiary": "#006229",
+                "surface-container-highest": "#d3e4fe",
+                "surface-bright": "#f8f9ff",
+                "surface": "#f8f9ff",
+                "outline-variant": "#c3c6d7",
+                "tertiary-fixed": "#6bff8f",
+                "surface-variant": "#d3e4fe",
+                "primary-fixed": "#dbe1ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "secondary-container": "#57dffe",
+                "on-primary": "#ffffff",
+                "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-padding-tablet": "32px",
+                "container-padding-mobile": "20px",
+                "gutter": "16px",
+                "stack-gap-sm": "8px",
+                "section-margin": "40px",
+                "stack-gap-md": "16px",
+                "stack-gap-lg": "24px",
+                "unit": "4px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Inter"],
+                "title-lg": ["Inter"],
+                "label-sm": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "body-md": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }],
+                "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass {
+            background: rgba(248, 249, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .message-gradient {
+            background: linear-gradient(135deg, #004ac6 0%, #00687a 100%);
+        }
+        .chat-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .waveform-bar {
+            width: 3px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .typing-dot {
+            animation: typing 0.8s infinite;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="h-screen overflow-hidden flex flex-col">
+<!-- Top App Bar (Header) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 glass shadow-sm">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 text-primary hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</button>
+<div class="relative">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a sophisticated young creative professional with a friendly expression. They have stylish short hair and are wearing a modern slate-blue minimalist sweater. The lighting is soft and directional, creating a clean high-end profile look against a subtle gradient background of light blues and greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXbsCxLK2ws8EVIPGXolb_3phUanqbK72Vjc6OQ0fs9Ro_4SxHu1OAvGAzMJAa9cOE4GeV4Rjjut0eGTQ9saG5ifBpYIObKmftItX87ZEkHDQR4gdTsiZqENOAICZjqs1ToWM-6ubGQa_WktiQqsfJBP1h4OeObWEo7AOkHL6yG56zRGR9wGWTJGiIVDsXx9hQvNsxqoIB25Cmzu23nwk2xMdOaY71j_ThNks8TrYLLzdB6mRwMEJINZTn-fqWZoh9mBIIiB1cdnE">
+</div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary-fixed-dim border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<h1 class="font-title-lg text-title-lg text-primary tracking-tight">Elena Vance</h1>
+<p class="font-label-md text-label-md text-outline">Online</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-surface-variant/20 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-surface-variant/20 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-surface-variant/20 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto chat-scrollbar pt-20 pb-28 px-container-mobile bg-[#f8f9ff]">
+<div class="flex flex-col gap-6 max-w-3xl mx-auto">
+<!-- Date Indicator -->
+<div class="flex justify-center">
+<span class="bg-surface-container-high px-4 py-1 rounded-full text-label-md font-label-md text-on-surface-variant">Today, Oct 24</span>
+</div>
+<!-- Recipient Message -->
+<div class="flex flex-col gap-1 items-start max-w-[85%]">
+<div class="bg-white p-4 rounded-t-2xl rounded-br-2xl rounded-bl-4px shadow-sm border border-black/5 relative group">
+<p class="font-body-md text-body-md text-on-surface">Hey! Did you see the new architectural renders for the downtown project? They look absolutely stunning.</p>
+<!-- Emoji Reaction -->
+<div class="absolute -bottom-3 -right-2 flex gap-1">
+<span class="bg-white border border-black/5 shadow-sm px-1.5 py-0.5 rounded-full text-[10px] flex items-center gap-1">
+                            🔥 <span class="font-bold">2</span>
+</span>
+</div>
+</div>
+<span class="text-[10px] text-outline px-2">09:41 AM</span>
+</div>
+<!-- Sender Message -->
+<div class="flex flex-col gap-1 items-end ml-auto max-w-[85%]">
+<div class="message-gradient p-4 rounded-t-2xl rounded-bl-2xl rounded-br-4px shadow-md text-white relative">
+<p class="font-body-md text-body-md">Not yet! I've been in meetings all morning. Send them over if you have them handy.</p>
+</div>
+<div class="flex items-center gap-1 px-2">
+<span class="text-[10px] text-outline">09:43 AM</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Recipient Image Message -->
+<div class="flex flex-col gap-1 items-start max-w-[85%]">
+<div class="bg-white p-2 rounded-2xl shadow-sm border border-black/5">
+<div class="w-64 h-80 rounded-xl overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="A breathtaking photorealistic 3D architectural visualization of a futuristic glass and timber skyscraper in a vibrant city at sunset. The building has organic flowing curves and lush terrace gardens with hanging vines. The sky is a warm palette of oranges and purples, reflecting off the building's polished glass surfaces. High-end luxury aesthetic, sharp detail, cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDYyXT7N5KrJz5ZI7PPjwdky_jbRFME8MD69hKZzeh5j7UjN5G6RdXEtjBSatKtPJ-X3e3_F9_G4Xc2lYkGhLqF_pizVMJ_YdsgJZcuyIcHqYN6j1hHczjjDR5StvTq54EIZJfz2PwLGlTfvhSbGu3PuQ3LNpovsy4TIhb2_atXlHciY9bDQHAa9pP6Rbzo-lOOYBaLEMHbgN1FDUrEYyEQAsxAcGKMlgKJ4JA3ylbAQYyZeCwkiD6IjkQvOy7bzbtQKOdl8EPWpc">
+</div>
+<div class="px-2 pb-2">
+<p class="font-body-md text-body-md text-on-surface">Check out that glass facade! 🏙️</p>
+</div>
+</div>
+<span class="text-[10px] text-outline px-2">09:45 AM</span>
+</div>
+<!-- Voice Message -->
+<div class="flex flex-col gap-1 items-end ml-auto w-[70%]">
+<div class="message-gradient p-3 rounded-2xl shadow-md text-white flex items-center gap-3 w-full">
+<button class="w-10 h-10 flex-shrink-0 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<div class="flex-1 flex items-center justify-between gap-1 h-6">
+<!-- Waveform Mockup -->
+<div class="waveform-bar h-2"></div><div class="waveform-bar h-4"></div><div class="waveform-bar h-5"></div><div class="waveform-bar h-3"></div><div class="waveform-bar h-6"></div><div class="waveform-bar h-4"></div><div class="waveform-bar h-2"></div><div class="waveform-bar h-5"></div><div class="waveform-bar h-3"></div><div class="waveform-bar h-4"></div><div class="waveform-bar h-6"></div><div class="waveform-bar h-3"></div><div class="waveform-bar h-5"></div><div class="waveform-bar h-2"></div><div class="waveform-bar h-4"></div><div class="waveform-bar h-3"></div>
+</div>
+<span class="text-[11px] font-medium opacity-90 pr-1">0:24</span>
+</div>
+<div class="flex items-center gap-1 px-2">
+<span class="text-[10px] text-outline">09:47 AM</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Typing Indicator -->
+<div class="flex items-center gap-2 max-w-[85%]">
+<div class="bg-white px-4 py-3 rounded-full shadow-sm border border-black/5 flex items-center gap-1">
+<div class="w-1.5 h-1.5 bg-outline-variant rounded-full typing-dot"></div>
+<div class="w-1.5 h-1.5 bg-outline-variant rounded-full typing-dot"></div>
+<div class="w-1.5 h-1.5 bg-outline-variant rounded-full typing-dot"></div>
+</div>
+<span class="text-[10px] text-outline">Elena is typing...</span>
+</div>
+</div>
+</main>
+<!-- Bottom Input Bar -->
+<div class="fixed bottom-0 left-0 w-full z-50 glass pb-safe">
+<!-- Floating Tooltips/Action Bar (Optional) -->
+<div class="flex justify-center -translate-y-4 px-4">
+<div class="bg-surface-container-highest/90 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-4 shadow-lg">
+<button class="flex items-center gap-2 text-primary hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-lg">translate</span>
+<span class="text-label-sm font-label-sm">Translate</span>
+</button>
+<div class="w-px h-4 bg-outline-variant"></div>
+<button class="flex items-center gap-2 text-secondary hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-lg">smart_toy</span>
+<span class="text-label-sm font-label-sm">AI Assistant</span>
+</button>
+</div>
+</div>
+<div class="px-container-mobile h-20 flex items-center gap-3">
+<!-- Attachment Menu -->
+<button class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<!-- Camera Shortcut -->
+<button class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined">photo_camera</span>
+</button>
+<!-- Text Input -->
+<div class="flex-1 relative flex items-center">
+<input class="w-full h-11 bg-surface-container-lowest border-none rounded-full px-5 pr-12 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:ring-2 focus:ring-primary/20 shadow-sm" placeholder="Type a message..." type="text">
+<button class="absolute right-2 w-8 h-8 flex items-center justify-center text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">mood</span>
+</button>
+</div>
+<!-- Send/Voice Button -->
+<button class="w-12 h-12 flex-shrink-0 message-gradient rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<!-- If typing: send, Else: mic -->
+<span class="material-symbols-outlined" id="main-action-icon">mic</span>
+</button>
+</div>
+</div>
+<!-- Background Decorative Shader -->
+<div class="fixed inset-0 -z-10 opacity-30 pointer-events-none">
+
+</div>
+<script>
+        // Micro-interaction for the send/mic button switch
+        const input = document.querySelector('input');
+        const actionIcon = document.getElementById('main-action-icon');
+
+        input.addEventListener('input', (e) => {
+            if (e.target.value.trim().length > 0) {
+                actionIcon.innerText = 'send';
+                actionIcon.style.transform = 'rotate(-15deg)';
+            } else {
+                actionIcon.innerText = 'mic';
+                actionIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // Simple scroll to bottom on load
+        window.onload = () => {
+            const chatMain = document.querySelector('main');
+            chatMain.scrollTop = chatMain.scrollHeight;
+        };
+    </script>
+</body></html>

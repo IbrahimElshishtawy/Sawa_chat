@@ -1,0 +1,339 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Community Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005321",
+                    "primary": "#004ac6",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-high": "#dce9ff",
+                    "secondary": "#00687a",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "surface-tint": "#0053db",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container": "#e5eeff",
+                    "surface": "#f8f9ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "on-surface-variant": "#434655",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-container": "#2563eb",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-container": "#eeefff",
+                    "inverse-surface": "#213145",
+                    "outline": "#737686",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#006229",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#006172",
+                    "secondary-container": "#57dffe",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary-fixed": "#001f26",
+                    "on-background": "#0b1c30",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-margin": "40px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "unit": "4px",
+                    "stack-gap-lg": "24px",
+                    "stack-gap-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-header {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-shadow-premium {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 3px;
+            background: currentColor;
+            border-radius: 99px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-20">
+<!-- Top AppBar (Injected from Shared Components Context) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="text-title-lg font-title-lg font-bold text-primary dark:text-primary-fixed-dim">Sawa</span>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center border-2 border-surface shadow-sm overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional close-up headshot of a diverse young professional man smiling warmly at the camera. He is in a brightly lit modern office with soft-focus plants and tech equipment in the background. The aesthetic is clean, light, and corporate yet approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNlDk0kfP2_8JmSr-rI-JGJhik_R_kHdFB9oNOfmJ7CkX2oVPNU6oqBH6cVXfJQ7CqzFjlO5BKIhHR0wTlGu7XpfFDsyyx2b9aTNktruKztA3T7yBwh7AUI6WAEsSC2xAfFHgDj3p9b6ZLEu9f_3QzBAc2rPq_45uh1AqeibrwCrxKCoSvNtkcjc0FD3lSKEfSz3PZzdXoQTtw-hYg3TrMcPNgJKB_KGzgI6MacjuN2lU3-Lmu_RvTLk2_gNBd8dRIljVCkTN2Gk0">
+</div>
+</div>
+</header>
+<main class="pt-16">
+<!-- Community Banner & Floating Logo -->
+<section class="relative">
+<div class="h-64 md:h-80 w-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="A vibrant, stylized 3D map of the world rendered in a soft claymorphism style with pastel blues and greens. Floating 3D avatars of diverse people are connected by glowing iridescent light trails, symbolizing a global community. The lighting is ethereal and bright, conveying a sense of optimism and high-tech connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCs9FlLri9BgV2R-W7oYWtihH9boo-FkxgQCxkwu3DeiPMToJ_a_6dmpNoM5JaR_g5PPo3KXrI5vCz8u_Hxk3NymyMKqtAleDaTU81HnuNDkYi6TWfOVrpbfCO4h3NDOHO-bfD9Tnru28V7FxxwyJiUbncGRbOCc-XFKXZRHELBJjnWIcGlVHIqrKeAWYu9ZnIpOcpWp19-2naplKmMQsIeZHwMh4zz0cewxMZldprrY3UKKQeV8uo9zGBfT9vLe7q-MCGP3cXI4I">
+</div>
+<div class="px-container-mobile -mt-12 relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-[28px] bg-white shadow-xl p-1 flex items-center justify-center overflow-hidden border-4 border-white">
+<div class="w-full h-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center rounded-[24px]">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">public</span>
+</div>
+</div>
+<h1 class="mt-4 font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface tracking-tight">Global Connect Elite</h1>
+<p class="text-label-md text-primary font-bold uppercase tracking-wider mt-1">Tech &amp; Culture Community</p>
+<!-- Community Stats -->
+<div class="flex items-center gap-4 mt-4 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/30">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">groups</span>
+<span class="font-label-md text-label-md text-on-surface">12.4k Members</span>
+</div>
+<div class="w-1 h-1 bg-outline-variant rounded-full"></div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface">842 Online</span>
+</div>
+</div>
+<p class="mt-4 max-w-lg text-body-md text-on-surface-variant px-2">
+                    An exclusive hub for innovators, digital nomads, and creators from around the world. We bridge the gap between technology and human connection.
+                </p>
+<div class="mt-6 flex w-full max-w-md gap-3">
+<button class="flex-1 h-12 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-2xl shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">person_add</span>
+                        Join Community
+                    </button>
+<button class="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-primary/20 text-primary hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<nav class="sticky top-16 z-40 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 mt-8">
+<div class="flex items-center overflow-x-auto hide-scrollbar px-container-mobile">
+<button class="relative px-4 py-4 text-primary font-bold whitespace-nowrap tab-active active:scale-95 transition-transform">
+                    Feed
+                </button>
+<button class="relative px-4 py-4 text-outline font-medium whitespace-nowrap hover:text-on-surface transition-colors">
+                    Rooms
+                </button>
+<button class="relative px-4 py-4 text-outline font-medium whitespace-nowrap hover:text-on-surface transition-colors">
+                    Events
+                </button>
+<button class="relative px-4 py-4 text-outline font-medium whitespace-nowrap hover:text-on-surface transition-colors">
+                    Members
+                </button>
+<button class="relative px-4 py-4 text-outline font-medium whitespace-nowrap hover:text-on-surface transition-colors">
+                    About
+                </button>
+</div>
+</nav>
+<!-- Content Area -->
+<div class="p-container-mobile space-y-stack-gap-lg">
+<!-- Shared Media Section -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-title-lg text-title-lg text-on-surface">Shared Media</h2>
+<button class="text-label-md font-bold text-primary hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-3 md:grid-cols-6 gap-2">
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high transition-transform hover:scale-[1.02] cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A minimalist high-tech workspace featuring a sleek laptop on a clean wooden desk. A single coffee mug sits beside it, bathed in soft afternoon sunlight filtering through a nearby window. The atmosphere is peaceful and professional, with a light-mode, airy aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_dHbCcOsNknGIz0ZhCJmvD_6eNm_6AX3FdJIXChcBKwgNASDYfM1mxydqQjEBkEp-MyR_zDM8mcW6tT3hOkQKh1ATl7Hqb2ccK2boEVVbBKcRlP89fDHFUXv1t7r5QGMfmeTwmJUgLSQkLk84OtYnbw9G5OPez6Li03NvHvIv0feeIoRnaCTH6HwAWn_OGMiMSBHww3tYDbVny49IxmdlQ00gNPMdMqeqc5NRkJ_ZQcXjzY56R29BAVjhTg4t6iDRdzMHo4skMWo">
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high transition-transform hover:scale-[1.02] cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A lush urban jungle cafe filled with exotic indoor plants and modern hanging pendant lights. People are seen in soft-focus chatting in the background. The lighting is warm and golden, highlighting vibrant green leaves and high-end wooden furniture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrY3c8VfvfvMKgIvSBeiRv2gXUKEoq9aOHfnv-KXPvoTdbtqGh4KYUyy5bjGetukVVmIhLdBKyF56i8vHLL2Qx0TF6w79DzrgvBb6lPIFZEl9JhPfMkodW8NgzSByUAZ2FMmGSSK-KgDKRUnlfsy0Ba0rqVCHi56ysV31IX3syHK2nrRu2gbyDGtqmZs75RT3le8ajTmZqjG2_UKh_Z58YT3vJrjoZoDqj8mZehruyJV19CUXyzfgjzPZsiG86doUQmuGWZILOkZE">
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high transition-transform hover:scale-[1.02] cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a futuristic translucent digital interface tablet being used by a creative designer. The screen glows with soft blue and purple data visualizations. The hands are clean and professional, and the background is a bright, white, minimalist studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtcMzPjaJMDzyEbZ3Q3eveZGYpra66B4hDNHD2-qkux0ciz0Jip76KpxkcGBeopgXMY_JB3fARIEAwMrfZ5RIUijqTy-aP53o4T0q_JxKl0ko5h9Q8Qj6DSeWUUkCLF73-6nZsnoqJ4wIsqebK1FeG6G7Szhm8PcDgIa88Q96FSbk7NsHdseTMA-pI--xkYHTic3fRCZmsOELW299zBZoyO19vca88-6sBQ6LnilwpXsVirTyzl_O2dLLxni-xOvbe60QJiSLh7nA">
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high transition-transform hover:scale-[1.02] cursor-pointer hidden md:block">
+<img class="w-full h-full object-cover" data-alt="An expansive aerial view of a futuristic smart city at dawn. The buildings are sleek and white with integrated vertical gardens. Soft mist drifts between skyscrapers, and the sky is a gradient of pale pink and light blue. The style is hyper-clean and optimistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsIsIrz690Dv7BYkuOGt8zHK6ivOuqLDDmGrJXgFol2po5Hk5uPmaDVipo5W-n3MTRbnWSSQBZ9H8Ettdhh_bbFe21fQLp8SBG3TdnWTSukmTjCx5u40FlIqkzMkkCR_jTHLTKvbGGh4vANVfMp_gMFfQxrKob-7qfl0ZCXH0fVZYqI7c_1zGCdZEoj4kPx9LWhO2xo9jO1ZCLsZ8GCWVKSKMx9OfFh8XXlLL0OIKASVkqWlDVpeqSc8SuvhRolb6sbz3VITYF-Yc">
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high relative transition-transform hover:scale-[1.02] cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A group of diverse, happy people sitting around a circular table in a modern glass-walled conference room. They are laughing and collaborating over tablets. The lighting is high-key and bright, reflecting a sophisticated, collaborative global culture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1TBs05bXjtTsGQ05s5CDUxIwX7uUhK44XkN-f0WUrO2Ryv_NQJ5I_5NDjvOnzJmssIKylP5zjHtFUnji5QjA2J5cnNZ8i_PnzkWzi6E9YJOaOQCXeyoTCHJpOJTZCeWDYKD9Cb0iEafHmwRjDfCKkq66Nl4HEdJzch-2mJIufYoCkFseaOAEph-pStgAH8wf-DajjGIriNIZTsxiFP_K9fZZEuhfeF7iQskwn0Sr9PzDETqdSLe0XRXdOx-6982_iYe4Z_cGdLPo">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<span class="text-white font-bold">+24</span>
+</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high transition-transform hover:scale-[1.02] cursor-pointer hidden md:block">
+<img class="w-full h-full object-cover" data-alt="A serene mountain landscape viewed through a high-tech glass pod. The snow-capped peaks are sharp against a crystal clear blue sky. Inside the pod, there is a minimalist white chair and a small glass table. The lighting is crisp and natural, emphasizing high-fidelity detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR6NTqChXIRQMWZI1tVMJUtjKe_2ptcn1Gdd-LvrhDvkf0vU8qYueHc897LRXo3h5ZtdLTjACdYcsCJcLGFHjmALXjfb6RLpzrLitg9SJ-31Z6-yPd44rh3PTAU5xQ3c47f1MOrGZmvgoA9JatV1R76PSeWPoBG-aHsuB7zwuWOectiNTQer8Sn1Yco-R39FVEys4JKXR4AKJND_YLOQcivFUzndkXjQZ935HYfiKLs8VXgjzhEA7Xe_iGnxlzYhP12z3n5JRRA4Q">
+</div>
+</div>
+</section>
+<!-- Community Highlights (Bento Style) -->
+<section>
+<h2 class="font-title-lg text-title-lg text-on-surface mb-4">Highlights</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Feature Card 1 -->
+<div class="group relative overflow-hidden rounded-[28px] bg-white shadow-sm border border-outline-variant/10 p-6 flex flex-col justify-between aspect-[16/10] md:aspect-auto">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full transition-all group-hover:w-40 group-hover:h-40"></div>
+<div>
+<div class="w-12 h-12 bg-primary-container rounded-2xl flex items-center justify-center mb-4 text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Summit</h3>
+<p class="text-body-md text-on-surface-variant mt-2">Join us for the Global Innovation Summit next Friday. Exclusive to Elite members.</p>
+</div>
+<div class="flex items-center gap-2 mt-4">
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Close up face of a woman." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKnmjyftREbFz1msNJvKqJ6tmR55_3NNNx8IqxvmF5aBTmxfGMvSCvmLaP1DnDS_yhIX1hHp2qHHl0GolXDx-jkTLKcodi660QWHK2-gUGrxRezY_01x6EH94g0EQG81nboTxX6lsuoBOxYmWbgQguTs4M8WvBqxJNSvIvgk7gUDs-NvfewjJt4y68sO9At329AyF0DCvt5aYq1sDIwcsdyZfL4hujmTZs17WGWSxMX5MaU-PJf2CnCX3nruZEXT5dJZVsS1cRbmc">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Close up face of a man." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW1z7Wbw99QPPJKH5Oxnc7DoQa01FGNdeXvCT7H-zBKzHiQ508Llh-WWEX5y8PyYytW9zB4gSEDPjxEMY5o53pbt6jB4uV6J3LmU6ldmKWhYAnBHUpzL1jgrzzeFxuWuBdypzd67TN3SnnEzCEXaRfjUqHsbfEZk1WiLaWGykcvYFDbJ3sBiW6ZDCHDODaH4ffNFNVmoN2LaxYPPw06riLz-PjFbp4y6LUgcRyST2hVWQiFW5lxqDXV-gYkAFcOlU0ZY1dXqH09-Q">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center bg-primary text-[10px] font-bold text-white">
+                                    +42
+                                </div>
+</div>
+<span class="text-label-sm text-outline">Attending</span>
+</div>
+</div>
+<!-- Feature Card 2 (Glassmorphism) -->
+<div class="relative overflow-hidden rounded-[28px] p-1 bg-gradient-to-br from-secondary-container/30 to-primary-container/30">
+<div class="bg-surface/60 backdrop-blur-md rounded-[27px] p-6 h-full border border-white/40 flex flex-col">
+<div class="flex justify-between items-start">
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary font-bold text-[10px] rounded-full uppercase tracking-tighter">Live Now</span>
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-bounce"></span>
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-4">Active Room: Design Talk</h3>
+<p class="text-body-md text-on-surface-variant mt-2">Current discussion: The future of spatial computing and AR interfaces.</p>
+<button class="mt-auto w-full h-12 rounded-2xl bg-white/80 border border-white text-secondary font-bold hover:bg-white transition-colors active:scale-[0.98]">
+                                Listen In
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Injected from Shared Components Context) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-16 h-16 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.96)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Sticky header opacity change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

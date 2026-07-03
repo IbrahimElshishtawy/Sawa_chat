@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Privacy Settings | Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e5eeff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#57dffe",
+                        "inverse-surface": "#213145",
+                        "outline": "#737686",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-surface-variant": "#434655",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary": "#00687a",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-secondary-fixed": "#001f26",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#007e37",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-container": "#006172",
+                        "tertiary": "#006229",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "on-error-container": "#93000a",
+                        "background": "#f8f9ff",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-tint": "#0053db",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed": "#acedff",
+                        "primary-fixed": "#dbe1ff"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "section-margin": "40px",
+                        "gutter": "16px",
+                        "container-padding-tablet": "32px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "24px",
+                        "container-padding-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-switch:checked + .switch-dot {
+            transform: translateX(1.25rem);
+            background-color: white;
+        }
+        .custom-switch:checked {
+            background-color: var(--tw-primary);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:opacity-80 transition-opacity active:scale-95 duration-200" onclick="window.history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Privacy Settings</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a young adult with a friendly expression, set against a minimalist studio background with soft primary blue lighting. The style is modern and high-resolution, following a premium social app aesthetic with organic skin textures and clear, focused eyes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF3BdwqLl3Q8n7JXjPPXbnr3QbXNOg0JtD_0qyAsUtsM-iR7L0sIm-yey-aKoNRLJ0sdVsdaLsWjSs2tgFHgZ_58fdt371vJHMSBx5rZUWcXICqrayp0Rfk7fZdhHJm9Sq5OcZ8VLJaJHmv704v8Ts_ppdsoav1HcAG6O4FPU4pJQKXf4UrxDOF132RgyKsxr9Uf0W1nNtaYMXCiMXqe1Y4bLRewXa7g7pZQZZ7K40SgVTswoKf-j9unVsv2ANIHU9RrVYMU__Mgw"/>
+</div>
+</div>
+</header>
+<main class="pt-20 px-container-mobile max-w-2xl mx-auto space-y-stack-lg">
+<!-- Header Visual / Atmospheric Section -->
+<section class="relative h-32 rounded-3xl overflow-hidden mb-8">
+
+<div class="absolute inset-0 flex flex-col justify-center px-6">
+<h2 class="text-headline-md font-headline-md text-primary">Security &amp; Privacy</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Manage who can see your activity and interact with you.</p>
+</div>
+</section>
+<!-- Visibility Section -->
+<section class="space-y-stack-sm">
+<h3 class="text-label-sm font-label-sm text-primary uppercase tracking-widest px-4 mb-2">Visibility Controls</h3>
+<div class="glass-card rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10">
+<!-- Last Seen & Online -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-variant/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="visibility">visibility</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Last Seen &amp; Online</p>
+<p class="text-label-md font-label-md text-outline">Everyone</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<!-- Profile Photo -->
+<button class="w-full flex items-center justify-between p-4 border-t border-outline-variant/10 hover:bg-surface-variant/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Profile Photo</p>
+<p class="text-label-md font-label-md text-outline">My Contacts</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<!-- Story -->
+<button class="w-full flex items-center justify-between p-4 border-t border-outline-variant/10 hover:bg-surface-variant/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Story Privacy</p>
+<p class="text-label-md font-label-md text-outline">Contacts except...</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Interactions Section -->
+<section class="space-y-stack-sm">
+<h3 class="text-label-sm font-label-sm text-primary uppercase tracking-widest px-4 mb-2">Interactions</h3>
+<div class="glass-card rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10">
+<!-- Read Receipts -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="done_all">done_all</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Read Receipts</p>
+<p class="text-label-md font-label-md text-outline">Show when you've read messages</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only custom-switch peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-checked:bg-primary transition-all duration-300"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-5"></div>
+</label>
+</div>
+<!-- Typing Indicator -->
+<div class="flex items-center justify-between p-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="keyboard">keyboard</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Typing Indicator</p>
+<p class="text-label-md font-label-md text-outline">Let others see when you're typing</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only custom-switch peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-checked:bg-primary transition-all duration-300"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Blocking & Restrictions Section -->
+<section class="space-y-stack-sm">
+<h3 class="text-label-sm font-label-sm text-primary uppercase tracking-widest px-4 mb-2">Account Restrictions</h3>
+<div class="glass-card rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10">
+<!-- Blocked Users -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-variant/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-error-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="block">block</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Blocked Users</p>
+<p class="text-label-md font-label-md text-outline">12 accounts blocked</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<!-- Restricted Contacts -->
+<button class="w-full flex items-center justify-between p-4 border-t border-outline-variant/10 hover:bg-surface-variant/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="gpp_maybe">gpp_maybe</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Restricted Contacts</p>
+<p class="text-label-md font-label-md text-outline">Manage limited interactions</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Data Sharing Controls -->
+<section class="space-y-stack-sm">
+<h3 class="text-label-sm font-label-sm text-primary uppercase tracking-widest px-4 mb-2">Data &amp; Analytics</h3>
+<div class="glass-card rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10">
+<!-- Usage Data -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Share Usage Data</p>
+<p class="text-label-md font-label-md text-outline">Help us improve Sawa</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only custom-switch peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-checked:bg-primary transition-all duration-300"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-5"></div>
+</label>
+</div>
+<!-- Ad Personalization -->
+<div class="flex items-center justify-between p-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="ads_click">ads_click</span>
+</div>
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Personalized Ads</p>
+<p class="text-label-md font-label-md text-outline">Based on your activity</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only custom-switch peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-checked:bg-primary transition-all duration-300"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Footer Text -->
+<p class="text-center text-label-sm text-outline px-8 py-4">
+            Changes to privacy settings may take a few minutes to apply to all devices. Learn more in our <a class="text-primary font-bold" href="#">Privacy Policy</a>.
+        </p>
+</main>
+<!-- BottomNavBar (Hidden because this is a sub-page with a back button) -->
+<!-- Determined per rules: "Automated Suppression: exclude navigation shell if page intent is Task-Focused... any sub-page featuring a Back action" -->
+<script>
+        // Micro-interactions for toggles and buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Simple switch sound effect or haptic simulation placeholder
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', () => {
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(10);
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa - Splash Screen</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        @keyframes pulse-gentle {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(37, 99, 235, 0)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.4)); }
+        }
+
+        .animate-pulse-gentle {
+            animation: pulse-gentle 4s ease-in-out infinite;
+        }
+
+        @keyframes slide-up-fade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-entrance {
+            animation: slide-up-fade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .shimmer-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d3e4fe",
+                    "outline": "#737686",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#0b1c30",
+                    "primary-container": "#2563eb",
+                    "on-secondary-container": "#006172",
+                    "surface": "#f8f9ff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "primary": "#004ac6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#57dffe",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#acedff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#001f26",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c3c6d7",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#0053db",
+                    "tertiary-container": "#007e37",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface-variant": "#434655",
+                    "tertiary": "#006229",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-sm": "8px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-hidden h-screen w-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Splash Canvas -->
+<main class="relative h-full w-full flex flex-col items-center justify-center overflow-hidden">
+<!-- Animated Background Shader (Full Bleed) -->
+<!-- STITCH_SHADER_START:ANIMATION_2 class="absolute inset-0 w-full h-full object-cover z-0" -->
+<div class="absolute inset-0 w-full h-full object-cover z-0" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_2');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec3 color1 = vec3(0.145, 0.388, 0.922); // #2563EB
+    vec3 color2 = vec3(0.024, 0.714, 0.831); // #06B6D4
+    vec3 color3 = vec3(0.973, 0.980, 0.988); // #F8FAFC
+    
+    float noise = sin(uv.x * 3.0 + u_time * 0.5) * cos(uv.y * 2.0 + u_time * 0.3);
+    vec3 mix1 = mix(color1, color2, uv.x + noise * 0.2);
+    vec3 finalColor = mix(mix1, color3, uv.y * 0.8);
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_2 -->
+<!-- Overlay to ensure text legibility and cinematic depth -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-10"></div>
+<!-- Center Content -->
+<div class="relative z-20 flex flex-col items-center justify-center gap-stack-gap-lg animate-entrance">
+<!-- Sawa Chat Logo -->
+<div class="w-32 h-32 md:w-40 md:h-40 relative group">
+<!-- Outer Glow Ring -->
+<div class="absolute inset-0 rounded-3xl bg-primary/20 blur-2xl animate-pulse-gentle"></div>
+<!-- Main Logo Image -->
+<img alt="Sawa Chat Logo" class="w-full h-full object-contain relative z-10 animate-pulse-gentle drop-shadow-2xl rounded-3xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZaGz1uch7YmZmO82a0U3HE13Dkus3p___66js-v0oV5AUt9cm14mxkWOuL6H5v9g2qg-rU82ICP5Cw-hAilihL-IsQdPn15JLFO2yqFeYJZ8vd1vQoM3ukVBJAFqqbv-4mpx1HO6ppLf0z3-IRTNKEwmQJLhCAGwM_26GsO9EC69_476kLfT4F3Z4DaVwJFxv1OJLmNuYilIaACInrqklcUDz8ancEpJagqCnJeKgAcmppS8Z1Q18MLBRW0lRiYKgyEVBcG4UWsQ">
+</div>
+<!-- Brand Slogan -->
+<div class="flex flex-col items-center text-center px-container-mobile">
+<h1 class="text-white font-display-lg text-display-lg tracking-tight mb-2 drop-shadow-md">
+                    Sawa
+                </h1>
+<p class="text-white/90 font-title-lg text-title-lg tracking-[0.1em] font-light italic">
+                    Connect • Share • Sell • Together
+                </p>
+</div>
+</div>
+<!-- Bottom Loading Indicator -->
+<div class="absolute bottom-16 md:bottom-24 z-20 flex flex-col items-center gap-unit">
+<!-- Glassmorphism Loading Track -->
+<div class="w-48 h-1.5 glass-panel rounded-full overflow-hidden relative">
+<!-- Loading Progress Bar (Animated) -->
+<div class="absolute inset-y-0 left-0 bg-white/80 w-1/3 rounded-full shimmer-bar" id="loader-bar" style="width: 0%; transition: width 4s cubic-bezier(0.22, 1, 0.36, 1);">
+</div>
+</div>
+<!-- Loading Text -->
+<span class="text-white/60 font-label-sm text-label-sm uppercase tracking-widest mt-4">
+                Initializing Workspace
+            </span>
+</div>
+<!-- Subtle Atmospheric Gradient Layer -->
+<div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/30 to-transparent pointer-events-none z-15"></div>
+</main>
+<script>
+        // Simple script to handle loading progress simulation
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader-bar');
+            setTimeout(() => {
+                if (loader) {
+                    loader.style.width = '75%';
+                }
+            }, 500);
+
+            // Simulate micro-interaction on background movement (very subtle)
+            window.addEventListener('mousemove', (e) => {
+                const logo = document.querySelector('.animate-pulse-gentle');
+                if (logo) {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 10;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 10;
+                    logo.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
+                }
+            });
+        });
+    </script>
+</body></html>

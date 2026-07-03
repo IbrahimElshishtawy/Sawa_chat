@@ -1,0 +1,307 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa - Create Account</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        /* Glassmorphism & Effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Custom Segmented Control styling */
+        .segmented-control input:checked + label {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            color: var(--tw-color-primary);
+        }
+
+        /* Hide scrollbar for cleaner look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Floating Label Logic */
+        .floating-label-group {
+            position: relative;
+        }
+        .floating-label-group input:focus ~ label,
+        .floating-label-group input:not(:placeholder-shown) ~ label {
+            transform: translateY(-22px) scale(0.85);
+            color: #004ac6; /* primary */
+        }
+        .floating-label-group label {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#0b1c30",
+                        "primary-container": "#2563eb",
+                        "on-secondary-container": "#006172",
+                        "surface": "#f8f9ff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "primary": "#004ac6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container": "#e5eeff",
+                        "secondary-container": "#57dffe",
+                        "secondary": "#00687a",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#acedff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#001f26",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#007e37",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002109",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "tertiary": "#006229",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-dim": "#cbdbf5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-tablet": "32px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-sm": "8px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "container-padding-mobile": "20px",
+                        "section-margin": "40px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-white no-scrollbar">
+<!-- Top Navigation Anchor (Manual suppression of Shell for Registration flow) -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl transition-all">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex-1 flex justify-center mr-10">
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa</h1>
+</div>
+</header>
+<main class="pt-24 pb-12 px-container-mobile max-w-lg mx-auto">
+<!-- Animated Background Decor -->
+<div class="fixed inset-0 -z-10 opacity-30">
+
+</div>
+<div class="text-center mb-10">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Create Account</h2>
+<p class="font-body-md text-body-md text-outline">Join the global Sawa community today.</p>
+</div>
+<!-- Profile Photo Upload -->
+<div class="flex justify-center mb-12">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-xl bg-surface-container transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist studio portrait of a friendly young professional person against a soft, pastel blue background. The lighting is diffused and professional, matching a high-end social media profile aesthetic. The overall mood is welcoming, professional, and modern, utilizing a soft focus on the background to emphasize the profile subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEoPpFmv1RPHiQZPmlQOhs70a8nKaqZkorjdm3ESs3QGZDoS8T37x1ECFNgsyqSQteML-P3VAfo9v_oUelcdM7vsDgEhQc4BoQVU1TfF7XIM_c6UlW-7xK1iYi3Lr-wfG4EhTrLxHp_T-gepOr42m2FF57Jd-cJq71_nLSLzpr9j7SEEQdvreFoegFWpVpg9DhM9lKdbCQmPHbjgXoic3QkgOz0vhPnUATztEOx86vNy2arPsg4skix-LLlooZpGfkic-an4RsSwI">
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-white p-2.5 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Registration Form -->
+<form class="space-y-6">
+<!-- Full Name -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm" id="fullname" placeholder=" " type="text">
+<label class="font-label-md text-label-md text-outline" for="fullname">Full Name</label>
+</div>
+<!-- Username -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm" id="username" placeholder=" " type="text">
+<label class="font-label-md text-label-md text-outline" for="username">Username</label>
+</div>
+<!-- Email -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm" id="email" placeholder=" " type="email">
+<label class="font-label-md text-label-md text-outline" for="email">Email Address</label>
+</div>
+<!-- Phone -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm" id="phone" placeholder=" " type="tel">
+<label class="font-label-md text-label-md text-outline" for="phone">Phone Number</label>
+</div>
+<!-- Password Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="floating-label-group">
+<input class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm" id="password" placeholder=" " type="password">
+<label class="font-label-md text-label-md text-outline" for="password">Password</label>
+</div>
+<div class="floating-label-group">
+<input class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm" id="confirm_password" placeholder=" " type="password">
+<label class="font-label-md text-label-md text-outline" for="confirm_password">Confirm Password</label>
+</div>
+</div>
+<!-- Dropdown: Country -->
+<div class="relative">
+<select class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm appearance-none cursor-pointer" id="country">
+<option disabled="" selected="" value="">Select Country</option>
+<option value="US">United States</option>
+<option value="UK">United Kingdom</option>
+<option value="CA">Canada</option>
+<option value="AE">United Arab Emirates</option>
+<option value="KE">Kenya</option>
+</select>
+<label class="absolute top-1.5 left-4 font-label-sm text-label-sm text-primary scale-90">Country</label>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Date Picker -->
+<div class="relative">
+<input class="w-full h-14 px-4 pt-4 bg-surface-container-lowest border-none rounded-2xl ring-1 ring-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all font-body-md text-on-surface shadow-sm" id="dob" type="date">
+<label class="absolute top-1.5 left-4 font-label-sm text-label-sm text-primary scale-90" for="dob">Date of Birth</label>
+</div>
+<!-- Gender Segmented Control -->
+<div class="space-y-2">
+<span class="font-label-md text-label-md text-outline ml-1">Gender</span>
+<div class="segmented-control flex p-1 bg-surface-variant/30 rounded-2xl h-12 w-full">
+<input checked="" class="hidden" id="male" name="gender" type="radio">
+<label class="flex-1 flex items-center justify-center rounded-xl font-label-md text-label-md cursor-pointer transition-all" for="male">Male</label>
+<input class="hidden" id="female" name="gender" type="radio">
+<label class="flex-1 flex items-center justify-center rounded-xl font-label-md text-label-md cursor-pointer transition-all" for="female">Female</label>
+<input class="hidden" id="other" name="gender" type="radio">
+<label class="flex-1 flex items-center justify-center rounded-xl font-label-md text-label-md cursor-pointer transition-all" for="other">Other</label>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 py-2">
+<div class="relative flex items-center">
+<input class="w-6 h-6 rounded-lg border-outline-variant text-primary focus:ring-primary/20 transition-all cursor-pointer" id="terms" type="checkbox">
+</div>
+<label class="font-body-md text-body-md text-on-surface-variant cursor-pointer pt-0.5" for="terms">
+                    I agree to the <span class="text-primary font-semibold hover:underline">Terms &amp; Conditions</span> and <span class="text-primary font-semibold hover:underline">Privacy Policy</span>.
+                </label>
+</div>
+<!-- Large Submit Button -->
+<div class="pt-4">
+<button class="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-white rounded-3xl font-title-lg text-title-lg shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:scale-95 active:translate-y-0 transition-all" type="submit">
+                    Create Account
+                </button>
+</div>
+</form>
+<div class="mt-8 text-center">
+<p class="font-body-md text-body-md text-outline">
+                Already have an account? 
+                <a class="text-primary font-bold hover:underline" href="#">Sign In</a>
+</p>
+</div>
+</main>
+<!-- Micro-interaction script for form focus states -->
+<script>
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Prevent form submission for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Trigger a success scale effect
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span>';
+            setTimeout(() => {
+                btn.innerHTML = 'Account Created!';
+                btn.classList.replace('from-primary', 'from-tertiary');
+                btn.classList.replace('to-primary-container', 'to-tertiary-container');
+            }, 1500);
+        });
+    </script>
+</body></html>

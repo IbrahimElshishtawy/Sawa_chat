@@ -1,0 +1,272 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Sawa Voice Call</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002109",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#213145",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-secondary-container": "#006172",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary-container": "#007e37",
+                        "primary": "#004ac6",
+                        "on-background": "#0b1c30",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-container": "#2563eb",
+                        "surface-tint": "#0053db",
+                        "secondary": "#00687a",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed": "#001f26",
+                        "on-surface-variant": "#434655",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "surface-dim": "#cbdbf5",
+                        "outline": "#737686",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "tertiary": "#006229",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary-container": "#57dffe",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-tablet": "32px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "16px",
+                        "stack-gap-sm": "8px",
+                        "section-margin": "40px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .avatar-pulse {
+            animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(.95); opacity: 0.8; }
+        }
+
+        .wave-background {
+            background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            overflow: hidden;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .floating-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-10%, -10%) scale(1); }
+            100% { transform: translate(20%, 20%) scale(1.2); }
+        }
+
+        .interaction-press:active {
+            transform: scale(0.92);
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased select-none">
+<!-- Background Layer -->
+<div class="wave-background">
+<div class="floating-orb" style="top: -10%; left: -10%; animation-delay: 0s;"></div>
+<div class="floating-orb" style="bottom: -15%; right: -5%; animation-delay: -5s;"></div>
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative h-screen flex flex-col justify-between items-center py-12 px-container-mobile">
+<!-- Header Info -->
+<section class="flex flex-col items-center gap-stack-gap-sm pt-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 glass-panel rounded-full text-white/90">
+<span class="material-symbols-outlined text-[14px]">hd</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">HD Voice</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white mt-4 drop-shadow-md">Sarah Jenkins</h1>
+<div class="font-body-md text-body-md text-white/70 font-mono" id="call-timer">04:12</div>
+</section>
+<!-- Central Avatar Visualization -->
+<section class="relative flex items-center justify-center">
+<!-- Pulsing Animation Rings -->
+<div class="absolute w-64 h-64 border border-white/10 rounded-full avatar-pulse"></div>
+<div class="absolute w-80 h-80 border border-white/5 rounded-full avatar-pulse" style="animation-delay: 1.5s"></div>
+<!-- Profile Avatar Card -->
+<div class="relative z-10 w-48 h-48 rounded-[48px] overflow-hidden shadow-2xl border-4 border-white/10 transform hover:scale-105 transition-transform duration-500">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-end studio portrait of a woman named Sarah Jenkins with soft, professional lighting. She has a warm, friendly expression, and the background is a soft blue and cyan gradient that matches the premium digital interface aesthetic. The image uses a shallow depth of field and high-resolution textures to evoke a sense of professional reliability and human connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFMvGmA8nGsDrhaNCzFsMLAge1_Bf0tQH6ckdwoEtngbL6beVY1zFeV7chQ8qE__q9R0wgBu1sAgqBbJ78IhuzTi_QX531X_kCPCNVKasNlUM8VeajNRmAEOlsW3ahPSH_qnm2UeZFfE9o8ZLD8gowiE3b2LJJL2Sri9RFXanDF7zvq_TNrRwjr3uhVxbSYpQqCeBYWKU7Zwm_T21OH5iV92QoUotc1YXEZeRIr9jl8_kBy9iDCKmsQX7AE1IQ7ee9Mni2eUR3LUQ">
+</div>
+</section>
+<!-- Bottom Controls -->
+<section class="w-full max-w-sm">
+<div class="glass-panel p-6 rounded-[32px] grid grid-cols-3 gap-y-8 gap-x-4 mb-8">
+<!-- Action Buttons -->
+<button class="flex flex-col items-center gap-2 interaction-press group">
+<div class="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 text-white group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-[28px]">mic_off</span>
+</div>
+<span class="text-white/80 font-label-md text-label-md">Mute</span>
+</button>
+<button class="flex flex-col items-center gap-2 interaction-press group">
+<div class="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 text-white group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-[28px]">volume_up</span>
+</div>
+<span class="text-white/80 font-label-md text-label-md">Speaker</span>
+</button>
+<button class="flex flex-col items-center gap-2 interaction-press group">
+<div class="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 text-white group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-[28px]">bluetooth</span>
+</div>
+<span class="text-white/80 font-label-md text-label-md">Bluetooth</span>
+</button>
+<button class="flex flex-col items-center gap-2 interaction-press group">
+<div class="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 text-white group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-[28px]">grid_view</span>
+</div>
+<span class="text-white/80 font-label-md text-label-md">Keypad</span>
+</button>
+<button class="flex flex-col items-center gap-2 interaction-press group">
+<div class="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 text-white group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-[28px]">add_call</span>
+</div>
+<span class="text-white/80 font-label-md text-label-md">Add Call</span>
+</button>
+<button class="flex flex-col items-center gap-2 interaction-press group">
+<div class="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 text-white group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-[28px]">videocam</span>
+</div>
+<span class="text-white/80 font-label-md text-label-md">Video</span>
+</button>
+</div>
+<!-- End Call Button -->
+<div class="flex justify-center pb-safe">
+<button class="w-20 h-20 rounded-full bg-error flex items-center justify-center text-white shadow-lg interaction-press hover:bg-[#d32f2f] transition-colors">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">call_end</span>
+</button>
+</div>
+</section>
+</main>
+<script>
+        // Simple timer logic
+        let seconds = 252; // Starting at 04:12 for demonstration
+        const timerElement = document.getElementById('call-timer');
+
+        function updateTimer() {
+            seconds++;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            timerElement.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        setInterval(updateTimer, 1000);
+
+        // Simulated haptic feedback on button presses
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(10);
+                }
+            });
+        });
+
+        // Toggle state for controls
+        document.querySelectorAll('.interaction-press').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const iconContainer = this.querySelector('div');
+                if(iconContainer && !this.classList.contains('bg-error')) {
+                    iconContainer.classList.toggle('bg-white/40');
+                    iconContainer.classList.toggle('bg-white/10');
+                }
+            });
+        });
+    </script>
+</body></html>

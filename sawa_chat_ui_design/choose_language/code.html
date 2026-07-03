@@ -1,0 +1,338 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Choose Language - Sawa</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#0b1c30",
+                        "primary-container": "#2563eb",
+                        "on-secondary-container": "#006172",
+                        "surface": "#f8f9ff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "primary": "#004ac6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container": "#e5eeff",
+                        "secondary-container": "#57dffe",
+                        "secondary": "#00687a",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#acedff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#001f26",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#007e37",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002109",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "tertiary": "#006229",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-dim": "#cbdbf5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-tablet": "32px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-sm": "8px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "container-padding-mobile": "20px",
+                        "section-margin": "40px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .dark .glass {
+            background: rgba(30, 41, 59, 0.7);
+        }
+        .language-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .language-card:active {
+            transform: scale(0.98);
+        }
+        .radio-custom:checked + .radio-ui {
+            border-color: #004ac6;
+            background-color: #004ac6;
+        }
+        .radio-custom:checked + .radio-ui::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Bar Component (Mapping from Shared Components) -->
+<header class="fixed top-0 left-0 w-full z-50 glass shadow-sm px-container-mobile h-auto pb-4 pt-4">
+<div class="flex justify-between items-center h-16 mb-2">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary">Choose Language</h1>
+</div>
+<!-- Trailing Icon from JSON logic -->
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+</div>
+<!-- Search Input -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full h-12 bg-surface-container-low border-none rounded-full pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md font-body-md text-on-surface placeholder:text-outline transition-all" placeholder="Search languages..." type="text">
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-40 pb-32 px-container-mobile">
+<!-- Popular Languages Section -->
+<section class="mb-stack-gap-lg">
+<div class="flex items-center justify-between mb-stack-gap-md">
+<h2 class="font-label-md text-label-md text-outline tracking-wider uppercase">Popular Languages</h2>
+<span class="font-label-sm text-label-sm text-primary">6 items</span>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<!-- Arabic -->
+<label class="language-card group relative flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-3xl shadow-sm cursor-pointer hover:border-primary/30 transition-all">
+<input checked="" class="radio-custom hidden" name="lang" type="radio">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close-up macro photography of the national flag of Saudi Arabia with its distinct green field and white Arabic calligraphy. The fabric texture is high-quality silk, reflecting soft studio lighting in a premium lifestyle product aesthetic. The colors are vibrant green and pure white, aligning with a professional, global design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_g9-VzbDsoovPd0Mq4jsX5Soox_xKfS7Jxy4VFtiNgFuliWiev6114g1SATcGR5EJrVbEvW-0j9gjYgfIKTtlzsthgWexPxwX-6XDSwPxPwg_lGe4JB8tYrlSyis5Esj_zte-sN0bxWVhUZ6dXqkKjmYr6k1hV00Y0bzeXFWOZsK047Nxoo6Dpzb_nMr2-ODbXT1UzXOe4q6qjUr-Q34lirOcTOhW9hfumg0boh4-zALK06l3Wqtv7r1pJw1HBIUl6nWLOSJUQk4">
+</div>
+<div>
+<p class="font-title-lg text-[17px] font-semibold text-on-surface">Arabic</p>
+<p class="font-body-md text-sm text-outline">العربية</p>
+</div>
+</div>
+<div class="radio-ui relative w-6 h-6 rounded-full border-2 border-outline-variant transition-all"></div>
+</label>
+<!-- English -->
+<label class="language-card group relative flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-3xl shadow-sm cursor-pointer hover:border-primary/30 transition-all">
+<input class="radio-custom hidden" name="lang" type="radio">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="High-resolution, detailed shot of the United Kingdom Union Jack flag texture. The fabric displays a sophisticated weave pattern, captured under bright, even lighting to showcase the deep blues, vibrant reds, and crisp whites. The aesthetic is clean and modern, suitable for a high-end multilingual application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbUPDE940o4esIXbB_N44anca01h8qAQO40-LAxoc0we4kAzMRqc3DcmZ8YA2WdS54cKqkMHPf8uvRO4HUNACkzyjpavglI6ADBHZSauUKXR0Bk2TtRDKPKxXQLJ3jePPwzUIV5gPXIRznaR2g98CiEgIaWWvQf93oBeanY4ovO9MZZ1Y6B-QSKNaqD6eOGAEOTow8UeucwSbYDP6BFmzFgjcvB0lL-e6XYc8PgCzn0cI3QZ0XRN1MUe9n89hd9Hdvak3UoYLT7VM">
+</div>
+<div>
+<p class="font-title-lg text-[17px] font-semibold text-on-surface">English</p>
+<p class="font-body-md text-sm text-outline">English (US)</p>
+</div>
+</div>
+<div class="radio-ui relative w-6 h-6 rounded-full border-2 border-outline-variant transition-all"></div>
+</label>
+<!-- French -->
+<label class="language-card group relative flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-3xl shadow-sm cursor-pointer hover:border-primary/30 transition-all">
+<input class="radio-custom hidden" name="lang" type="radio">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A premium close-up of the French tricolor flag. The blue, white, and red bands are rendered with a soft, luxurious matte finish. The lighting is diffused and bright, emphasizing a light-mode friendly palette. The image conveys a sense of European elegance and global connectivity within a minimalist design framework." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCa-nY_es-ps8OPigbF_Qa4tmnTX_AKcWeQRUoF4qr_2e6yp97DY_iikeU7JW97X-UaHS39O7O3kof4MLtETOsqvWMiWM7zK7_WGbgU1Xsw9LEDqdYZLz9i6fd0HFO7r5tiEOy_KfJMULcPCTwD_WyXwnHx2po2L-uCJl5KVIrKyA4GVBQjTJ4Fc-ofJBJTFLcfT5o0eWbP-NIr-KebWLfK-HJPyhVfIdPZfyLDbJvF09Xgu3QpKuqPKnugyvevf4-q6SOILet7nA">
+</div>
+<div>
+<p class="font-title-lg text-[17px] font-semibold text-on-surface">French</p>
+<p class="font-body-md text-sm text-outline">Français</p>
+</div>
+</div>
+<div class="radio-ui relative w-6 h-6 rounded-full border-2 border-outline-variant transition-all"></div>
+</label>
+<!-- Spanish -->
+<label class="language-card group relative flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-3xl shadow-sm cursor-pointer hover:border-primary/30 transition-all">
+<input class="radio-custom hidden" name="lang" type="radio">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Vivid, high-contrast photograph of the Spanish national flag. The bold red and yellow colors are saturated and clear, with the royal crest visible in fine detail. The shot uses soft side-lighting to create a premium, tactile feel. This visual is designed to fit a sophisticated, multi-cultural user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpWVdkIj78TOG1t1bH-klNaeeJT9CF5OMMR8vgKk4gz41S3yvyZKYv09P3p1RIZRaxjwphxfb9PCyiI3u1QHks0wqnMgwJVyyE6wXXdHUSsNLliQiTr1YpvGr54z4uifgp7AQ1Lb6geuqNwMJF0MPXdfE61Asc6zEJM1UOtGDe1_trto1nO9hiFaZaa1AjuKLUrTSxc2ffBkelLdQK5FPxDsbb5yleeakChNnMq3sazQp4tLT3F3O8H-u0XGXztM8FRWkZdNfqECo">
+</div>
+<div>
+<p class="font-title-lg text-[17px] font-semibold text-on-surface">Spanish</p>
+<p class="font-body-md text-sm text-outline">Español</p>
+</div>
+</div>
+<div class="radio-ui relative w-6 h-6 rounded-full border-2 border-outline-variant transition-all"></div>
+</label>
+<!-- German -->
+<label class="language-card group relative flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-3xl shadow-sm cursor-pointer hover:border-primary/30 transition-all">
+<input class="radio-custom hidden" name="lang" type="radio">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A clean and precise close-up of the German flag with its black, red, and gold horizontal stripes. The fabric is smooth and high-quality, presented in a bright, modern studio setting. The colors are punchy yet professional, aligning with a high-utility productivity app aesthetic for a global audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBegTMX5jTlkYJ0PdRciKoNN8QvQquDa6R10FgknfhJjuMn0RyEiSCNkUwzk93n8U7PgkRRjymGSGJC7EEZ32WqbksTm76JRx6vTOfGW6gyxgA383FY8moPC3HFhGOhmihibL-uZgmNsuYhj_ZT2vEjf5MtK5pHr-sssODOsrKJ7jY7hqwwDbIfaYHc3DRzBzyXkZHKiEmp3YPtLPhkmuU7KxjyXYHT7nkpYVC--mZMD65_gpwgS9g9b4oDqSR5m7KDZ3nem09AgvE">
+</div>
+<div>
+<p class="font-title-lg text-[17px] font-semibold text-on-surface">German</p>
+<p class="font-body-md text-sm text-outline">Deutsch</p>
+</div>
+</div>
+<div class="radio-ui relative w-6 h-6 rounded-full border-2 border-outline-variant transition-all"></div>
+</label>
+<!-- Chinese -->
+<label class="language-card group relative flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-3xl shadow-sm cursor-pointer hover:border-primary/30 transition-all">
+<input class="radio-custom hidden" name="lang" type="radio">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Sophisticated macro shot of the Chinese national flag, focusing on the five golden stars against the deep red field. The fabric has a subtle sheen and premium weave, captured with high-key lighting for a clean, modern look. The image embodies global sophistication and cultural expression in a tech-focused UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Q61Trf3uNoGn4RBL_jUOtlKwjQZ6BXhUHJDfEO1F4slyERi5HgvRcKnpEyVv1A3ZE1zlDgHat0DgLe284CDt_jD1Fg5z4FH_6aat55Od-0gmhl31AB_iDL3UWiL0_W8Xja2QkbLi3z2cNFCF9-_mLVoZy6eUP6mXZZdtlujKWnDRXMPhizBevyGTcl4IRCUMgMuwUQTzkpDGHSRH8EzGskN_uP_s-rUPMWJe_sp18QlwbtfYv6PkGgd_2kaf5vfBqz0mS3nBnQE">
+</div>
+<div>
+<p class="font-title-lg text-[17px] font-semibold text-on-surface">Chinese</p>
+<p class="font-body-md text-sm text-outline">简体中文</p>
+</div>
+</div>
+<div class="radio-ui relative w-6 h-6 rounded-full border-2 border-outline-variant transition-all"></div>
+</label>
+</div>
+</section>
+<!-- Other Languages Section -->
+<section>
+<h2 class="font-label-md text-label-md text-outline tracking-wider uppercase mb-stack-gap-md">All Languages</h2>
+<div class="space-y-2">
+<!-- Iterative simple list items with refined style -->
+<div class="flex items-center justify-between py-3 px-4 rounded-2xl hover:bg-surface-variant/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-xs font-bold text-primary-container">IT</div>
+<span class="text-body-lg font-medium text-on-surface">Italian</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-lg">chevron_right</span>
+</div>
+<div class="flex items-center justify-between py-3 px-4 rounded-2xl hover:bg-surface-variant/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-xs font-bold text-primary-container">PT</div>
+<span class="text-body-lg font-medium text-on-surface">Portuguese</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-lg">chevron_right</span>
+</div>
+<div class="flex items-center justify-between py-3 px-4 rounded-2xl hover:bg-surface-variant/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-xs font-bold text-primary-container">RU</div>
+<span class="text-body-lg font-medium text-on-surface">Russian</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-lg">chevron_right</span>
+</div>
+<div class="flex items-center justify-between py-3 px-4 rounded-2xl hover:bg-surface-variant/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-xs font-bold text-primary-container">JP</div>
+<span class="text-body-lg font-medium text-on-surface">Japanese</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-lg">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Action -->
+<footer class="fixed bottom-0 left-0 w-full p-container-mobile bg-gradient-to-t from-background via-background to-transparent pt-10">
+<div class="max-w-md mx-auto">
+<button class="w-full h-14 bg-primary text-on-primary rounded-full font-title-lg text-title-lg font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.97] transition-all">
+                Save
+            </button>
+</div>
+<!-- Safe Area Spacer -->
+<div class="h-6"></div>
+</footer>
+<!-- Selection Interaction Script -->
+<script>
+        document.querySelectorAll('.language-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Find all cards and reset UI
+                document.querySelectorAll('.radio-ui').forEach(ui => {
+                    ui.classList.remove('border-primary', 'bg-primary');
+                });
+                
+                // Set current card active UI
+                const radioUi = card.querySelector('.radio-ui');
+                radioUi.classList.add('border-primary', 'bg-primary');
+                
+                // Add a small animation effect
+                card.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    card.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

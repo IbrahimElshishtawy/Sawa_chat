@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Personal Settings - Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#ffffff",
+                    "error": "#ffb4ab",
+                    "surface-container": "#1e293b",
+                    "inverse-primary": "#004ac6",
+                    "on-tertiary-fixed-variant": "#c1ffc5",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#3b82f6",
+                    "on-primary-container": "#dbe1ff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-variant": "#434655",
+                    "secondary-container": "#004e5c",
+                    "inverse-surface": "#e1e2e9",
+                    "outline": "#8e9099",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-bright": "#384152",
+                    "surface": "#0b1c30",
+                    "inverse-on-surface": "#2e3036",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-container-lowest": "#06101c",
+                    "surface-container-highest": "#33353f",
+                    "on-tertiary": "#003915",
+                    "on-primary-fixed-variant": "#0043b1",
+                    "secondary": "#4cd7f6",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary-fixed": "#001f26",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#005321",
+                    "surface-container-high": "#283548",
+                    "on-secondary-container": "#acedff",
+                    "tertiary": "#4ae176",
+                    "surface-dim": "#0b1c30",
+                    "on-surface": "#ffffff",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#ffdad6",
+                    "background": "#0b1c30",
+                    "outline-variant": "#434655",
+                    "surface-container-low": "#192639",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-tint": "#b4c5ff",
+                    "on-secondary": "#003640",
+                    "primary-container": "#0043b1",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .glass { background: rgba(11, 28, 48, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .list-item-active { transform: scale(0.98); transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Settings</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-outline">search</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a stylish user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArP1pNaa3yQnLZk4rvtOrrGXb52EYKciyCW-PrpU8UGga1wjhJslNdW_CgpGemz4lS8dXaQHc9oQcueHKv6ukOHCV7GjDmAY19Q8iM655gWxYndoNlr3EQF7G-UsSRgCUS1ujCrCKO2qkIucVsvVEIDx0LLTRWJ-i8zhksnFgqhUhp3UiEdo4K6yUAvNfb-VcPWEdSUqUhPlMzEm2-GDNfs3grbDsOWF767Bi38bPYoFq-yaErn-DiAACP6s-LNi1IDrD6-VWMBL4"/>
+</div>
+</div>
+</header>
+<main class="pt-20 px-container-mobile max-w-2xl mx-auto space-y-6">
+<!-- User Identity Card -->
+<section class="bg-surface-container-low rounded-[28px] p-6 flex items-center gap-4 border border-white/5 shadow-xl">
+<div class="relative">
+<div class="w-20 h-20 rounded-full overflow-hidden ring-4 ring-white/5 shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A premium high-fidelity portrait of a user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiEL8dcB0BzOmvmPvdHBnAkaJkJSbUjigdCKK0kBa-3uYWxcMQP9vp8nIMe3lbf1s-wYqwe_r-wHhrplIZyazcKm8_HjNEHNPc3buiPc5y6IJm1lA5MQ6ugIyX1L5c1nx0ybTdC3OAOgt16grlZhuiQvCkxy3M_6LDa3c21160nqFq8y8cgeCjU2rBaRUNvi7Y7_I7Jj7M1C--M3m1XGb18ReeTlSSfPeEjLACJ1knk7XOMipYoyt00279ZuAco4dxzPMf4euKo9g"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary p-1.5 rounded-full border-2 border-[#192639]">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-white">Sawa User</h2>
+<p class="font-body-md text-body-md text-outline">@sawaconnect</p>
+<div class="mt-2 inline-flex items-center gap-1 px-3 py-1 bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-tertiary text-[14px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="text-label-sm font-label-sm text-tertiary">Premium Member</span>
+</div>
+</div>
+<button class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-all text-primary border border-white/10">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</section>
+<!-- Search / Quick Filter -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low border-none rounded-full ring-1 ring-white/10 focus:ring-2 focus:ring-primary/40 transition-all font-body-md text-white placeholder-outline" placeholder="Search settings..." type="text"/>
+</div>
+<!-- Categorized Settings Groups -->
+<div class="space-y-4">
+<!-- Group: Personal -->
+<div class="space-y-2">
+<h3 class="px-4 text-label-sm font-label-sm text-outline uppercase tracking-wider">Account &amp; Personal</h3>
+<div class="bg-surface-container-low rounded-[24px] overflow-hidden border border-white/5 shadow-2xl">
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Account Information</span>
+<span class="block text-label-md font-label-md text-outline">Email, Phone, Bio</span>
+</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-white/5"></div>
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Payments &amp; Wallet</span>
+<span class="block text-label-md font-label-md text-outline">Subscription, Cards, History</span>
+</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-white/5"></div>
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Privacy Center</span>
+<span class="block text-label-md font-label-md text-outline">Visibility, Blocked users</span>
+</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Group: Security -->
+<div class="space-y-2">
+<h3 class="px-4 text-label-sm font-label-sm text-outline uppercase tracking-wider">Security &amp; Access</h3>
+<div class="bg-surface-container-low rounded-[24px] overflow-hidden border border-white/5 shadow-2xl">
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center text-error group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Login &amp; Security</span>
+<span class="block text-label-md font-label-md text-outline">Two-factor, Passwords</span>
+</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-white/5"></div>
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white/70 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">devices</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Connected Devices</span>
+<span class="block text-label-md font-label-md text-outline">Manage active sessions</span>
+</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Group: Preferences -->
+<div class="space-y-2">
+<h3 class="px-4 text-label-sm font-label-sm text-outline uppercase tracking-wider">Preferences</h3>
+<div class="bg-surface-container-low rounded-[24px] overflow-hidden border border-white/5 shadow-2xl">
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Notifications</span>
+<span class="block text-label-md font-label-md text-outline">Push, Email, Alerts</span>
+</div>
+<div class="bg-primary/20 px-2 py-0.5 rounded text-[10px] font-bold text-primary mr-2 uppercase">New</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-white/5"></div>
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Appearance</span>
+<span class="block text-label-md font-label-md text-outline">Dark mode, Themes, Fonts</span>
+</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-white/5"></div>
+<button class="w-full flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-white/10 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">language</span>
+</div>
+<div class="flex-1 text-left">
+<span class="block font-title-lg text-title-lg text-white">Language</span>
+<span class="block text-label-md font-label-md text-outline">English (US)</span>
+</div>
+<span class="material-symbols-outlined text-outline/30">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Group: Danger Zone -->
+<div class="pt-4">
+<button class="w-full flex items-center justify-center gap-2 px-6 py-4 bg-error/10 hover:bg-error/20 text-error rounded-2xl border border-error/20 transition-all font-title-lg active:scale-[0.98]">
+<span class="material-symbols-outlined">logout</span>
+                    Log Out
+                </button>
+<button class="w-full mt-4 text-center text-label-sm font-label-sm text-outline hover:text-error transition-colors">
+                    Deactivate Account
+                </button>
+</div>
+</div>
+<!-- Footer / Version -->
+<footer class="py-8 text-center space-y-2">
+<div class="font-display-lg text-[24px] text-white/20 tracking-tighter select-none">Sawa</div>
+<p class="text-label-sm font-label-sm text-outline/40">Version 2.4.0 (Build 4192)</p>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-background/80 backdrop-blur-xl border-t border-white/5 rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-outline hover:text-white transition-colors w-16 h-16">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline hover:text-white transition-colors w-16 h-16">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline hover:text-white transition-colors w-16 h-16">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline hover:text-white transition-colors w-16 h-16">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-bold transition-transform duration-200 scale-105 w-16 h-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.classList.add('list-item-active');
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.classList.remove('list-item-active');
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('list-item-active');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-2xl');
+                header.classList.add('bg-surface');
+            } else {
+                header.classList.remove('shadow-2xl');
+                header.classList.remove('bg-surface');
+            }
+        });
+    </script>
+</body></html>

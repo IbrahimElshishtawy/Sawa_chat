@@ -1,0 +1,376 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Events - Community Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#0b1c30",
+                        "surface-tint": "#0053db",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-secondary-container": "#006172",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#57dffe",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline": "#737686",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#acedff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#00687a",
+                        "on-surface-variant": "#434655",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-primary-container": "#eeefff",
+                        "inverse-primary": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#001f26",
+                        "tertiary": "#006229",
+                        "surface-bright": "#f8f9ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "tertiary-container": "#007e37",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-surface": "#213145",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#eff4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-margin": "40px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "20px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px",
+                        "container-padding-tablet": "32px",
+                        "unit": "4px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .active-tab-glow { box-shadow: 0 0 15px rgba(0, 74, 198, 0.2); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top Navigation Anchor (Shared Component: TopAppBar) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a diverse, smiling young adult with warm lighting. The individual has a friendly expression, set against a soft-focus modern office background with subtle blue and white tones that match the premium UI aesthetic. High-quality photography with natural skin textures and sharp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOLBIGslukc0d139azgv3LStoKSuKblxntr90hDW9_rAazOyTJcA_iVgXAauyNoYOOZKsG5MveKDuQbhwr7dq6XYtMdEQxfAv4SkzbqD_dXQZfYzfvf1c4N9ki_ilJ8m_YoAfaKgKcABH-gCmioURPfTEt52_GVubrKGbOUzEAGAgrBFSth8byCqeTAoL-N-nBW0AgsvW0I48drcw70ndXAv-ORgApCBmcwfan8zWyOwlxzl7kk8m6eaFajDx8OKSdKdzRcveEW0c">
+</div>
+<span class="text-title-lg font-title-lg font-bold text-primary">Sawa</span>
+</div>
+<div class="flex-1 max-w-md mx-6 hidden md:block">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md placeholder:text-outline/60" placeholder="Search events..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-primary hover:bg-surface-variant/30 transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-primary hover:bg-surface-variant/30 transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-container-mobile md:px-container-tablet max-w-7xl mx-auto space-y-stack-lg">
+<!-- Mobile Search (Visible only on small screens) -->
+<div class="md:hidden mt-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container rounded-2xl py-3.5 pl-12 pr-4 border-none focus:ring-2 focus:ring-primary/20 text-body-md shadow-sm" placeholder="Search events..." type="text">
+</div>
+</div>
+<!-- Featured Events Section -->
+<section>
+<div class="flex justify-between items-center mb-stack-gap-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Featured Events</h2>
+<button class="text-primary font-label-md hover:underline decoration-2 underline-offset-4">See all</button>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar snap-x pb-4">
+<!-- Banner 1 -->
+<div class="flex-none w-[85vw] md:w-[450px] snap-center">
+<div class="relative aspect-[18/9] rounded-3xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A vibrant outdoor evening community market with hanging fairy lights and colorful stalls. People are browsing in a warm, festive atmosphere. The photography is high-resolution with a cinematic shallow depth of field, highlighting the joyous energy. The color palette includes warm ambers and soft blues, aligning with the fluid sophistication of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUNGufyoJwviDXvt1xr8mpFW3B9DnjQ2gAiMS_hSlfOqDhO0ctasLylcATHoaKRyyhYV8AJzXBKKppA0CQ58gHMwXXMwLg_H6CVpqw2rwgVRz8dJUcGe5AZRNLwUxCFLdnRgdwBVzJb_53S1A9EP0fC-d0qZUoBTcITjWQZd0aO-24ZK63lbld_Ddv17J8UxkYUaZ-w-OPdJq93l7RWisuucH0Z3nv0QMyxKUC22DodNQa9Lgbfx6NTehTEtpH6K8exRVn95PpqRE">
+<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
+<span class="px-3 py-1 bg-tertiary text-on-tertiary rounded-full font-label-sm uppercase tracking-wider mb-2 inline-block">Popular</span>
+<h3 class="text-white font-title-lg text-title-lg mb-1">Twilight Makers Market</h3>
+<p class="text-white/80 font-body-md text-sm">Sat, Oct 14 • Central Plaza</p>
+</div>
+</div>
+</div>
+<!-- Banner 2 -->
+<div class="flex-none w-[85vw] md:w-[450px] snap-center">
+<div class="relative aspect-[18/9] rounded-3xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An indoor tech conference featuring a modern stage with holographic-style blue lighting. An audience of creative professionals is seated in a sleek, minimalist auditorium. The atmosphere is intellectual and high-tech, using a primary blue and slate grey color scheme. The lighting is clean and professional, emphasizing a future-forward community vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYZw7pETNbf5ow7jLgLla4Mlr0fvdiAgig20QaZwbWkaNo_vYec5CMzvIpkolryusFn5s1htXKda5onPJ16pe-Zrpz3rELvEZhrXPBP2Vrc8CBvDgWisBMjcq36KKocE_OGxiVheXbkzEAankb_YBZD9SbHBgbofkCaTs-Qnnzokb7eVSZVZQJc4yY9G70anm7QCk276TD2RqZW3wJY-HLEGpAk2fhCYFr3p1-13h4eTbFUyOlrTioPB5-bM3Ld7BD9FKuvG67Wso">
+<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
+<span class="px-3 py-1 bg-primary text-on-primary rounded-full font-label-sm uppercase tracking-wider mb-2 inline-block">Featured</span>
+<h3 class="text-white font-title-lg text-title-lg mb-1">Tech &amp; Soul Summit</h3>
+<p class="text-white/80 font-body-md text-sm">Fri, Oct 20 • Innovation Lab</p>
+</div>
+</div>
+</div>
+<!-- Banner 3 -->
+<div class="flex-none w-[85vw] md:w-[450px] snap-center">
+<div class="relative aspect-[18/9] rounded-3xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A lush urban park setting for a yoga and wellness community event during a bright, sunny afternoon. Participants are on colorful mats, surrounded by green trees and modern city skyline in the distance. The lighting is airy and high-key, conveying health and serenity. The palette uses natural greens, soft whites, and primary blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOQb6bAdHpIr95Wanz3bcNY9eLhpvr6mcYjAjUeN8Mhe7yfF7y55m3lk_D2c9B091HP7wKxi3sCuKSVRgROhhe3us4hemN3VMk9H7kJPMaNk0vv2Joiou23_kYff7HHyXeJuNUmHCxObBUJcTh1asOhuIOQuSGK6lNce9-EI1foU1MtoT4QLiCsExgQ_eqNV80JsvCQjW8hzoNImTiHNYIupnPlEcsJtyXTX4JtjSeQOky-Xanxy30qHj-TWvAr9KOcvWXvUPAiyg">
+<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
+<span class="px-3 py-1 bg-secondary text-on-secondary rounded-full font-label-sm uppercase tracking-wider mb-2 inline-block">Community</span>
+<h3 class="text-white font-title-lg text-title-lg mb-1">Parkside Wellness Day</h3>
+<p class="text-white/80 font-body-md text-sm">Sun, Oct 22 • Riverside Park</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- List View / Calendar Toggle & Filter -->
+<section class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+<div class="flex items-center p-1 bg-surface-container rounded-2xl w-full md:w-auto shadow-sm">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-2 rounded-xl bg-surface text-primary font-bold shadow-sm transition-all active:scale-95" id="listViewBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+<span class="font-label-md">List</span>
+</button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-2 rounded-xl text-outline font-medium hover:text-primary transition-all active:scale-95" id="calendarViewBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md">Calendar</span>
+</button>
+</div>
+<div class="flex gap-2 w-full md:w-auto overflow-x-auto hide-scrollbar">
+<button class="flex-none px-4 py-2 bg-surface border border-outline-variant rounded-full font-label-md text-on-surface hover:bg-surface-variant/20 transition-colors">All Types</button>
+<button class="flex-none px-4 py-2 bg-surface border border-outline-variant rounded-full font-label-md text-on-surface hover:bg-surface-variant/20 transition-colors">Workshops</button>
+<button class="flex-none px-4 py-2 bg-surface border border-outline-variant rounded-full font-label-md text-on-surface hover:bg-surface-variant/20 transition-colors">Meetups</button>
+<button class="flex-none px-4 py-2 bg-surface border border-outline-variant rounded-full font-label-md text-on-surface hover:bg-surface-variant/20 transition-colors">Free</button>
+</div>
+</section>
+<!-- Upcoming Events List -->
+<section class="space-y-stack-md animate-in fade-in slide-in-from-bottom-4 duration-700" id="upcomingEvents">
+<h2 class="font-headline-md text-headline-md text-on-surface">Upcoming Events</h2>
+<!-- Event Card 1 -->
+<div class="group bg-surface-container-lowest rounded-3xl p-4 md:p-6 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-md transition-all border border-outline-variant/10">
+<div class="md:w-56 h-40 rounded-2xl overflow-hidden flex-none">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up shot of a gourmet coffee cupping event. Steaming cups of dark coffee are arranged on a clean white table, with coffee beans scattered artistically. The lighting is moody and sophisticated, highlighting textures. Rich browns and cream tones dominate the image, creating an inviting and artisanal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCajMU8xgD8lulabjHkVtxSfKraTQKOyFbBcIyjEyQR1-b5ZLp4gufzKFGRLAjF51NvbPFrzC3-Gp23A-gZtWZP4vUprwzeahJc9tUs8vqS3NMUZPV6HFsqkDorpAazNizMTPiQEymdUirj6tMDfROv9V9lLeocNeSpYRYn153VZ8udJ2SDxZD1Zy48XEpxJpbSn9r0u6EiRQYyUOLtC-R68xBdsDfyNrfo317AE8ndwy0nYEnl6N9b8_8UVLKP-hb6axGXr3GNLW8">
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<span class="text-primary font-bold font-label-sm uppercase tracking-widest">Oct 24 • 6:30 PM</span>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">Artisanal Coffee Workshop</h3>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Learn the secrets behind the perfect brew with our master roasters in this hands-on workshop.</p>
+<div class="flex items-center gap-2 pt-2">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Small circle avatar of a woman with glasses and a friendly smile, professional barista attire, warm coffee shop lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuuOMapdPZlOeneTFibGZwXNoyv9Boqo76HdvjVLTXZV-20eE3cGzi7oGyhJg3ZsB8RaIse_kay1w9W3h92VXMn4Bah0XEdaXdWS8H22PydnlkXvodwRrKC4K_7kmYHDDn3_iadzYI1Djtk_MN62CQjbOTtaNNpxTPGIDgD0C2yQdrnMoDnLbIlRF-4rYuwVjK4tMXLZMRomxmApbt6pm4nVbKVt_DT2dPjCaAIUzfRslp9ms75TmLfRqy9lBbj78qEANKZ98Er18">
+</div>
+<span class="text-on-surface-variant font-label-md">Organized by <span class="text-on-surface font-semibold">Brew Society</span></span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary-container flex items-center justify-center text-[10px] text-white font-bold">+12</div>
+</div>
+<button class="px-8 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-label-md shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95 transition-all">RSVP Now</button>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="group bg-surface-container-lowest rounded-3xl p-4 md:p-6 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-md transition-all border border-outline-variant/10">
+<div class="md:w-56 h-40 rounded-2xl overflow-hidden flex-none">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A futuristic digital art gallery space with floating neon installations and mirrored floors. The lighting is vibrant cyan and magenta, reflecting off sleek surfaces. A high-concept, avant-garde atmosphere that feels premium and technologically advanced. Cinematic wide angle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvEkIMw_DJPZWDerqrS0RMRMLAJg-4b8bnM_sZZeXZ8kNLkddRLgOsU31AWDB6Ax3rhzSe_1ymGj3bWciyie6BJPUmPHQXPLArMPZ0AiZRz5izz_0E63QmkmRblCWIe9sHi9lXAoYlzjDRq8xh0dBGSp54lPQovzlFewdHL9WaA2Jg8VKEGioMCPGaakYodH4sU_vUTskG9XfM3_EObu-Htd-JKhRFzgyLkDjC6c1Zyv-r1vCJrbidc5SUeeZJzamBdVSShPSZJJs">
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<span class="text-primary font-bold font-label-sm uppercase tracking-widest">Oct 28 • 8:00 PM</span>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">Neon Nights: Digital Art Expo</h3>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Experience the cutting edge of digital expression at our inaugural neon-lit evening gallery.</p>
+<div class="flex items-center gap-2 pt-2">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Small circle avatar of a man with creative hair style, modern artistic studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzA7yfiauph7IjTZJoemxELnR_vU55STalhzolnph7tmIQ5z3e2EBhT-yriwkx987nmTa43HWR6PraS8o12hAiYZaEqAMZ0kwiHSrc9Islc05Qy13nMriuJqAWLciHo7wMfPNFdMLwhSPZfB4wxdXL52Bk9OJTZQYJMomMewFJE9OumYBnN8wmD6kt1-p0x-_KQpCWW8k6RkAyY8mMIVgPvqWi61qmMpwzB7LKCbi1sSAbq-tftCaqv6ZLM49TBBPWoQJMQidUHuo">
+</div>
+<span class="text-on-surface-variant font-label-md">Organized by <span class="text-on-surface font-semibold">Pixel Collective</span></span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary-container flex items-center justify-center text-[10px] text-white font-bold">+45</div>
+</div>
+<button class="px-8 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-label-md shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95 transition-all">RSVP Now</button>
+</div>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="group bg-surface-container-lowest rounded-3xl p-4 md:p-6 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-md transition-all border border-outline-variant/10">
+<div class="md:w-56 h-40 rounded-2xl overflow-hidden flex-none">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A rustic wooden table filled with fresh organic vegetables, artisanal bread, and ceramic plates. Sunlight filters through a large window, creating warm, dappled light. The mood is cozy and communal, emphasizing locally sourced food and neighborhood connections. High-end lifestyle photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUVPAYY0W9ohoySSx_AMvb7iVQOtxtKP3RodcpUUTdYnfE75OC0M_ML6Oyhnwd5lZSiDp2seL_xlICAGylIOb_oVo_I8yyNgfrTzGCLhqhFYdyjo0Ln7QPucE0IiTRgp_czBgLkq5tDpaLnP8g9P6sQyldwqcDBIXVQo77Y9QsYCO-KrJ0sRYOYyJ5gWzt1o02cBGVP4AFjjMGaXXKI-vuZIMhyaoP2IbbF6XQ0BkJ1AhvIURTbJaaupl-OBWcfu6EH-Y6eHhH0k8">
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<span class="text-primary font-bold font-label-sm uppercase tracking-widest">Nov 02 • 12:00 PM</span>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">Neighborhood Harvest Lunch</h3>
+<p class="text-on-surface-variant font-body-md line-clamp-2">A long-table lunch celebrating our local urban gardeners and the season's bounty.</p>
+<div class="flex items-center gap-2 pt-2">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Small circle avatar of a senior woman with a warm, caring smile, garden background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxjklkbVhXGHy5TGTIUKwm0DnfKEJ-s8vU11EgZDYGopxf47xaXc_E9ZPjbrasmABFtfQm1V_t3gCblS9NUM78DkomIlApMwqme4hNvWyyxie1_lQDzSVB6vXm5_9tQ6TvpB6nRgMPQIdz4EQOR39fkNVaANloea_jPb_I-8ZeGgR704BhWp2bGXUIJPGtynb58em8yt5wHbgakgt-bDJ77ZRp76xrngJUB3CKqGcKjdZRaxvwOefd83yQ8aJ1EoUQBkDwShSWRF0">
+</div>
+<span class="text-on-surface-variant font-label-md">Organized by <span class="text-on-surface font-semibold">Green Roots</span></span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary-container flex items-center justify-center text-[10px] text-white font-bold">+28</div>
+</div>
+<button class="px-8 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-label-md shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95 transition-all">RSVP Now</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Shared Component: BottomNavBar) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm">Groups</span>
+</a>
+</nav>
+<!-- FAB: Create Event (Shared Component Floating Action Button) -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-[32px]" data-icon="add">add</span>
+<span class="absolute right-full mr-4 px-4 py-2 bg-inverse-surface text-inverse-on-surface rounded-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap hidden md:block">Create Event</span>
+</button>
+<script>
+        // Micro-interactions for the Toggle
+        const listBtn = document.getElementById('listViewBtn');
+        const calendarBtn = document.getElementById('calendarViewBtn');
+
+        listBtn.addEventListener('click', () => {
+            listBtn.classList.add('bg-surface', 'text-primary', 'font-bold', 'shadow-sm');
+            listBtn.classList.remove('text-outline', 'font-medium');
+            calendarBtn.classList.remove('bg-surface', 'text-primary', 'font-bold', 'shadow-sm');
+            calendarBtn.classList.add('text-outline', 'font-medium');
+        });
+
+        calendarBtn.addEventListener('click', () => {
+            calendarBtn.classList.add('bg-surface', 'text-primary', 'font-bold', 'shadow-sm');
+            calendarBtn.classList.remove('text-outline', 'font-medium');
+            listBtn.classList.remove('bg-surface', 'text-primary', 'font-bold', 'shadow-sm');
+            listBtn.classList.add('text-outline', 'font-medium');
+            
+            // Logic to swap content could go here
+            console.log('Switching to Calendar View...');
+        });
+
+        // Hover animation for event cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

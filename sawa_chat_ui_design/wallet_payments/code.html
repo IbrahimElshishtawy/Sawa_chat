@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa Wallet — Financial Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-container": "#006172",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container": "#e5eeff",
+                    "outline": "#737686",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#57dffe",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface": "#0b1c30",
+                    "outline-variant": "#c3c6d7",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-tint": "#0053db"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "container-padding-tablet": "32px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-stack-item {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .card-stack-item:hover {
+            transform: translateY(-12px) scale(1.02);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary/20">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-stack-gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young adult with a friendly expression, captured with high-end soft lighting. The background is a clean, minimalist blue-tinted gradient consistent with a premium financial application aesthetic. The style is modern, realistic, and polished, emphasizing trust and sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBihA1CbmPTomZ_WLEvdQYyEIT60FJPEtG2VQVVlDdlTjvfCcKfYuSMpnm07-rE441Nvr6Rnth4VHfplIz3TyPbO5Y_43X-SZpyKhyrVp3JE9sPZepjcSKn-Cfzj5d3EEUfXv12-5rCuioVfmCeDbn_Kv1YJRf1pZ6OFGiNf4F0XKY3a41_KsVwf7M2mpcPYI5xOujx-yBZgEOLSk6ulGXRRTtwt6-JUFHXBlU_kc4cEWhbGpoD3FyUGgCWRE7F5o26CCyQgfSBp0c"/>
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa Wallet</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+</header>
+<main class="pt-20 pb-32 px-container-mobile max-w-2xl mx-auto space-y-stack-gap-lg">
+<!-- Balance Section -->
+<section class="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-br from-primary to-secondary text-on-primary shadow-xl">
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+<div class="relative z-10 space-y-4">
+<div class="flex justify-between items-center">
+<p class="font-label-md text-label-md opacity-80">Available Balance</p>
+<div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm">Secure</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg">$</span>
+<span class="font-display-lg text-display-lg">12,450.80</span>
+</div>
+<div class="flex gap-stack-gap-md pt-4">
+<button class="flex-1 bg-white text-primary font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md">Top-up</span>
+</button>
+<button class="flex-1 bg-white/20 backdrop-blur-md text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Withdraw</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Sawa Pay QR Action -->
+<section class="grid grid-cols-2 gap-stack-gap-md">
+<button class="glass-card flex flex-col items-center justify-center p-6 rounded-[28px] space-y-2 active:scale-95 transition-transform shadow-sm">
+<div class="w-14 h-14 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[32px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Sawa Pay QR</span>
+</button>
+<button class="glass-card flex flex-col items-center justify-center p-6 rounded-[28px] space-y-2 active:scale-95 transition-transform shadow-sm">
+<div class="w-14 h-14 bg-primary-container rounded-full flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[32px]" data-icon="send">send</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Transfer</span>
+</button>
+</section>
+<!-- Card Management -->
+<section class="space-y-stack-gap-md">
+<div class="flex justify-between items-center">
+<h2 class="font-title-lg text-title-lg text-on-surface">Your Cards</h2>
+<button class="text-primary font-label-md text-label-md flex items-center">
+                    Manage <span class="material-symbols-outlined ml-1">chevron_right</span>
+</button>
+</div>
+<div class="relative h-[220px] w-full flex items-center justify-center">
+<!-- Stacked Visual Cards -->
+<div class="card-stack-item absolute w-[85%] h-[180px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl -rotate-6 translate-y-[-10px] shadow-lg p-6 text-white flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined" data-icon="contactless">contactless</span>
+<span class="font-bold italic">VISA</span>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-sm opacity-60">**** **** **** 8821</p>
+<p class="font-label-md uppercase tracking-widest text-[10px]">Sawa Platinum</p>
+</div>
+</div>
+<div class="card-stack-item absolute w-[85%] h-[180px] bg-gradient-to-br from-primary to-indigo-800 rounded-3xl rotate-3 translate-y-[10px] shadow-2xl p-6 text-white flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-10 h-8 bg-amber-400/80 rounded-md"></div>
+<span class="font-bold italic text-xl">mastercard</span>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-lg tracking-widest">**** **** **** 4492</p>
+<div class="flex justify-between items-end">
+<p class="font-label-md uppercase tracking-wider text-[12px]">SAWA USER</p>
+<p class="font-label-sm">12/26</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Transactions -->
+<section class="space-y-stack-gap-md">
+<div class="flex justify-between items-center">
+<h2 class="font-title-lg text-title-lg text-on-surface">Recent Activity</h2>
+<span class="material-symbols-outlined text-outline">tune</span>
+</div>
+<div class="space-y-stack-gap-sm">
+<!-- Transaction Item -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-stack-gap-md transition-colors hover:bg-surface-container/50">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center">
+<img class="w-7 h-7 object-contain" data-alt="A minimalist logo for a generic modern cafe featuring a clean coffee bean icon. The design is contemporary with a muted slate and cream color palette, fitting a high-end lifestyle brand aesthetic. Soft studio lighting on a flat graphic background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF8mlSMqJeRGoui8ikL_0q-3AqczqgLYYmR_2_63FkeaQYsezqaLdTUzUQ6UFsHRKoMKKc601joSs5d9jykeGkt2bfOpbtwuf4P--oRABDX9mDcBCVs1Vt3Ef5OT6RsnLfVOU2mlFLnIthj5qxLo4pMG6o862UBgSUm5n-uwZqNrdXgJoL05sjPCwOz6bIlCGbIFFtssmIdewdWcNPH6EMMrU0h9msLxnbKXGldpXTWbHfwekP7-As8wYdGjybf4JkrCCW3gZ_xkY"/>
+</div>
+<div class="flex-1">
+<p class="font-title-lg text-body-lg text-on-surface">Lumina Coffee Roasters</p>
+<p class="font-label-sm text-label-sm text-outline">Today, 10:42 AM • Shopping</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-body-lg text-on-surface">-$12.50</p>
+<p class="font-label-sm text-label-sm text-tertiary">Completed</p>
+</div>
+</div>
+<!-- Transaction Item -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-stack-gap-md transition-colors hover:bg-surface-container/50">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="arrow_downward">arrow_downward</span>
+</div>
+<div class="flex-1">
+<p class="font-title-lg text-body-lg text-on-surface">Wallet Top-up</p>
+<p class="font-label-sm text-label-sm text-outline">Yesterday, 4:15 PM • Deposit</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-body-lg text-tertiary">+$500.00</p>
+<p class="font-label-sm text-label-sm text-tertiary">Completed</p>
+</div>
+</div>
+<!-- Transaction Item -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-stack-gap-md transition-colors hover:bg-surface-container/50">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized minimalist digital cloud server icon in blue and white, representing a modern tech service or subscription. The image is clean, professional, and centered against a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ2DCqeIwwUwJTqq17ICmCW_PMVaiTBzoD0ZdcOUki4Nb3qTOgZH4gOA2KEZOg2plDtui7BFghvX8p7F9Nq73QZkMLgy1KJ69F-cFBjx7A9rGe2WK1QrmdwLMRIzjPzgEybUx_6GDXGbV0hm1JMgneW8Nj_Gj0jPTWa9Js4o8xNs9nl6Zbe2ZRZKa4ilde20a7Vab7kg9Plg-hUrYMlHERm_MQW30Tv1nGRPLuyZzFBkgsQPPrr9amlcI6SBE38i2JVgrBLCw9Bis"/>
+</div>
+<div class="flex-1">
+<p class="font-title-lg text-body-lg text-on-surface">Sawa Premium Sync</p>
+<p class="font-label-sm text-label-sm text-outline">Nov 12 • Subscription</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-body-lg text-on-surface">-$9.99</p>
+<p class="font-label-sm text-label-sm text-outline">Auto-pay</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold scale-90 transition-transform duration-200 w-14 h-14">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Wallet</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</button>
+</nav>
+<script>
+        // Simple haptic feedback simulation
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });</script></body></html>

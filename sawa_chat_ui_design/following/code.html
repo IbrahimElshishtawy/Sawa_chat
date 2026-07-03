@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Following - Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "surface-container": "#e5eeff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-container": "#57dffe",
+                    "inverse-surface": "#213145",
+                    "outline": "#737686",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface-variant": "#434655",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary": "#00687a",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary-fixed": "#001f26",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#007e37",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-container": "#006172",
+                    "tertiary": "#006229",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-tint": "#0053db",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+            color: #0b1c30;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .active-scale:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a sophisticated young adult with a friendly expression, captured in soft high-key lighting. The background is a clean, minimal gradient of pale blue and white, perfectly matching a premium light-mode UI design. The subject's style is contemporary and polished, emphasizing a high-end social networking aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA62Y5Sy0s3sa9ncEbuwdT-wPGCtc7EF5mNvfz3v9f9n05u1ltO9IB51SjuxzdEk8DnG-nVZDSxKWFcLleG5-bJWeaH3F1S2JmhsTWD98Wf2OthpYdeDRFgOOda8ykqVx5EUlQzgaEdIv9ytRQcp7cNcBwlouvhJdd3YgFZ7Rb99kAG4odv2SF6S-xLQlrSfMdFJHaiX4YKZZtWUtyOv3HL1-97J28DFi1iL7Uj_StI4gWT4FcxEg6vWCq3gvBdOmEGuEcANMWd0JE"/>
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95" data-icon="search">search</button>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95" data-icon="more_vert">more_vert</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-container-mobile max-w-3xl mx-auto">
+<!-- Search & Filter Area -->
+<div class="mb-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low border-none rounded-full font-body-md text-on-surface focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search following" type="text"/>
+</div>
+<div class="flex gap-2 mt-4 overflow-x-auto custom-scrollbar">
+<span class="px-4 py-2 bg-primary text-on-primary font-label-md rounded-full shadow-sm">All 142</span>
+<span class="px-4 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-surface-variant transition-colors cursor-pointer">Creators</span>
+<span class="px-4 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-surface-variant transition-colors cursor-pointer">Friends</span>
+<span class="px-4 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-surface-variant transition-colors cursor-pointer">Muted</span>
+</div>
+</div>
+<!-- Favorite Creators Section -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4 px-1">
+<h2 class="font-headline-md text-headline-md text-on-surface">Favorite Creators</h2>
+<button class="text-primary font-label-md hover:underline">Edit</button>
+</div>
+<!-- Horizontal Scroll Bento List -->
+<div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar -mx-1 px-1">
+<!-- Fav 1 -->
+<div class="flex-shrink-0 w-44 p-4 bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant/20 relative group overflow-hidden">
+<div class="absolute top-2 right-2">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-md rotate-3 group-hover:rotate-0 transition-transform duration-300">
+<img class="w-full h-full object-cover" data-alt="Close-up of a digital artist's workspace with vibrant neon lighting accents. The scene features high-tech drawing tablets and sleek minimalist hardware. The lighting is dominated by electric blues and soft pinks, creating a creative and technologically advanced atmosphere for a premium creator profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsfbwg9SzdVrKKMdfZa13xY-NlD-OF6kc8d7lBIEPRZv6We48ib1emD2rxJWJyce2dwMYN-pdT1HbboPmrDO2x9UBJ2z6ls1KrwtLUs0aCAR4oe5w2mF_64wZ0rU-LFCzWupI9u0sifLenEVEsOpD7hd_NqAidGV2QfOrw5sYy-A_pgeLhpfLvjChcFTDbBRw-9WWY1TSOA-55bPeffeZDp66233iIRo_IPQRUm1qPkN4GzOQymnw7aFDKBrkDeYTmyRJfHWoVOto"/>
+</div>
+<h3 class="font-title-lg text-body-md font-bold text-on-surface truncate w-full">Elena Roz</h3>
+<p class="font-label-sm text-outline mb-4">Digital Artist</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="notifications">notifications</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="chat_bubble">chat_bubble</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Fav 2 -->
+<div class="flex-shrink-0 w-44 p-4 bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant/20 relative group overflow-hidden">
+<div class="absolute top-2 right-2">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-md -rotate-3 group-hover:rotate-0 transition-transform duration-300">
+<img class="w-full h-full object-cover" data-alt="A portrait of a minimalist architect in a bright, sun-drenched studio. The background features clean white walls, architectural models, and large floor-to-ceiling windows. The lighting is natural and airy, embodying a sophisticated and professional aesthetic. The color palette is composed of warm whites, soft grays, and natural wood tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYI1lbXonUHjyw4_FE6q9GceFMR4t4tng38brmbStv5qWrEBLVGNgxZpMcFnpt6lSN9kejts__tqqiGXM3FBmdQ3b7M2JXnH3Lv3-8JryUQbyR0puKLjDm-xWAooujY5Ir36z5HD1Ek9Vq67Dn0xD_aWpjJ_f5H4PcLZEQVpXBU4GH44QfkFriBZYu6VvSsUkw8CGL101gCuDxCMImdORB1YAhZjG-7S3GWHxdIT-xfN1xiQDer5vDkDX5xOWVZlF9QD46uh7Ihd8"/>
+</div>
+<h3 class="font-title-lg text-body-md font-bold text-on-surface truncate w-full">Marcus V.</h3>
+<p class="font-label-sm text-outline mb-4">Architect</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="notifications">notifications</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="chat_bubble">chat_bubble</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Fav 3 -->
+<div class="flex-shrink-0 w-44 p-4 bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant/20 relative group overflow-hidden">
+<div class="absolute top-2 right-2">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-md rotate-2 group-hover:rotate-0 transition-transform duration-300">
+<img class="w-full h-full object-cover" data-alt="An atmospheric shot of a luxury travel blogger standing on a balcony overlooking a Mediterranean coastline at sunset. The lighting is golden and warm, casting a premium glow over the scene. The aesthetic is high-end lifestyle, featuring deep blues of the sea and vibrant oranges of the sky, creating an aspirational and expressive mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf_rhwOvqv_Wbvv7SE-tYHEP4ljoXNs1AbgXeFC19OoxLW5N07kHt9giT8_G4nJYKogvitdvbXgRF_-oG7adk93PnFlgj7qL_4EqvM_51PA-E0Ob3bpyohpswA_xYCkQ89vnAgu1hM890vyOTgTjtk5-6NFtRjeWEx4UDN9i4w3vDJWibImw2cjviIYt8XTZcsqC5Yz6oEKmxZUsvReid6mqFqXVTkQ7IVwPpA7_WNpPy3mVH-y3WynimDpWL5N903H49pcu1Z0RQ"/>
+</div>
+<h3 class="font-title-lg text-body-md font-bold text-on-surface truncate w-full">Sarah Skies</h3>
+<p class="font-label-sm text-outline mb-4">Traveler</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="notifications">notifications</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="chat_bubble">chat_bubble</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- All Following List -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 px-1">Following</h2>
+<!-- Account Item 1 -->
+<div class="group flex items-center justify-between p-4 bg-white rounded-[28px] shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-surface-variant/30">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-2xl object-cover shadow-sm" data-alt="Close up portrait of a young tech innovator with sleek glasses and a modern haircut. The background is a blurred office space with soft bokeh of warm lights. The lighting is crisp and professional, conveying a sense of intelligence and modern sophistication within a high-utility social ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc2VqSeJj12-WAKsXiOicwYWUT55ig_Xzw4XsTH6RIpDrnwnWYJrzNSE4RWRl0zFalPnZDKJK-3yG0a9pl83HfkyA51rIwak_9uIgLAXFvOhKqP610Qc1NxiWIYD3HO-0az3YrBY5M3YJzpvXofu8UQdQ84zCI7Da8YF6HgEw1iu8akQwYf9tKQ2DzVtR_Z14CYg5D9TGmgg_ewdkFqvIH8Xd9cm2-TPdlZH7RD0Eg5wRc4M8FdYOsSX2TuqHKTenLsUPfOuvULZ8"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-primary border-2 border-white rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white" data-icon="check">check</span>
+</div>
+</div>
+<div>
+<h4 class="font-title-lg text-body-md font-bold text-on-surface">Julian Chen</h4>
+<p class="font-label-sm text-outline">@jchen_ai • 2.4k followers</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 text-outline hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<button class="px-5 py-2.5 bg-surface-container-high text-on-surface-variant font-label-md rounded-full active-scale">Following</button>
+<button class="material-symbols-outlined p-2 text-outline hover:text-error transition-colors" data-icon="more_horiz">more_horiz</button>
+</div>
+</div>
+<!-- Account Item 2 -->
+<div class="group flex items-center justify-between p-4 bg-white rounded-[28px] shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-surface-variant/30">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-2xl object-cover shadow-sm" data-alt="A portrait of a vibrant fashion influencer posing in a minimalist art gallery. The lighting is bright and directional, emphasizing bold colors and clean lines. The aesthetic is contemporary and high-energy, with a sophisticated color palette of crisp whites and saturated primary accents, reflecting a high-end creative energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOPs0D_E5Uz3R9Y5L3IWtiZ8MsAUpecHS0W6ckCtgDptOGzXVBh8Ur0yXafGwbB0MbiUeXs3cCz2ogdy1IYEwBcNm-M7qmnF7_X4VKRpwtPuxuHc4Gi3ek2zDLC5dO9PPzZCs4meXD7qcmgbSM6nkzAvivoyjnb2qp2bF_wVGE9mClV3rJ5xwHx3g8FZSes7LcY-dvJBExKUZ3M3ZRC-U_u6GdHMLfKTj20DxDLaBHMAJZCWYsJsOW1pgTfeM0sj_0o2btFg5Zjf0"/>
+</div>
+<div>
+<h4 class="font-title-lg text-body-md font-bold text-on-surface">Amara Okafor</h4>
+<p class="font-label-sm text-outline">@amara.styles • 12k followers</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 text-primary" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</button>
+<button class="px-5 py-2.5 bg-surface-container-high text-on-surface-variant font-label-md rounded-full active-scale">Following</button>
+<button class="material-symbols-outlined p-2 text-outline" data-icon="more_horiz">more_horiz</button>
+</div>
+</div>
+<!-- Account Item 3 (Muted State) -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-low/50 rounded-[28px] border border-dashed border-outline-variant/30 opacity-80">
+<div class="flex items-center gap-4">
+<div class="relative grayscale opacity-60">
+<img class="w-14 h-14 rounded-2xl object-cover" data-alt="A calm and serene portrait of a wellness coach in a lush, green botanical garden. The background is filled with organic shapes and soft natural light filtering through leaves. The mood is peaceful and grounded, using a palette of deep greens and earthy tones to evoke a sense of professional reliability and calm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1KUDDa9sD0295ztfsEAlfzeIOtr9oa56ZvM-iu5KrRGBC7qMdXXjzv2sTsdsW8nxt83uhTTjo1vFbxmt_7hf3NU88-ireWlb7BVscfu9aXWIpbmIboNE-VqERJq-TsrC5u1N7KEfingIccD0ptEiSXdGUemv9_VMDsMv7TWHFNhhslcEfKEph1XeO2UkNQSTR1leeszbotuncjslxRGkN7RRLRLm6e7xosf69RkkExlbOEUiuGVdSCu2XgNE1cQxC98LCKOib7U4"/>
+</div>
+<div>
+<h4 class="font-title-lg text-body-md font-bold text-on-surface-variant">Lia Thorne</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="volume_off">volume_off</span>
+<p class="font-label-sm text-outline">Muted</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-5 py-2.5 bg-primary/10 text-primary font-label-md rounded-full active-scale">Unmute</button>
+<button class="material-symbols-outlined p-2 text-outline" data-icon="more_horiz">more_horiz</button>
+</div>
+</div>
+<!-- Account Item 4 -->
+<div class="group flex items-center justify-between p-4 bg-white rounded-[28px] shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-surface-variant/30">
+<div class="flex items-center gap-4">
+<img class="w-14 h-14 rounded-2xl object-cover shadow-sm" data-alt="A macro photograph of high-end culinary art, showcasing a chef's hand delicately placing a garnish on a minimalist plate. The lighting is dramatic and focused, highlighting textures and vibrant colors. The overall aesthetic is gourmet and premium, with a deep, sophisticated color palette that feels professional and refined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpr9fG-nsRCpQXDdDa4q_1Ejw-1WfbQzMi-Y_0C7MkcSsSlGpn6pVr1Ufum2TFJ7rK5KvB-lqFPF8_vKNayZ0yM2OUNBI2GNgDFCcRlvIMsORqNZusngeGZnLmxslBvLlJxomrMdR2T_Dn8mqR2r05NAgCsBoUcZtiv2rUMluv_aHlgXhvZPsM3RN7P1P2GgfJzJqLPMIvgqdjL__Jo5UtAHUkU-cvSmsIGhN3UKGSqDgVVlSHDc3tz0-act0OYirwM7dEy4k51_s"/>
+<div>
+<h4 class="font-title-lg text-body-md font-bold text-on-surface">Chef Kaito</h4>
+<p class="font-label-sm text-outline">@kaito_eats • 56k followers</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 text-outline" data-icon="notifications">notifications</button>
+<button class="px-5 py-2.5 bg-surface-container-high text-on-surface-variant font-label-md rounded-full active-scale">Following</button>
+<button class="material-symbols-outlined p-2 text-outline" data-icon="more_horiz">more_horiz</button>
+</div>
+</div>
+</section>
+<!-- Suggested Accounts Section -->
+<section class="mt-12 mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 px-1">Suggested for you</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Suggested 1 -->
+<div class="flex items-center gap-4 p-4 bg-surface-variant/20 rounded-[28px] border border-surface-variant/40">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A portrait of a young entrepreneur in a modern, open-concept co-working space. The background is filled with plants, glass partitions, and warm overhead lighting. The aesthetic is clean and high-performance, emphasizing productivity and creative collaboration. The color palette is dominated by airy blues, greens, and warm whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4v4ezNDlIjj2VHRB9jLQok3Edn6uyP-7T0HjmwkCZAcy7sRQv5meJVveuHZl6SnsWWowZS8gg02daOnEyYbx4bMoQJe9nbGtRK0glzBYy-H_a0_pgRiW4a9wyNX4F_410dw2QAVurVmIDiGWoR_PtwU9xqMAgJLEib3gsn-awKbwzLQB9yiMNxLgNyZSRXGRLlE3l48Qg26XStHGW9zToiuj6NzkIxC06xlB3c4XiHf3oZc8LFa9o8TPmrVhw6JBzHIQ1P95eUpE"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-md font-bold text-on-surface truncate">Pixel Master</h4>
+<p class="font-label-sm text-outline truncate">Followed by Elena Roz</p>
+</div>
+<button class="px-4 py-1.5 bg-primary text-on-primary font-label-sm rounded-full active-scale">Follow</button>
+</div>
+<!-- Suggested 2 -->
+<div class="flex items-center gap-4 p-4 bg-surface-variant/20 rounded-[28px] border border-surface-variant/40">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A creative professional standing in front of a large mural of vibrant, abstract digital art. The lighting is diffused and even, showcasing the intricate details and intense colors of the background. The scene feels energetic and expressive, reflecting a modern lifestyle aesthetic with a high-end, artistic touch." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXL1SnpeSSS_XJ4PhM6cFDma-1vXrC54RyeUZuORmyOo-GEUdzmOJS_-U6jiRnUqwoeIAVywTsVQs4sBm9sfkHH2TVVQQvE7ECkBRFBhEYUHPWT0G5FPwdQBt8P-pKJDEwRs5pkOauXCs88SlQMEEOEv1xzh7Xg9cSuXXv6TjS1JlA1LDkLWAln0fCBFlNxhCctzT5-uky2izE7YEQW32ImXXOC9lGJLXjwCkm6DLCy1QjhJyiP8CH9vlJvI9KdqNm1aft2R7gQ7c"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-md font-bold text-on-surface truncate">Vibe Culture</h4>
+<p class="font-label-sm text-outline truncate">Trending in Creators</p>
+</div>
+<button class="px-4 py-1.5 bg-primary text-on-primary font-label-sm rounded-full active-scale">Follow</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+</nav>
+<!-- Action Sheet / Context Menu (Hidden by default, triggered by JS) -->
+<div class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-end justify-center px-4 pb-8" id="context-menu">
+<div class="bg-surface w-full max-w-md rounded-[32px] p-6 shadow-2xl translate-y-full transition-transform duration-300" id="menu-content">
+<div class="w-12 h-1.5 bg-outline-variant/30 rounded-full mx-auto mb-6"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 text-center">Manage Account</h3>
+<div class="space-y-2">
+<button class="w-full flex items-center gap-4 p-4 hover:bg-surface-variant/20 rounded-2xl transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="volume_off">volume_off</span>
+<span class="font-body-md font-medium text-on-surface">Mute @jchen_ai</span>
+</button>
+<button class="w-full flex items-center gap-4 p-4 hover:bg-surface-variant/20 rounded-2xl transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="person_remove">person_remove</span>
+<span class="font-body-md font-medium text-on-surface">Unfollow Account</span>
+</button>
+<button class="w-full flex items-center gap-4 p-4 hover:bg-surface-variant/20 rounded-2xl transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="flag">flag</span>
+<span class="font-body-md font-medium text-on-surface">Report Profile</span>
+</button>
+<button class="w-full mt-4 p-4 bg-surface-container-high text-on-surface-variant font-bold rounded-2xl" id="close-menu">Cancel</button>
+</div>
+</div>
+</div>
+<script>
+        // Simple Interaction logic for demo
+        const menu = document.getElementById('context-menu');
+        const menuContent = document.getElementById('menu-content');
+        const closeBtn = document.getElementById('close-menu');
+        const moreBtns = document.querySelectorAll('[data-icon="more_horiz"]');
+
+        moreBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                menu.classList.remove('opacity-0', 'pointer-events-none');
+                menuContent.classList.remove('translate-y-full');
+            });
+        });
+
+        const hideMenu = () => {
+            menu.classList.add('opacity-0', 'pointer-events-none');
+            menuContent.classList.add('translate-y-full');
+        };
+
+        closeBtn.addEventListener('click', hideMenu);
+        menu.addEventListener('click', (e) => {
+            if (e.target === menu) hideMenu();
+        });
+
+        // Toggle notifications visual feedback
+        const notifBtns = document.querySelectorAll('[data-icon="notifications"]');
+        notifBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const isFilled = this.style.fontVariationSettings.includes("'FILL' 1");
+                if (isFilled) {
+                    this.style.fontVariationSettings = "'FILL' 0";
+                    this.classList.remove('text-primary');
+                    this.classList.add('text-outline');
+                } else {
+                    this.style.fontVariationSettings = "'FILL' 1";
+                    this.classList.remove('text-outline');
+                    this.classList.add('text-primary');
+                }
+            });
+        });
+    </script>
+</body></html>

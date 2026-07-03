@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa | Help &amp; Support</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-container": "#006172",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container": "#e5eeff",
+                    "outline": "#737686",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#57dffe",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface": "#0b1c30",
+                    "outline-variant": "#c3c6d7",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-tint": "#0053db"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "container-padding-tablet": "32px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #f8f9ff;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        vertical-align: middle;
+      }
+      .active-press:active {
+        transform: scale(0.96);
+        transition: transform 0.1s ease;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<button class="active-press text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Help &amp; Support</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">search</span>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A close-up high-resolution portrait of a smiling young professional woman with warm, friendly eyes. She is set against a soft, blurred studio background that emphasizes a clean and modern professional aesthetic. The lighting is bright and airy, reflecting the light-mode UI colors of soft blues and crisp whites. Her expression is helpful and approachable, fitting for a customer support context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxtX48J1DnBvE3od_6PNQZ8WcFnnp-NjsYxKu-HRmOt2MZL3NpTCXEvE2u9YQm-dw-UZgMOTvrUdX0lofsuEeiMv5WYdmo73g1tC4giemTWFosWf-OW99_rVFr_2FEp3vVjCqkVApS-Gd2233Lzk5AwfnvzKjhxYawcMBFzef6bAEkVhJIjDdZLsXUOSL2W-3qKAlT8x61V3kDpI5mrLZRfWmKhC11OiZvwkO2KVQ2HQrS5VKb_HuybN1tIDPpjrNY_dHDgljoiQo"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-32 px-container-mobile max-w-2xl mx-auto space-y-stack-gap-lg">
+<!-- Welcome Section -->
+<section class="text-center space-y-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">How can we help?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Search our knowledge base or contact us directly.</p>
+</section>
+<!-- Search Bar -->
+<section>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary/20 font-body-md text-on-surface placeholder:text-outline transition-all shadow-sm" placeholder="Search for help articles..." type="text"/>
+</div>
+</section>
+<!-- FAQ Categories: Bento Grid Style -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h3 class="font-title-lg text-title-lg text-on-surface">Categories</h3>
+<a class="font-label-md text-label-md text-primary font-bold" href="#">View All</a>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Category 1 -->
+<div class="p-5 bg-surface-container-lowest rounded-[28px] border border-outline-variant/10 shadow-sm flex flex-col items-start gap-4 active-press cursor-pointer hover:bg-surface-container transition-colors">
+<div class="p-3 rounded-2xl bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Payments</p>
+<p class="text-[12px] text-on-surface-variant mt-1">Billing &amp; refunds</p>
+</div>
+</div>
+<!-- Category 2 -->
+<div class="p-5 bg-surface-container-lowest rounded-[28px] border border-outline-variant/10 shadow-sm flex flex-col items-start gap-4 active-press cursor-pointer hover:bg-surface-container transition-colors">
+<div class="p-3 rounded-2xl bg-tertiary-fixed text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Security</p>
+<p class="text-[12px] text-on-surface-variant mt-1">Privacy &amp; login</p>
+</div>
+</div>
+<!-- Category 3 -->
+<div class="p-5 bg-surface-container-lowest rounded-[28px] border border-outline-variant/10 shadow-sm flex flex-col items-start gap-4 active-press cursor-pointer hover:bg-surface-container transition-colors">
+<div class="p-3 rounded-2xl bg-primary-fixed text-on-primary-fixed-variant">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Community</p>
+<p class="text-[12px] text-on-surface-variant mt-1">Rules &amp; groups</p>
+</div>
+</div>
+<!-- Category 4 -->
+<div class="p-5 bg-surface-container-lowest rounded-[28px] border border-outline-variant/10 shadow-sm flex flex-col items-start gap-4 active-press cursor-pointer hover:bg-surface-container transition-colors">
+<div class="p-3 rounded-2xl bg-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Account</p>
+<p class="text-[12px] text-on-surface-variant mt-1">Profile settings</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions & Contact -->
+<section class="space-y-stack-gap-md">
+<h3 class="font-title-lg text-title-lg text-on-surface">Need more help?</h3>
+<div class="space-y-3">
+<!-- Ticket History Action -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-2xl border border-outline-variant/10 active-press">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Ticket History</p>
+<p class="text-[12px] text-on-surface-variant">Check status of your requests</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Contact Options -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-2xl border border-outline-variant/10 active-press">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Email Support</p>
+<p class="text-[12px] text-on-surface-variant">Average response: 24 hours</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Help Center External Link -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-2xl border border-outline-variant/10 active-press">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">open_in_new</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Documentation</p>
+<p class="text-[12px] text-on-surface-variant">Full technical guides</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Live Chat Floating Promotion -->
+<section class="relative overflow-hidden p-6 rounded-[32px] bg-primary text-on-primary shadow-xl">
+<!-- Decorative Shader Background Placeholder -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+
+</div>
+<div class="relative z-10 space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+<h4 class="font-title-lg text-title-lg font-bold">Live Support</h4>
+</div>
+<p class="font-body-md text-body-md opacity-90">Get instant answers from our dedicated success team. Available 24/7.</p>
+<button class="w-full h-12 bg-white text-primary font-bold rounded-full active-press hover:bg-surface-container transition-colors">Start Chatting Now</button>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Action Bar (Contextual FAB for Help) -->
+<div class="fixed bottom-0 left-0 w-full h-20 bg-surface/80 backdrop-blur-xl flex justify-around items-center px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50">
+<div class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80 active-press cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80 active-press cursor-pointer">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Chats</span>
+</div>
+<!-- Support Indicator (Mock Active State) -->
+<div class="flex flex-col items-center justify-center text-primary font-bold active-press cursor-pointer">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">help</span>
+</div>
+<span class="font-label-sm text-label-sm">Support</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80 active-press cursor-pointer">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80 active-press cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('.active-press').forEach(button => {
+            button.addEventListener('touchstart', () => {
+                button.style.transform = 'scale(0.96)';
+            });
+            button.addEventListener('touchend', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple search feedback logic
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            if (e.target.value.length > 0) {
+                // Potential filter logic here
+            }
+        });
+    </script>
+</body></html>

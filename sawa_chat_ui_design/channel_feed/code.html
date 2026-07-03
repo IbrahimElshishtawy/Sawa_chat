@@ -1,0 +1,366 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sawa Chat - Channel Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002109",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed": "#acedff",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-secondary-container": "#006172",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary-container": "#007e37",
+                    "primary": "#004ac6",
+                    "on-background": "#0b1c30",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#2563eb",
+                    "surface-tint": "#0053db",
+                    "secondary": "#00687a",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "on-surface-variant": "#434655",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "surface-dim": "#cbdbf5",
+                    "outline": "#737686",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary": "#006229",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-container": "#57dffe",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .glass-header {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 74, 198, 0.05);
+        }
+        .mesh-bg {
+            background-color: #f8f9ff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 74, 198, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(87, 223, 254, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(107, 255, 143, 0.05) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(37, 99, 235, 0.05) 0px, transparent 50%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface mesh-bg min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 glass-header shadow-sm">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">arrow_back</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-title-lg text-title-lg font-bold text-primary">Sawa Official</span>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">1.2M subscribers</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200" data-icon="search">search</span>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium professional headshot of a young user with a minimalist aesthetic, softly lit by high-key gallery lighting, wearing a clean white shirt against a neutral slate background. The image has a crisp, modern finish that matches the light-mode UI design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd0pWozU9kb3CqUiREsZS0U4fQ9j9LIc6DCG4195KPTHJl18-cPwWmWtmQWLiG3W2Px6zFAqeD8eroq03hZKFXVjEeKP9kB3dghmKh7ZDnbdFeuBpEaUPwwOIHPUvebmnGpShylmJFHHBxNnerHRzuIkI-EUePVLS-4nT7C_76tX94suZBjO_YT76tv3KtUgNQU7GubmkZ02e-o2G_bCWtx5iFEBYBN0VRmG0vXyt3DiMS82Xrq-h3qmSfdROq_QqvctkC6PUnR4A">
+</div>
+</div>
+</header>
+<main class="pt-20 pb-24 px-4 max-w-2xl mx-auto space-y-6">
+<!-- Pinned Section -->
+<section class="mb-8">
+<div class="flex items-center gap-2 mb-3 text-primary px-2">
+<span class="material-symbols-outlined text-[18px]">push_pin</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Pinned Message</span>
+</div>
+<div class="glass-card rounded-2xl p-4 shadow-sm relative overflow-hidden group hover:shadow-md transition-all">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+                    Welcome to the official Sawa Chat channel! Stay tuned for the latest updates on our upcoming 3.0 release featuring enhanced encryption and AI-powered sorting.
+                </p>
+<div class="mt-2 flex justify-end">
+<span class="font-label-sm text-label-sm text-outline">Mar 12, 10:30 AM</span>
+</div>
+</div>
+</section>
+<!-- Feed Posts -->
+<!-- Post 1: Image & Text -->
+<article class="space-y-4">
+<div class="glass-card rounded-[28px] overflow-hidden shadow-sm hover:shadow-md transition-all border border-surface-container-highest/50">
+<div class="p-4 space-y-3">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                        Exciting news! We're rolling out our new "Fluid Sophistication" design system across the entire platform. Here's a sneak peek at the new desktop interface. 🚀
+                    </p>
+<div class="rounded-2xl overflow-hidden aspect-[16/9] bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist high-end desktop UI showcase for a productivity app. The screen features glassmorphic elements, vibrant blue and teal gradients, and soft ambient shadows. The overall mood is sophisticated and airy, set within a bright, modern architectural space with natural sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7mbeAK2xB5zrWRGL96HIhinzSMYMHmGY-Dpd0N_KRs2puvhENZ9gjqxk8fuc_A_uop41P-PoFcB9FhxjCD6qUV79roxfGXHr-lb05TASnt3UXorrKqguTzZ9x00wO71z3vhklexEGpErK5YEfMHBS8s-9GpOD3IdgoZqGjFX6T0_8at-3WXDaooikb-qGLyAcWR76lxExweT7m9ZUqdedPsNywQy4HzqxxUqmZoJJr-8BGKREGSEkAHH-iSxnBxnbsnK6cxxoej4">
+</div>
+</div>
+<div class="px-4 pb-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container rounded-full hover:bg-surface-variant/30 transition-colors active:scale-95">
+<span class="text-lg">🔥</span>
+<span class="font-label-md text-label-md font-bold text-on-secondary-container">12.4K</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container rounded-full hover:bg-surface-variant/30 transition-colors active:scale-95">
+<span class="text-lg">💙</span>
+<span class="font-label-md text-label-md font-bold text-on-secondary-container">8.1K</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="font-label-md text-label-md">243</span>
+</div>
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="font-label-md text-label-md">1.5M</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Post 2: Poll -->
+<article class="space-y-4">
+<div class="glass-card rounded-[28px] p-5 shadow-sm hover:shadow-md transition-all border border-surface-container-highest/50">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">poll</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Weekly Poll</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                    Which feature are you most excited to try in the next update?
+                </p>
+<div class="space-y-3">
+<div class="relative group cursor-pointer">
+<div class="flex justify-between items-center px-4 py-3 bg-surface-container-low rounded-xl border border-primary/10 overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary/10 w-[65%] rounded-r-lg transition-all duration-700"></div>
+<span class="relative font-label-md text-label-md font-semibold text-on-surface">End-to-End Encryption</span>
+<span class="relative font-label-md text-label-md text-primary font-bold">65%</span>
+</div>
+</div>
+<div class="relative group cursor-pointer">
+<div class="flex justify-between items-center px-4 py-3 bg-surface-container-low rounded-xl border border-primary/5 overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary/5 w-[25%] rounded-r-lg transition-all duration-700"></div>
+<span class="relative font-label-md text-label-md font-semibold text-on-surface">AI Smart Replies</span>
+<span class="relative font-label-md text-label-md text-outline font-bold">25%</span>
+</div>
+</div>
+<div class="relative group cursor-pointer">
+<div class="flex justify-between items-center px-4 py-3 bg-surface-container-low rounded-xl border border-primary/5 overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary/5 w-[10%] rounded-r-lg transition-all duration-700"></div>
+<span class="relative font-label-md text-label-md font-semibold text-on-surface">Custom Themes</span>
+<span class="relative font-label-md text-label-md text-outline font-bold">10%</span>
+</div>
+</div>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">128,450 votes • Final result</span>
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-sm text-label-sm">2 days ago</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Post 3: Rich Text Update -->
+<article class="space-y-4">
+<div class="glass-card rounded-[28px] p-6 shadow-sm hover:shadow-md transition-all border border-surface-container-highest/50">
+<div class="prose prose-slate">
+<h2 class="font-headline-md text-headline-md text-primary mb-3">Community Spotlight: Sawa Creators</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        We've just launched our <strong class="text-on-surface">Creator Fund</strong> to support independent voices on Sawa. If you're building a community, sharing insights, or creating unique digital experiences, we want to hear from you.
+                    </p>
+<ul class="mt-4 space-y-2">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Monetize your premium content directly.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Advanced analytics and reach tools.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Priority support for verified channels.</span>
+</li>
+</ul>
+</div>
+<div class="mt-6 pt-4 border-t border-surface-container flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a diverse creative professional in a modern studio environment, soft lighting, vibrant teal accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAsZjw8k6Mu-Lr95t8zUAwKvGbGl-Ka1scawNNJbw3JS3brozTCVDSnrALcBnZYWq0hZUqubWh2tg8tnHi-RaCpKGxAOhXSh3HUGMO9bnhbvSrlLo1pVL0bfn1CaT1uO9zEkSpcIJ2_OSj-EoqSvohYLS2hNMsR7mxZAZ8J0QPQb6XI76Ss1uQNXatCxL5plnheXxrFVTVcvUbmc0f-y1-7hfAcerLbsddhTNPSzV1_oNKE_MT1N0CM8Pf8cODocnywMfK-ZLpubk">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of an artist with a tech-forward aesthetic, soft focus background, minimalist lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmxy6vuSyoCIknnehf_Eayn85egTwBy7yLUtk6kzkHI78Tr9O7ojpzKbaitkb58WOtsYcQp43XElNjNtwBseNNKUEs45XistpDkBbVagZQhw1VOogLVv9H3mhRyllMQFv5eZEItcCNKtuYPhuDPYGGbJLTGDQhXNVMace8iqddkF8zLPLUayerzJq4-sdxys2uPk2Lgw_4IDXoe7JGdyyEkvIFN_pgm20gJ573DgwN6hsmVTVh3-vS1kZH_s1_vVNzI0Cp_-EBsqo">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary-container flex items-center justify-center">
+<span class="text-[10px] text-on-primary-container font-bold">+500</span>
+</div>
+</div>
+<button class="flex items-center gap-1 text-primary hover:underline font-label-md text-label-md">
+                        Learn more <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+</main>
+<!-- Join/Mute Interaction Bar -->
+<div class="fixed bottom-0 left-0 w-full z-50 glass-header shadow-[0_-4px_20px_rgba(0,0,0,0.04)] px-4 py-4 flex justify-center items-center">
+<div class="max-w-2xl w-full flex gap-3">
+<button class="flex-1 py-3.5 bg-primary text-on-primary rounded-full font-bold shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                Join Channel
+            </button>
+<button class="px-5 py-3.5 bg-surface-container text-on-secondary-container rounded-full font-bold hover:bg-surface-variant transition-colors active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+<!-- Hidden Drawer Placeholder -->
+<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[55] hidden transition-opacity" id="drawer-overlay"></div>
+<div class="fixed inset-y-0 left-0 z-[60] flex flex-col p-4 bg-surface w-80 rounded-r-3xl shadow-xl -translate-x-full transition-transform duration-300" id="drawer">
+<div class="flex flex-col gap-1 p-4 mb-6">
+<div class="w-16 h-16 rounded-2xl bg-primary mb-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl" data-weight="fill">chat_bubble</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary">Sawa User</h1>
+<p class="font-body-md text-body-md text-outline">@sawaconnect</p>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-2">Premium Member</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container font-semibold rounded-xl translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>My Profile</span>
+</a>
+<a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Wallet</span>
+</a>
+<a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span>Saved Messages</span>
+</a>
+<div class="my-2 h-px bg-surface-container"></div>
+<a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<script>
+        // Simple Interaction Logic
+        const backBtn = document.querySelector('header button:first-child');
+        const avatar = document.querySelector('header img');
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+
+        function toggleDrawer() {
+            drawer.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        avatar.parentElement.addEventListener('click', toggleDrawer);
+        overlay.addEventListener('click', toggleDrawer);
+
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.classList.add('scale-95');
+            });
+            btn.addEventListener('touchend', () => {
+                btn.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

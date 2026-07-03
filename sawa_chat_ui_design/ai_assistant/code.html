@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa AI Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-container": "#006172",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container": "#e5eeff",
+                    "outline": "#737686",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#57dffe",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface": "#0b1c30",
+                    "outline-variant": "#c3c6d7",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-tint": "#0053db"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "container-padding-tablet": "32px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .ai-glow {
+        box-shadow: 0 0 25px rgba(37, 99, 235, 0.1), 0 0 10px rgba(87, 223, 254, 0.05);
+      }
+      .gradient-border-container {
+        position: relative;
+        padding: 1px;
+        background: linear-gradient(135deg, #004ac6, #57dffe, #00687a);
+        border-radius: 24px;
+      }
+      .gradient-border-content {
+        background: white;
+        border-radius: 23px;
+      }
+      .voice-wave {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+      .wave-bar {
+        width: 3px;
+        background: #004ac6;
+        border-radius: 2px;
+        animation: wave 1.2s infinite ease-in-out;
+      }
+      @keyframes wave {
+        0%, 100% { height: 4px; }
+        50% { height: 16px; }
+      }
+      .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+      .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+      .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+      .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+      .pulse-ring {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.05); }
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a friendly tech-savvy person with short dark hair, wearing a stylish navy blue sweater. The background is a clean, minimalist workspace with soft bokeh lighting and professional photography style, reflecting a high-end corporate identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBLZ_CIBGHs_4w_yULub-aGT6CxLp5Jk8cz-6RdhZUj0LtQL4f5QzR7ta6mOOPWgV1E-aPMFWDsOyyq4YTfdv2wnM0l0XOyPzpiG4XTWZeONXIWmM9Uz0eO8O1RTgUaP7KMeliEpbDouOpWV7T33VypFlZ5MUV6xyobL2OZ4Vn4nVQwnfA1T6PJn--x9mubTLLCYtzioDPjkq_zZldZOuPEMJSqlPtkT-c0a0OMO6j7vPAVdvAutsb1l6KL0quRxZ_KOYTOrloDlc"/>
+</div>
+<span class="text-title-lg font-title-lg font-bold text-primary">Sawa</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-opacity flex items-center gap-2 text-primary font-label-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span class="hidden sm:inline">History</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 pb-32 px-container-mobile max-w-4xl mx-auto w-full flex flex-col">
+<!-- Welcome / AI Header -->
+<div class="py-12 flex flex-col items-center text-center">
+<div class="w-20 h-20 mb-6 relative">
+<div class="absolute inset-0 bg-primary/10 rounded-full pulse-ring"></div>
+<div class="absolute inset-2 bg-gradient-to-tr from-primary to-secondary-container rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="auto_awesome" data-weight="fill">auto_awesome</span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile sm:font-headline-lg sm:text-headline-lg text-on-surface mb-2">How can I assist you?</h1>
+<p class="text-on-surface-variant font-body-lg max-w-md">I can help with coding, creative writing, data analysis, or just a friendly chat.</p>
+</div>
+<!-- Chat History Area -->
+<div class="space-y-6 flex-1">
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="max-w-[85%] sm:max-w-[70%] bg-gradient-to-br from-primary to-primary-container text-on-primary-container p-4 rounded-[24px] rounded-tr-none shadow-md">
+<p class="font-body-md">Can you help me design a futuristic bento-grid layout for my new dashboard app? I want it to feel "premium" and "fluid".</p>
+</div>
+</div>
+<!-- AI Response (Glassmorphism) -->
+<div class="flex justify-start">
+<div class="max-w-[90%] sm:max-w-[80%] glass-card ai-glow p-5 rounded-[24px] rounded-tl-none relative overflow-hidden border border-primary/10">
+<div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-secondary"></div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="sparkles" data-weight="fill">spark</span>
+<span class="font-label-sm text-primary uppercase tracking-widest">Sawa Intelligence</span>
+</div>
+<p class="font-body-md text-on-surface mb-4">
+                        Designing a premium bento-grid requires a balance of **asymmetry** and **purposeful spacing**. For a "fluid" feel, I recommend:
+                    </p>
+<ul class="space-y-2 mb-4">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Variable card sizes (e.g., 2x2, 1x2, 1x1 combinations).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Subtle glassmorphic backgrounds for active states.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">24px corner radius for a soft, approachable geometry.</span>
+</li>
+</ul>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container hover:bg-surface-variant transition-colors rounded-full text-primary font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+                            Copy Specs
+                        </button>
+<button class="px-4 py-2 bg-surface-container hover:bg-surface-variant transition-colors rounded-full text-primary font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="refresh">refresh</span>
+                            Regenerate
+                        </button>
+</div>
+</div>
+</div>
+<!-- Loading / Thinking State (Hidden by default, used for animation feel) -->
+<div class="flex justify-start opacity-60">
+<div class="flex items-center gap-2 px-4 py-3 bg-surface-container rounded-full">
+<div class="voice-wave">
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant italic">Analyzing data...</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Input Area (Sticky) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-xl px-container-mobile pb-safe pt-4">
+<div class="max-w-4xl mx-auto flex flex-col gap-4 mb-4">
+<!-- Suggested Prompts (Chips) -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="whitespace-nowrap px-4 py-2 h-8 rounded-full bg-secondary/10 text-secondary font-label-md hover:bg-secondary/20 transition-colors flex items-center gap-2 border border-secondary/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="code">code</span>
+                    Fix my CSS grid
+                </button>
+<button class="whitespace-nowrap px-4 py-2 h-8 rounded-full bg-secondary/10 text-secondary font-label-md hover:bg-secondary/20 transition-colors flex items-center gap-2 border border-secondary/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="brush">brush</span>
+                    Design color palette
+                </button>
+<button class="whitespace-nowrap px-4 py-2 h-8 rounded-full bg-secondary/10 text-secondary font-label-md hover:bg-secondary/20 transition-colors flex items-center gap-2 border border-secondary/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span>
+                    Write email draft
+                </button>
+<button class="whitespace-nowrap px-4 py-2 h-8 rounded-full bg-secondary/10 text-secondary font-label-md hover:bg-secondary/20 transition-colors flex items-center gap-2 border border-secondary/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="science">science</span>
+                    Summarize research
+                </button>
+</div>
+<!-- Input Bar -->
+<div class="gradient-border-container shadow-lg shadow-primary/10">
+<div class="gradient-border-content flex items-center p-1 px-3 min-h-[56px] gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface font-body-md py-2 px-2" id="chat-input" placeholder="Type your message here..." type="text"/>
+<div class="flex items-center gap-1">
+<!-- Voice Animation hidden by default, shown on click/interaction simulator -->
+<div class="hidden items-center px-3 gap-2 bg-primary/5 rounded-full h-10" id="voice-indicator">
+<div class="voice-wave">
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+</div>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors text-outline" id="mic-btn">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="p-2.5 rounded-full bg-primary text-white hover:opacity-90 active:scale-95 transition-all shadow-md flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="send" data-weight="fill">send</span>
+</button>
+</div>
+</div>
+</div>
+<p class="text-center font-label-sm text-outline-variant pb-2">Sawa AI can make mistakes. Check important info.</p>
+</div>
+</div>
+<!-- Navigation Bar - Mobile Bottom (Per Shell Visibility Rules) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-opacity hover:opacity-80 scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="explore" data-weight="fill">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        const micBtn = document.getElementById('mic-btn');
+        const voiceIndicator = document.getElementById('voice-indicator');
+        const chatInput = document.getElementById('chat-input');
+
+        let isListening = false;
+
+        micBtn.addEventListener('click', () => {
+            isListening = !isListening;
+            if (isListening) {
+                voiceIndicator.classList.remove('hidden');
+                voiceIndicator.classList.add('flex');
+                micBtn.classList.add('text-primary');
+                chatInput.placeholder = "Listening...";
+            } else {
+                voiceIndicator.classList.add('hidden');
+                voiceIndicator.classList.remove('flex');
+                micBtn.classList.remove('text-primary');
+                chatInput.placeholder = "Type your message here...";
+            }
+        });
+
+        // Simple scroll to bottom on load
+        window.scrollTo(0, document.body.scrollHeight);
+    </script>
+</body></html>

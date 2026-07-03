@@ -1,0 +1,334 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa - Voice Rooms Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005321",
+                        "primary": "#004ac6",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container-high": "#dce9ff",
+                        "secondary": "#00687a",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "surface-tint": "#0053db",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-container": "#e5eeff",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface-variant": "#434655",
+                        "tertiary-container": "#007e37",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "primary-container": "#2563eb",
+                        "on-error-container": "#93000a",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-dim": "#cbdbf5",
+                        "on-primary-container": "#eeefff",
+                        "inverse-surface": "#213145",
+                        "outline": "#737686",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary": "#006229",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#006172",
+                        "secondary-container": "#57dffe",
+                        "secondary-fixed": "#acedff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary-fixed": "#001f26",
+                        "on-background": "#0b1c30",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-margin": "40px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "16px",
+                        "container-padding-tablet": "32px",
+                        "stack-gap-sm": "8px",
+                        "unit": "4px",
+                        "stack-gap-lg": "24px",
+                        "stack-gap-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .active-ring {
+            box-shadow: 0 0 0 2px #f8f9ff, 0 0 0 4px #004ac6;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-quality portrait of a smiling young African creative professional in a bright, modern studio. The lighting is soft and golden, highlighting their expressive features. They are wearing stylish, minimalist tech-inspired clothing in a palette of primary blue and slate grey. The overall aesthetic is professional, friendly, and perfectly aligned with a premium social networking brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrRyhcwmYxoCn9kWjk9w11TGggQLYI8LCvdN9ZAYKYDw8IWnh-M5L0W9BOnapl_E21VR6LnU40dnooCpdl4GaGbxGC0jIXkFSH4DLFigiVNb3-V03azT6bfLLuSnB-ckQXOywv4gmHIFDSem50AtxBX_Aq7HD784kHSihUvUHu1fO0XQfdkp0Zt6Pj8cwYZzRTCah0cSXLrPW8AHcP_XgpUoQaCDSdtRT-DG0jWsqpNKfZTRY8DwpHVNwrSkItz9HsvczlZSyIMxA">
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-2 rounded-full hover:bg-surface-container">search</button>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-2 rounded-full hover:bg-surface-container">notifications</button>
+</div>
+</header>
+<main class="pt-20 pb-28 px-container-mobile max-w-2xl mx-auto space-y-6">
+<!-- Welcome Section with Animation -->
+<section class="relative h-48 rounded-3xl overflow-hidden shadow-sm">
+
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent flex flex-col justify-end p-6">
+<h2 class="text-white font-headline-lg-mobile text-headline-lg-mobile leading-tight">Live Voice Hub</h2>
+<p class="text-white/90 text-label-md font-label-md">Join real-time conversations around the globe</p>
+</div>
+</section>
+<!-- Categories horizontal scroll -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-title-lg text-title-lg text-on-surface">Categories</h3>
+<button class="text-primary font-label-md text-label-md">See All</button>
+</div>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-primary text-white font-label-md text-label-md shadow-lg shadow-primary/20">All Rooms</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors">Tech</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors">Music</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors">Business</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors">Art</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors">Design</button>
+</div>
+</section>
+<!-- Voice Room Cards List -->
+<section class="space-y-4">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-2">Happening Now</h3>
+<!-- Room Card 1 -->
+<div class="glass p-5 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] active:scale-[0.98] transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-error/10 text-error animate-pulse-soft">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-label-sm font-label-sm font-bold uppercase tracking-wider">Live</span>
+</div>
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up avatar of a stylish creator with vibrant glasses against a pastel blue background. Studio lighting, soft shadows, modern aesthetic, 4k high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNrMFqyEEheVsNdLYUIkPpSjFxxy1GMDO0fWiSIk_86SsB45w-3OMOKnxcFZGQZ17D-vXQh1sKikJSZa9ytc9VoP-V9q2pQiu_Hu4cY4Jyk-ydKAb-kVve_TcwCaR04ARfsdJ1SPNMDR319W_hmG8-xrBkzapcf1V5IoYMttkrh7xIyOPVNR8pBupQXq8OMbQlPrJVo3sgT4xeqfJ5XX2tNv8UcvJkCdZllFuipoi2W3Xs1WNIAayUbYXlJMvDMXliwB2RCgjykfA">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar of a young professional with a warm smile, wearing a textured white sweater. Clean, minimalist studio backdrop, professional lighting, modern lifestyle look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6XUeTnAwzsJx40sVH-8nYhItebM_eFiw7YRaHwGBJS7Qjs6CYHGcS8DM87qqhFuClXkFaHt_1iZNGDdnYia9Uc3nhUlVOwsqnjkr-ehzXZG6lzdtHcZNGPk4u5QBkgG1vxuTQTfMSAwcNIcnSbblOAaXzsK5x8ghJdjtBf2WAtwX3Q1NnNliFKgBZ8u1YIVhCQiepXvST7zWN7MJ10ZDEgMTc6r7P_XOFOj3UxdKT6_OCmz3sSvYRn353ddl_7HIRqRGSwmpI_v8">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-label-sm text-outline font-bold">+12</div>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Web3 and the Future of Social</h4>
+<p class="text-on-surface-variant text-body-md line-clamp-2 mb-4">Discussing decentralized identities, tokenized communities, and the creator economy.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+<span class="font-label-md text-label-md">5 Speakers</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-md text-label-md">1.2k Listeners</span>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-label-md shadow-md hover:shadow-lg transition-shadow">Join Room</button>
+</div>
+</div>
+<!-- Room Card 2 -->
+<div class="glass p-5 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] active:scale-[0.98] transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-error/10 text-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-label-sm font-label-sm font-bold uppercase tracking-wider">Live</span>
+</div>
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of an artist with dyed hair and creative makeup, soft neon lighting, artistic studio vibe, vibrant blue and purple accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_tOpm_X1wXhVZ-8uvoM7Leo6LPXcZcLP-S4KTAKXt3gUIqahy236flppj7sYAjI9aO1ondWbuhHrTzqtOAVy-6mVJMcXVnIScA2ygVzIY95Z8E_cRQQWY7HVpsDL9xMbXp-BtJiwW3KPIR7b32SUeGztE4CZj_R5AoxtiPDtR1NAkmVPzfcOI1erT8JK6-sVGJgEXuRVKD29oFEtO0q-rMJZWEt_vqUh5YzMFPCUf_5eW_dMK3srS5uHqmMyeNRiufZnAOsTVRRU">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up face of a man with a beard and headphones, working in a dark recording studio. Cinematic blue lighting, high tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrwqC90aDJGxpfEjvGyScF6vBpBdDCL-qo3h2u-V8ynoRLE7zpZDrQ39jdImYmT7LpYbuLlowCuyKxF_NfnxyK5g5xFJo2xdP6RR-QCGbaDiy9P-YpCqv7eDLHqBDGydeqTrF-2KmUI_sB2JM1-CbT_IkNfVoIMmDvgqVrzxGxStjZkHlScYea3oyjWY1x5Dd4IY054Fu7-cKtxT9Jjrxvmrx60P5xcc18715ROXnzPafCslEND0bi8GSJFAfx1Q2__tookylM67g">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-label-sm text-outline font-bold">+45</div>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Late Night Beats &amp; Chills</h4>
+<p class="text-on-surface-variant text-body-md line-clamp-2 mb-4">A casual space to listen to new lo-fi releases and chat with the community.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+<span class="font-label-md text-label-md">2 Speakers</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-md text-label-md">842 Listeners</span>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-label-md shadow-md hover:shadow-lg transition-shadow">Join Room</button>
+</div>
+</div>
+<!-- Room Card 3 -->
+<div class="glass p-5 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] active:scale-[0.98] transition-all cursor-pointer border-l-4 border-l-secondary">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-error/10 text-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-label-sm font-label-sm font-bold uppercase tracking-wider">Live</span>
+</div>
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a successful entrepreneur in a sleek office environment. Bright window lighting, high-end professional photography, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOOmA7SCouyLgsheOEp0Ioh7E1Unty5MBTfagJcqlWviZuQL8NyZ5g0gjmntqbBYEo1fjh08ANZrLcFDgEpCVVplSeEUJpuT_BNtdtva_5VnL3LuY3LCOc6bn3QbZc-b6CWe_Cy2zyASxZ1nBqm4_qWUbzty9c8TYj-vHBmhXwxhC_eQuf4ZyZLaPjf0EUVUVqeym1pqmevK0_jskwlH8XaWvFQYL-wf084qQG79PaQRisBg_jjKnmAKwh5wGu0pdLyaJRMz3Z2SU">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container flex items-center justify-center text-label-sm text-outline font-bold">+8</div>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-secondary mb-1">Morning Productivity Sprint</h4>
+<p class="text-on-surface-variant text-body-md line-clamp-2 mb-4">Setting goals for the day and sharing time-management hacks.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+<span class="font-label-md text-label-md">3 Speakers</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-md text-label-md">156 Listeners</span>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-label-md shadow-md hover:shadow-lg transition-shadow">Join Room</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-xl shadow-primary/30 flex items-center justify-center z-[60] active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2 px-4 cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2 px-4 cursor-pointer">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-all p-2 px-4 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2 px-4 cursor-pointer">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2 px-4 cursor-pointer">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</div>
+</nav>
+<script>
+        // Simple click interaction logic
+        document.querySelectorAll('.active\\:scale-95, .active\\:scale-\\[0\\.98\\]').forEach(el => {
+            el.addEventListener('touchstart', () => el.classList.add('scale-95'));
+            el.addEventListener('touchend', () => el.classList.remove('scale-95'));
+            el.addEventListener('mousedown', () => el.classList.add('scale-95'));
+            el.addEventListener('mouseup', () => el.classList.remove('scale-95'));
+        });
+
+        // Horizontal scroll categories active state
+        const categoryButtons = document.querySelectorAll('section:nth-child(2) button:not(:first-child)');
+        const allButton = document.querySelector('section:nth-child(2) button:first-child');
+        
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                    b.classList.add('bg-surface-container', 'text-on-surface-variant');
+                });
+                allButton.classList.remove('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                allButton.classList.add('bg-surface-container', 'text-on-surface-variant');
+                
+                btn.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

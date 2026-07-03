@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa | Personal Activity</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-container": "#006172",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#e5eeff",
+                        "primary": "#004ac6",
+                        "tertiary-container": "#007e37",
+                        "inverse-surface": "#213145",
+                        "inverse-primary": "#b4c5ff",
+                        "outline": "#737686",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-fixed": "#001f26",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface": "#0b1c30",
+                        "tertiary": "#006229",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "primary-container": "#2563eb",
+                        "surface-tint": "#0053db",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-container": "#57dffe",
+                        "secondary": "#00687a",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-gap-md": "16px",
+                        "gutter": "16px",
+                        "container-padding-tablet": "32px",
+                        "unit": "4px",
+                        "section-margin": "40px",
+                        "container-padding-mobile": "20px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass {
+            background: rgba(11, 28, 48, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+            background-color: #0b1c30;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#0b1c30] text-white antialiased">
+<!-- Header -->
+<header class="sticky top-0 z-50 glass border-b border-white/10 px-container-padding-mobile py-4 flex items-center justify-between">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5">
+<span class="material-symbols-outlined text-white">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-bold">Activity</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5">
+<span class="material-symbols-outlined text-white">more_vert</span>
+</button>
+</header>
+<main class="pb-24">
+<!-- Summary Cards -->
+<div class="px-container-padding-mobile py-6 grid grid-cols-2 gap-stack-gap-md">
+<div class="bg-primary p-4 rounded-xl shadow-lg">
+<div class="flex items-center gap-2 mb-2 text-white/80">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-label-sm uppercase tracking-wider">Total Time</span>
+</div>
+<div class="text-2xl font-bold">24.5h</div>
+<div class="text-label-sm text-white/70 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-green-400">trending_up</span>
+                    +12% from last week
+                </div>
+</div>
+<div class="bg-white/5 p-4 rounded-xl border border-white/10">
+<div class="flex items-center gap-2 mb-2 text-white/60">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="text-label-sm uppercase tracking-wider">Points</span>
+</div>
+<div class="text-2xl font-bold">1,280</div>
+<div class="text-label-sm text-white/50 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">emoji_events</span>
+                    Daily goal met
+                </div>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="px-container-padding-mobile mb-6">
+<div class="flex gap-2 overflow-x-auto no-scrollbar py-2">
+<button class="px-6 py-2 bg-primary text-white rounded-full text-label-md font-semibold shrink-0">All</button>
+<button class="px-6 py-2 bg-white/5 text-white/70 border border-white/10 rounded-full text-label-md font-medium shrink-0 hover:bg-white/10">Work</button>
+<button class="px-6 py-2 bg-white/5 text-white/70 border border-white/10 rounded-full text-label-md font-medium shrink-0 hover:bg-white/10">Social</button>
+<button class="px-6 py-2 bg-white/5 text-white/70 border border-white/10 rounded-full text-label-md font-medium shrink-0 hover:bg-white/10">Health</button>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="px-container-padding-mobile space-y-6">
+<div class="relative">
+<div class="flex items-center gap-3 mb-4">
+<h2 class="text-label-md font-bold text-white/60 uppercase tracking-widest">Today</h2>
+<div class="h-px bg-white/10 flex-grow"></div>
+</div>
+<div class="space-y-4">
+<!-- Activity Item 1 -->
+<div class="group flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+<div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">code</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-white">Frontend Project Alpha</h3>
+<span class="text-label-sm text-white/40">10:45 AM</span>
+</div>
+<p class="text-body-md text-white/60 mt-1">Updated UI components and implemented dark mode functionality.</p>
+<div class="mt-3 flex items-center gap-4">
+<span class="flex items-center gap-1 text-label-sm text-white/50">
+<span class="material-symbols-outlined text-sm">timer</span>
+                                    2h 15m
+                                </span>
+<span class="flex items-center gap-1 text-label-sm text-white/50">
+<span class="material-symbols-outlined text-sm text-yellow-500">stars</span>
+                                    45 pts
+                                </span>
+</div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="group flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+<div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-green-500 text-2xl">fitness_center</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-white">Morning Workout</h3>
+<span class="text-label-sm text-white/40">07:30 AM</span>
+</div>
+<p class="text-body-md text-white/60 mt-1">Completed 45-minute HIIT session and stretching.</p>
+<div class="mt-3 flex items-center gap-4">
+<span class="flex items-center gap-1 text-label-sm text-white/50">
+<span class="material-symbols-outlined text-sm">timer</span>
+                                    50m
+                                </span>
+<span class="flex items-center gap-1 text-label-sm text-white/50">
+<span class="material-symbols-outlined text-sm text-yellow-500">stars</span>
+                                    120 pts
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative pt-2">
+<div class="flex items-center gap-3 mb-4">
+<h2 class="text-label-md font-bold text-white/60 uppercase tracking-widest">Yesterday</h2>
+<div class="h-px bg-white/10 flex-grow"></div>
+</div>
+<div class="space-y-4 opacity-80">
+<!-- Activity Item 3 -->
+<div class="group flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+<div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-purple-500 text-2xl">groups</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-white">Design Sync Meeting</h3>
+<span class="text-label-sm text-white/40">4:00 PM</span>
+</div>
+<p class="text-body-md text-white/60 mt-1">Reviewed weekly progress and discussed upcoming features.</p>
+<div class="mt-3 flex items-center gap-4">
+<span class="flex items-center gap-1 text-label-sm text-white/50">
+<span class="material-symbols-outlined text-sm">timer</span>
+                                    1h 00m
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 glass border-t border-white/10 px-8 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-white/40">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">list_alt</span>
+<span class="text-[10px] font-bold">Activity</span>
+</button>
+<button class="w-12 h-12 bg-primary rounded-full -mt-10 shadow-lg shadow-primary/30 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+<script>
+        // Optional: Simple scroll handling for header shadow
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-xl');
+                header.classList.remove('bg-white/70');
+                header.style.backgroundColor = 'rgba(11, 28, 48, 0.9)';
+            } else {
+                header.classList.remove('shadow-xl');
+                header.style.backgroundColor = 'rgba(11, 28, 48, 0.7)';
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa - Forgot Password</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d3e4fe",
+                    "outline": "#737686",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#0b1c30",
+                    "primary-container": "#2563eb",
+                    "on-secondary-container": "#006172",
+                    "surface": "#f8f9ff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "primary": "#004ac6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#57dffe",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#acedff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#001f26",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c3c6d7",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#0053db",
+                    "tertiary-container": "#007e37",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface-variant": "#434655",
+                    "tertiary": "#006229",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-sm": "8px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .mesh-bg {
+            background: radial-gradient(at 0% 0%, #f8f9ff 0%, transparent 50%),
+                        radial-gradient(at 100% 0%, #e5eeff 0%, transparent 50%),
+                        radial-gradient(at 100% 100%, #eff4ff 0%, transparent 50%),
+                        radial-gradient(at 0% 100%, #ffffff 0%, transparent 50%);
+        }
+        .floating-anim {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background mesh-bg min-h-screen flex flex-col items-center justify-start overflow-x-hidden">
+<!-- Top Navigation Header (Suppressed Shell, manual implementation for task focus) -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-container-mobile h-16 pointer-events-none">
+<button class="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low/80 backdrop-blur-md text-primary hover:bg-surface-container-high transition-all active:scale-90 shadow-sm" onclick="window.history.back()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+</header>
+<main class="w-full max-w-md px-container-mobile pt-24 pb-12 flex flex-col min-h-screen">
+<!-- Headline Section -->
+<div class="mb-stack-gap-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">Forgot Password?</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your email or phone number to reset your password.</p>
+</div>
+<!-- Visual Anchor: Abstract 3D Illustration -->
+<div class="flex-grow flex items-center justify-center py-stack-gap-lg overflow-hidden">
+<div class="relative w-64 h-64 md:w-80 md:h-80 floating-anim flex items-center justify-center">
+<!-- Background decorative element -->
+<div class="absolute inset-0 bg-primary-container/10 rounded-full blur-3xl scale-125"></div>
+<!-- Main 3D Illustration -->
+<div class="relative z-10 w-full h-full bg-cover bg-center rounded-full shadow-2xl border-4 border-white/40 glass-effect flex items-center justify-center" data-alt="A soft and sophisticated 3D abstract digital illustration of a fluid, translucent floating orb with iridescent highlights. The sphere is surrounded by delicate crystalline shards and soft-glowing ethereal ribbons of light in primary blue and teal gradients. The aesthetic is clean, minimalist, and premium, set against a bright, airy light-mode background with soft volumetric lighting and a sense of weightless serenity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtHMdPGSrKL6MiBry5t8HDS1hA6RUQ9DYuxwcV9jIOqyQntYV8QW-1KGOvJFq9qB20t0j_WzLsX-tPwP2yNlk-BeRQUMmIiuKmiJ17GUYTso7pNoKVXH44hzEES-Qx6-2o3YlebJdYPUryIAkCv-ihAGmqYEL3B0QOcIjHti65rlTWYpUk0RFDD9VHk-5xgSauj2usaBuVutTAl0Or7Zfew8EOo77S5hgVFv9jK22-c597BPxr6d9OYbS-BHcbUE78laFTFlO7Ktw')">
+<!-- Fallback if image fails, a glassmorphic shield icon or similar could be here -->
+</div>
+<!-- Floating chips for extra depth -->
+<div class="absolute -top-4 -right-2 bg-white/80 backdrop-blur shadow-lg rounded-2xl px-4 py-2 border border-white/50 animate-bounce" style="animation-duration: 4s;">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="absolute bottom-4 -left-6 bg-white/80 backdrop-blur shadow-lg rounded-2xl px-4 py-2 border border-white/50 animate-pulse" style="animation-duration: 5s;">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">key</span>
+</div>
+</div>
+</div>
+<!-- Input & Action Section -->
+<div class="mt-auto space-y-stack-gap-lg">
+<!-- Form Group -->
+<div class="space-y-stack-gap-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="identifier">Email or Phone Number</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 rounded-[24px] bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 text-on-surface font-body-md transition-all shadow-sm" id="identifier" placeholder="hello@sawaconnect.com" type="text">
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary font-title-lg text-title-lg rounded-full shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Support/Help Links -->
+<div class="flex justify-center items-center py-stack-gap-sm">
+<a class="font-label-md text-label-md text-primary hover:underline underline-offset-4" href="#">Need help?</a>
+<span class="mx-3 w-1 h-1 bg-outline-variant rounded-full"></span>
+<a class="font-label-md text-label-md text-outline hover:text-on-surface transition-colors" href="#">Try another way</a>
+</div>
+</div>
+</main>
+<!-- Bottom Spacing for modern devices -->
+<div class="h-8 w-full"></div>
+<script>
+        // Micro-interaction for the input focus
+        const inputField = document.getElementById('identifier');
+        const container = inputField.parentElement;
+
+        inputField.addEventListener('focus', () => {
+            container.classList.add('scale-[1.02]');
+            container.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        });
+
+        inputField.addEventListener('blur', () => {
+            container.classList.remove('scale-[1.02]');
+        });
+
+        // Continue button interaction
+        const continueBtn = document.querySelector('button.bg-gradient-to-r');
+        continueBtn.addEventListener('click', function(e) {
+            // Ripple effect or simple feedback
+            const ripple = document.createElement('span');
+            ripple.classList.add('absolute', 'bg-white/20', 'rounded-full', 'animate-ping');
+            ripple.style.width = '100px';
+            ripple.style.height = '100px';
+            ripple.style.left = `${e.offsetX - 50}px`;
+            ripple.style.top = `${e.offsetY - 50}px`;
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+    </script>
+</body></html>

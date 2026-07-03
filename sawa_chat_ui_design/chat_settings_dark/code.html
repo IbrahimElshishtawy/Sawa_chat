@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa - Chat Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#ffffff",
+                    "error": "#ffb4ab",
+                    "surface-container": "#1e2a3d",
+                    "inverse-primary": "#0053db",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#b4c5ff",
+                    "on-primary-container": "#eeefff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-variant": "#434655",
+                    "secondary-container": "#004e5c",
+                    "inverse-surface": "#e5eeff",
+                    "outline": "#8d919f",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-bright": "#374252",
+                    "surface": "#111d2e",
+                    "inverse-on-surface": "#0b1c30",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-container-lowest": "#061323",
+                    "surface-container-highest": "#333f4f",
+                    "on-tertiary": "#003915",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary": "#57dffe",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary-fixed": "#001f26",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#283546",
+                    "on-secondary-container": "#acedff",
+                    "tertiary": "#6bff8f",
+                    "surface-dim": "#0b1c30",
+                    "on-surface": "#ffffff",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#ffdad6",
+                    "background": "#0b1c30",
+                    "outline-variant": "#434655",
+                    "surface-container-low": "#192536",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-tint": "#b4c5ff",
+                    "on-secondary": "#003640",
+                    "primary-container": "#004ac6",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .glass-card {
+            background: rgba(25, 37, 54, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .preview-blob {
+            filter: blur(40px);
+            z-index: -1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-background/80 backdrop-blur-xl shadow-sm border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary">Chat Settings</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container transition-transform active:scale-95 duration-200">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a user with a friendly expression. The lighting is soft and warm, highlighting clear skin and a natural look. The background is a minimalist, slightly blurred workspace in soft blue and white tones, matching the brand's sophisticated and airy aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd6LbZgog_0zGTRm8rSl5lS46lukdDRNdBGpsZPrR3QLt8lN_Xu_vl7zHBfZMRj-VWr6enE9Eo41wCoBjw35Re_r7r2HmFFlwdoTqhHuHdnrmPM-AE_5b-V8kNATHrcQACjvh6fGjm2RtvpZHfEDF4X221RgAORSKEDS9nNw5g2CWDbMRndPSlTH-FxqqJOAnNUdcSop3N2ickgBakCkwS9QsiIb0ba2ivvpU5Bb0Qxw4sBygirsUxIjAnfHf858lfK22hn42rZiA"/>
+</div>
+</header>
+<main class="pt-20 px-container-mobile max-w-2xl mx-auto space-y-6">
+<!-- Chat Appearance Preview Card -->
+<section class="relative overflow-hidden rounded-[28px] glass-card p-6 border border-outline-variant/20 shadow-sm">
+<div class="preview-blob absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full"></div>
+<div class="preview-blob absolute -bottom-10 -left-10 w-32 h-32 bg-secondary-container/20 rounded-full"></div>
+<header class="mb-4">
+<h2 class="font-title-lg text-title-lg text-on-surface">Appearance Preview</h2>
+<p class="font-label-md text-label-md text-outline">Real-time preview of your chat style</p>
+</header>
+<div class="space-y-4 relative">
+<!-- Recipient Bubble -->
+<div class="flex items-end gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">person</span>
+</div>
+<div class="max-w-[75%] bg-surface-container-high rounded-2xl rounded-bl-none px-4 py-2 shadow-sm border border-outline-variant/10">
+<p class="font-body-md text-body-md text-on-surface">This is how messages you receive will look. Airy and clear.</p>
+</div>
+</div>
+<!-- Sender Bubble -->
+<div class="flex flex-col items-end gap-1">
+<div class="max-w-[75%] bg-primary-container text-on-primary rounded-2xl rounded-br-none px-4 py-2 shadow-md">
+<p class="font-body-md text-body-md">And this is your message style. Vibrant and sophisticated.</p>
+</div>
+<span class="font-label-sm text-label-sm text-outline px-1">Read 10:45 AM</span>
+</div>
+</div>
+</section>
+<!-- Visual Customization Grid -->
+<section class="space-y-4">
+<h3 class="font-label-md text-label-md text-primary px-2 uppercase tracking-wider">Visual Customization</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Wallpaper -->
+<button class="flex flex-col items-start p-4 rounded-3xl bg-surface-container-low border border-outline-variant/20 hover:bg-surface-container transition-colors group">
+<div class="p-2 bg-primary-container/20 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="wallpaper">wallpaper</span>
+</div>
+<span class="font-title-lg text-[16px] text-on-surface mb-1">Chat Wallpaper</span>
+<span class="font-label-sm text-label-sm text-outline">Fluid gradients</span>
+</button>
+<!-- Bubble Color -->
+<button class="flex flex-col items-start p-4 rounded-3xl bg-surface-container-low border border-outline-variant/20 hover:bg-surface-container transition-colors group">
+<div class="p-2 bg-secondary-container/20 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary" data-icon="palette">palette</span>
+</div>
+<span class="font-title-lg text-[16px] text-on-surface mb-1">Bubble Color</span>
+<span class="font-label-sm text-label-sm text-outline">Primary gradient</span>
+</button>
+<!-- Chat Shape -->
+<button class="flex flex-col items-start p-4 rounded-3xl bg-surface-container-low border border-outline-variant/20 hover:bg-surface-container transition-colors group">
+<div class="p-2 bg-tertiary-fixed-dim/20 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary" data-icon="rounded_corner">rounded_corner</span>
+</div>
+<span class="font-title-lg text-[16px] text-on-surface mb-1">Corner Radius</span>
+<span class="font-label-sm text-label-sm text-outline">Organic (28px)</span>
+</button>
+<!-- Stickers & Emoji -->
+<button class="flex flex-col items-start p-4 rounded-3xl bg-surface-container-low border border-outline-variant/20 hover:bg-surface-container transition-colors group">
+<div class="p-2 bg-error/20 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-error" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="font-title-lg text-[16px] text-on-surface mb-1">Stickers</span>
+<span class="font-label-sm text-label-sm text-outline">Interactive packs</span>
+</button>
+</div>
+</section>
+<!-- Functional Controls List -->
+<section class="space-y-4">
+<h3 class="font-label-md text-label-md text-primary px-2 uppercase tracking-wider">Functional Controls</h3>
+<div class="bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20">
+<!-- Media Quality -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">high_quality</span>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Media Upload Quality</span>
+<span class="font-label-sm text-outline">Data saver enabled</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Swipe Actions -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">swipe</span>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Swipe Actions</span>
+<span class="font-label-sm text-outline">Swipe left to Archive</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Message Preview -->
+<div class="flex items-center justify-between p-4 border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">visibility</span>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Message Preview</span>
+<span class="font-label-sm text-outline">Show text in notifications</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Security & Backup -->
+<section class="space-y-4 pb-12">
+<h3 class="font-label-md text-label-md text-primary px-2 uppercase tracking-wider">Data &amp; Security</h3>
+<div class="bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20">
+<!-- Backup -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container transition-colors border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">cloud_upload</span>
+<div class="flex flex-col items-start">
+<span class="font-body-md text-on-surface font-semibold">Chat Backup</span>
+<span class="font-label-sm text-outline">Last backup: Yesterday 3:42 AM</span>
+</div>
+</div>
+<span class="font-label-sm font-bold text-primary bg-primary-container/20 px-3 py-1 rounded-full">UPDATE</span>
+</button>
+<!-- Delete All -->
+<button class="w-full flex items-center gap-4 p-4 hover:bg-error/10 transition-colors">
+<span class="material-symbols-outlined text-error">delete_forever</span>
+<span class="font-body-md text-error font-semibold">Delete All Chats</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (as per Shared Components) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-background/80 backdrop-blur-xl rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.2)] border-t border-outline-variant/10">
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container transition-colors w-16 h-16">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<!-- Chats Active -->
+<button class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-container transition-colors w-16 h-16 scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container transition-colors w-16 h-16">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container transition-colors w-16 h-16">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container transition-colors w-16 h-16">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interactions for checkboxes and buttons
+        document.querySelectorAll('button, .cursor-pointer').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+                el.style.transition = 'transform 0.1s ease-out';
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+                el.style.transition = 'transform 0.2s ease-in';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

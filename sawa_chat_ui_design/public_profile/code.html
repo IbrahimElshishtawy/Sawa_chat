@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa - Public Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .profile-gradient {
+            background: linear-gradient(180deg, rgba(0, 74, 198, 0.1) 0%, rgba(248, 249, 255, 1) 100%);
+        }
+        .active-tab-indicator {
+            view-transition-name: active-tab;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+            color: #0b1c30;
+        }
+        /* Custom scrollbar suppression for tab row */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0b1c30",
+                      "error": "#ba1a1a",
+                      "surface-container": "#e5eeff",
+                      "inverse-primary": "#b4c5ff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "primary": "#004ac6",
+                      "on-primary-container": "#eeefff",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "surface-variant": "#d3e4fe",
+                      "secondary-container": "#57dffe",
+                      "inverse-surface": "#213145",
+                      "outline": "#737686",
+                      "on-tertiary-fixed": "#002109",
+                      "surface-bright": "#f8f9ff",
+                      "surface": "#f8f9ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#6bff8f",
+                      "on-surface-variant": "#434655",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary": "#00687a",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-tertiary-container": "#c1ffc5",
+                      "on-secondary-fixed": "#001f26",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#007e37",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-container": "#006172",
+                      "tertiary": "#006229",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed": "#00174b",
+                      "on-error-container": "#93000a",
+                      "background": "#f8f9ff",
+                      "outline-variant": "#c3c6d7",
+                      "surface-container-low": "#eff4ff",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "surface-tint": "#0053db",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "secondary-fixed": "#acedff",
+                      "primary-fixed": "#dbe1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "section-margin": "40px",
+                      "gutter": "16px",
+                      "container-padding-tablet": "32px",
+                      "stack-gap-sm": "8px",
+                      "stack-gap-md": "16px",
+                      "stack-gap-lg": "24px",
+                      "container-padding-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                      "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-24">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 active:scale-95 transition-all text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Alex Rivera</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="hover:opacity-80 active:scale-95 transition-all text-primary">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="hover:opacity-80 active:scale-95 transition-all text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="relative">
+<!-- Cover Section -->
+<div class="h-64 md:h-80 w-full relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic wide landscape shot of a futuristic neon city during twilight, with soft blue and violet hues reflecting off sleek glass surfaces. The lighting is ethereal and premium, creating a sophisticated atmospheric depth consistent with a high-end social media profile cover image." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJoo3OZOqqReUh78cNkqdXShKVebzKrIn4bpjBj8KM5HQy5W1YKxKKhv1LMaWeoTkKbH_t6fzVGXtqAZQ78yX5AbxJnXsn7PZoC9rU29JwumJcUcpUqnFLG9J_zF3qhcb5UTAnQmv_0fi9FvtImJNi8RuBOMYngdz-D1JUIggioXmffPMDs4QgbfEl1Eq2OotRVa-NONC_PF5AQzUHbFCRd03ggy8u_xHbYxOE8jY5qZwBdybkDlRktI6GFyqz6FlFDgdCMQz40cE')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<!-- Profile Header Details -->
+<div class="px-container-mobile -mt-20 relative z-10">
+<div class="flex flex-col">
+<!-- Avatar & Identity -->
+<div class="flex justify-between items-end mb-4">
+<div class="relative">
+<div class="w-28 h-28 md:w-36 md:h-36 rounded-[28px] border-4 border-surface shadow-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a charismatic professional in their late 20s with a confident smile. The lighting is soft and warm, highlighting elegant features against a clean, minimalist studio background. The overall aesthetic is professional, modern, and perfectly suited for a premium tech profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGDpLL6RPWPUPGewWo20m4UveUkj9v-KOlwIm_ObT9j9Efz6tvUm2AxW3hHiyOhlfRU3kN90XJXLQl7au2i9BtMcCqYYDN7hz_KBqxAsM2LcTPfJgzKdKoTS4tIv4TEPWJs3Q5vkwKZFTBKS5svy1QEqk25E9npcUQ2CU6CAWUdV38wjYs49xZZUDcewHzjRm-8U4GK1gcAwBoIgJ8EsoB3BmVx48HUw2ckG-xqZhw0sNwKb5GG9tTW0CtaVIZ9ijrf8c8FRBL6oc"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white p-1 rounded-lg shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex gap-2 pb-2">
+<button class="h-10 px-4 rounded-full bg-primary text-white font-label-md text-label-md flex items-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            Follow
+                        </button>
+<button class="w-10 h-10 rounded-full glass-card text-primary flex items-center justify-center active:scale-95 transition-transform border border-primary/10">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-background">Alex Rivera</h2>
+<span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container rounded-full text-[10px] font-bold tracking-wider uppercase">Premium</span>
+</div>
+<p class="font-label-md text-label-md text-outline">@arivera_design • Creative Director</p>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-2">
+                        Crafting digital experiences at the intersection of art and technology. 🎨 
+                        Lover of minimalist architecture and espresso.
+                    </p>
+</div>
+<!-- Action Bar -->
+<div class="grid grid-cols-4 gap-2 mt-6">
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-2xl hover:bg-surface-variant/20 transition-colors text-primary">
+<span class="material-symbols-outlined mb-1">call</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Voice</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-2xl hover:bg-surface-variant/20 transition-colors text-primary">
+<span class="material-symbols-outlined mb-1">videocam</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Video</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-2xl hover:bg-surface-variant/20 transition-colors text-primary">
+<span class="material-symbols-outlined mb-1">person_add_alt</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Connect</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-2xl hover:bg-surface-variant/20 transition-colors text-primary">
+<span class="material-symbols-outlined mb-1">storefront</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Store</span>
+</button>
+</div>
+<!-- Mutual Friends Section -->
+<div class="mt-8 flex items-center gap-3 py-4 border-y border-outline-variant/30">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Close up face profile of a smiling young woman with bright eyes, warm lighting, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5-fVtG4Wd-wguM2gTOYm90jsyuTsqzD1Q02qv3tt-a-LAu6RVrXiszAk7PP5wuNLW6I5Vhh2XPuZr1Cef0DyAevZoiyt9OJ6nsZRkRAEjbqmAAFSqHc5DJUj8l4PevCTnBhquXJHXLVvoconxrGdvM7Pcfc55d52bWLhcCwy27ol9i4_N1wo5vaxgzFT75zVvdfoYWEKlmp--rwDNrOq5BHBZ5iVeyXHqoBmdsi03F1AV6lQ9WRZULZFlOPrat8NhAJxenuLHGg"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface overflow-hidden bg-slate-300">
+<img class="w-full h-full object-cover" data-alt="Portrait of a creative man wearing glasses, soft daylight, artistic studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaGcgILMnqCaEY642-H5vfr7Ey-ZzjRMOdsIiE8nzlaFmnQx3FW-SXpVz7zjnmc3TVSGt6E1atcyCV8zsrMmo3FEhUPiFlWCk_wCTQmGsTCnThdKAe7Cpip0fxMPlm0Gm-uLl-bA3aFhfpUXkNqA_qYAn21BGltxwA4PpktYaW-WBfpVeAG3NI6p45_8L0aqGdO3PxfPbalJV6xAOhKcQnt446dGGOrleBx8adHdXDJf2SB0KNpw68I5r77N7eDyU6i_wIUwkX9qk"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface overflow-hidden bg-slate-400">
+<img class="w-full h-full object-cover" data-alt="Fashionable woman in a sleek urban setting, golden hour lighting, cinematic vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFC5i5Q7uAFv2QyAW8pNs2DGnEBIO6-fkrLxP90oh06sduj9tX7fzuj-RQaHaF1E8w8Cb_Umo39qcHchYYJSpNeQ30OIADGHXpxNEV6KkCZYg1OCy0k3Id1oRojfBzGXMHVxv_paixe24ZIel460ulycU8D4BtdVjZbIjseRbsFkP_ytWfG6MHj6FFXoqEICyoOrdRFsXuCMRrHwJsw73qFYrdeVknl-dcdwNbVXt-vEXyDxtcDbAVmmI84aEvWd7emDkE9RrBWbY"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface flex items-center justify-center bg-surface-container-highest text-primary font-bold text-xs">
+                            +12
+                        </div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Mutual Friends</p>
+<p class="text-[11px] text-outline">Followed by Sarah, James, and 12 others</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<div class="sticky top-16 z-40 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex overflow-x-auto no-scrollbar px-container-mobile">
+<button class="flex-none px-4 py-4 relative group">
+<span class="font-label-md text-label-md text-primary font-bold">Posts</span>
+<div class="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full active-tab-indicator"></div>
+</button>
+<button class="flex-none px-4 py-4 group">
+<span class="font-label-md text-label-md text-outline group-hover:text-primary transition-colors">Reels</span>
+</button>
+<button class="flex-none px-4 py-4 group">
+<span class="font-label-md text-label-md text-outline group-hover:text-primary transition-colors">Threads</span>
+</button>
+<button class="flex-none px-4 py-4 group">
+<span class="font-label-md text-label-md text-outline group-hover:text-primary transition-colors">Media</span>
+</button>
+<button class="flex-none px-4 py-4 group">
+<span class="font-label-md text-label-md text-outline group-hover:text-primary transition-colors">Store</span>
+</button>
+<button class="flex-none px-4 py-4 group">
+<span class="font-label-md text-label-md text-outline group-hover:text-primary transition-colors">About</span>
+</button>
+</div>
+</div>
+<!-- Content Grid (Posts Preview) -->
+<div class="px-container-mobile mt-6 grid grid-cols-2 gap-3 pb-8">
+<!-- Bento style post display -->
+<div class="col-span-1 h-64 rounded-3xl overflow-hidden relative shadow-sm group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="High-end architectural photography of a minimalist concrete building with clean lines and a clear blue sky. Professional composition with sharp geometric shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABBBXr0Zh-WgAg-AEiDDGoZHM6RCvoBhursW1FscvRpfjYN5SunSOSwOHpIO6SBKkh44ULeTsG9nYtxyd2xGKJzXq2dyIOksTO7i4j-V_R0c7TbWckTutMf4asVabMG0HP3AMSGcBrjqgvALe_K0_TogGa0F4fXJyWfp4nqm8r3F2TgftGWVXqp1RHetTIudY3ML4LucmBHJuwAvifrkzorzYZI5OsuLGKBgfp_KLRU0KSGC4U1bwfxgunfn8lk2kHd8MBSByLT2c"/>
+<div class="absolute top-3 right-3 text-white">
+<span class="material-symbols-outlined text-[20px]">collections</span>
+</div>
+</div>
+<div class="col-span-1 grid grid-rows-2 gap-3 h-64">
+<div class="rounded-3xl overflow-hidden relative shadow-sm group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Top-down shot of an aesthetic workspace with a laptop, a notebook, and a cup of specialty coffee. Soft morning light, clean and airy vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6D7JODvQgnLJR_ZlqeODdlCUkXlcASOt9_sPfhiSmqnSBrCj3yLlKm_N4UvWHECBbLiT3oeYObKGzlN-_QMCJbv8SidkJRRnPQCeTwXixBQ_pjhi_5R4puSnxcmlWcr6kj3UcLfATDi7dvBDS-YlVXVpmk656_0aziHxikuT49LX8EWftSwXdQ-BwKN-ZSuwMg2LvW2Q_0qrQXVrYlj_t9s0ueeIsGT-U28ZUm4pZxHKyaBhaJNTH3pXxCT1OPTCO6rav304QVWE"/>
+</div>
+<div class="rounded-3xl overflow-hidden relative shadow-sm group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Abstract digital artwork with flowing organic shapes in shades of cerulean and deep indigo. Modern, vibrant, and artistic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs5pbM428mTfxlOJZ6ZfgXpBdZM12EMscKFmkUskx-D5hdWy62V3zM42Ck0mgt_9otmfsCnmP1PbOZhfUlkCDTj4l-64f4Vnym9ZeNNefawHleUgHvLlJSNSGlQGYGI_3396Y2JKI8SAlfnOuKQUkqOOAqJj-axPmFd616h4DZxGqb4C7PXkvp_8bOMrDFJPEVWogsmd7yBzdodV4MsaVMtR2Qv_Vln2SX2p9gtFkY8xYknYTw0lOdkLYQ-csiWUY4zDC1cGB9oNk"/>
+</div>
+</div>
+<div class="col-span-2 h-48 rounded-3xl overflow-hidden relative shadow-sm group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A wide panoramic shot of a serene mountain landscape at dawn. The sky is a gradient of pastel pinks and soft oranges. Professional travel photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYkY_5-7jxNbuoq3C5Qed-68wXhdzRJFGXNZK-HRZgEE2QcO6Xybd4JS8asQJ9dStt-JzW6WWNkFkCA-rVDNkxJakGWsqu-6FRViBDEeSaFvwHBn_LtRWc5D5DPju2amU-jiBuKftpCJpCo8kj7NeY5EusgKxCbI_oaLDXRtGLu3SkjSUzRsOd5A3HMTwT7cZejRwnVbUD8gjHbxv6P5HjCSBlwKV5NJK_sOrc655ADc79kSSH1WbCC3fYwgHZzdBRVxAk0wuxomI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+<p class="text-white font-label-md text-label-md">Capturing the quiet moments... ✨</p>
+</div>
+</div>
+<div class="col-span-1 h-48 rounded-3xl overflow-hidden relative shadow-sm group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Extreme close-up of a high-tech watch or gadget, emphasizing premium materials and precision engineering. Sleek, dark aesthetic with sharp highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJQVa0JyC9nPXaLj7h1FOFNfMuFruSX021Y8s3Wk-NN44WqNst9njikDgFRKyDebJY7hXlY2vZwBuf5QCj1fBCU3hDAKUcABirUxiB8GIZIatzm2qBByTxdlLwHoMLgzgWSpGkgW4_Ztvgowtg1vINyTEI04sR08z4Xm3G1BjGaxiLv7rt5LszCvjBvyEwoXTQZREMiiY6S7bM4S0bpLIvRdrocXQxSWSHXW-qqDCpAvSvymadmJLCXJTCsct88HImTTbM0dWO7Mg"/>
+</div>
+<div class="col-span-1 h-48 rounded-3xl overflow-hidden relative shadow-sm group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Street photography of a bustling modern plaza at night. Long exposure capturing light trails and urban energy. Deep blues and vibrant whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiWakHHkBzVtTsSZHywwaRvozuk_8QuvysZGr_ipB-1vpHVYTHXRjpWHpOqYljC_qGSqZo_CY2UfICaEgwJ4i0lkCijBFicOcKbyQrkx9uJzx1rQfBH_PwLh1zq_SH2fD4hAbbRZrEmEVM6AyyN6eMsKUUeQ5u3mVHcMoDV18vQ0pa0uO-E5yRt6wgxkAIxmyrQJWvHS3JiE4MRQNFM9pzqi_9lxqfT8KNb8BJfwhaFs0CnlBzcB1A0TonbIrNxyFz5Zo4uOlNuCM"/>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-12 h-12" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-12 h-12" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-12 h-12 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-12 h-12" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-container/20 rounded-full transition-colors w-12 h-12" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for active tab switching (visual only for prototype)
+        const tabs = document.querySelectorAll('.sticky button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active styling
+                tabs.forEach(t => {
+                    const span = t.querySelector('span');
+                    const indicator = t.querySelector('.active-tab-indicator');
+                    span.classList.remove('text-primary', 'font-bold');
+                    span.classList.add('text-outline');
+                    if (indicator) indicator.remove();
+                });
+
+                // Add active styling to clicked
+                const span = tab.querySelector('span');
+                span.classList.remove('text-outline');
+                span.classList.add('text-primary', 'font-bold');
+                
+                const indicator = document.createElement('div');
+                indicator.className = 'absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full active-tab-indicator';
+                tab.appendChild(indicator);
+            });
+        });
+
+        // Add interaction effect to grid items
+        const gridItems = document.querySelectorAll('.group');
+        gridItems.forEach(item => {
+            item.addEventListener('touchstart', () => {
+                item.style.transform = 'scale(0.98)';
+            });
+            item.addEventListener('touchend', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

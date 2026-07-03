@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Two-Factor Authentication | Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-container": "#006172",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container": "#e5eeff",
+                    "outline": "#737686",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#57dffe",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface": "#0b1c30",
+                    "outline-variant": "#c3c6d7",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-tint": "#0053db"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "container-padding-tablet": "32px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #004ac6 0%, #00687a 100%);
+        }
+        .otp-input:focus {
+            box-shadow: 0 0 0 4px rgba(0, 74, 198, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary/20">
+<!-- TopAppBar (Suppressed navigation labels for transactional focus) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="text-title-lg font-title-lg font-bold text-primary">Sawa</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-tertiary-container/10 rounded-full border border-tertiary-container/20">
+<span class="material-symbols-outlined text-tertiary text-[18px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-md text-label-md text-tertiary">Secure Session</span>
+</div>
+</div>
+</header>
+<main class="min-h-screen pt-24 pb-12 px-container-mobile flex flex-col items-center">
+<!-- Content Container -->
+<div class="w-full max-w-md space-y-8">
+<!-- Header Section -->
+<section class="text-center space-y-3">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-primary-container/10 mb-2 relative">
+
+<span class="material-symbols-outlined text-primary text-4xl relative z-10" style="font-variation-settings: 'wght' 300;">lock_person</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Security Verification</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">Choose a verification method to continue to your account.</p>
+</section>
+<!-- Security Level Indicator -->
+<div class="glass-card p-4 rounded-2xl border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-outline-variant/20" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-tertiary transition-all duration-1000" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-dasharray="113" stroke-dashoffset="28" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-tertiary">75%</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Account Security</p>
+<p class="font-label-sm text-label-sm text-tertiary font-bold">HIGH LEVEL</p>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">Tips</button>
+</div>
+<!-- Method Selection -->
+<div class="space-y-3" id="method-selector">
+<label class="block font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">Select Method</label>
+<!-- Authenticator Option -->
+<button class="method-card w-full p-4 flex items-center gap-4 rounded-2xl border border-outline-variant/30 bg-surface-container-lowest hover:border-primary/50 transition-all group text-left" onclick="selectMethod('auth')">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">qr_code_2</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-body-lg font-semibold text-on-surface">Authenticator App</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Google or Microsoft Auth</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<!-- SMS Option -->
+<button class="method-card w-full p-4 flex items-center gap-4 rounded-2xl border border-outline-variant/30 bg-surface-container-lowest hover:border-primary/50 transition-all group text-left" onclick="selectMethod('sms')">
+<div class="w-12 h-12 rounded-xl bg-secondary/5 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">sms</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-body-lg font-semibold text-on-surface">SMS Verification</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Send to •••• 9821</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<!-- Email Option -->
+<button class="method-card w-full p-4 flex items-center gap-4 rounded-2xl border border-outline-variant/30 bg-surface-container-lowest hover:border-primary/50 transition-all group text-left" onclick="selectMethod('email')">
+<div class="w-12 h-12 rounded-xl bg-tertiary/5 flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">alternate_email</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-body-lg font-semibold text-on-surface">Email Address</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">s***@sawaconnect.com</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+</div>
+<!-- Verification Step (Hidden by default) -->
+<div class="hidden space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500" id="verification-step">
+<div class="space-y-4">
+<div class="flex items-center justify-center gap-3" id="otp-container">
+<input autofocus="" class="otp-input w-14 h-16 text-center text-2xl font-bold rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:outline-none transition-all" maxlength="1" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-2xl font-bold rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:outline-none transition-all" maxlength="1" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-2xl font-bold rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:outline-none transition-all" maxlength="1" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-2xl font-bold rounded-2xl border border-outline-variant bg-surface-container-lowest focus:border-primary focus:outline-none transition-all" maxlength="1" type="text"/>
+</div>
+<p class="text-center font-label-md text-label-md text-on-surface-variant">
+                        Didn't receive a code? <button class="text-primary font-bold hover:underline">Resend in 0:45</button>
+</p>
+</div>
+<button class="gradient-btn w-full py-4 rounded-2xl text-white font-bold text-body-lg shadow-lg hover:opacity-90 active:scale-95 transition-all">
+                    Verify &amp; Continue
+                </button>
+<button class="w-full text-center font-label-md text-label-md text-outline hover:text-primary transition-colors" onclick="resetFlow()">
+                    Try another method
+                </button>
+</div>
+<!-- Recovery Footer -->
+<footer class="pt-8 space-y-4">
+<div class="h-px bg-outline-variant/20 w-full"></div>
+<div class="flex flex-col gap-3">
+<button class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-variant/20 transition-colors text-left">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">key</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Use a backup recovery code</span>
+</button>
+<button class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-variant/20 transition-colors text-left">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">support_agent</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Contact security support</span>
+</button>
+</div>
+</footer>
+</div>
+</main>
+<!-- Visual Polish: Background Mesh -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/5 blur-[120px]"></div>
+</div>
+<script>
+        function selectMethod(method) {
+            const selector = document.getElementById('method-selector');
+            const verifier = document.getElementById('verification-step');
+            
+            selector.classList.add('hidden');
+            verifier.classList.remove('hidden');
+
+            // Set specific focus/context if needed
+            console.log('Method selected:', method);
+        }
+
+        function resetFlow() {
+            const selector = document.getElementById('method-selector');
+            const verifier = document.getElementById('verification-step');
+            
+            verifier.classList.add('hidden');
+            selector.classList.remove('hidden');
+        }
+
+        // OTP Input Auto-focus logic
+        const inputs = document.querySelectorAll('.otp-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Live - Explore Streams</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-fixed-variant": "#005321",
+                "primary": "#004ac6",
+                "outline-variant": "#c3c6d7",
+                "surface-container-high": "#dce9ff",
+                "secondary": "#00687a",
+                "primary-fixed": "#dbe1ff",
+                "surface-bright": "#f8f9ff",
+                "inverse-primary": "#b4c5ff",
+                "surface-container-low": "#eff4ff",
+                "on-surface": "#0b1c30",
+                "on-primary-fixed": "#00174b",
+                "surface-tint": "#0053db",
+                "on-secondary-fixed-variant": "#004e5c",
+                "error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#4ae176",
+                "inverse-on-surface": "#eaf1ff",
+                "tertiary-fixed": "#6bff8f",
+                "surface-container": "#e5eeff",
+                "surface": "#f8f9ff",
+                "on-tertiary-container": "#c1ffc5",
+                "on-primary": "#ffffff",
+                "surface-variant": "#d3e4fe",
+                "on-surface-variant": "#434655",
+                "tertiary-container": "#007e37",
+                "secondary-fixed-dim": "#4cd7f6",
+                "primary-container": "#2563eb",
+                "on-error-container": "#93000a",
+                "background": "#f8f9ff",
+                "on-tertiary": "#ffffff",
+                "surface-container-highest": "#d3e4fe",
+                "on-tertiary-fixed": "#002109",
+                "surface-dim": "#cbdbf5",
+                "on-primary-container": "#eeefff",
+                "inverse-surface": "#213145",
+                "outline": "#737686",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "tertiary": "#006229",
+                "error": "#ba1a1a",
+                "on-secondary-container": "#006172",
+                "secondary-container": "#57dffe",
+                "secondary-fixed": "#acedff",
+                "primary-fixed-dim": "#b4c5ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "on-secondary-fixed": "#001f26",
+                "on-background": "#0b1c30",
+                "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "section-margin": "40px",
+                "container-padding-mobile": "20px",
+                "gutter": "16px",
+                "container-padding-tablet": "32px",
+                "stack-gap-sm": "8px",
+                "unit": "4px",
+                "stack-gap-lg": "24px",
+                "stack-gap-md": "16px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Inter"],
+                "headline-md": ["Inter"],
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "display-lg": ["Inter"],
+                "title-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass {
+            background: rgba(248, 249, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, #dbe1ff 0%, transparent 50%),
+                        radial-gradient(at 100% 0%, #acedff 0%, transparent 50%),
+                        radial-gradient(at 100% 100%, #6bff8f 0%, transparent 50%),
+                        radial-gradient(at 0% 100%, #eeefff 0%, transparent 50%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a smiling young professional woman with warm lighting and a soft-focus background, representing a premium user profile. The aesthetic is clean, modern, and high-end, fitting for a sophisticated social application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0okw9oUh0PhQ7hmsQ3Cjk4zW011ANzE10dx06qRI_h685GVqMg63svwD-vl2xv5jyAF0R7oUc0n9nFyIYxzRf5FB0eHd8L9jhl-WVbfUVVULwiksTRZf_aHxTLmotr5NPHkukfhf7Kk1J4XAt-59uawo18KFXXmjCOH95IHVe2OgQDwp61MvxVscFPH4nuWWPB5TtIWi9z4KV_t6NrOkyO1CYDiWZq4KqHMaoGmSDcokZUOP9PcN9LpDxryXVYx8B-6atT0_hoHs">
+</div>
+<span class="text-title-lg font-title-lg font-bold text-primary">Sawa</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-variant/20 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-variant/20 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-28 px-container-mobile max-w-7xl mx-auto">
+<!-- Welcome Hero Section (Asymmetric / Glassmorphism) -->
+<section class="relative overflow-hidden rounded-[28px] mb-8 p-6 mesh-gradient min-h-[160px] flex flex-col justify-end shadow-sm">
+<div class="z-10">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-1">Live Global</h1>
+<p class="font-body-md text-on-surface-variant max-w-[200px]">Connect with the world's best creators in real-time.</p>
+</div>
+<!-- Decorative floating bubbles reminiscent of the user image -->
+<div class="absolute -right-4 -top-4 w-32 h-32 glass rounded-full opacity-50 blur-xl"></div>
+<div class="absolute right-10 bottom-4 w-20 h-20 bg-secondary-container/30 rounded-full blur-lg"></div>
+</section>
+<!-- Category Horizontal Filter -->
+<div class="flex gap-3 overflow-x-auto pb-6 custom-scrollbar mb-4 -mx-container-mobile px-container-mobile">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap shadow-md">All Streams</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Gaming</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Shopping</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Music</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Tech</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Education</button>
+</div>
+<!-- Featured Streams Grid (Bento/Card Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Live Card 1 (Gaming Focus) -->
+<div class="group relative bg-surface-container-lowest rounded-[28px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="aspect-[18/12] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A high-energy esports gaming stream setup featuring a professional player in a dimly lit room with vibrant neon blue and purple LED lighting. In the background, a high-refresh monitor displays a competitive tactical shooter. The atmosphere is intense and immersive, with a high-end cinematic quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM4R1Lb9dCxFcPpm_yvmrKdf5PUQvLUXR9MwyBzb9_gxr0ZBHznzCse627pVKP1TL5mvoqXzJIfR2R0tCGl43He9v2-fyOxl4odC3wd-3w0lduVvi0SIdtgpiEW8FkGeCZgWFvRYelXp4faG3Rn4Irrod3XHCB6kyyqOmpTcAQwfxuJWCTk-T-JTWUWBA352XZMxh8PGDGo3y0nVPpnUrCjUvQmiaJWOo3QU06D_hoFL1L-z70s1EiLfvIxZn2yplf-qp0p2rjO-8">
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="bg-error text-on-error font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1 shadow-md">
+<span class="w-1.5 h-1.5 bg-on-error rounded-full animate-pulse"></span> LIVE
+                        </span>
+<span class="glass px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 4.2k
+                        </span>
+</div>
+</div>
+<div class="p-4 flex gap-3">
+<div class="flex-shrink-0">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A creative 3D avatar character with large expressive eyes and trendy glasses, sitting in a modern gaming chair with futuristic headphones. The style is soft, organic, and colorful, matching the 3D aesthetic of the Sawa brand system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUPXvq0CHI_oGHx6OWOPestIGAzDKRN1UjwHPgpjTUlruTcbUICjFYSeMnYBu5Hgbs9fkT2Jeqgt0XCoVhopjcmEZVxDDBE4Kou14VpOFrzNEaedmxcVw2A84sL3FqYtoPu0Bb_Tpgymk5CE0mnL734Fz83gMA9WN-gVQBOtotdhvOCBkKAdjiunEc8Tf9jiGA6ZkN-ryneQRc0P1XauehDMrB8iDaCXO-Mv3gqW7BPUUc5mD7EmRYrWnVgAZZssGhu-UEOqJuWOo">
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg text-on-surface line-clamp-1">Pro League Finals: EMEA Qualifier</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">@Alex_Gaming • Gaming</p>
+</div>
+</div>
+</div>
+<!-- Live Card 2 (Shopping Focus) -->
+<div class="group relative bg-surface-container-lowest rounded-[28px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="aspect-[18/12] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A bright, aesthetic luxury boutique interior during a live shopping event. A stylish host is showcasing premium leather handbags and designer accessories on a minimalist marble counter. The lighting is soft and golden, creating an inviting and sophisticated shopping atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOwWpZ5S90esCcleL3rZ-sOjLbsAE3EL7OrQT6HbH0eWKem2TZhTtLe4b248DbVCMNJb-jQadFNUC1zMaU23jHBi7p3t5NaAiGhHcYc0JE5dts9Fe5G9XpPRCdDVB-T5UNszPCCAHL5vidFDtSpn6GY6aTxRyyFZz5w7FjnyP8YVXIp97-n78K5XhuLTwsNQeFutuZF4kmlIkug0g3xoQ80ehyswEKAvCf_V9K47blsLVFjml-tEDr2bZgfJuPrL_lzi4dN5IVIIw">
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="bg-error text-on-error font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1 shadow-md">
+<span class="w-1.5 h-1.5 bg-on-error rounded-full animate-pulse"></span> LIVE
+                        </span>
+<span class="glass px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 12.8k
+                        </span>
+</div>
+</div>
+<div class="p-4 flex gap-3">
+<div class="flex-shrink-0">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A chic 3D character with stylish hair and fashionable accessories, representing a high-end lifestyle influencer. The lighting is soft, warm, and professional, maintaining a consistent high-fidelity 3D aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQn8DWJYbGFbf13w-hzhG61Q29vMdF2imgE5Nk3v2b8J_S6rlN4H4VBAWT-Q_ngQ4gGR2FOsXno6z7mO54yYGus1fJy15r6C-XavkrIyOMc7Ju-J5c2gydQ0ypFEY_23_cBFcvuQySdBuiFFkUbUPhKh9ozZ9qJ6Hk4kn5jCAV8iOQtEINt50yuBqna0d2aZiu_3cZb93paR2lv4MJo688KRLD6FzQKD99bE53scvgjMPxK2YXUnGyUn4Bnr_OW-OtpwBQ0OyQUgc">
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg text-on-surface line-clamp-1">Luxury Drop: Exclusive Summer Collection</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">@Maya_Styles • Shopping</p>
+</div>
+</div>
+</div>
+<!-- Live Card 3 (Music Focus) -->
+<div class="group relative bg-surface-container-lowest rounded-[28px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="aspect-[18/12] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A close-up shot of a professional DJ controller with glowing buttons and faders, set in a trendy rooftop lounge at sunset. The background shows a soft bokeh of city lights and a warm orange sky. The scene is atmospheric, energetic, and polished." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ3kgu_d_F_tVElsfrQBVy1UUIdf0HrXCKpJJmvEkOfaMiWYDDHmV8bQRTM_4jusg3oVrQ18xBfJzervxUoFFIicNJEdONe2OYtugB3zTN2RzmgtN-crLM7PvMYPed1cYvizrJz_ehKiie-BEVQdtWa5gclpAWq0GJqdCeEyX9ex-c5nW1b7LpDnJKTJtntlDMxEY8xgPzG05fsRQaLeKbFsANio2tqPwP4iZX4dv1zvRcKX9DRB9KtmJtSa6w0F-LcwE6pNnY1q4">
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="bg-error text-on-error font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1 shadow-md">
+<span class="w-1.5 h-1.5 bg-on-error rounded-full animate-pulse"></span> LIVE
+                        </span>
+<span class="glass px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 2.1k
+                        </span>
+</div>
+</div>
+<div class="p-4 flex gap-3">
+<div class="flex-shrink-0">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A cool 3D character wearing a cap and modern streetwear, holding professional headphones. The style is vibrant and friendly, with a high-end rendered look consistent with the global Sawa brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkcBZet_SKnQ85l5BHh2RPK7nemh5_O5MXIp1cqmopFc9Pyp6xk-M0gqryBr0qojkQzrqWw9LoFFYc6U-0mnR4uiNULqvzOncJskVyqegnJscT39ZT6fgta8DWwHMT3lp_dC8OK2g3_HN0B3uzqtI592A1hSHs2I1HjJryTPhRWIyp-SlVmJTKClxL6NDRpeVZMT9gRKwYKVvdNqO6hwXfdEmTNIwjLIudxToSI5pqX1m2IRNeqFzpoifpKDL_Gx_38-9WBzdEoj8">
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg text-on-surface line-clamp-1">Sunset Chill Beats &amp; Deep House</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">@DJ_Zen • Music</p>
+</div>
+</div>
+</div>
+<!-- Live Card 4 (Education/Art) -->
+<div class="group relative bg-surface-container-lowest rounded-[28px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="aspect-[18/12] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An artistic studio space with a large digital tablet and multiple monitors showing complex 3D modeling and digital painting. The room is filled with soft natural light from a window. The aesthetic is creative, high-tech, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN-tK78yejKoP1il8rUgZ618WW9xzIA0aZ-GYuT4rqI9s7tkLgb6v8YBnkBvgYo1OsH6wapSyG0lV-ZXuDY_E82x60xjyh39yYGU1LuVUQ57XOHeYOt8GbVAQm7x4NOJoXegbps3f-b_029CQcGf3ivnaAZ-H7WTGWn3b2TXldfsjLZruyCYv7jCJSivfULTUkLB2txXkVlj_5rqx23NWC4T4szKQ4hQHGDo0ojGD-1FiSbD1ufQPmJlSBZvzfIaRVTHfLamRwbpw">
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="bg-error text-on-error font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1 shadow-md">
+<span class="w-1.5 h-1.5 bg-on-error rounded-full animate-pulse"></span> LIVE
+                        </span>
+<span class="glass px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 850
+                        </span>
+</div>
+</div>
+<div class="p-4 flex gap-3">
+<div class="flex-shrink-0">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A sophisticated 3D female character with a creative and artistic look, wearing a colorful scarf and modern accessories. The image is rendered with premium lighting and texture, reflecting an intellectual and artistic personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU1iRkx40oUm6ydRQWwZHhimO5ZT0-xNrBsIKCsxwMkqY3GPw6a-44AX8CdRNWaDL1oRQY6cs5OcgDW2Fmnnih217tqKHdth4IvCIgaWNm0ssWHq0Fo475KD9OB7DrPA4-P7yRIQMb1O-lV_VyVT6l7qQLZpymCf1t1052TuyixFUU-SrrVkNRj3tUT9CrR73lMxL1kDpCZFEk0mV_Xb563fJKb7tKF1aQfXxqarS_UsPpDuJq0C7RW7iGw48svEvqRsW-VeQSUTI">
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-lg text-title-lg text-on-surface line-clamp-1">Masterclass: Digital World Building</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">@Art_Studio • Education</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Go Live Floating Action Button (FAB) -->
+<button class="fixed bottom-24 right-6 z-[45] flex items-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary text-on-primary shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videocam</span>
+<span class="font-label-md text-label-md font-bold">Go Live</span>
+</button>
+<!-- Bottom Navigation Bar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold w-16 h-16 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm mt-1">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Groups</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Prevent default for demo
+                e.preventDefault();
+                
+                // Clear active states
+                document.querySelectorAll('nav a').forEach(l => {
+                    l.classList.remove('text-primary', 'dark:text-primary-fixed-dim', 'font-bold');
+                    l.classList.add('text-outline', 'dark:text-outline-variant');
+                    const icon = l.querySelector('.material-symbols-outlined');
+                    if(icon) icon.style.fontVariationSettings = "'FILL' 0";
+                });
+                
+                // Set current as active
+                link.classList.add('text-primary', 'dark:text-primary-fixed-dim', 'font-bold');
+                link.classList.remove('text-outline', 'dark:text-outline-variant');
+                const icon = link.querySelector('.material-symbols-outlined');
+                if(icon) icon.style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+
+        // Scroll shadow for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

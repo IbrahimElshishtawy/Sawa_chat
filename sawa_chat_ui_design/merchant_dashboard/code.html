@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa Merchant Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .glass-dark {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .chart-bar {
+            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#001f26",
+                        "tertiary": "#006229",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#006172",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "outline": "#737686",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#57dffe",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary": "#00687a",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#0b1c30",
+                        "outline-variant": "#c3c6d7",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-container": "#007e37",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#0053db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "20px",
+                        "section-margin": "40px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "24px",
+                        "gutter": "16px",
+                        "stack-gap-sm": "8px",
+                        "container-padding-tablet": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution studio portrait of a young entrepreneur smiling confidently against a minimalist soft grey background. The lighting is bright and airy, reflecting a clean and sophisticated light-mode UI aesthetic. The subject wears a sharp navy blazer, suggesting professional success and modern merchant identity. The overall mood is approachable, trustworthy, and technologically forward-thinking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuLkkGuYV4GaQoerYxSU-ex4ZXuhdn4rauFw22S3wXIzk1KtqwTmhK78GqpuAPS_eBVsoNSSSUfUDGjQOK2Lo1koexmvo88KUOi5mb8gy-06A6E6u9leOclXtMNcJnJTKr5Bwx-tM_PF8ldUXOYCSTi4h-flZcV9uVhaLFby0F8lRmRjRV3Lr9_re5Jzi3QubEm_LdvI6Whq1IY-DOLjLoQzKbJnanse4rOPW8iGvaxIznDK08RqK5udopw4270xEGHWO3VhS4Epg"/>
+</div>
+<span class="text-primary font-title-lg text-title-lg font-bold">Sawa</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Sidebar (Desktop) / Hidden on Mobile -->
+<aside class="hidden md:flex fixed inset-y-0 left-0 z-[60] flex-col p-4 h-full w-80 bg-surface shadow-xl">
+<div class="flex flex-col gap-6 pt-20">
+<div class="flex items-center gap-4 p-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-primary">Sawa User</p>
+<p class="font-label-md text-label-md text-outline">@sawaconnect</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-xl translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">My Products</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md text-body-md">Orders</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-body-md text-body-md">Messages</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Store Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pt-20 pb-28 px-container-mobile md:ml-80">
+<!-- Header Section -->
+<section class="mb-stack-gap-lg">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-1">Merchant Overview</h1>
+<p class="font-body-md text-body-md text-outline">Welcome back! Here's what's happening today.</p>
+</section>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-section-margin">
+<!-- Active Listings -->
+<div class="bg-surface-container-low p-5 rounded-3xl shadow-sm border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">list_alt</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Active Listings</p>
+<p class="font-headline-md text-headline-md text-on-surface mt-1">128</p>
+</div>
+<!-- Pending Orders -->
+<div class="bg-surface-container-low p-5 rounded-3xl shadow-sm border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-secondary">pending_actions</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Pending Orders</p>
+<div class="flex items-baseline gap-2">
+<p class="font-headline-md text-headline-md text-on-surface mt-1">14</p>
+<span class="text-error font-label-md text-label-md">+2 new</span>
+</div>
+</div>
+<!-- Customer Messages -->
+<div class="bg-surface-container-low p-5 rounded-3xl shadow-sm border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-tertiary">mail</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Messages</p>
+<p class="font-headline-md text-headline-md text-on-surface mt-1">8</p>
+</div>
+<!-- Store Rating -->
+<div class="bg-surface-container-low p-5 rounded-3xl shadow-sm border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-yellow-400/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-yellow-600" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Store Rating</p>
+<div class="flex items-center gap-1 mt-1">
+<p class="font-headline-md text-headline-md text-on-surface">4.9</p>
+<span class="text-outline font-label-sm text-label-sm">/ 5.0</span>
+</div>
+</div>
+</div>
+<!-- Sales Chart & Recent Messages Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-gap-lg">
+<!-- Sales Chart Section -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Sales Performance</h2>
+<p class="font-label-md text-label-md text-outline">Last 7 Days revenue growth</p>
+</div>
+<select class="bg-surface-variant/20 border-none rounded-xl text-label-md font-label-md px-4 py-2 outline-none">
+<option>This Week</option>
+<option>Last Month</option>
+</select>
+</div>
+<div class="relative h-64 flex items-end justify-between gap-2 px-2">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10">
+<div class="border-b border-outline"></div>
+<div class="border-b border-outline"></div>
+<div class="border-b border-outline"></div>
+<div class="border-b border-outline"></div>
+</div>
+<!-- Bars -->
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="chart-bar w-full max-w-[40px] bg-primary/20 rounded-t-lg hover:bg-primary transition-colors cursor-pointer" style="height: 45%;"></div>
+<span class="font-label-sm text-label-sm text-outline">Mon</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="chart-bar w-full max-w-[40px] bg-primary/20 rounded-t-lg hover:bg-primary transition-colors cursor-pointer" style="height: 60%;"></div>
+<span class="font-label-sm text-label-sm text-outline">Tue</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="chart-bar w-full max-w-[40px] bg-primary rounded-t-lg hover:opacity-80 transition-colors cursor-pointer" style="height: 85%;"></div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Wed</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="chart-bar w-full max-w-[40px] bg-primary/20 rounded-t-lg hover:bg-primary transition-colors cursor-pointer" style="height: 55%;"></div>
+<span class="font-label-sm text-label-sm text-outline">Thu</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="chart-bar w-full max-w-[40px] bg-primary/20 rounded-t-lg hover:bg-primary transition-colors cursor-pointer" style="height: 70%;"></div>
+<span class="font-label-sm text-label-sm text-outline">Fri</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="chart-bar w-full max-w-[40px] bg-primary/20 rounded-t-lg hover:bg-primary transition-colors cursor-pointer" style="height: 40%;"></div>
+<span class="font-label-sm text-label-sm text-outline">Sat</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="chart-bar w-full max-w-[40px] bg-primary/20 rounded-t-lg hover:bg-primary transition-colors cursor-pointer" style="height: 30%;"></div>
+<span class="font-label-sm text-label-sm text-outline">Sun</span>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/10 flex gap-8">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Total Revenue</p>
+<p class="font-headline-md text-headline-md text-on-surface">$12,450.00</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Avg. Order</p>
+<p class="font-headline-md text-headline-md text-on-surface">$89.30</p>
+</div>
+</div>
+</div>
+<!-- Customer Messages Section -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-title-lg text-title-lg text-on-surface">Recent Messages</h2>
+<button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Message 1 -->
+<div class="flex gap-4 p-3 hover:bg-surface-variant/20 rounded-2xl transition-colors cursor-pointer group">
+<div class="relative flex-shrink-0">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait of a customer with a warm, inquisitive expression, looking towards the camera. They are in a blurred outdoor cafe setting with natural, soft sunlight. The photo has a professional lifestyle aesthetic with a focus on human connection and trust. Colors are natural and harmonious with a blue and white UI palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfdSk7v-DEh6cSiiJTx2yvyjZhX5RazijgAnkMJXR5YRlm35WKcAJL5rZqZIl_-yDJCEyIud0FU9rPvazbdzWkaxjldWDuy2apvsvJBeiEFMi8rYlmhI9kfoGyBES8VKMld_HTWH6c3Wv4im_SlZhJUfRG5msIa0dmtrgEipv8dUANn6tBSHYl3fDCaGe-elkQL7PuCEr-N4xoEGTTepANSooGUFHrMFytgHJSj2x66L3GJNVjxFEwSNEX4cK9S3geVD0tI79Ooxg"/>
+</div>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary border-2 border-white rounded-full"></span>
+</div>
+<div class="min-w-0">
+<div class="flex justify-between items-center gap-2">
+<p class="font-label-md text-label-md text-on-surface font-bold truncate">Alex Rivera</p>
+<span class="font-label-sm text-label-sm text-outline">12m</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Is the leather jacket still available in XL size?</p>
+</div>
+</div>
+<!-- Message 2 -->
+<div class="flex gap-4 p-3 hover:bg-surface-variant/20 rounded-2xl transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of a smiling woman in a creative office environment with soft bokeh background. She is wearing a modern mustard yellow sweater that contrasts nicely with the light-mode UI colors. The lighting is diffused and professional, conveying a sense of friendly customer interaction and digital community engagement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6aJESBtm6DnUQ11bh55QWajXU6RC5p4iKaOjaxL5j4YkyF6mKwpLjzbJRK5MhmR1Fvym9M5QWQIHQOzSi931cyyB6bGVF53zIYUPbRe2MsLaTwHkUWmZyA-30hwMDZZxV0HIQWgK1Mmx1aytC7NuNur8tbKG95z8dVmM4TziDh3dYE91GmZWmQ6ik_b_JgPzp9LvWilSaPsixnG3J1qlTLyQcaw44F92JVpZk_MoCRdFVQgCCfKfsQLj_D1DoW2M41saTgQXaHFQ"/>
+</div>
+<div class="min-w-0">
+<div class="flex justify-between items-center gap-2">
+<p class="font-label-md text-label-md text-on-surface font-bold truncate">Sarah Chen</p>
+<span class="font-label-sm text-label-sm text-outline">1h</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">I loved the previous order! Just checking on the shipping...</p>
+</div>
+</div>
+<!-- Message 3 -->
+<div class="flex gap-4 p-3 hover:bg-surface-variant/20 rounded-2xl transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A candid profile shot of a man wearing glasses, looking at a tablet screen with a satisfied expression. The background is a clean, modern apartment interior with plants and high-key lighting. The aesthetic is minimal and high-end, representing a modern consumer who values quality and design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALS9ZiJT24uteeMiqCKBjfnqp_R4zHcLSvvkoOEdrHG5oD2ersTPrP2VNoxM6fZFDH_3F8GlnBbTgApn9X4ITXW1JKMf1wNCW8ps9GMMnPdS0ldk-pec5sC_jQZkfMRioAGTrSTvOaEE9o9JTmVjwIfV32O0jLduca2FJ8M1QVIDM1t86WLtM4qczUfOKkY0kNxl0uRa8zIpySC6je3Bb3DrJQWeAjYEZKCzixIhB4Aw4Mmsc2LDlXeIR53ZNUlOih87f6ugFf0SU"/>
+</div>
+<div class="min-w-0">
+<div class="flex justify-between items-center gap-2">
+<p class="font-label-md text-label-md text-on-surface font-bold truncate">Marc Dupont</p>
+<span class="font-label-sm text-label-sm text-outline">3h</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Can I get a discount if I buy 5 units of the wireless headphones?</p>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 bg-surface-container-high rounded-2xl text-primary font-label-md text-label-md hover:bg-surface-container-highest transition-colors">
+                        Go to Messenger
+                    </button>
+</div>
+</div>
+</div>
+<!-- Pending Tasks / Quick Actions Section -->
+<section class="mt-section-margin">
+<h2 class="font-title-lg text-title-lg text-on-surface mb-stack-gap-md">Urgent Orders</h2>
+<div class="bg-surface-container-lowest overflow-hidden rounded-3xl border border-outline-variant/20 shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/10">
+<th class="p-4 font-label-md text-label-md text-outline">Order ID</th>
+<th class="p-4 font-label-md text-label-md text-outline">Customer</th>
+<th class="p-4 font-label-md text-label-md text-outline">Amount</th>
+<th class="p-4 font-label-md text-label-md text-outline">Status</th>
+<th class="p-4 font-label-md text-label-md text-outline text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-variant/5 transition-colors">
+<td class="p-4 font-label-md text-label-md text-on-surface">#ORD-9021</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-[10px] flex items-center justify-center text-on-primary-container">JD</div>
+<span class="font-body-md text-body-md text-on-surface">John Doe</span>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">$142.00</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[12px] font-medium bg-secondary-container/30 text-on-secondary-container">Processing</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-primary font-label-md text-label-md hover:bg-primary/10 px-3 py-1 rounded-lg">Ship Now</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/5 transition-colors">
+<td class="p-4 font-label-md text-label-md text-on-surface">#ORD-8842</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-[10px] flex items-center justify-center text-on-secondary-container">MM</div>
+<span class="font-body-md text-body-md text-on-surface">Maria Miller</span>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">$56.50</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[12px] font-medium bg-error-container text-on-error-container">Delayed</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-primary font-label-md text-label-md hover:bg-primary/10 px-3 py-1 rounded-lg">Update</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- FAB: Add New Product -->
+<button class="fixed bottom-24 right-container-padding-mobile md:bottom-12 md:right-12 w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+</nav>
+<script>
+        // Simple entry animation for chart bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach((bar, index) => {
+                const finalHeight = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = finalHeight;
+                }, index * 100);
+            });
+        });
+
+        // Toggle mobile drawer placeholder (optional functionality)
+        const profileAvatar = document.querySelector('header .rounded-full');
+        profileAvatar.addEventListener('click', () => {
+            console.log('Open Profile Drawer');
+            // This would normally trigger the NavigationDrawer component logic
+        });
+    </script>
+</body></html>

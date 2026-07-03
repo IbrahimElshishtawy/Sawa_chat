@@ -1,0 +1,402 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sawa - Notification Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#0b1c30",
+                    "surface-tint": "#0053db",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-secondary-container": "#006172",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#57dffe",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "outline": "#737686",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "secondary-fixed": "#acedff",
+                    "on-primary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#00687a",
+                    "on-surface-variant": "#434655",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-primary-container": "#eeefff",
+                    "inverse-primary": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "surface": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "surface-bright": "#f8f9ff",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-container": "#007e37",
+                    "on-primary-fixed": "#00174b",
+                    "inverse-surface": "#213145",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#eff4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "container-padding-tablet": "32px",
+                    "unit": "4px",
+                    "stack-gap-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .md3-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 32px;
+        }
+        .md3-switch input { opacity: 0; width: 0; height: 0; }
+        .md3-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #737686;
+            transition: .4s;
+            border-radius: 32px;
+        }
+        .md3-slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        input:checked + .md3-slider { background-color: #004ac6; }
+        input:checked + .md3-slider:before { transform: translateX(20px); }
+        
+        .glass-header {
+            backdrop-filter: blur(20px);
+            background: rgba(248, 249, 255, 0.8);
+        }
+        .bento-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">arrow_back</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary">Notification Settings</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">search</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional high-quality studio portrait of a modern tech professional with a friendly smile, clean lighting, and a soft minimalist background. The aesthetic is bright and sophisticated, using a light-mode color palette of soft whites and blues, perfectly aligned with a premium social app brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXu9_OtgCxq4xBZ0JylnPC3_lmobxOFJ6SvZdKoUwUG5-Y2zLAJcvBrm3iERR0CzvcmjZUT13oZt8jCksT8RyIE9EbxnLBIVqiC_i7Sd2kWgb3kHIZkGSDwS48F60DnEEbYiO5Nr34xjLmJbySScNpYGKgcZydHe2VNalTglT87kcnCEG5rvqJgOTVPY5ke7tUv9UAxoZPA0Kp9kZ-7ZbpDMHqrs0trbpsX_lLUCu-JjzxxgNfkj7PugsA7PSL3AkjW4NqfHWcTho">
+</div>
+</div>
+</header>
+<main class="pt-20 pb-28 px-container-padding-mobile max-w-2xl mx-auto space-y-6">
+<!-- Global Controls / Quiet Hours -->
+<section class="space-y-4">
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider px-1">General Control</h2>
+<div class="bento-card rounded-3xl p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">bedtime</span>
+</div>
+<div>
+<p class="font-title-lg text-body-lg font-semibold">Quiet Hours</p>
+<p class="font-body-md text-label-md text-outline">Pause all notifications temporarily</p>
+</div>
+</div>
+<label class="md3-switch">
+<input type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-surface-variant/30">
+<p class="font-body-md text-body-md text-on-surface-variant">Active Schedule</p>
+<button class="flex items-center gap-2 text-primary font-semibold">
+<span class="font-label-md text-label-md">22:00 - 07:00</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Categories Bento Grid -->
+<section class="space-y-4">
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider px-1">Notification Categories</h2>
+<!-- Individual Cards for Categories -->
+<div class="grid grid-cols-1 gap-3">
+<!-- Chat Notifications -->
+<div class="bento-card rounded-3xl p-4 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<span class="font-title-lg text-body-lg font-semibold">Chat</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] uppercase text-outline font-bold">Push</span>
+<label class="md3-switch scale-75">
+<input checked="" type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] uppercase text-outline font-bold">Sound</span>
+<label class="md3-switch scale-75">
+<input checked="" type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low p-3 rounded-2xl">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">music_note</span>
+<span class="font-label-md text-label-md">Aurora Chime</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg">chevron_right</span>
+</div>
+</div>
+<!-- Groups -->
+<div class="bento-card rounded-3xl p-4 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<span class="font-title-lg text-body-lg font-semibold">Groups</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] uppercase text-outline font-bold">Push</span>
+<label class="md3-switch scale-75">
+<input checked="" type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] uppercase text-outline font-bold">Sound</span>
+<label class="md3-switch scale-75">
+<input type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Channels & Live Streams (Horizontal Layout for Variety) -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bento-card rounded-3xl p-4 shadow-sm space-y-3">
+<div class="w-10 h-10 rounded-2xl bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">podcasts</span>
+</div>
+<p class="font-title-lg text-body-md font-semibold">Channels</p>
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase text-outline font-bold">Alerts</span>
+<label class="md3-switch scale-75">
+<input checked="" type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+</div>
+<div class="bento-card rounded-3xl p-4 shadow-sm space-y-3">
+<div class="w-10 h-10 rounded-2xl bg-on-secondary-fixed-variant/10 flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">live_tv</span>
+</div>
+<p class="font-title-lg text-body-md font-semibold">Live Streams</p>
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase text-outline font-bold">Alerts</span>
+<label class="md3-switch scale-75">
+<input type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+</div>
+</div>
+<!-- Calls -->
+<div class="bento-card rounded-3xl p-4 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">call</span>
+</div>
+<span class="font-title-lg text-body-lg font-semibold">Calls</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] uppercase text-outline font-bold">Push</span>
+<label class="md3-switch scale-75">
+<input checked="" type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between bg-surface-container-low p-3 rounded-2xl">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">vibration</span>
+<span class="font-label-md text-label-md">Standard Vibration</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Communities -->
+<div class="bento-card rounded-3xl p-4 shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<p class="font-title-lg text-body-lg font-semibold">Communities</p>
+<p class="font-body-md text-label-sm text-outline">Manage 12 communities</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Advanced Settings -->
+<section class="space-y-4">
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider px-1">Advanced Settings</h2>
+<div class="bento-card rounded-3xl overflow-hidden shadow-sm">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer border-b border-surface-variant/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">badge</span>
+<span class="font-body-md text-body-md">Badge Count</span>
+</div>
+<span class="text-outline font-label-md">Unread Messages</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer border-b border-surface-variant/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">visibility_off</span>
+<span class="font-body-md text-body-md">Preview in Notifications</span>
+</div>
+<label class="md3-switch scale-75">
+<input checked="" type="checkbox">
+<span class="md3-slider"></span>
+</label>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">history</span>
+<span class="font-body-md text-body-md">Reset All Notifications</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-14 h-14">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold w-14 h-14">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for switches
+        document.querySelectorAll('.md3-switch input').forEach(sw => {
+            sw.addEventListener('change', function() {
+                const parent = this.closest('.bento-card');
+                if (this.checked) {
+                    parent.style.borderColor = 'rgba(0, 74, 198, 0.2)';
+                } else {
+                    parent.style.borderColor = 'rgba(0, 0, 0, 0.05)';
+                }
+            });
+        });
+    </script>
+</body></html>

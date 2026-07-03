@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa | Storage Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-container": "#006172",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container": "#e5eeff",
+                    "outline": "#737686",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#57dffe",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface": "#0b1c30",
+                    "outline-variant": "#c3c6d7",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-tint": "#0053db"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "container-padding-tablet": "32px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .storage-bar-segment {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            background-color: #f8f9ff;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-2 -ml-2" onclick="window.history.back()">arrow_back</button>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Storage Usage</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-outline hover:opacity-80 p-2">search</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a young professional user for a tech application, captured in soft, natural studio lighting with a neutral gray background. The user has a warm, approachable expression. High-resolution photography consistent with a premium lifestyle brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXYXJLhSAJWW0pyqmjo92jl1zYd8KPtTjebM9ORG1iNaja6UP6aaG_yQCwt4IfzWCgE1njsYzuaJFIFyFL1_Zg4qf3RBtJ75EZ_610Cd91ozurAh8vtGcAmaEMoKzweg0_n_BT84CU4rdPLLCcmzyZWs-4Co_HJ2ThSMFSHn6O4Tbr5qaeEyMMLbWmhzYssMKd5_JjCJ7mKDOKkuwoukn46zqSKQMXo3XQsvrBy7UqgfLKu-wo7qPecLH38RpAQvNkLMqXUZ04MSM"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-28 px-container-padding-mobile max-w-2xl mx-auto space-y-6">
+<!-- Used Space Visualization (Chart) -->
+<section class="glass-card rounded-3xl p-6 shadow-sm">
+<div class="flex justify-between items-end mb-4">
+<div>
+<h2 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-1">Total Storage</h2>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">12.4 GB <span class="text-body-md font-body-md text-outline font-normal">of 64 GB</span></p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-primary font-bold">19% Used</p>
+</div>
+</div>
+<div class="h-4 w-full bg-surface-container rounded-full overflow-hidden flex mb-6">
+<div class="storage-bar-segment h-full bg-primary" style="width: 12%"></div>
+<div class="storage-bar-segment h-full bg-secondary" style="width: 5%"></div>
+<div class="storage-bar-segment h-full bg-tertiary" style="width: 2%"></div>
+</div>
+<div class="grid grid-cols-2 gap-y-3">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Media (8.2 GB)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Cache (3.1 GB)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Database (1.1 GB)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-container"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Free (51.6 GB)</span>
+</div>
+</div>
+</section>
+<!-- Cache Cleaner CTA -->
+<section class="bg-primary-container rounded-3xl p-6 flex items-center justify-between shadow-sm relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="font-title-lg text-title-lg text-on-primary-container mb-1">Clean up cache</h3>
+<p class="font-body-md text-body-md text-on-primary-container opacity-80">Free up 3.1 GB of temporary files</p>
+</div>
+<button class="relative z-10 bg-white text-primary px-6 py-2.5 rounded-full font-label-md text-label-md font-bold shadow-lg hover:scale-105 active:scale-95 transition-all">
+                Clean Now
+            </button>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">cleaning_services</span>
+</div>
+</section>
+<!-- Media Management Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-center px-2">
+<h2 class="font-title-lg text-title-lg text-on-surface">Manage Media</h2>
+<button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Large Files Card -->
+<div class="glass-card rounded-3xl p-5 shadow-sm hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-2xl bg-secondary-container/30 flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined">hard_drive_2</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Large Files</h4>
+<p class="font-body-md text-body-md text-outline">4.5 GB total</p>
+</div>
+<!-- Duplicate Media Card -->
+<div class="glass-card rounded-3xl p-5 shadow-sm hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-2xl bg-tertiary-fixed/30 flex items-center justify-center text-tertiary mb-3">
+<span class="material-symbols-outlined">content_copy</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Duplicates</h4>
+<p class="font-body-md text-body-md text-outline">820 MB found</p>
+</div>
+</div>
+<!-- Chat Specific Storage -->
+<div class="glass-card rounded-3xl overflow-hidden shadow-sm">
+<div class="p-4 border-b border-outline-variant/10">
+<h4 class="font-label-md text-label-md text-outline uppercase tracking-wider">Top Chats by Storage</h4>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<!-- Chat Item 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container/30 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A vibrant, stylized minimalist icon for a group chat named Design Collective, featuring colorful geometric shapes and clean lines on a soft pastel background. The style is modern, professional, and visually engaging, representing a creative workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi69HUAtmG3Kdqe1_tURLm6Tol8I_dx8kU60BCrEOJ0V12QCEV90FwuPJvoCc8EP6LnXN8Df69hxiWnoH00gMaJqfsQFbW6G7xOdaqkuSiqOOTb2hAhIgQDYHEuZYVQve7yPY8JVuKYFMxDAxfQyfE47JJE1IrhBme_Y4rgq5k40XEWvGBl4IicmWFoGqq3QHOvXqprb6G5qTTvqxs5XSyQYW0OkHegtjEkfTwVBT7x8Kv7mT8GrRp0rB0q9Q4aN4i7Te8BZN--Uc"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Design Collective</p>
+<p class="font-body-md text-body-md text-outline">2.4 GB</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Chat Item 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container/30 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional business avatar for an individual named Sarah Jenkins, looking confident and smiling. The background is a clean, corporate office setting with soft focus. The lighting is bright and airy, reflecting a high-quality light-mode UI design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVPbwL42RsyDN6dwPM8UmDc-ZghwFZmyd8RhWvdmk40877BJUkDAf0Bv-QDkQmH7yhh-wl3HQS190jJGEZFVkSwlpXILWmdMdglavMInDmoDewvtNuBtn98umnXSAVZ17bu-R5xP3DKVULc7PtklBJG0sl9vmysHAaMlMCMBIwvWQG4mlP0jjsGvwwvf2a9y-4yClZSpJfwI93Y5_QaA1k4-YlmvBxA1wxIFePvuWfLXA1sduYSJkp_wto83PVqQlEGI4Z0ybJWbo"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Sarah Jenkins</p>
+<p class="font-body-md text-body-md text-outline">1.1 GB</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Chat Item 3 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container/30 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-surface-variant overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Project Sawa Team</p>
+<p class="font-body-md text-body-md text-outline">890 MB</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Auto-Delete Settings -->
+<section class="space-y-4">
+<h2 class="font-title-lg text-title-lg text-on-surface px-2">Automation</h2>
+<div class="glass-card rounded-3xl p-2 shadow-sm">
+<!-- Keep Media Setting -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">auto_delete</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Auto-delete old media</p>
+<p class="font-body-md text-body-md text-outline">Delete files older than 6 months</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Data Saver -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">high_quality</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Upload quality</p>
+<p class="font-body-md text-body-md text-outline">Optimized (Recommended)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm mt-1">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-transform duration-200 p-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the clean button
+        const cleanBtn = document.querySelector('button.bg-white');
+        if (cleanBtn) {
+            cleanBtn.addEventListener('click', () => {
+                const originalText = cleanBtn.textContent;
+                cleanBtn.textContent = 'Cleaning...';
+                cleanBtn.disabled = true;
+                
+                setTimeout(() => {
+                    cleanBtn.textContent = 'Done!';
+                    cleanBtn.classList.remove('bg-white', 'text-primary');
+                    cleanBtn.classList.add('bg-tertiary', 'text-white');
+                    
+                    // Reset visualization for effect
+                    const segments = document.querySelectorAll('.storage-bar-segment');
+                    if (segments[1]) segments[1].style.width = '0%';
+                }, 2000);
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa - Incoming Call</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002109",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed": "#acedff",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-secondary-container": "#006172",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary-container": "#007e37",
+                    "primary": "#004ac6",
+                    "on-background": "#0b1c30",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#2563eb",
+                    "surface-tint": "#0053db",
+                    "secondary": "#00687a",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "on-surface-variant": "#434655",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "surface-dim": "#cbdbf5",
+                    "outline": "#737686",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary": "#006229",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-container": "#57dffe",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .pulse-outer {
+            animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        .pulse-inner {
+            animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite 0.5s;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.6; }
+            80%, 100% { transform: scale(2.2); opacity: 0; }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .gradient-mesh {
+            background: radial-gradient(circle at 0% 0%, #004ac6 0%, transparent 50%),
+                        radial-gradient(circle at 100% 0%, #00687a 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, #2563eb 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, #57dffe 0%, transparent 50%);
+            background-color: #0b1c30;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background overflow-hidden h-screen w-full font-body-md text-body-md">
+<!-- Screen Narrative: Suppressing navigation shell as this is a transactional focus-screen (Incoming Call) -->
+<!-- Animated Mesh Background -->
+<div class="fixed inset-0 z-0 gradient-mesh overflow-hidden">
+<!-- Floating Fluid element from placeholder image inspiration -->
+<div class="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-[120%] h-[120%] bg-cover bg-center float-animation" data-alt="A high-end 3D digital render of fluid, translucent cyan and deep blue ribbons weaving through a dark, bokeh-filled space. The ribbons have a glass-like quality with subtle internal glows and reflections. The atmosphere is sophisticated and energetic, matching a premium social app brand with smooth depth of field and soft lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQ3U3SJVFTL-t81tpsE9P3deYcACHBqA6jwULXMzLnSEoFZFmCMmIdJtfdhkwnCzITPS9Dpg8jtUjJyaZ8E8kjv646WUUaQJltTswC-kQY0tmoZZ7i0w58i0fIj3yCyBwczjXMj3e5VO_f5o2DtQ4IsDhJkhlUPNX1P12kPJigoJ-AbH5NemYbVlSRcFuNV8GYKduMUUTTrZNgEwzqTYR6kUkRx3-tJ3bWn62HEdGk_3npuRweBSKyhTq-e63vskUiYcQFK1EG-T4')">
+</div>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 h-screen w-full flex flex-col items-center justify-between py-16 px-container-mobile sm:px-container-padding-tablet">
+<!-- Header Info -->
+<div class="flex flex-col items-center text-center space-y-2 pt-8">
+<span class="font-label-md text-label-md tracking-widest text-primary-fixed uppercase opacity-80">Incoming Call</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile sm:font-headline-lg sm:text-headline-lg text-white font-bold tracking-tight">Elias Thorne</h1>
+<p class="font-body-md text-body-md text-secondary-fixed opacity-90">Sawa Connect • Voice Call</p>
+</div>
+<!-- Central Avatar with Pulse -->
+<div class="relative flex items-center justify-center">
+<!-- Pulsing Rings -->
+<div class="absolute w-48 h-48 rounded-full border-2 border-secondary-container/40 pulse-outer"></div>
+<div class="absolute w-48 h-48 rounded-full border-2 border-secondary-container/20 pulse-inner"></div>
+<!-- Avatar Container -->
+<div class="relative w-44 h-44 rounded-full p-1.5 bg-gradient-to-tr from-primary to-secondary shadow-2xl">
+<div class="w-full h-full rounded-full overflow-hidden border-4 border-background/20 relative">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a charismatic man in his early 30s with a warm, friendly expression. He has short dark hair and is wearing a sleek, modern navy blazer against a minimalist soft gray background. The lighting is soft and cinematic, emphasizing high-quality photography and a premium lifestyle brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9MGNmQLCUGrsfAAHrKMxvAnXCrly2PAc2QiLw-U67W5IeZHNHx_ddQFBzT6Er21uEBFu4IQUJqUH9Zbw3NWG5Cf-htHaOuYH3SChCEogeU8emVxSl_X1k_m7x1G_zXswz8pBZVKAJDAcpfeqVvF5sQWl4YREsOouHA3YLwJOQ_F8b6sG9cbRVkkbQgJttWgITmkyO4CZWescAG2ZbFPYGpueAP94fubjXtFYEsksHs97poi3omb4iEQoa4YcIJZ2eMziwG6raAEA">
+<!-- Identity Badge -->
+<div class="absolute bottom-2 right-2 bg-secondary text-white p-1 rounded-full shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Controls -->
+<div class="w-full max-w-sm space-y-12 pb-8">
+<!-- Secondary Actions -->
+<div class="flex justify-around items-center px-8">
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-12 h-12 glass-card rounded-full flex items-center justify-center text-white group-hover:bg-white/20 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-2xl">alarm</span>
+</div>
+<span class="font-label-sm text-label-sm text-white/70">Remind Me</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-12 h-12 glass-card rounded-full flex items-center justify-center text-white group-hover:bg-white/20 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-2xl">chat_bubble</span>
+</div>
+<span class="font-label-sm text-label-sm text-white/70">Message</span>
+</button>
+</div>
+<!-- Main Call Buttons -->
+<div class="flex justify-between items-center px-4 sm:px-0">
+<!-- Decline Button -->
+<div class="flex flex-col items-center gap-4">
+<button class="w-20 h-20 bg-error hover:bg-error/90 rounded-full flex items-center justify-center text-white shadow-[0_8px_30px_rgb(186,26,26,0.4)] active:scale-90 transition-transform duration-200" id="declineBtn">
+<span class="material-symbols-outlined text-3xl rotate-[135deg]">call</span>
+</button>
+<span class="font-label-md text-label-md text-white font-semibold">Decline</span>
+</div>
+<!-- Accept Button -->
+<div class="flex flex-col items-center gap-4">
+<button class="w-20 h-20 bg-tertiary-container hover:bg-tertiary-container/90 rounded-full flex items-center justify-center text-white shadow-[0_8px_30px_rgb(0,126,55,0.4)] active:scale-90 transition-transform duration-200" id="acceptBtn">
+<span class="material-symbols-outlined text-3xl">call</span>
+</button>
+<span class="font-label-md text-label-md text-white font-semibold">Accept</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Grab Handle (iOS Style) -->
+<div class="fixed bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-white/20 rounded-full z-20"></div>
+<script>
+        // Micro-interactions
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.transform = 'scale(0.92)';
+            });
+            btn.addEventListener('touchend', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple button event feedback
+        document.getElementById('declineBtn').addEventListener('click', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.4s ease';
+            setTimeout(() => {
+                console.log('Call Declined');
+                // Normally navigate back or close screen
+            }, 400);
+        });
+
+        document.getElementById('acceptBtn').addEventListener('click', () => {
+            // Simulated state change to "Connected"
+            const header = document.querySelector('span.tracking-widest');
+            header.innerText = 'Connected';
+            header.classList.remove('text-primary-fixed');
+            header.classList.add('text-tertiary-fixed');
+            
+            const btnContainer = document.querySelector('.w-full.max-w-sm');
+            btnContainer.style.opacity = '0';
+            btnContainer.style.transform = 'translateY(20px)';
+            btnContainer.style.transition = 'all 0.5s ease';
+            
+            setTimeout(() => {
+                btnContainer.innerHTML = `
+                    <div class="flex flex-col items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        <button class="w-20 h-20 bg-error rounded-full flex items-center justify-center text-white shadow-xl">
+                            <span class="material-symbols-outlined text-3xl rotate-[135deg]">call</span>
+                        </button>
+                        <span class="font-label-md text-label-md text-white font-semibold">End Call</span>
+                    </div>
+                `;
+                btnContainer.style.opacity = '1';
+                btnContainer.style.transform = 'translateY(0)';
+            }, 500);
+        });
+
+        // Interactive subtle mouse follow for the mesh background on desktop
+        if (window.matchMedia('(pointer: fine)').matches) {
+            window.addEventListener('mousemove', (e) => {
+                const moveX = (e.clientX - window.innerWidth / 2) / 100;
+                const moveY = (e.clientY - window.innerHeight / 2) / 100;
+                document.querySelector('.gradient-mesh').style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
+            });
+        }
+    </script>
+</body></html>

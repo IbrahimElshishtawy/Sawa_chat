@@ -1,0 +1,297 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sawa Chat - Communities</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005321",
+                    "primary": "#004ac6",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-high": "#dce9ff",
+                    "secondary": "#00687a",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "surface-tint": "#0053db",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container": "#e5eeff",
+                    "surface": "#f8f9ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "on-surface-variant": "#434655",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-container": "#2563eb",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-container": "#eeefff",
+                    "inverse-surface": "#213145",
+                    "outline": "#737686",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#006229",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#006172",
+                    "secondary-container": "#57dffe",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary-fixed": "#001f26",
+                    "on-background": "#0b1c30",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-margin": "40px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "unit": "4px",
+                    "stack-gap-lg": "24px",
+                    "stack-gap-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .custom-scrollbar::-webkit-scrollbar { display: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-chip {
+            background-color: #004ac6;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Header (Predicted: TopAppBar) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-stack-gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A high-quality close-up portrait of a friendly-looking young professional man with short dark hair and a warm smile, wearing a clean white shirt. The background is a soft, out-of-focus modern office space with natural daylight, reflecting a premium and trustworthy social networking aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq9A73URcxUZXRwhisKOvU58HRsEWIaufj3nipSEQxGeO9Dsj4da-yPy8oh6AtEVG690JnGHIb360uNhrjNtfRHObgPKXbG7g4qfEYUPK4gn-wJjmvtcFhgmGtPYBpvZeuf5b70e1uT1ZW2kmwtr0wv1DJqUXlMNeWhYTwLnGAagKsUu6T4SiSmJeox3mnlHVsFC01RBsJOeJVKNymOidVIOX-0yWCVTWeEUAPLja5IMcY2cqMrGJNW_PrRuNfEJZoPyOQbTTHI48">
+</div>
+<span class="text-primary font-title-lg text-title-lg font-bold">Sawa</span>
+</div>
+<div class="flex items-center gap-stack-gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-container-mobile">
+<!-- Search Bar Section -->
+<div class="mt-4 mb-stack-gap-lg">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-2xl focus:ring-2 focus:ring-primary/20 text-body-md placeholder:text-outline transition-all" placeholder="Find communities..." type="text">
+</div>
+</div>
+<!-- Category Chips -->
+<div class="flex overflow-x-auto gap-stack-gap-sm pb-stack-gap-md custom-scrollbar">
+<button class="px-5 py-2 rounded-full whitespace-nowrap active-chip font-label-md text-label-md shadow-sm transition-all scale-95 active:scale-90">All</button>
+<button class="px-5 py-2 rounded-full whitespace-nowrap bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-all">Technology</button>
+<button class="px-5 py-2 rounded-full whitespace-nowrap bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-all">Gaming</button>
+<button class="px-5 py-2 rounded-full whitespace-nowrap bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-all">Design</button>
+<button class="px-5 py-2 rounded-full whitespace-nowrap bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-all">Music</button>
+<button class="px-5 py-2 rounded-full whitespace-nowrap bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-all">Startup</button>
+</div>
+<!-- Featured Communities (Horizontal Section) -->
+<section class="mt-stack-gap-lg">
+<div class="flex justify-between items-end mb-stack-gap-md">
+<h2 class="text-headline-md font-headline-md text-on-surface">Featured</h2>
+<button class="text-primary font-label-md text-label-md hover:opacity-80">See all</button>
+</div>
+<div class="flex overflow-x-auto gap-stack-gap-md pb-4 custom-scrollbar">
+<!-- Featured Card 1 -->
+<div class="min-w-[280px] h-[360px] rounded-2xl overflow-hidden relative shadow-lg group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A futuristic digital art piece depicting a vibrant global network with glowing lines connecting 3D characters across a stylized world map. The aesthetic is clean and modern, using a light blue and emerald green palette that feels energetic and globally connected. High-end glassmorphism effects are visible in the UI elements floating around the characters." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB64h0zTFpYSrWbsHpV5lY5fAEKJs5y2fOexi3iw3fXhihibxFkSL0a6ppc-EMTjfXWdq1D12dkvH8pK2Jdr1LHgE8sa4hKzrIBAEl-s6omnFwuVjz0Q0VYDj7g6EjtZYmV8YVSHFQ-PV5mcBRR7WRHLGITRHnz1pF6vLPUYE__RiYCz8DvyxSSddR2ac3iwE2_6h3WLQKNHLndYd9HAM9WyRU9o4ipvBCYxcwCPXb2g70URKP4PXhAFgL7e56zid8VaHXy_PPTYDs')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<span class="inline-block px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider mb-2">Global</span>
+<h3 class="text-white font-title-lg text-title-lg mb-1">Global Connect</h3>
+<p class="text-white/70 text-label-md mb-4">12.4k Members</p>
+<button class="w-full py-3 bg-white text-primary font-bold rounded-xl transition-transform active:scale-95">Join Community</button>
+</div>
+</div>
+<!-- Featured Card 2 -->
+<div class="min-w-[280px] h-[360px] rounded-2xl overflow-hidden relative shadow-lg group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A lush and serene digital landscape featuring a floating island with 3D minimalist trees and a tranquil lake. Soft morning light glows across the scene, creating a sense of peace and creativity. The colors are dominated by soft teals, mint greens, and pristine white, perfect for a community focused on wellness or artistic inspiration." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmPCipb-XsOS78-WhAp9RhZGNBYiGZOHslA4MqNwJClct3RcngX5RT_vo1oMLCI2iOQOXq9_FcQmWeAPwF9MZHan-cGqXn-cwOcfJaJ0PR4C-AztMePGgZSQINciuyEiQoO9PquRmZVjOMa9qH03Y_0AUT5RfMaGSMpeATCrqLpoAGYGcdlBJSzqft3sunMc5Kw2Nx9qET6L50HrLS3hVVTlZTIT4rBClRGZj3QALcSzQ1xK1QKE_6rG6zpi-jNTID_bcu9yyQCL8')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<span class="inline-block px-2 py-1 rounded bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-wider mb-2">Trending</span>
+<h3 class="text-white font-title-lg text-title-lg mb-1">Creative Haven</h3>
+<p class="text-white/70 text-label-md mb-4">8.2k Members</p>
+<button class="w-full py-3 bg-white text-primary font-bold rounded-xl transition-transform active:scale-95">Join Community</button>
+</div>
+</div>
+</div>
+</section>
+<!-- My Communities (Predicted List) -->
+<section class="mt-stack-gap-lg">
+<div class="flex justify-between items-end mb-stack-gap-md">
+<h2 class="text-headline-md font-headline-md text-on-surface">My Communities</h2>
+</div>
+<div class="space-y-stack-gap-md">
+<div class="flex items-center gap-stack-gap-md p-4 bg-surface-container-low rounded-2xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="code">code</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-lg text-body-lg text-on-surface font-semibold">Dev Collective</h4>
+<p class="text-label-md text-outline">Active now • 4 new messages</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center gap-stack-gap-md p-4 bg-surface-container-low rounded-2xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]" data-icon="brush">brush</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-lg text-body-lg text-on-surface font-semibold">UI/UX Pioneers</h4>
+<p class="text-label-md text-outline">12 online • Last active 2h ago</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Trending Communities -->
+<section class="mt-stack-gap-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-stack-gap-md">Trending</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-highest p-4 rounded-2xl">
+<div class="w-10 h-10 rounded-full bg-primary mb-3 flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<h5 class="font-semibold text-body-md mb-1 truncate">Web3 Space</h5>
+<p class="text-label-sm text-outline mb-3">15k members</p>
+<button class="w-full py-2 bg-primary text-white text-label-md font-bold rounded-lg active:scale-95 transition-transform">Join</button>
+</div>
+<div class="bg-surface-container-highest p-4 rounded-2xl">
+<div class="w-10 h-10 rounded-full bg-tertiary mb-3 flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="fitness_center">fitness_center</span>
+</div>
+<h5 class="font-semibold text-body-md mb-1 truncate">Fitness Hub</h5>
+<p class="text-label-sm text-outline mb-3">42k members</p>
+<button class="w-full py-2 bg-primary text-white text-label-md font-bold rounded-lg active:scale-95 transition-transform">Join</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB: Create Community -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-full bg-primary-container text-white shadow-lg flex items-center justify-center active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined text-[28px]" data-icon="add">add</span>
+</button>
+<!-- Bottom Navigation Bar (Predicted: BottomNavBar) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-8 h-24 bg-surface/80 backdrop-blur-xl rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm font-label-sm mt-1">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-label-sm font-label-sm mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-label-sm font-label-sm mt-1">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-opacity hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-label-sm font-label-sm mt-1">Groups</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interactions for horizontal scroll snapping or active states
+        const chips = document.querySelectorAll('.flex.overflow-x-auto button');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('active-chip', 'bg-primary', 'text-white'));
+                chips.forEach(c => c.classList.add('bg-surface-container-high', 'text-on-surface-variant'));
+                
+                chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                chip.classList.add('active-chip');
+            });
+        });
+
+        // Toggle FAB scale on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const fab = document.querySelector('.fixed.bottom-24');
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                fab.style.transform = 'scale(0.8)';
+                fab.style.opacity = '0.6';
+            } else {
+                fab.style.transform = 'scale(1)';
+                fab.style.opacity = '1';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body></html>

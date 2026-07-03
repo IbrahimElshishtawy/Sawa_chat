@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa QR Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "surface-container": "#e5eeff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-container": "#57dffe",
+                    "inverse-surface": "#213145",
+                    "outline": "#737686",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface-variant": "#434655",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary": "#00687a",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary-fixed": "#001f26",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#007e37",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-container": "#006172",
+                    "tertiary": "#006229",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-tint": "#0053db",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .qr-gradient-border {
+            background: linear-gradient(135deg, #004ac6 0%, #00687a 100%);
+            padding: 2px;
+        }
+        /* Custom QR styling dots effect */
+        .qr-dots {
+            background-image: radial-gradient(#004ac6 2px, transparent 2px);
+            background-size: 8px 8px;
+        }
+        .tab-active {
+            position: relative;
+        }
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: #004ac6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform" data-icon="arrow_back">arrow_back</button>
+<span class="text-title-lg font-title-lg font-bold text-primary">QR Profile</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-outline hover:opacity-80 transition-opacity" data-icon="share">share</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a young creative professional with a friendly smile, clean studio lighting, soft blue background, high-end photography style consistent with a premium social app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHowvsEDxZrHS6P63_J_al5hwlV0gt3JYeVc0Djs2Kd13B5G_JqbV2WCZjQxUQFYZ9JNLNRuxo9KapTCxz6B5uuhXL7hR3W2ZEFU1bk3R0ePtESQPrMma7S53PoYgIClfWWk8VrHJpjEhQNTqfZGnvxeNs7P4xA0GmNHlxO_scLWZoeFBkD5GQFEpPAFgHE2TZvpxGsL44tb9zIPvURQH6_i88R8scJcbBG56tLIj5q3tuxGvtrmToArOhHtUl-Z6kUHOtf1T2akA"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-container-mobile max-w-lg mx-auto">
+<!-- Tabs -->
+<div class="flex justify-center gap-8 mb-8 border-b border-outline-variant/30 pb-4">
+<button class="font-label-md text-label-md text-primary font-bold tab-active">My Code</button>
+<button class="font-label-md text-label-md text-outline hover:text-primary transition-colors">Scan QR</button>
+</div>
+<!-- QR Display Canvas -->
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/10 via-secondary/5 to-tertiary/10 blur-3xl opacity-50 rounded-full"></div>
+<div class="relative glass-panel rounded-[32px] p-8 shadow-sm flex flex-col items-center">
+<!-- Profile Identity in Card -->
+<div class="flex flex-col items-center mb-6">
+<div class="w-16 h-16 rounded-2xl overflow-hidden mb-3 shadow-md border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="Detailed close-up of a digital profile avatar for a social platform, colorful abstract background, modern 3D lighting, vibrant and clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqnpTKhSJ9yWN46P4KwnkkkUk62ewM7vPhHQGRjBOZ2bXxEkESqxKsa9QvaTMHUm5aerkk7TuwCVam_SnJK5k9l08_zzWmYOt1XlxjwUkZ4YzVKmdxu0M2SUSMOf0r6D22OrLRDDRHw3PraANEfF70X29eiMA3ZJ0mdAfhUbN-PCsT-wVSxV_9_CVbaR5G9eSfK30u8WfHPyc95F_SoWcaRUadot4ST6NF9Mjdm1A0FKkSa6YhFYEEo8ccpYOOB96hLRyNk7wyZJ8"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Sawa User</h2>
+<p class="font-body-md text-body-md text-outline">@sawaconnect</p>
+</div>
+<!-- Main QR Code Component -->
+<div class="qr-gradient-border rounded-[28px] p-1 shadow-xl bg-white mb-6">
+<div class="bg-white rounded-[26px] p-6 relative flex items-center justify-center w-64 h-64">
+<!-- Simulated QR Code Pattern -->
+<div class="grid grid-cols-4 grid-rows-4 gap-2 w-full h-full opacity-90">
+<!-- Corners -->
+<div class="border-4 border-primary rounded-lg"></div>
+<div></div>
+<div></div>
+<div class="border-4 border-primary rounded-lg"></div>
+<div></div>
+<div class="qr-dots"></div>
+<div class="qr-dots"></div>
+<div></div>
+<div></div>
+<div class="qr-dots"></div>
+<div class="qr-dots"></div>
+<div></div>
+<div class="border-4 border-primary rounded-lg"></div>
+<div></div>
+<div></div>
+<div class="qr-dots"></div>
+</div>
+<!-- Center Logo Overlay -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 bg-white rounded-xl shadow-lg flex items-center justify-center p-2">
+<div class="w-full h-full bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-extrabold text-lg">S</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="font-label-md text-label-md text-outline-variant text-center px-4">
+                    Your QR code is private. Your friends can scan this to quickly find your profile.
+                </p>
+</div>
+</div>
+<!-- Customization Section -->
+<section class="mt-12 mb-8">
+<h3 class="font-title-lg text-title-lg mb-6 text-on-surface">Customize Style</h3>
+<div class="space-y-8">
+<!-- Color Options -->
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider block mb-4">Code Color</span>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-primary ring-4 ring-primary-container border-2 border-white transition-all"></button>
+<button class="w-10 h-10 rounded-full bg-secondary border-2 border-white hover:scale-110 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-tertiary border-2 border-white hover:scale-110 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-on-background border-2 border-white hover:scale-110 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary border-2 border-white hover:scale-110 transition-transform"></button>
+</div>
+</div>
+<!-- Pattern/Background Selection -->
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider block mb-4">Visual Theme</span>
+<div class="grid grid-cols-3 gap-3">
+<div class="aspect-square rounded-2xl glass-panel p-2 flex flex-col items-center justify-center cursor-pointer border-2 border-primary">
+<div class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view">grid_view</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">Classic</span>
+</div>
+<div class="aspect-square rounded-2xl bg-surface-container-high p-2 flex flex-col items-center justify-center cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="w-8 h-8 rounded-lg bg-outline/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-outline" data-icon="lens">lens</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Dots</span>
+</div>
+<div class="aspect-square rounded-2xl bg-surface-container-high p-2 flex flex-col items-center justify-center cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="w-8 h-8 rounded-lg bg-outline/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-outline" data-icon="texture">texture</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Gradient</span>
+</div>
+</div>
+</div>
+<!-- Add Logo Toggle -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="identity_platform">identity_platform</span>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Brand Logo</span>
+<span class="text-[11px] text-outline">Show Sawa logo in center</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-4 mt-8">
+<button class="flex items-center justify-center gap-2 h-14 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+<span>Save Image</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-14 rounded-2xl border-2 border-primary/20 bg-white text-primary font-bold active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="content_copy">content_copy</span>
+<span>Copy Link</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-transform scale-90 w-16 h-16" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interactions for customization
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.classList.contains('bg-primary') || this.classList.contains('bg-secondary') || this.classList.contains('bg-tertiary')) {
+                    document.querySelectorAll('.bg-primary, .bg-secondary, .bg-tertiary').forEach(b => b.classList.remove('ring-4', 'ring-primary-container'));
+                    this.classList.add('ring-4', 'ring-primary-container');
+                }
+            });
+        });
+    </script>
+</body></html>

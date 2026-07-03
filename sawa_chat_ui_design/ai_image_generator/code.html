@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa AI - Image Generator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#001f26",
+                        "tertiary": "#006229",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#006172",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "outline": "#737686",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#57dffe",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary": "#00687a",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#0b1c30",
+                        "outline-variant": "#c3c6d7",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-container": "#007e37",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "surface-tint": "#0053db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "20px",
+                        "section-margin": "40px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "24px",
+                        "gutter": "16px",
+                        "stack-gap-sm": "8px",
+                        "container-padding-tablet": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #004ac6 0%, #00687a 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d3e4fe;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium professional avatar of a creative designer, clean studio lighting, soft focus background, minimalist aesthetic with cool blue and white tones, high-resolution photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8lHvNMKmNcT2NCXIhMaOJzp8KMZfIuJ8Kg9wgXW-LpaudzOrT5SZa4B3aRBJFODZ5zpUQhbAuN00E1zb2MEu7vWod0y2hVVUMNPuvOi77s0hK3wFLunNxdD9nywpF79l5ek9EGvuaJUSs7gjKgRHm3XGps0LB-089naYoHS-N0IZtUlcX5l5kEyfJ_5duKEtXA7RUDOXR4Qaf99IbJqEP4nlgObJ6B7m73WqIHcObSZf4Wta4NHAaSsRbQiCGziIBKi2it4rAEvQ"/>
+</div>
+<span class="text-primary font-title-lg text-title-lg font-bold">Sawa</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-mobile max-w-5xl mx-auto space-y-stack-gap-lg">
+<!-- Hero Shader Background Element -->
+<div class="relative w-full h-48 md:h-64 rounded-3xl overflow-hidden shadow-sm mb-8">
+
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/40 to-transparent flex flex-col justify-end p-8">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-white">Unleash Imagination</h1>
+<p class="text-white/80 font-body-md text-body-md max-w-md">Transform words into stunning visual masterpieces with our advanced AI engine.</p>
+</div>
+</div>
+<!-- Generator Controls -->
+<section class="space-y-stack-gap-md">
+<!-- Prompt Input -->
+<div class="glass-card rounded-3xl p-6 shadow-sm border border-outline-variant/30">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">PROMPT</label>
+<div class="relative group">
+<textarea class="w-full bg-surface-container-low border-none rounded-2xl p-4 text-body-lg font-body-lg focus:ring-2 focus:ring-primary/20 min-h-[120px] resize-none placeholder:text-outline/50 transition-all" placeholder="Describe what you want to see... e.g., 'A futuristic city floating in a sea of clouds, synthwave aesthetic, 8k resolution'"></textarea>
+<div class="absolute bottom-4 right-4 flex items-center gap-2">
+<button class="p-2 rounded-xl bg-surface-variant/50 text-primary hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">magic_button</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-md">
+<!-- Style Selection -->
+<div class="glass-card rounded-3xl p-6 shadow-sm border border-outline-variant/30">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4">CHOOSE STYLE</h3>
+<div class="grid grid-cols-4 gap-3">
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-full aspect-square rounded-2xl bg-primary text-white flex items-center justify-center ring-4 ring-primary/20 shadow-lg transition-all">
+<span class="material-symbols-outlined text-[32px]">view_in_ar</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">3D</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-full aspect-square rounded-2xl bg-surface-container-highest text-on-surface-variant flex items-center justify-center group-hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[32px]">photo_camera</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Photo</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-full aspect-square rounded-2xl bg-surface-container-highest text-on-surface-variant flex items-center justify-center group-hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[32px]">palette</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Art</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-full aspect-square rounded-2xl bg-surface-container-highest text-on-surface-variant flex items-center justify-center group-hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[32px]">face</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Anime</span>
+</button>
+</div>
+</div>
+<!-- Aspect Ratio & Resolution -->
+<div class="glass-card rounded-3xl p-6 shadow-sm border border-outline-variant/30 space-y-6">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Aspect Ratio</h3>
+<div class="flex gap-4">
+<button class="px-4 py-2 rounded-full bg-primary text-white font-label-md text-label-md">1:1</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant">16:9</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant">9:16</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant">4:3</button>
+</div>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Resolution</h3>
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low border border-outline-variant/20">
+<span class="font-body-md text-body-md px-2">High Definition (2K)</span>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Generate Button -->
+<button class="gradient-button w-full h-16 rounded-2xl text-white font-title-lg text-title-lg flex items-center justify-center gap-3 shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined">temp_preferences_custom</span>
+                Generate Creation
+            </button>
+</section>
+<!-- Gallery Section -->
+<section class="pt-8 space-y-stack-gap-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent Creations</h2>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                    View Gallery <span class="material-symbols-outlined !text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Asymmetric Bento Grid Gallery -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+<div class="col-span-2 row-span-2 relative rounded-3xl overflow-hidden group shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sprawling cyberpunk metropolis at night with vibrant neon signs reflecting in wet asphalt streets. The scene features flying vehicles in a rainy atmosphere with intense cyan and magenta lighting. High-tech futuristic aesthetic, cinematic composition, 8k resolution digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYK7VbKPgaH76QEmUAdEHLBOkfkPGUOftPrWXAaxBZFAT0HrX6GmobXw17hjZQy5--EOBqRHJSCpkk8sx3SMzqVQz4pbU7KfMG3JKW3yBrDGVbw-czdykJ51dacTt67mHfMvMxJESK7pdJMMnZFGE2KecjMwLtH4TiG1p8ugCPFsKge39b_zvHzw8ggCvkc6h_ZvSB2TNuqmFHFO3cNbJXk8yR8wEbGRtpfJaNLpKhE8SpvGCgf_PGM_1OApF8N1tPdf4DwfQc_EE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<p class="text-white font-label-md text-label-md mb-1">Cyber City 2099</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-white/20 backdrop-blur-md rounded text-[10px] text-white uppercase">3D Render</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 row-span-1 relative rounded-3xl overflow-hidden group shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist abstract organic sculpture in a pure white studio. The form is fluid and swirling, made of iridescent pearlescent material catching soft rainbow light. Elegant, sophisticated lighting, high-end commercial aesthetic, macro photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASdtbYrXWyWiEFK5baHVgcIqyCw9aGBKTf2v62CzImAdzHjFgYPdkpcRyhn_YqH_XQbh10CqMmn6ZPySIOJh15hqqQ-3JAw6k6Jq9Ub--UbkrXVOR79-HffVTW-NqvIhv__VrnL3JBG4T_Ix5Eeklk_X4cg8sXPsa-sd9NClTfp9iqE3rCHRu2qjzMmythwUHZN_wN6kU2hrPA6cJHml2A3Pr6YewjLAa9DWfNOVZ-uqjXbRigStKYcndXuw89RwG_2WHxPt5Sl58"/>
+</div>
+<div class="col-span-1 row-span-2 relative rounded-3xl overflow-hidden group shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Stunning anime portrait of a character with glowing electric blue eyes and silver hair. The style is modern high-quality digital illustration with intricate particle effects and dramatic lighting. Dynamic action pose, vibrant colors, clean line art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcJ7skk4vvozFqF8a-ninHK-wzc8UGHEm-fEhBI0mu7JnDqDg6SH-PWkYMEPAzQrZo-F_JUiwWPLvt0l6hb56iTkozIplpKsaL6tPXQ37Tsmlod87vngv5CicfNbi0NV8zv7BpVRz_hst4h8sSD8SpR-sI0PHkz676ePfZNZacqDGoHEP6mUIyJu8hXeWeRUoM4mzsv3XCDJ4vY8A9YK8F_j5R62-Ji2scN2dB5lvyT4vixtUtIbSGmtVdE4mLiFdDoW-1UQ1_Uc"/>
+</div>
+<div class="col-span-1 row-span-1 relative rounded-3xl overflow-hidden group shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Cinematic wide shot of a deep space nebula with swirling cosmic dust clouds in shades of deep violet and gold. Tiny distant stars twinkle throughout the vast expanse. Epic, awe-inspiring sci-fi aesthetic, hyper-realistic space photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgcP--k9ZmvOVgDnKnxnGp315_Lb6ZfpE7Uk9Zgb_UIXjh0P69jQvvL1c_uV5r73pu2Iomvwowjb4FCQbwdmegreS_4WE8sDyp_Y-XWsVDmnDysNaMIlSH12QOY08QRqw2qYRKB-Zb_e2S6dUZsklPMBrwZobIOMGOQ6PMxwyYV7vT13YXqS_uLsuwUPdjNXhuw1A3qzuIi90kwaxawWLZhHEvIm5ARH9swd8Hgekx76UD49MWqH20frUAnuNokhZYSGCpBgrEH2w"/>
+</div>
+<div class="col-span-2 row-span-1 relative rounded-3xl overflow-hidden group shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Interior of a luxury glass house in the middle of a snowy forest. Large floor-to-ceiling windows show a serene winter landscape. Warm interior lighting creates a cozy contrast with the blue dusk outside. Architectural photography, hyper-realistic, minimal style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwvhfQdSOPENltXrQl8hfYIReOSBYAs6tjEy_sZ64VVhDd_Fn2mt0gC9mN14WKNhX3iq8CHLMyAeFAO-s9rJitgK9xewfMGlK1wWbYB3VJmxs-IGlySDtfx0Wte5dEv-ObJzS7p8pXkOFjtKGGenm0nadI8_tpfbHTirYo3XXlp2mzZfzde8mTqBrqfCJh48MeLIZjqWeFhoZ5kkyJ0vf7dgNR_nUyZ_KeU8ptSTSJwLjFtMZ68-sNkgc0nPj_dAtJbUdOLrE-HNg"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Chats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold scale-90 transition-transform duration-200 w-16 h-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm mt-1">Market</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Groups</span>
+</button>
+</nav>
+<!-- FAB Suppression: On Detail/Creation Screen, but since this is a top-level Explore tool, we can show a "New" FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-2xl shadow-xl flex items-center justify-center active:scale-90 transition-transform z-40 md:hidden">
+<span class="material-symbols-outlined">add</span>
+</button>
+<script>
+        // Micro-interactions for generator
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.innerText === 'Generate Creation') {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Thinking...';
+                    this.disabled = true;
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                    }, 3000);
+                }
+            });
+        });
+
+        // Simple Style Selection Logic
+        const styleButtons = document.querySelectorAll('button.group');
+        styleButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                styleButtons.forEach(b => {
+                    const div = b.querySelector('div');
+                    const span = b.querySelector('span:last-child');
+                    div.classList.remove('bg-primary', 'text-white', 'ring-4', 'ring-primary/20', 'shadow-lg');
+                    div.classList.add('bg-surface-container-highest', 'text-on-surface-variant');
+                    span.classList.remove('text-primary', 'font-bold');
+                    span.classList.add('text-on-surface-variant');
+                });
+                const div = btn.querySelector('div');
+                const span = btn.querySelector('span:last-child');
+                div.classList.add('bg-primary', 'text-white', 'ring-4', 'ring-primary/20', 'shadow-lg');
+                div.classList.remove('bg-surface-container-highest', 'text-on-surface-variant');
+                span.classList.add('text-primary', 'font-bold');
+                span.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

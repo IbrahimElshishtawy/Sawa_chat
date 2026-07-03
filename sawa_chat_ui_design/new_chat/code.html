@@ -1,0 +1,347 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Chat - New Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ios-scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .ios-scroll-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-interaction:active {
+            transform: scale(0.96);
+            transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002109",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#213145",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-secondary-container": "#006172",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary-container": "#007e37",
+                        "primary": "#004ac6",
+                        "on-background": "#0b1c30",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-container": "#2563eb",
+                        "surface-tint": "#0053db",
+                        "secondary": "#00687a",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed": "#001f26",
+                        "on-surface-variant": "#434655",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "surface-dim": "#cbdbf5",
+                        "outline": "#737686",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "tertiary": "#006229",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary-container": "#57dffe",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-tablet": "32px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "16px",
+                        "stack-gap-sm": "8px",
+                        "section-margin": "40px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden min-h-screen">
+<!-- Top AppBar (From JSON logic) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<button class="active-interaction text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">New Chat</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active-interaction">
+<span class="material-symbols-outlined text-primary">qr_code_scanner</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling young woman with dark hair, captured in soft studio lighting against a clean, minimal light blue background, matching the Sawa Chat premium app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2FmU8eiPWHTKTLv-qcW38f5mQFATYK3qtfthe4O-DuEmDyNsb_VnrGk9N97Gnx5ZZW8tnokjaDWlnA3Fw23_KqBTbgskQPXrkWHEVH_LkYmqYtqtL0Y1-i-_XlyJmqTbJv63n-hH6dEVH9SlUElQYz5BAJKGwaVayEImDFNl3D_KbM9V3yQoE3yOz1EFi-9qHbEI421VQedFWO2_Vm8Vo-Iew3cBUbxb2NA_rVwOxrRZOnu3X5KdKf-YRcyUMrUSk_TnpdWRBp7s">
+</div>
+</div>
+</header>
+<main class="pt-20 pb-24 px-container-mobile max-w-2xl mx-auto space-y-stack-gap-lg">
+<!-- Search Bar Section -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-4 pl-12 pr-12 focus:ring-2 focus:ring-primary/20 text-body-md font-body-md placeholder:text-outline/60" placeholder="Search contacts..." type="text">
+<button class="absolute right-4 top-1/2 -translate-y-1/2 active-interaction">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+</button>
+</div>
+<!-- Quick Actions Grid -->
+<section class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-3xl active-interaction group transition-all">
+<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-2 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface text-center">New Group</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-3xl active-interaction group transition-all">
+<div class="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center mb-2 group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">campaign</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface text-center">New Channel</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-3xl active-interaction group transition-all">
+<div class="w-12 h-12 bg-tertiary/10 rounded-2xl flex items-center justify-center mb-2 group-hover:bg-tertiary/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface text-center">Community</span>
+</button>
+</section>
+<!-- Suggested Section (Horizontal) -->
+<section>
+<div class="flex items-center justify-between mb-stack-gap-md">
+<h2 class="text-label-md font-label-md text-outline uppercase tracking-wider">Suggested</h2>
+<button class="text-primary text-label-md font-label-md font-bold">See all</button>
+</div>
+<div class="flex gap-4 overflow-x-auto ios-scroll-hide pb-2">
+<!-- Suggestion Item 1 -->
+<div class="flex flex-col items-center gap-2 flex-shrink-0 w-20">
+<div class="relative w-16 h-16 rounded-2xl p-0.5 border-2 border-primary active-interaction">
+<img class="w-full h-full object-cover rounded-[14px]" data-alt="A portrait of a cheerful man with glasses in a vibrant tech-startup office setting. The lighting is warm and natural, creating a friendly and approachable atmosphere that aligns with the fluid sophistication of the Sawa design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6g9OZq5focAJHkrea1ke6VWUB89jaUWSNodEkO9OltUIWpfXEZiB5YQD3c6lV1sVYOKUIfEUvMhjWAoBKsDy0x3UwBeJItZQbOVknFRSkNYPju10HrIovcCnO6sUzzWOYrQecdzdxdP7zHMSWQS_m9KhGw_uf2YSx4uGOBVzfZbkuuCmLhLrMRDjab2hOLWgYtcxcgPNFL7zOSuedF0WTWoi5d6ci8tbFnDW5fUI-v3wGtC8rdYXRLURZIkc4wUpRKeZ_3UzOFTs">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-tertiary border-2 border-background rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-center truncate w-full">Marcus</span>
+</div>
+<!-- Suggestion Item 2 -->
+<div class="flex flex-col items-center gap-2 flex-shrink-0 w-20">
+<div class="relative w-16 h-16 rounded-2xl active-interaction">
+<img class="w-full h-full object-cover rounded-2xl" data-alt="Close up portrait of a woman with braided hair laughing, set against a blurred urban background with soft bokeh. The overall color palette is airy and light-mode compatible, featuring pastel tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATHbCiBI6ER7leyyEuf6jEvbWqe-O3EIOhE7WdKTJRI6pY-MHcRanadxHq0RTJfyiMNDcCBt86Vn_S2jvo_YCAlWRCaAVidXyizEeNIPLL8kSvZ6zzwiEwx9SfcEAbjHIBpUdmFs_QR3v2iSY8Ggwo82VYD7Lfgd4RJxnV-fhr8RwCqImjjNxD-axsfGH4BnirInn4nHnGggGWgZMhhuxgCyl2tIpqKSFcWYHyNPC2kRoHAZopeoGx_n-NwEP9-IuCkpvYK7FhABk">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-tertiary border-2 border-background rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-center truncate w-full">Elena</span>
+</div>
+<!-- Suggestion Item 3 -->
+<div class="flex flex-col items-center gap-2 flex-shrink-0 w-20">
+<div class="relative w-16 h-16 rounded-2xl active-interaction">
+<img class="w-full h-full object-cover rounded-2xl" data-alt="A profile photo of an older man with a grey beard wearing a navy blue turtleneck. The background is a minimalist grey wall with soft directional light, creating a premium and professional look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACM-EswhmazfhnL2oq2zzN112mTaO_Al4GqqgIKiFVGAUAd83A0Lm8zBaKSTHV3X16BfFm4pFhLTeNWW9zzGSvrgMyBS2mrUiIJNVntdWtblA7K7GPTW2SpES9zOlGy6diWaJTCdaqXGDiM5aAOwZflsi5RNs1w1ZGYtUIDaBC2hGbnVM7Jaw-UGYAO7OvwSwqa-iJT1A6q396yYEw8AuWekaX2ILJhUB2rKS9B-l1m7Ocf0kL1fYtMcFedDwHTEE4HxqhdEI1jTQ">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-tertiary border-2 border-background rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-center truncate w-full">David</span>
+</div>
+<!-- Suggestion Item 4 -->
+<div class="flex flex-col items-center gap-2 flex-shrink-0 w-20">
+<div class="relative w-16 h-16 rounded-2xl active-interaction">
+<img class="w-full h-full object-cover rounded-2xl" data-alt="A bright and airy portrait of a young person with vibrant orange hair against a clean white background. High-key lighting and a high-resolution aesthetic, reflecting a creative energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLYOvXQMe-zu0DO729sm-2KIp4cZfLhME_8T-0nTWcdMXmlyyIGNvEm6qXWRHStmCoZrBP7lxxA4ptC-m5GL4oh8TiXoH4h05mqkk_ST0DDDKDi9WhJBgCarP1Th1nDqUXHZJUoXWXyLf3gCmUU1pla9Lho25A2oPoCQT39IOR_4XuKNKNkrSVNYbj2OESFZomepOSN0ECyxIvZLFgfRokM5Lbmy4CRJNFb8R0ZFyx2Z7UH9udaHpzBYO3Xo1haIXCjtkkd8jTqh0">
+</div>
+<span class="text-label-sm font-label-sm text-center truncate w-full">Alex</span>
+</div>
+<!-- Suggestion Item 5 -->
+<div class="flex flex-col items-center gap-2 flex-shrink-0 w-20">
+<div class="relative w-16 h-16 rounded-2xl active-interaction">
+<img class="w-full h-full object-cover rounded-2xl" data-alt="A sophisticated headshot of a person with a warm complexion, wearing a silk blouse. The setting is a bright, plant-filled sunroom, providing a clean and organic lifestyle feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ar-bIzxI_itmjKnLfbpdS1G9wncTzPaqcx8CUH7Ub-JHB8nN7e8IudVXo14w_OdixKnaRVkoWinu-6npgbhyoOwjmANAjeNs8kQnEXu7gLYyPw429vyrRmbF5Ca7dSv_-nT6_LDRtjSHFGRhOZYC4rhRMx5Yq2m7yCSjNKhUZC8BNuRyrBZe27W4eK49A5qtO9Skp6iP3ltXN8FnAlCXeYvgDb6kMD3bocUMMEriqixuivNfmIczBQKk1h4RDCl6l29ZaW3H8Nw">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-tertiary border-2 border-background rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-center truncate w-full">Sophia</span>
+</div>
+</div>
+</section>
+<!-- Alphabetical List -->
+<section class="space-y-6">
+<!-- Section A -->
+<div>
+<h3 class="text-label-md font-label-md text-primary font-bold px-1 mb-2">A</h3>
+<div class="bg-surface-container-low rounded-3xl overflow-hidden divide-y divide-outline-variant/10">
+<!-- Contact Item -->
+<div class="flex items-center gap-4 p-4 active-interaction bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="relative w-12 h-12">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Portrait of a young creative professional with a modern aesthetic, set in a bright architectural space with clean lines and soft lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs-ra13cztqpbGl6puWQ4ITzkwveb3FbBXG-9kWPgjUCApWtYkGA2T2eMw7V_XARTPgAcxaQ7j4zmtwHioYgnYhIqZodXI_kIZ6Kf0IhLVvHNC4ZGuV-6KAum4lwLv_COlQmZpwcVQKztQjS3HP0LxhXIz_LRehStvX8PyxRhSOydXhOW6sLbfH6wKATv_HlyM1nxXDEkd0jVMOGl6EHi1SHTWodcbRSH1XT44aTr88pTH0ihYi2UKkq2gDyASvwOZaqnxjWSop6M">
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary border-2 border-surface-container-low rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface font-semibold">Aaron Mitchell</p>
+<p class="text-label-sm text-outline">Active 5m ago</p>
+</div>
+<span class="material-symbols-outlined text-outline/40">chevron_right</span>
+</div>
+<!-- Contact Item -->
+<div class="flex items-center gap-4 p-4 active-interaction bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="w-12 h-12 bg-secondary-container flex items-center justify-center rounded-xl text-on-secondary-container font-bold text-title-lg">
+                            AS
+                        </div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface font-semibold">Alice Sterling</p>
+<p class="text-label-sm text-outline">Busy • Meeting</p>
+</div>
+<span class="material-symbols-outlined text-outline/40">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Section B -->
+<div>
+<h3 class="text-label-md font-label-md text-primary font-bold px-1 mb-2">B</h3>
+<div class="bg-surface-container-low rounded-3xl overflow-hidden divide-y divide-outline-variant/10">
+<!-- Contact Item -->
+<div class="flex items-center gap-4 p-4 active-interaction bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="relative w-12 h-12">
+<img class="w-full h-full object-cover rounded-xl" data-alt="A man wearing a smart casual jacket, standing in a brightly lit modern library. High quality photography, clean background, premium app feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6l_9ZPl2kPqWoaywBwvfCGEuNMwu9IttfzsWpX48BlooViDg83r1p-qMCUUjyZLsHn75ZrvVXj-vNGoyc_aKCkkAPVWNx4ZpqxQKlfoZsmWh8ROx9QdXToqB2PuAVoOcCLczKoFRbSnfO39_RFWJL3jqgpsxUJAGc2DwFYqr4JIbS59zif4h50v0RRQ7x7TTGZqPzYLXzTTJLnUxaaYf7TbuLHkYVz0B7CTEn8mlUImTgAJLgbCrDLMzI6BpopstnXQkV1oFPRts">
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface font-semibold">Ben Jameson</p>
+<p class="text-label-sm text-outline">Design is thinking made visual.</p>
+</div>
+<span class="material-symbols-outlined text-outline/40">chevron_right</span>
+</div>
+<!-- Contact Item -->
+<div class="flex items-center gap-4 p-4 active-interaction bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="relative w-12 h-12">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Portrait of a smiling woman with glasses, light-mode aesthetic, clean studio lighting, soft shadows, vibrant yet professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgyW_tzzYdHnhFGNMmTr99l00TkHqmh3YU3pekSMAUVKO5shspk1xHNaITstjVIYQn6tD1vvnTBr8N8fCaaghEsuZJrx9RzLJ626Qz7ktaUtVdJwtpAndG9qi8JMITyn1TA2hVFvF1MFCExQ7RJnTS318UkwtD07egTg2EMbgS9sgb7mf5eQX0NFU42sWofshmt3e2ST-hgMipaN2WHcUgITsB_uo5G4BFJVxIqzJwM7rpd0aCyeDCv41O-L7TU25SpyavUs9Gt-U">
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary border-2 border-surface-container-low rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface font-semibold">Bianca Lopez</p>
+<p class="text-label-sm text-tertiary font-medium">Online</p>
+</div>
+<span class="material-symbols-outlined text-outline/40">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Section C -->
+<div>
+<h3 class="text-label-md font-label-md text-primary font-bold px-1 mb-2">C</h3>
+<div class="bg-surface-container-low rounded-3xl overflow-hidden divide-y divide-outline-variant/10">
+<!-- Contact Item -->
+<div class="flex items-center gap-4 p-4 active-interaction bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="w-12 h-12 bg-primary-container flex items-center justify-center rounded-xl text-on-primary-container font-bold text-title-lg">
+                            CM
+                        </div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface font-semibold">Chris Miller</p>
+<p class="text-label-sm text-outline">Last seen yesterday at 22:40</p>
+</div>
+<span class="material-symbols-outlined text-outline/40">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav (From JSON logic) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-outline transition-all active-interaction">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-all active-interaction">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline transition-all active-interaction">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline transition-all active-interaction">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline transition-all active-interaction">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for search input
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+
+        // Alphabet quick navigation effect (visual only)
+        document.querySelectorAll('h3').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    </script>
+</body></html>

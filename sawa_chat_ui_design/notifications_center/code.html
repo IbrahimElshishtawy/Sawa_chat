@@ -1,0 +1,357 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Sawa - Notifications Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#0b1c30",
+                        "surface-tint": "#0053db",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-secondary-container": "#006172",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#57dffe",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline": "#737686",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#acedff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface-variant": "#434655",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-primary-container": "#eeefff",
+                        "inverse-primary": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#001f26",
+                        "tertiary": "#006229",
+                        "surface-bright": "#f8f9ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "tertiary-container": "#007e37",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-surface": "#213145",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#eff4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-margin": "40px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "20px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px",
+                        "container-padding-tablet": "32px",
+                        "unit": "4px",
+                        "stack-gap-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            box-shadow: 0 4px 12px rgba(0, 74, 198, 0.15);
+        }
+        .swipe-container {
+            overflow-x: hidden;
+            position: relative;
+        }
+        .swipe-item {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .blur-backdrop {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-white overflow-x-hidden">
+<!-- Top AppBar (from Shared Components JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-surface-variant/30">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a young multicultural man with a friendly expression, set against a soft-focus urban background. The lighting is warm and cinematic, reflecting a high-end lifestyle social app aesthetic with crisp details and a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqDpgIecaVA57ZBVjKq801QgOIIp5UGbNdzSZIlN3F_AVSGQe_4GjvLzH-7RwyhBDIbcL6p9RHnC59ku8GEsy9u_B6nSLz1k57Q80v9Ey6EHslQxsH_ttSJ_38K_ztIUPdhIFnsKgC-KOY_zRRHewYyGrTtKcoqXZvLe-pKHFHiwFkxBizk6_UUn53Icba6adRYCHkg9TCqxyix-hEOlobgPUHFgBd2JCApSU22N49TQJ7Z6TT2c9X7krM0KhDg44vH0Iz2kcdaZE">
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary font-label-md hover:opacity-80 transition-opacity active:scale-95 duration-200">
+                Mark all as read
+            </button>
+<span class="material-symbols-outlined text-primary cursor-pointer transition-opacity hover:opacity-80 active:scale-95 duration-200">search</span>
+</div>
+</header>
+<main class="pt-20 pb-32 max-w-2xl mx-auto px-container-padding-mobile min-h-screen">
+<!-- Tabbed Navigation -->
+<nav class="flex items-center gap-2 overflow-x-auto no-scrollbar py-4 mb-4">
+<button class="px-5 py-2.5 rounded-full bg-primary text-on-primary font-label-md active-pill whitespace-nowrap transition-all">All</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container text-on-surface-variant font-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Messages</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container text-on-surface-variant font-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Mentions</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container text-on-surface-variant font-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Calls</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container text-on-surface-variant font-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Communities</button>
+</nav>
+<!-- Notification Groups -->
+<div class="space-y-6">
+<!-- Group: Today -->
+<section>
+<h2 class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-4 px-1">Today</h2>
+<div class="space-y-3">
+<!-- Notification Item: Call -->
+<div class="group relative bg-surface-container-lowest rounded-3xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex gap-4 items-start border border-outline-variant/10 hover:border-primary/20 transition-all swipe-container">
+<div class="relative">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A vibrant headshot of a smiling woman with glasses, wearing a bright yellow sweater. The background is a clean, minimalist studio setting with soft blue pastel lighting, perfectly matching the modern glassmorphic UI aesthetic of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_zh55L2iWNVc2BZb7YPMXM93rs2uB590rGxOyQrt3y1yy4u3oP4oCUQqjin12rdY7XouASWS9lhbP-srDwgTK8hWJQCG8QXPD5zFX_ViScVRkdZQD6X14eYG3kxE576JVWwpb0fJJnwJaOmhw5p6MgOp9AqT6VFlsjRGgiTs5LB0xXkNd5NgTi92DA5myx0tNljmYQsoZEflxFwpVdQMJcXm9WIZVyhjYOr5zTOL_Aq17TZBpz-aQePLzNk76_U8wdBplahue8ao">
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-error flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">call</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-lg text-[15px] font-semibold text-on-surface">Missed call from Sarah J.</span>
+<span class="text-label-sm text-outline">10:45 AM</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-4">Sarah tried calling you for the "Project Sync" session.</p>
+<div class="flex gap-2">
+<button class="bg-primary text-white px-4 py-1.5 rounded-full text-label-md font-semibold hover:opacity-90 active:scale-95 transition-all">Call back</button>
+<button class="bg-surface-variant/30 text-on-surface-variant px-4 py-1.5 rounded-full text-label-md font-semibold hover:bg-surface-variant/50 active:scale-95 transition-all">Dismiss</button>
+</div>
+</div>
+</div>
+<!-- Notification Item: Message -->
+<div class="group relative bg-surface-container-lowest rounded-3xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex gap-4 items-start border border-outline-variant/10 swipe-container">
+<div class="relative">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An artistic portrait of a creative professional with colorful lighting. Neon blues and purples highlight their features against a dark, moody background. The image has a high-quality, premium digital art feel suitable for a luxury networking platform profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-rR0lwyOjIv-PAXBKZ98pZ_mR-TP2yGttjqHdy-T-kGC9BVJ41uAjMvqr35cfjXjHQZ-OUccvBbXS9oX7ddM6xWFO2Svf-7qKYaq_7gAXXIQHizA47_N0o0vTY8RzC0Rfvq0r_3O70jkkj0ybFch9FvWptOnwH-NdL66N7LR3PyFFxYfCh93DnamfDDTwVqdhc_gcr5TXi8Ri1BAl6TFKlwrsGEZkOKWV7XgmVPuWlPY4C3xGPygmj-TQRlUoAkIRSiXnXnbd9i0">
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-secondary flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-lg text-[15px] font-semibold text-on-surface">Alex Rivera</span>
+<span class="text-label-sm text-outline">Just now</span>
+</div>
+<p class="text-body-md text-on-surface-variant italic">"Hey, did you see the new community guidelines for the design group?"</p>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+</div>
+<!-- Notification Item: Mention -->
+<div class="group relative bg-surface-container-lowest rounded-3xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex gap-4 items-start border border-outline-variant/10 swipe-container">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">alternate_email</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-lg text-[15px] font-semibold text-on-surface">Mentioned in Global Devs</span>
+<span class="text-label-sm text-outline">2h ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant">@sawaconnect mentioned you in a comment: "Great insights on the fluid grid approach!"</p>
+<div class="mt-3">
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline transition-all">
+                                    View thread <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Group: Yesterday -->
+<section>
+<h2 class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-4 px-1">Yesterday</h2>
+<div class="space-y-3 opacity-80">
+<!-- Notification Item: Community -->
+<div class="group relative bg-surface-container-low/50 rounded-3xl p-4 flex gap-4 items-start border border-outline-variant/10 swipe-container">
+<div class="relative">
+<div class="w-12 h-12 rounded-2xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A lush, high-resolution photo of an indoor office garden with exotic plants, clean white architecture, and soft natural sunlight streaming through large glass windows. The mood is tranquil, professional, and reflects a high-end corporate community space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRvz1i0bjVGuVzuuMJEVhHl1bTiU-YStqwof__Qwa9XgI4YT6riJ05mOt3K6RjOijffjyrTbYY84WxV_mLCxlULcA2XeNopT1cDisGX_DWDwGYrrnjxzRXLpgNMFqcmvtWryk1VrG7D9sGoBYdEkh3UGV8Lle3jyOefVhomp4Goy3EFBVi2zZ65aFjbhWisEoNXeJksLXfKqkNuHsOWEHHN2GbxD-wUeIFnOajU0n9dHlY1n68s46kkB_hz-hwDPon5nTKhiadpfY">
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-primary-container flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-lg text-[15px] font-semibold text-on-surface">Design Ecosystem</span>
+<span class="text-label-sm text-outline">Yesterday</span>
+</div>
+<p class="text-body-md text-on-surface-variant">New weekly challenge: "Minimalist Dashboard Design" is now open for submissions.</p>
+</div>
+</div>
+<!-- Notification Item: Accepted Request -->
+<div class="group relative bg-surface-container-low/50 rounded-3xl p-4 flex gap-4 items-start border border-outline-variant/10 swipe-container">
+<div class="relative">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed portrait of a middle-aged man with a graying beard and sophisticated spectacles, dressed in a sleek charcoal suit. He stands in a modern architecture gallery with soft blue accent lights, conveying an air of experience and professional success." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAdHtqjR1zPrQbFeKkTG-HlQt97iXVkXNw-A94FifVwaPyF401b_g2slXME4Do-X0Igc8svc02pJvG0M-Tpjak201JT66zWn6OMHSt_zNvJFdmlX6thHmiZ3GpSdl1GX0vF6yl-q-wYMzfT5EbK8Efwfp1AcOpJcpxBPOvSPEJwPaAUYZx5clTgJ_FeOP6lVBHNEsA2emW1kY4NMl3PBJviVBVLaT8vzT1qpNLfXbF8KiOvkIBrO8ffTktd4kSdybvuxkk5pONNNE">
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-tertiary flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">person_add</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-lg text-[15px] font-semibold text-on-surface">Mark Stevenson</span>
+<span class="text-label-sm text-outline">Yesterday</span>
+</div>
+<p class="text-body-md text-on-surface-variant">Accepted your friend request. You can now message each other.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Empty State Illustration Placeholder (Only shown if no notifications) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center" id="empty-state">
+<div class="w-32 h-32 mb-6 opacity-20">
+<span class="material-symbols-outlined text-[120px] text-primary">notifications_off</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-2">All caught up!</h3>
+<p class="text-body-md text-on-surface-variant max-w-[240px]">We'll notify you here when something important happens.</p>
+</div>
+</main>
+<!-- Bottom Navigation (from Shared Components JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-8 h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors p-2 cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors p-2 cursor-pointer">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-label-sm text-label-sm">Activity</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors p-2 cursor-pointer">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/20 rounded-full transition-colors p-2 cursor-pointer">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for swiping
+        document.querySelectorAll('.swipe-container').forEach(item => {
+            let startX;
+            let currentTranslate = 0;
+            let isDragging = false;
+
+            item.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            item.addEventListener('touchmove', e => {
+                if (!isDragging) return;
+                const currentX = e.touches[0].clientX;
+                const diff = currentX - startX;
+                
+                // Allow only left swipe for 'delete/read'
+                if (diff < 0) {
+                    currentTranslate = Math.max(diff, -100);
+                    item.style.transform = `translateX(${currentTranslate}px)`;
+                    item.style.backgroundColor = `rgba(255, 218, 214, ${Math.abs(currentTranslate)/100})`; // Fade to light red
+                }
+            });
+
+            item.addEventListener('touchend', () => {
+                isDragging = false;
+                if (currentTranslate < -70) {
+                    // Logic to mark as read or delete
+                    item.style.transition = 'all 0.4s ease-out';
+                    item.style.transform = 'translateX(-120%)';
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.remove();
+                        checkEmptyState();
+                    }, 400);
+                } else {
+                    item.style.transform = 'translateX(0)';
+                    item.style.backgroundColor = '';
+                }
+                currentTranslate = 0;
+            });
+        });
+
+        function checkEmptyState() {
+            const items = document.querySelectorAll('.swipe-container');
+            if (items.length === 0) {
+                document.getElementById('empty-state').classList.remove('hidden');
+                document.getElementById('empty-state').classList.add('flex');
+            }
+        }
+
+        // Active Tab Switcher
+        const tabs = document.querySelectorAll('nav button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-primary', 'text-on-primary', 'active-pill');
+                    t.classList.add('bg-surface-container', 'text-on-surface-variant');
+                });
+                tab.classList.add('bg-primary', 'text-on-primary', 'active-pill');
+                tab.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

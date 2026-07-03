@@ -1,0 +1,337 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Event Details | Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#0b1c30",
+                    "surface-tint": "#0053db",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-secondary-container": "#006172",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#57dffe",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "outline": "#737686",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "secondary-fixed": "#acedff",
+                    "on-primary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#00687a",
+                    "on-surface-variant": "#434655",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-primary-container": "#eeefff",
+                    "inverse-primary": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "surface": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "surface-bright": "#f8f9ff",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-container": "#007e37",
+                    "on-primary-fixed": "#00174b",
+                    "inverse-surface": "#213145",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#eff4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "container-padding-tablet": "32px",
+                    "unit": "4px",
+                    "stack-gap-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- Top AppBar (from JSON guidance) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-16 bg-surface/10 backdrop-blur-xl transition-all duration-300" id="main-header">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface/40 backdrop-blur-md shadow-sm active:scale-95 transition-transform" onclick="history.back()">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface/40 backdrop-blur-md shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface/40 backdrop-blur-md shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface">bookmark</span>
+</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Hero Section -->
+<section class="relative w-full h-[397px] lg:h-[486px] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105" data-alt="A cinematic, wide-angle photograph of a high-end tech conference stage in a futuristic hall. Warm amber spotlights illuminate a sleek minimalist podium against a backdrop of deep blue digital particles. The atmosphere is sophisticated and premium, with a soft lens flare and elegant depth of field. The color palette centers on professional blues and vibrant primary accents, consistent with a high-fidelity light-mode UI design." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDrm4Lo3hbIyhOsZ6K-QpouhzWrbyajnn4-yxRkyV71gdm1ouXhbGNWWdynj09yiv3m0o66fx2MU6egFSn8J_gCdsrQlXoi_eUnSL2P9wVhFloG22RvhGeyyKf1p3BAJOcWDDdmioeIVLP0SYJkaVULOkuPAwoOTFrjfbuagZTHwrMBRyI1BA_BASTQ0sNV2GypjC7oix0bd8D94l3xpcaovv9U5_YEspOJ79U7HBoovMqrTBv9K6AQ4VEXV23_Bh2L02nIjDjTRrw')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/20"></div>
+<!-- Countdown Overlay -->
+<div class="absolute bottom-6 left-container-padding-mobile right-container-padding-mobile">
+<div class="glass-panel inline-flex items-center gap-4 px-5 py-3 rounded-2xl shadow-lg border border-white/20">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Starts In</span>
+<div class="flex gap-3 mt-1" id="countdown">
+<div class="text-center">
+<span class="block font-title-lg text-title-lg leading-none" id="days">02</span>
+<span class="text-[10px] uppercase font-semibold opacity-60">Days</span>
+</div>
+<span class="font-title-lg text-title-lg leading-none opacity-40">:</span>
+<div class="text-center">
+<span class="block font-title-lg text-title-lg leading-none" id="hours">14</span>
+<span class="text-[10px] uppercase font-semibold opacity-60">Hrs</span>
+</div>
+<span class="font-title-lg text-title-lg leading-none opacity-40">:</span>
+<div class="text-center">
+<span class="block font-title-lg text-title-lg leading-none" id="mins">45</span>
+<span class="text-[10px] uppercase font-semibold opacity-60">Min</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Body -->
+<div class="px-container-padding-mobile -mt-4 relative z-10 space-y-stack-gap-lg">
+<!-- Title & Basic Info -->
+<section class="space-y-stack-gap-sm pt-4">
+<div class="flex justify-between items-start">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/10 text-secondary font-label-md text-label-md">
+                        Tech Innovation
+                    </span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm" data-weight="fill">verified</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Official Event</span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface leading-tight">Global Sawa Connect: The Future of Fluid Interfaces</h1>
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</div>
+<span class="font-body-md text-body-md font-medium">Sat, Nov 24 • 09:00 AM - 05:00 PM</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</div>
+<span class="font-body-md text-body-md font-medium">Grand Horizon Center, Dubai</span>
+</div>
+</div>
+</section>
+<!-- Speakers & Participants -->
+<section class="bg-surface-container-low rounded-3xl p-5 border border-outline-variant/30">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-title-lg text-title-lg text-on-surface">Speakers</h3>
+<button class="text-primary font-label-md text-label-md">View All</button>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+<!-- Speaker 1 -->
+<div class="flex flex-col items-center min-w-[72px] space-y-2">
+<div class="w-16 h-16 rounded-2xl overflow-hidden ring-2 ring-primary/10">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a diverse female technology leader with a warm, confident expression. She is set against a clean, softly blurred modern office background with neutral gray and white tones. The lighting is high-key and flattering, emphasizing a professional yet approachable aesthetic consistent with a premium lifestyle social app. The style is crisp and clear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN1mAPXrOCcm2xMdjgko1FhBoeRT23nURvq3yeNChoUKTZThsekLw1lVvPcRJTs0Ax95T2OrCWD5YjokQhkZaU3gc88chChDvqCAoDDVKVtdPA0pwi6nV0iHoSvJWtB74XjiAvpWuV04zi_qM9VIA3-kk9z9nVQj7KnNHl93giWnnPpARd3_ZnFh9Z9SqCRXxJvyMwX_M61rr-cQowVf3UqL8_luPKwNS6_b8cQ2NIudMuscMgMy94acLgHxsgUiYJxczbvkB0F7c">
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center leading-tight">Sarah Chen</span>
+</div>
+<!-- Speaker 2 -->
+<div class="flex flex-col items-center min-w-[72px] space-y-2">
+<div class="w-16 h-16 rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male creative director in his late 30s with styled hair and designer glasses. He wears a minimalist charcoal turtleneck, appearing thoughtful and sophisticated. The background is a soft-focus architectural space with warm interior lighting. The overall mood is creative and high-end, fitting the 'Fluid Sophistication' brand identity. The image is bright and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5Te_OiLCxkgx6sP9MbnyRNfkELTdZmHW7sDyOYMUsv2b6srH82vk_8RlQvNa7mp3jziv-0NM5N3sKG7On1TiUogsvo0oM_uWYJRGNAj90zINwefezw0hzwEoII4UqHsq50b_Jf2LtIE_tXZdU_C8k4DHeVL3Zk1PJX_hoXfhrb_T3AQYt_ACZGb43AX_04oEGlwD-Wunt1bcG21Fr9sMBknH5zrBf6H7lPAwHN9_qhBKoTSpSLR1ZwJpz_pWxo5rR8S6_9Q6HHRA">
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center leading-tight">Marcus Aris</span>
+</div>
+<!-- Speaker 3 -->
+<div class="flex flex-col items-center min-w-[72px] space-y-2">
+<div class="w-16 h-16 rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A vibrant professional portrait of a young woman with curly hair and a joyful smile, wearing a bold secondary-color blazer. She is in a bright studio setting with soft, diffused lighting that creates a clean, premium look. The image has a fresh, energetic feel that aligns with modern social platform aesthetics. High-resolution and crisp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJyuExDfAAeyh0fcwu99XHCcKxiwetV0VlDUTYjr0Yz-cSj1B46RQ5hAbwFgbPgphcvV6mFYUH28NA97pyHTD9XzextlTck-UJm34vsLMwtJDZSk6lzCyOO-XhyjKEN_13RX6lsJVN4g4Vv_DlOS-NaTSUtQhvwzYLc0eVdP1aKBSIErGcOCshDBfp-y_7m9NWExCqqD0uhhFqVSWvJDZRUKvj1gK_ULO32xBoI_Bwt-nwe-9p_kxqVr3j3zwM-bH1rIi9FJnEo8Q">
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center leading-tight">Elena Ruiz</span>
+</div>
+</div>
+<div class="mt-6 flex items-center justify-between pt-4 border-t border-outline-variant/20">
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small avatar of a generic smiling person in professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5Yu9psb69A2hoILOCDcTnTZUCAGVfjBcgr0qiMDHmK5Vse4fYgGAosbh7jZCq246jeYp9wJ6Z_Jk97tJZN6rt6l8MM0D8_YJxLsJ4r0l3HH7LEp3bzZuWRkOPiNxi9-Wmk5LqF7iItE_lrtx0f56_mrMTOS_C-rWpjhXBnnHe8FnbmXlNwWqnOqYzLDZCiEX2Pyi-071DyHdRzDe8UAR0wgp-jOkpoOMzsG9ClLYGOLq6pJqsZRe9fsuWYwxQDRiERDeB5ZJqVos">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small avatar of a generic smiling person in professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwyTula2CWc8f6Xof4c4bPp6ogc2CyhW0ZQluOzrpz5qGRVcR5vUkzghM4lS925BoXKnAVvd4esnqnmN_fz1SGi83SkygR_THVZiC7dd4G0IO4e2KcflOvGJXFNh6UgwUyNZg0cmonK4BUqVv0sE_nz9B-heYsKirwKdIYxtYn85QULy6rpN-wmVOp1i8z5-xaQARsbLcg9oByyYGwU918Zm_D6qI2Fkw0lSLlErJLgrBng1Ty2wLdQSe0h-thvWpDCs-fKeAE3gg">
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small avatar of a generic smiling person in professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc_ZaTl2TkLeu1LtLtFKmoZgRb0Wgt1cNXiZVEiUnHDk7apnDP-5QjxH-RrKB9XUCV5AzIqOnOC6aaVTH7eQAbF2FzE71_AFkxiInpn_xLqgUJ7CQeAOHhzFMNeXfh9HXRGLDyAEer03xnSfzZMgE0Yn2uYdNAbhNBhjaAANNpNGmj8aaTOFShWCWvpiFONtteOM6GOcq5x5eRprdM73bXVT2c24SVGT5M4MgbAC6Mee1_ymwdNHsXTDoYxsaJpv0HN8aur0tHs8I">
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold border-2 border-surface-container-low">
+                            +2.4k
+                        </div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Joined the waitlist</span>
+</div>
+</section>
+<!-- Description -->
+<section class="space-y-stack-gap-sm">
+<h3 class="font-title-lg text-title-lg text-on-surface">About Event</h3>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                    Join us for an exclusive deep dive into the next evolution of digital connection. We're exploring how fluid interfaces and organic geometry are reshaping the way we interact globally. Expect insightful keynote sessions, interactive workshops, and networking with top-tier innovators. <button class="text-primary font-semibold">Read More</button>
+</p>
+</section>
+<!-- Location Map -->
+<section class="space-y-stack-gap-sm">
+<div class="flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg text-on-surface">Location</h3>
+<button class="text-primary font-label-md text-label-md">Get Directions</button>
+</div>
+<div class="relative w-full h-48 rounded-[28px] overflow-hidden border border-outline-variant/30 group shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A stylized, clean map view of a high-end district in Dubai. The map features minimalist white roads, light-blue water bodies, and soft gray buildings. A prominent, glowing blue primary-colored location pin marks the event venue. The overall aesthetic is professional, airy, and high-utility, matching a luxury application's UI design language." data-location="Dubai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZVYMyPWvdZFjSP3wcIpSf8qWspX4hiohV2KNkfu8zNm9PjsbgNVpv8Nt_ciK__67GhsxGrxfxcMrjQ2RzsX1vzaMrvfuMRLWQ3NDtA4r6bpJ2RrBlIkQ1WW5mQ00byl-kRoMGlUhI1-VYD6kqYXKJBQzAEoY8YqoPJ10dMNv8yahMTWg_2jH90HRCE9niBGuoRiSa0FrRK9kvLYggOR2SLWLqhaBobMgHAmXM1Fu69Ro3UYPCP0y89WaQmufhJ4w9aOyBrmBqzJU">
+<div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors pointer-events-none"></div>
+<div class="absolute bottom-3 left-3 glass-panel px-3 py-2 rounded-xl text-on-surface shadow-sm border border-white/20">
+<span class="font-label-sm text-label-sm block opacity-70">Main Hall, Floor 2</span>
+<span class="font-label-md text-label-md font-semibold">Grand Horizon Center</span>
+</div>
+</div>
+</section>
+<!-- Reminder Toggle -->
+<section class="flex items-center justify-between bg-surface-container-highest/30 p-4 rounded-2xl border border-outline-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Remind Me</p>
+<p class="text-[11px] text-on-surface-variant">Notify 1 hour before start</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</section>
+</div>
+</main>
+<!-- Bottom RSVP Dock -->
+<div class="fixed bottom-0 left-0 w-full glass-panel border-t border-outline-variant/10 px-container-padding-mobile pt-4 pb-8 z-50">
+<div class="max-w-screen-xl mx-auto flex flex-col gap-4">
+<div class="grid grid-cols-3 gap-3">
+<button class="flex-1 py-3 rounded-2xl bg-primary text-white font-title-lg text-label-md font-semibold shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">check_circle</span>
+                    Going
+                </button>
+<button class="flex-1 py-3 rounded-2xl bg-surface-variant/50 text-on-surface-variant font-label-md font-semibold hover:bg-surface-variant active:scale-[0.98] transition-all">
+                    Maybe
+                </button>
+<button class="flex-1 py-3 rounded-2xl bg-surface-variant/30 text-on-surface-variant font-label-md font-semibold hover:bg-surface-variant/50 active:scale-[0.98] transition-all">
+                    Not Going
+                </button>
+</div>
+</div>
+</div>
+<script>
+        // Simple Micro-interactions & Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.remove('bg-surface/10');
+                header.classList.add('bg-surface/80', 'shadow-sm');
+            } else {
+                header.classList.add('bg-surface/10');
+                header.classList.remove('bg-surface/80', 'shadow-sm');
+            }
+        });
+
+        // Countdown Logic (Static for demo purposes)
+        function updateCountdown() {
+            // This would be dynamic in a real app
+            const mins = document.getElementById('mins');
+            if (mins) {
+                let current = parseInt(mins.innerText);
+                if (current > 0) mins.innerText = String(current - 1).padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 60000);
+
+        // RSVP Buttons Active State
+        const buttons = document.querySelectorAll('.grid button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                    b.classList.add('bg-surface-variant/30', 'text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                btn.classList.remove('bg-surface-variant/30', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Chat - Messages</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002109",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed": "#acedff",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-secondary-container": "#006172",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary-container": "#007e37",
+                    "primary": "#004ac6",
+                    "on-background": "#0b1c30",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-container": "#2563eb",
+                    "surface-tint": "#0053db",
+                    "secondary": "#00687a",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "on-surface-variant": "#434655",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "surface-dim": "#cbdbf5",
+                    "outline": "#737686",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary": "#006229",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-container": "#57dffe",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px",
+                    "stack-gap-sm": "8px",
+                    "section-margin": "40px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .chat-gradient { background: linear-gradient(135deg, #004ac6 0%, #00687a 100%); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling young tech entrepreneur with a clean-cut look, set against a soft blue studio background with elegant glass-like reflections. The lighting is warm and cinematic, reflecting a premium and sophisticated brand aesthetic with vibrant primary blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE9-qXPB3QaSme_kIy07mTolz8og2zN-3AgpgMEbXgqNORLfgzMMZQ9ITqEXhgum-uvbuFSontjYZ-CHHoPuo-wruS2877_62c_56j4qDHWkiJMtQ6KFhaQN0JC_S3mAK85tcbxSOlIx_Li0hI0R1_0TKdiZ5HlaOZEp2LVzQsw5-5wQyKGAHXe3olYcddYWBqFslKxNOagY4plHv5K9TfxU_6imB3F-0GsvW3u_dG2m8Eb3vL71_ewACNggIhQYDc-8DEGCkthsI">
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary dark:text-primary-fixed-dim">Sawa</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-outline hover:opacity-80 transition-opacity p-2 active:scale-95 transition-transform">search</button>
+<button class="material-symbols-outlined text-outline hover:opacity-80 transition-opacity p-2 active:scale-95 transition-transform">more_vert</button>
+</div>
+</header>
+<main class="pt-16 pb-24 px-container-mobile max-w-2xl mx-auto">
+<!-- Filter Chips Section -->
+<section class="mt-6 mb-6 overflow-x-auto hide-scrollbar flex gap-2 py-2">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary text-label-md font-label-md whitespace-nowrap active:scale-95 transition-transform">All</button>
+<button class="px-5 py-2 rounded-full bg-secondary-container/20 text-on-secondary-container text-label-md font-label-md whitespace-nowrap hover:bg-surface-variant/30 transition-colors">Unread</button>
+<button class="px-5 py-2 rounded-full bg-secondary-container/20 text-on-secondary-container text-label-md font-label-md whitespace-nowrap hover:bg-surface-variant/30 transition-colors">Groups</button>
+<button class="px-5 py-2 rounded-full bg-secondary-container/20 text-on-secondary-container text-label-md font-label-md whitespace-nowrap hover:bg-surface-variant/30 transition-colors">Channels</button>
+<button class="px-5 py-2 rounded-full bg-secondary-container/20 text-on-secondary-container text-label-md font-label-md whitespace-nowrap hover:bg-surface-variant/30 transition-colors">Bots</button>
+</section>
+<!-- Pinned Section -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Pinned Chats</h2>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<!-- Pinned Chat 1 -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<div class="relative flex-shrink-0">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Close-up portrait of a woman with braided hair and a confident expression, set in a bright urban rooftop garden with lush green plants and soft evening sunlight. The aesthetic is clean, modern, and high-end, utilizing a color palette of soft whites and vibrant teal accents to match the glassmorphism design style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAwN3u5UAb8rQ_6iRXgwRrR1O8PieDAI4MCfCsZ6Tue_5yazJGqVVM0ADKrN_57VH7-kzo5nuPIyVlmENKnwZeCiMvW8w29SJnO33JDox5RaVQbUmOpaNAzKIh5QTRygJy-P1tJ4p2ftXawsPnO6Pht2XdeIp2wpDy7m3NSUxieD_aR5OfqRwLPZMkuTF2dvTsRjqjf-dKITkpsrG9rikYiruEiBNOcBYhvNiS0PzgxMSsYolHN6WiIpruPY5Ee9ylcC4Xipc_7f4">
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-tertiary border-2 border-surface rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-title-lg text-[16px] text-on-surface truncate">Sarah Jenkins</h3>
+<span class="text-label-sm text-outline">10:42 AM</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+<p class="text-body-md text-on-surface-variant truncate">0:14 • Voice message</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="bg-primary text-on-primary text-label-sm w-5 h-5 flex items-center justify-center rounded-full">2</div>
+</div>
+</div>
+<!-- Pinned Chat 2 (Group) -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:bg-surface-container-lowest transition-colors cursor-pointer group border-l-4 border-l-primary">
+<div class="relative flex-shrink-0 w-14 h-14 bg-surface-container flex items-center justify-center rounded-full overflow-hidden">
+<div class="absolute inset-0 grid grid-cols-2">
+<img class="w-full h-full object-cover" data-alt="Abstract vibrant mesh gradient representing creative energy, featuring flowing translucent shapes in deep indigo and cyan. The visual style is ethereal and futuristic, with a focus on depth and lighting effects that evoke a sophisticated social platform vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBQLFQHxrLRQ3oFrCui42qlVFJe6G7Znrp6DWW585jDcQQM8wsAaUUukKSzRm9xPqdQxzuA7FMk3xmp7xuAwq2LfS12dBoYrwUPffdl8O6CrM3d8p7koUrtvOJf4TfMe3P539yjRY_w1gPiz0yiUPaImjv3aLI40VtPtG2vRQH-J3LAB2ONbmpReSb0Ui10IUtIEvt_M-ls2wJfAHG1Rpr0ZQNj1qknRg9IWKSowacu2TI9cMfj0bOgTcKNzbmjYMu0n9GbsRgieA">
+<img class="w-full h-full object-cover" data-alt="A diverse group of young professionals collaborating in a minimalist, glass-walled office space filled with natural light. The atmosphere is professional yet creative, echoing a premium productivity tool's aesthetic with soft shadows and organic geometry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOUFBWg_KYfTu6fOaq4zgJPtc88hLdvVTXHQlhuOggkIuO1IfH1fFH8BZnwJI93xYydhUnkxN4ZndrNJK2hBqkL1pqb6tqr7DJokWeMfpoCC8mB0iW7nyYXLkpCb-n5pYAQkrAhN2-NKrp261bhD_1lwyzZ3rc8SQgzTx2syHoPbcc_wTe0MO6ITyABgzLrNam-M1Iw6PBGol77AYWC7UhuNGpFHCUQHzAtVDz6wBATEvtvX-zZSmyxaqkHm7ZHxuTDiYORyu6nXk">
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1">
+<h3 class="font-title-lg text-[16px] text-on-surface truncate">Product Strategy</h3>
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="text-label-sm text-outline">Yesterday</span>
+</div>
+<p class="text-body-md text-primary font-medium truncate">David: Did you see the new mockups?</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Chats Section -->
+<section>
+<h2 class="text-label-sm font-label-sm uppercase tracking-wider text-outline mb-4">Recent</h2>
+<div class="space-y-1">
+<!-- Chat 1 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-2xl transition-colors cursor-pointer group">
+<div class="relative flex-shrink-0">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Portrait of a young man with glasses and a stylish haircut in a high-tech minimalist home office. Soft bokeh backgrounds of code on monitors and plants create a depth-of-field effect. The lighting is cool-toned with subtle glows, matching a modern glassmorphism UI identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7reaBd_ikmkv7KIQXszVJJqITfWCEYTv_hDlWQqKfkrgkctQAKzO730WklkE0N1jrWJ468wAU-WHwP4hOaJqxLLuCnTGEAF1nCFidMGiMG7mCweEYDdu9_aMOek9Gdw4IniiK1LLpd7w_AEd8a1cqCDPVV3avDEeSWOnmAJO3azgGXzkRSpg8mk3LrRXs-i6lpQ5_LtOkkeigcYJUtaZ_qbJArJWoIIEPmvScSRquzEaNdCK8-VU9mKFuTgTMbkTgWuHQvLcbNNg">
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-title-lg text-[16px] text-on-surface truncate">Alex Rivera</h3>
+<span class="text-label-sm text-outline">9:15 AM</span>
+</div>
+<p class="text-body-md text-on-surface-variant truncate">Let's hop on a call later today?</p>
+</div>
+</div>
+<!-- Chat 2 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-2xl transition-colors cursor-pointer group">
+<div class="relative flex-shrink-0">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="text-on-secondary-fixed font-bold text-headline-md">S</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-title-lg text-[16px] text-on-surface truncate">Sawa Bot</h3>
+<span class="text-label-sm text-outline">08:02 AM</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<p class="text-body-md truncate">New security update available.</p>
+</div>
+</div>
+</div>
+<!-- Chat 3 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-2xl transition-colors cursor-pointer group">
+<div class="relative flex-shrink-0">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="A cinematic, artistic close-up of a person's hands holding a modern smartphone, with a vibrant and colorful glass-like wallpaper glowing. The setting is a dimly lit, upscale lounge with soft blue and purple atmospheric lighting, creating a premium lifestyle mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEa8Uh-8PDkQAvtN96y7RRi-fJ4STU7ITkOTMRYredZhWJWZo8fewsKgj1Viib2pbTinJrd0IJ4a12jxome89gDog1GPi7L49g5tdg7OY_sdM53fe2nVdXrDsrEEKOn665eO52WMdjr_l11UcLBHIHE4VuQdybhlZXq2FzcF6bHjLujndZoTtuqCuEolLNY2jTlbTsYwwDUo1hyxzkmX3XOMLe0Rl4Mon6jVYuClJPCCIBRC-MGSbRL3ozm3B7cCp2huN1kNUdwXs">
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-title-lg text-[16px] text-on-surface truncate">Lena Wu</h3>
+<span class="text-label-sm text-outline">Sun</span>
+</div>
+<p class="text-body-md text-on-surface-variant truncate">Sent a photo</p>
+</div>
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 opacity-60">
+<img class="w-full h-full object-cover" data-alt="Minimalist landscape photography of a serene mountain lake at dawn, with perfectly calm water reflecting a soft pastel sky. The style is clean and airy, using generous negative space and a palette of cool blues and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL6UtbrT528pMu_l3vm-L-BceM59_hd8p4F4HECBPORuFupXZUURYKF3eMbfXKMgGZa1NX9N-BWt6Sz52ezDLIpXFC7onbraEgzWMdBTx7ajmGuvpRHK8rOMWGjdRx_AGtKMApMdx7NYl-ep_js0tYeCitMmjmYeZpqtjnHI2rRyLIkO9ogVIU2aLXsCfdssR13pe38tqeqxOAhE0QaSBCUIftCiSpPHdK6e2R-w8Cp2_IQv0j6MLHCAe2zKCphbfz89JpjrgMQb8">
+</div>
+</div>
+<!-- Chat 4 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-2xl transition-colors cursor-pointer group">
+<div class="relative flex-shrink-0">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="A portrait of a cheerful elderly woman with silver hair, wearing a stylish knit sweater in a cozy sun-drenched library. The lighting is soft and golden, giving the scene a warm and professional lifestyle aesthetic with a focus on approachable geometry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt2QYGIbabw5aVSrv0qu0vT-ZSVGY7yDIGUv53TBkm_vdkz-KZNXzjTeiAyIztu5tmCYJLwoWAWF7FZUraqDZAIZuQBWQTakSrUs1ghPrDNSES9gsuZogmDOpDZQfygj4TwK_ZUuZfVkmuJx5ZSSPGbVOCz36-0rmOfZCh2_D-3IbSi93Rr_JaJoA0rp1OIgg2STVxfaaNCbL_8Hue3qCXn_Yhy2ez5bpbDyjSrfjsG-xi6_x7BPHUcJNURNCM6eN9NH59Jtor3vc">
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-title-lg text-[16px] text-on-surface truncate">Mom</h3>
+<span class="text-label-sm text-outline">Sat</span>
+</div>
+<p class="text-body-md text-on-surface-variant truncate">Don't forget dinner at 7!</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB: New Chat -->
+<button class="fixed bottom-24 right-6 w-14 h-14 chat-gradient rounded-2xl text-white shadow-xl flex items-center justify-center active:scale-90 transition-transform duration-200 z-40">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">edit_square</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors w-16 h-16" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic for demo
+        document.querySelectorAll('.rounded-2xl, a').forEach(el => {
+            el.addEventListener('click', function(e) {
+                // Subtle ripple/active effect feedback already handled by Tailwind transition classes
+            });
+        });
+
+        // Toggle dark mode (example trigger)
+        // document.documentElement.classList.toggle('dark');
+    </script>
+</body></html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Edit Profile - Sawa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(11, 28, 48, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .floating-label-input:focus-within label,
+        .floating-label-input input:not(:placeholder-shown) + label {
+            transform: translateY(-24px) scale(0.85);
+            color: #2563eb;
+            background-color: #0b1c30;
+            padding: 0 4px;
+        }
+        input:focus { outline: none; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Dark mode specific adjustments for date picker icon */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#ffffff",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1a2c42",
+                        "inverse-primary": "#004ac6",
+                        "on-tertiary-fixed-variant": "#c1ffc5",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#2563eb",
+                        "on-primary-container": "#dbe1ff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-variant": "#434655",
+                        "secondary-container": "#004e5c",
+                        "inverse-surface": "#f8f9ff",
+                        "outline": "#8d919f",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-bright": "#1a2c42",
+                        "surface": "#0b1c30",
+                        "inverse-on-surface": "#0b1c30",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-surface-variant": "#c3c6d7",
+                        "surface-container-lowest": "#071321",
+                        "surface-container-highest": "#32445a",
+                        "on-tertiary": "#003915",
+                        "on-primary-fixed-variant": "#004ac6",
+                        "secondary": "#4cd7f6",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary-container": "#002109",
+                        "on-secondary-fixed": "#001f26",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#005321",
+                        "surface-container-high": "#26384e",
+                        "on-secondary-container": "#acedff",
+                        "tertiary": "#4ae176",
+                        "surface-dim": "#0b1c30",
+                        "on-surface": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "on-error-container": "#ffdad6",
+                        "background": "#0b1c30",
+                        "outline-variant": "#434655",
+                        "surface-container-low": "#0f2238",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-tint": "#b4c5ff",
+                        "on-secondary": "#003640",
+                        "primary-container": "#003ea8",
+                        "secondary-fixed": "#acedff",
+                        "primary-fixed": "#dbe1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "section-margin": "40px",
+                        "gutter": "16px",
+                        "container-padding-tablet": "32px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "24px",
+                        "container-padding-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-background/80 backdrop-blur-xl border-b border-white/10">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Edit Profile</h1>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<main class="pt-20 pb-32 px-container-mobile max-w-2xl mx-auto">
+<!-- Media Section: Cover & Photo -->
+<section class="relative mb-stack-gap-lg">
+<div class="w-full h-40 rounded-xl overflow-hidden bg-surface-container-high group cursor-pointer relative" data-alt="Cover Photo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnZC-CZrZ66vAS_NQ6vmb41LRh80NfZ4JZGgGjKNfgun6Hj0L_VZeklRyAq8tEGHLP5PNtHUERV5EOaBuRaHEvEfjq-7CotclbISyPorNsZuSZqL_wzrdH-xIDkeRgqGORqH0iGJU4s3JVSFjpZPAfk7N2vGXMA5-T5TzgELCouJTCl3G0zshrq5sEdV8EaGdXyVoAyY8KTXPzmMlo4nsnGs3H4zxOBBNfoh9ituvclLnBOZRZiWy773tqfea4-RVTQI1_xdsDmXg'); background-position: center; background-size: cover;">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl">photo_camera</span>
+</div>
+</div>
+<div class="absolute -bottom-10 left-6">
+<div class="relative group cursor-pointer">
+<div class="w-24 h-24 rounded-full border-4 border-background bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile Photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgktfs8uDzD8_nWL6TcxefWYwt9tCZSYuYjJqoaRpvx4eHtTFaOpysAeW1p3fwit6szxqW16K7hbsGdc9WinR4jGKTZvj6pNm3kFae4qBlrE2abmL2NvUF7NNFbmKOsDbh2UEHaNCI2SNawW8KSd2IGX7dfRpfdGySCDtanwMnRgs1DwzQNUWjmU1xVU8GvbSLvjvUkWsTL_YFR_nE9BaV0wyu2UmHU8mU4xXaJqLPHsw-4PwwMJo1F57YPDVlPoK-o403j3S7Ig0"/>
+</div>
+<div class="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">edit</span>
+</div>
+</div>
+</div>
+</section>
+<div class="h-10"></div> <!-- Spacer for avatar overlap -->
+<!-- Form Section -->
+<form class="flex flex-col gap-y-stack-gap-lg">
+<!-- Basic Info Group -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-md">
+<!-- Full Name -->
+<div class="relative floating-label-input group">
+<input class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" id="full_name" placeholder=" " type="text" value="Sawa User"/>
+<label class="absolute left-4 top-4 text-outline pointer-events-none transition-all duration-200 origin-left" for="full_name">Full Name</label>
+</div>
+<!-- Username -->
+<div class="relative floating-label-input group">
+<input class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" id="username" placeholder=" " type="text" value="sawaconnect"/>
+<label class="absolute left-4 top-4 text-outline pointer-events-none transition-all duration-200 origin-left" for="username">Username</label>
+</div>
+</div>
+<!-- Display Name -->
+<div class="relative floating-label-input group">
+<input class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" id="display_name" placeholder=" " type="text" value="Sawa Premium"/>
+<label class="absolute left-4 top-4 text-outline pointer-events-none transition-all duration-200 origin-left" for="display_name">Display Name</label>
+</div>
+<!-- Bio -->
+<div class="relative group">
+<textarea class="peer w-full px-4 pt-6 pb-2 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface resize-none" id="bio" placeholder=" " rows="4">Digital enthusiast and premium member of Sawa community. Exploring the boundaries of fluid sophistication.</textarea>
+<label class="absolute left-4 top-2 text-label-sm text-outline" for="bio">Bio</label>
+</div>
+<!-- Links Group -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-md">
+<div class="relative floating-label-input group">
+<input class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" id="website" placeholder=" " type="url" value="https://sawa.connect"/>
+<label class="absolute left-4 top-4 text-outline pointer-events-none transition-all duration-200 origin-left" for="website">Website</label>
+</div>
+<div class="relative floating-label-input group">
+<input class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" id="email" placeholder=" " type="email" value="hello@sawaconnect.app"/>
+<label class="absolute left-4 top-4 text-outline pointer-events-none transition-all duration-200 origin-left" for="email">Email Address</label>
+</div>
+</div>
+<!-- Contact & Personal -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-md">
+<div class="relative floating-label-input group">
+<input class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" id="phone" placeholder=" " type="tel" value="+1 234 567 890"/>
+<label class="absolute left-4 top-4 text-outline pointer-events-none transition-all duration-200 origin-left" for="phone">Phone</label>
+</div>
+<div class="relative floating-label-input group">
+<input class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" id="dob" placeholder=" " type="date" value="1995-06-15"/>
+<label class="absolute left-4 top-1 text-label-sm text-outline" for="dob">Date of Birth</label>
+</div>
+</div>
+<!-- Gender Select -->
+<div class="relative group">
+<select class="peer w-full h-14 px-4 pt-4 bg-surface-container-low border border-outline-variant/30 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface appearance-none" id="gender">
+<option value="prefer_not_to_say">Prefer not to say</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="non_binary">Non-Binary</option>
+<option value="other">Other</option>
+</select>
+<label class="absolute left-4 top-1 text-label-sm text-outline" for="gender">Gender</label>
+<span class="material-symbols-outlined absolute right-4 top-4 text-outline pointer-events-none">expand_more</span>
+</div>
+<!-- Interests (Chip Cloud Style) -->
+<div class="mt-4">
+<h3 class="font-title-lg text-on-surface mb-stack-gap-sm px-1">Interests</h3>
+<div class="flex flex-wrap gap-2">
+<div class="h-8 px-4 rounded-full bg-primary/20 text-white font-label-md flex items-center gap-2 border border-primary/40 cursor-pointer hover:bg-primary/30 transition-colors">
+                        Design <span class="material-symbols-outlined text-sm">close</span>
+</div>
+<div class="h-8 px-4 rounded-full bg-primary/20 text-white font-label-md flex items-center gap-2 border border-primary/40 cursor-pointer hover:bg-primary/30 transition-colors">
+                        Technology <span class="material-symbols-outlined text-sm">close</span>
+</div>
+<div class="h-8 px-4 rounded-full bg-primary/20 text-white font-label-md flex items-center gap-2 border border-primary/40 cursor-pointer hover:bg-primary/30 transition-colors">
+                        AI <span class="material-symbols-outlined text-sm">close</span>
+</div>
+<div class="h-8 px-4 rounded-full bg-surface-container-high text-on-surface-variant font-label-md flex items-center gap-2 border border-outline-variant/10 cursor-pointer hover:bg-surface-variant/20 transition-colors">
+                        Travel <span class="material-symbols-outlined text-sm">add</span>
+</div>
+<div class="h-8 px-4 rounded-full bg-surface-container-high text-on-surface-variant font-label-md flex items-center gap-2 border border-outline-variant/10 cursor-pointer hover:bg-surface-variant/20 transition-colors">
+                        Music <span class="material-symbols-outlined text-sm">add</span>
+</div>
+</div>
+</div>
+</form>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full p-6 bg-background/80 backdrop-blur-xl z-50 flex flex-col gap-4 border-t border-white/10">
+<button class="w-full h-14 bg-primary text-white font-title-lg rounded-2xl shadow-lg shadow-primary/20 hover:shadow-primary/30 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2">
+            Save Changes
+        </button>
+<div class="h-safe-area"></div>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('focus', () => {
+                element.parentElement.classList.add('scale-[1.01]');
+                element.parentElement.style.transition = 'transform 0.2s ease-out';
+            });
+            element.addEventListener('blur', () => {
+                element.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Floating label logic check for manual inputs
+        const inputs = document.querySelectorAll('.floating-label-input input');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.value !== "") {
+                    input.classList.add('has-content');
+                } else {
+                    input.classList.remove('has-content');
+                }
+            });
+        });
+    </script>
+</body></html>

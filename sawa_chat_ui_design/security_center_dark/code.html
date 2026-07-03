@@ -1,0 +1,155 @@
+<html class="dark" lang="en"><head></head><body class="font-body-md text-on-surface bg-background">```html
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sawa - Security Center</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#ffffff",
+                    "error": "#ffb4ab",
+                    "surface-container": "#1d2a3d",
+                    "inverse-primary": "#004ac6",
+                    "on-tertiary-fixed-variant": "#c1ffc5",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#2563eb",
+                    "on-primary-container": "#dbe1ff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-variant": "#434655",
+                    "secondary-container": "#004e5c",
+                    "inverse-surface": "#e2e2e6",
+                    "outline": "#8d9199",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-bright": "#3b4759",
+                    "surface": "#0b1c30",
+                    "inverse-on-surface": "#2f3033",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-container-lowest": "#061323",
+                    "surface-container-highest": "#323f51",
+                    "on-tertiary": "#003915",
+                    "on-primary-fixed-variant": "#0043b1",
+                    "secondary": "#4cd7f6",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-container": "#002109",
+                    "on-secondary-fixed": "#001f26",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#005321",
+                    "surface-container-high": "#283547",
+                    "on-secondary-container": "#acedff",
+                    "tertiary": "#4ae176",
+                    "surface-dim": "#0b1c30",
+                    "on-surface": "#ffffff",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#ffdad6",
+                    "background": "#0b1c30",
+                    "outline-variant": "#434655",
+                    "surface-container-low": "#132133",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-tint": "#b4c5ff",
+                    "on-secondary": "#003640",
+                    "primary-container": "#003ea8",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-margin": "40px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-lg": "24px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(29, 42, 61, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .active-glow {
+            box-shadow: 0 0 24px rgba(37, 99, 235, 0.2);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+        body {
+            background-color: #0b1c30;
+            -webkit-font-smoothing: antialiased;
+            color: #ffffff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary p-2 hover:opacity-80 active:scale-95 transition-all">arrow_back</button>
+<h1 class="text-title-lg font-title-lg font-bold text-white">Security Center</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary p-2 hover:opacity-80 active:scale-95 transition-all" data-icon="search">search</span>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a tech-savvy individual, soft cinematic lighting, neutral gray background, modern professional aesthetic for a profile avatar in a high-security application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8BDdsxii-Ui_hZ3Afos4hpGUyeWLJAmCrbfXNfbdD7B9qtsoGaPGkhD0Cw_zHh7ETJ7pEZXd7kpFjNICTbUmALuOAoKz1QPgh22KEFQKSyefPc8sWahPTqhhii4_SAb7ZXgTKVqUDtMCWbzy9LTC0Sp2-nK0vjtL1zCFRq4b6rZwh2qYfrWkQpu_DjM-jfDCHPByfIvYPmxnPVYpgePi-XdohjIxDfb8p8-EAIiCXGVL8FWxAEnJDNFs7bdbUicCkkNnFwlgET6E"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-mobile max-w-2xl mx-auto space-y-stack-gap-lg">
+<!-- Security Score & Hero Visualization -->
+<section class="relative overflow-hidden rounded-[28px] p-6 glass-card active-glow">
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="relative mb-4">
+<svg class="w-32 h-32 transform -rotate-90">
+<circle class="text-surface-container-highest" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary transition-all duration-1000 ease-out" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="54.6" stroke-width="8"></circle>
+</svg>
+</div></div></section></main></body></html>

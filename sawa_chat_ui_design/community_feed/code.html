@@ -1,0 +1,370 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Community Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005321",
+                    "primary": "#004ac6",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-high": "#dce9ff",
+                    "secondary": "#00687a",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "surface-tint": "#0053db",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container": "#e5eeff",
+                    "surface": "#f8f9ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "on-surface-variant": "#434655",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-container": "#2563eb",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-container": "#eeefff",
+                    "inverse-surface": "#213145",
+                    "outline": "#737686",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#006229",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#006172",
+                    "secondary-container": "#57dffe",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary-fixed": "#001f26",
+                    "on-background": "#0b1c30",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-margin": "40px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px",
+                    "container-padding-tablet": "32px",
+                    "stack-gap-sm": "8px",
+                    "unit": "4px",
+                    "stack-gap-lg": "24px",
+                    "stack-gap-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-icon { font-variation-settings: 'FILL' 1; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .post-card { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .post-card:active { transform: scale(0.98); }
+        .bento-inner { height: 100%; border-radius: 28px; overflow: hidden; position: relative; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A professional high-quality 3D render of a friendly male avatar with short brown hair and glasses, set against a soft blue studio background with volumetric lighting. The style is modern and clean, consistent with high-end tech illustration systems, featuring soft shadows and vibrant colors that align with the Sawa brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9RG7z3V7Q2tfF--4fvURqsAkCNRQ_DtHK2vvr14jjsxCA9NngU3GpvpXPiCzhGQa7nka1adRP9Onweroc4nRfTfYmQJjTjDPJcoYlGnXNiO4jwqs4OGZ6MH5oAHPePLP-5dwbTPYZn_-23sIU-ajlzDhuAzu2YV5AkkP9xr-98LB7zgvzCjPMUfo8HLXMubm-R2bdNRox8mfSyMcXmnmJH_CLtUWe5hJVqRqDeszRLRINBxAyc_OOGOp5PInV5pNc7wcFaa9Sc78">
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity" data-icon="search">search</button>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pt-20 pb-32 px-container-mobile max-w-2xl mx-auto space-y-6">
+<!-- Pinned Section -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-title-lg text-title-lg text-on-surface">Pinned Moments</h2>
+<span class="text-label-md font-label-md text-primary bg-primary-container/10 px-3 py-1 rounded-full">3 New</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<!-- Pinned Item 1 -->
+<div class="flex-shrink-0 w-32 h-48 rounded-[28px] overflow-hidden relative group cursor-pointer shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A vibrant 3D stylized character portrait of a joyful woman with long orange hair, wearing a stylish purple hoodie, set against a dreamy abstract gradient background of teals and blues. The lighting is ethereal and soft, creating a premium glassmorphic feel suitable for a high-end social networking application timeline." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2uaC-_0CAEcBVMLw7nT-1uOyV_4uDI0jken6TwgpJ8RWRnD6qITV2sWN-JwPWVxU4SlkOVd8NPoR23vaFLMM58nO4IPKlQqrEwHs_RCvM-x_VNtK8-gJyKLpmvBINilnlRN2AOQUb73KdB9fE6ojD0gUCLjX0X_zfJwfaBf71kikJH_UWxQO4nyJJYQmUgNqF6NuqF6CEjUfWL-Z4R41QDhzTQPyMJD0y2Xc5WJaXH5nmQPiwDdqDXhw48fAgzGnNvEcwmhVek0c">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+<p class="text-white text-label-sm font-label-sm">Sarah</p>
+</div>
+</div>
+<!-- Pinned Item 2 -->
+<div class="flex-shrink-0 w-32 h-48 rounded-[28px] overflow-hidden relative group cursor-pointer shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A 3D digital illustration of a diverse team collaborating around a glowing holographic globe in a futuristic workspace. The scene uses a palette of electric blues and soft mint greens, emphasizing global connection and community growth. The atmosphere is optimistic and high-tech, fitting the Sawa Connect theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1oKmpIJ7mC7oGTh2T0UwNqIHiYUGqvzH296mfJVdge_229ueDZneMCmA5y-caYRycxMlQ0cpMTuxTdX1GjA1T40vdZbMzTHhzrbJG1xyb78U6C5POKf-84pegrNM7D-dOY0NJdUFsCZzDeugJE1xtRhmCCQdMmYMRo1U9A7kj8Fm9UJd8JC9_vGSMEXFju_lZYM-A5qUbQwzAviIzI8Ap_H1cq-E5ZHRp3GoxMmhPJUE3j5D1ti3lxWXemP_eRVj0nMrIRb1l6Ws">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+<p class="text-white text-label-sm font-label-sm">Global</p>
+</div>
+</div>
+<!-- Pinned Item 3 -->
+<div class="flex-shrink-0 w-32 h-48 rounded-[28px] overflow-hidden relative group cursor-pointer shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A sleek 3D render of a stylized city at night with flowing trails of light connecting different skyscrapers, representing a digital urban community. The lighting features neon accents of primary blue and secondary teal, casting a cinematic glow on architectural surfaces, creating a sense of depth and modern connectivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNESNUqSkuc2s9rcxSjCciUdglCjQCzpCrtne_LK0ew4ZDXz46yiIIHWPuV7VuYsLUVPZhuvpNe0JdI0HIKmwZlqWi62zTGI9pUUH8j7rRAo62XwoJ3WpqHVq7DA9bCl_A5yntAeC8ph8KpX2IBmENxI7gsf8KwysfRisujWq4I7UAb1ZPIKsJu7kZ7VcST-aSOMHIsRV5SenGl03MoNLDDoyF1aUoEx-uaNFWJxgEafZPP565MEkiwJowzwa6nppu5nYLZFUBSzM">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+<p class="text-white text-label-sm font-label-sm">Tech Talk</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Feed Timeline -->
+<div class="space-y-6">
+<!-- Image Post -->
+<article class="post-card bg-surface-container-lowest rounded-[28px] shadow-sm overflow-hidden border border-outline-variant/10">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-secondary-container">
+<img class="w-full h-full object-cover" data-alt="A friendly 3D character avatar of a man with a beard and short dark hair, wearing a simple blue t-shirt. The background is a soft neutral grey, emphasizing the high-fidelity textures and professional lighting of the character model." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfSziTD1i0807H1dXSfRNQbMSECP5_PwMvtB4Szli2fQ7hJCugHsvW1--85nDx9WwnAUcq7olsas322OtDSwyK7WCItHAiNr4OdmhAquVQlEsRzNQJRwJrVNVOsL8FjfWNxD9JYYkOhFJOnI_xroh-sBPee9WRg5Htl5jmglE8cMHK42KaqLTiIwm2uQN-BpVONTqG08hFdKNVhidS_ZDb6J27BG4Vd_q2m1lFmrlqw_uhBfhYLsw2vVSqjKKznvEVn3WXFsxG2kc">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Marcus Chen</p>
+<p class="text-label-sm font-label-sm text-outline">2 hours ago</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline">more_horiz</button>
+</div>
+<div class="px-4 pb-3">
+<p class="font-body-md text-body-md text-on-surface-variant">Just finished designing the new interface for the global connector. Community feedback has been incredible! 🚀 #SawaConnect #Design</p>
+</div>
+<div class="mx-4 mb-4 rounded-2xl overflow-hidden aspect-[4/3] relative">
+<img class="w-full h-full object-cover" data-alt="A high-end 3D composition showing a floating digital interface with glowing buttons and data visualizations, suspended over a dark metallic surface. Soft cyan and violet rim lighting accents the edges of the floating panels, creating a sophisticated glassmorphism effect that feels premium and innovative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvh9TaMbwzuZAcBxynnJ3GUE1lwKcxZCGQ2qysr3ncW8aHMl_qGMNyXAydLRDGT8OsqIikYtFuPf0QRxA3yeP3T1U45BfZlll37uzYc6Sb5IEl1bijv9ctPkJ69Jrk-OH2LxRfnrj_bfZDLAncdO5XyQxFcU7ETX0GckxMCBfdP5ifAAjH8dpg5yTUfEahQ3OWKOa1bgxEpK5hdBNa_Bj_ZOGqS8iXWQWvN-Q86bLD2l-RzAUY5bzdxbMBwqU7ZcjE6rdPudGgiaU">
+</div>
+<div class="p-4 pt-0 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 group" onclick="toggleLike(this)">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform text-outline" data-icon="favorite">favorite</span>
+<span class="text-label-sm font-label-sm text-outline">1.2k</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform text-outline" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm font-label-sm text-outline">84</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform text-outline" data-icon="share">share</span>
+</button>
+</div>
+<button class="material-symbols-outlined text-outline" data-icon="bookmark">bookmark</button>
+</div>
+</article>
+<!-- Video/Interactive Post (Simulated with Gradient & Icon) -->
+<article class="post-card bg-surface-container-lowest rounded-[28px] shadow-sm overflow-hidden border border-outline-variant/10">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-tertiary-container/20">
+<img class="w-full h-full object-cover" data-alt="A detailed 3D avatar of a young woman with a hijab in a soft blue-grey color, with a gentle and warm expression. The lighting is diffused and professional, casting soft shadows that highlight the textile texture and facial features, set against a minimalist pastel green background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADwnOryH8LO657VHLoOkWxWqTrAs9eheHMZR1gzqlqlXhH5zqpl4WdhCBw8BHbZIyMLT8Cr6bOWy8zJpFIrHdWzSLNEUCK9Xw55-vTOiomMgtJX_yadfxGlcgOVP7aAK3zF_Bk3pf70Ye67bLqvDfjegCkCUXZPKJXBa3guAquY5MV8Jc53GNSCy9TRjR0NCb7HdqSyan55wiEgvGkD2C-9UwQv6IDrUjSA0Bq9-F6shd_59GuKAJ-hPdMOBy6hnuQcxHu3BGbySU">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Amina Al-Farsi</p>
+<p class="text-label-sm font-label-sm text-outline">5 hours ago</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline">more_horiz</button>
+</div>
+<div class="px-4 pb-3">
+<p class="font-body-md text-body-md text-on-surface-variant">Check out this morning's global sync video. We're breaking barriers across three continents! 🌍✨</p>
+</div>
+<div class="mx-4 mb-4 rounded-2xl overflow-hidden aspect-video relative group cursor-pointer bg-black">
+<img class="w-full h-full object-cover opacity-80" data-alt="A cinematic 3D render of a stylized world map where various nodes are connected by arcs of shimmering light. The atmosphere is dark and sophisticated, with deep blues and brilliant cyan glows. Small 3D character avatars are floating near major hubs, signifying a bustling global community. The lighting is dramatic and moody." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO7Lp5Pz6-30xbVmtUbJc62gxRsRFSpY3Ua3_slhMBNkQHMrH0Q9eIr0l0pv35AnN8qg5Ep6XfaYW8qCvVbMkuOjCmpfFDY-09N4gsa0ROU31ehYeDBwbPRCs3Bbd9O9l6yE8V1dM5bI1FuIrMP2yaDOBAbfLCDqOEp8gPrFCpRl3FW1N4NL2Rm-EKAkdBNWjYRqfar7PHntj95t5HDs6aWE5zWqQX_EbslesB47qX9618Djr0rT38DoFZkSYgBQF3S7dBZ9tdc6c">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full glass flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-black/40 backdrop-blur-md text-white text-[10px] px-2 py-0.5 rounded-full font-bold">12:45</span>
+<span class="bg-primary/80 backdrop-blur-md text-white text-[10px] px-2 py-0.5 rounded-full font-bold">HD</span>
+</div>
+</div>
+<div class="p-4 pt-0 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 group" onclick="toggleLike(this)">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="favorite">favorite</span>
+<span class="text-label-sm font-label-sm text-outline">3.4k</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm font-label-sm text-outline">215</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="share">share</span>
+</button>
+</div>
+<button class="material-symbols-outlined text-outline" data-icon="bookmark">bookmark</button>
+</div>
+</article>
+<!-- Text Only Post -->
+<article class="post-card bg-surface-container-lowest rounded-[28px] shadow-sm overflow-hidden border border-outline-variant/10">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="A 3D character of a young man with curly dark hair and a bright yellow beanie, smiling warmly. He is wearing a casual teal polo shirt. The render is clean and high-fidelity, using soft key lighting to create a friendly and approachable personality typical of modern community apps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEvZJNFnbGdPn896FbZBNmYwpG8GBnjQd3MqYBT7-bLGVJVwZsGWXqGcwTJBOBQebhE_Drd1uLcT7fjsD9BzCfpVSL2_n55ShW5TeV0jauqo5N0QIVs4TrT1hnX_ffZNulnaIHTjs06vxYX32xgxBApjxVvsYAOrMm4prIygIQosCyDE_pvKPUmqOappxO-YWoqjtKRlSIk-006vi2dxMqhfLtC5gIwUTmShOBXO5AqQdWH1_qmVXsbljInoCzKgkILd76uGhdUH0">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Leo Spark</p>
+<p class="text-label-sm font-label-sm text-outline">12 hours ago</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline">more_horiz</button>
+</div>
+<div class="px-4 pb-6">
+<p class="font-headline-md text-headline-md text-primary leading-tight">What's the one feature you'd love to see in the next Sawa update? 🧪</p>
+<div class="mt-4 space-y-3">
+<div class="w-full h-12 bg-surface-container-low rounded-xl border border-outline-variant/30 flex items-center justify-between px-4 cursor-pointer hover:bg-surface-variant/20 transition-colors">
+<span class="text-body-md font-body-md text-on-surface">Advanced Group Analytics</span>
+<span class="text-label-md font-label-md text-outline">42%</span>
+</div>
+<div class="w-full h-12 bg-surface-container-low rounded-xl border border-outline-variant/30 flex items-center justify-between px-4 cursor-pointer hover:bg-surface-variant/20 transition-colors">
+<span class="text-body-md font-body-md text-on-surface">Custom Theme Engine</span>
+<span class="text-label-md font-label-md text-outline">38%</span>
+</div>
+</div>
+</div>
+<div class="p-4 pt-0 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 group" onclick="toggleLike(this)">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="favorite">favorite</span>
+<span class="text-label-sm font-label-sm text-outline">892</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm font-label-sm text-outline">543</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="share">share</span>
+</button>
+</div>
+<button class="material-symbols-outlined text-outline" data-icon="bookmark">bookmark</button>
+</div>
+</article>
+</div>
+</main>
+<!-- Navigation Bars -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-transform duration-200 p-2" href="#">
+<span class="material-symbols-outlined active-icon" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-variant/20 rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-white rounded-2xl shadow-lg flex items-center justify-center active:scale-95 transition-transform duration-200 z-40">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<script>
+        function toggleLike(btn) {
+            const icon = btn.querySelector('.material-symbols-outlined');
+            const countSpan = btn.querySelector('span:last-child');
+            let count = parseFloat(countSpan.innerText.replace('k', '')) * (countSpan.innerText.includes('k') ? 1000 : 1);
+            
+            if (icon.classList.contains('active-icon')) {
+                icon.classList.remove('active-icon');
+                icon.style.fontVariationSettings = "'FILL' 0";
+                icon.classList.add('text-outline');
+                icon.classList.remove('text-error');
+                count--;
+            } else {
+                icon.classList.add('active-icon');
+                icon.style.fontVariationSettings = "'FILL' 1";
+                icon.classList.remove('text-outline');
+                icon.classList.add('text-error');
+                count++;
+                
+                // Pop effect
+                btn.classList.add('scale-125');
+                setTimeout(() => btn.classList.remove('scale-125'), 150);
+            }
+            
+            countSpan.innerText = count >= 1000 ? (count / 1000).toFixed(1) + 'k' : count;
+        }
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.post-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+            observer.observe(card);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sawa Live - Premium Stream Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#0b1c30",
+                    "surface-tint": "#0053db",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-secondary-container": "#006172",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#57dffe",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "outline": "#737686",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "secondary-fixed": "#acedff",
+                    "on-primary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#00687a",
+                    "on-surface-variant": "#434655",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-primary-container": "#eeefff",
+                    "inverse-primary": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "surface": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-fixed": "#001f26",
+                    "tertiary": "#006229",
+                    "surface-bright": "#f8f9ff",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-container": "#007e37",
+                    "on-primary-fixed": "#00174b",
+                    "inverse-surface": "#213145",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#eff4ff"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-300px) scale(1.5) rotate(20deg); opacity: 0; }
+        }
+        .emoji-animation {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            pointer-events: none;
+            animation: floatUp 2.5s ease-out forwards;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .active-scale:active {
+            transform: scale(0.92);
+            transition: transform 0.15s ease;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 0px;
+        }
+    </style>
+</head>
+<body class="bg-black overflow-hidden select-none">
+<!-- Full Screen Background Video Placeholder -->
+<div class="fixed inset-0 w-full h-full z-0">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 z-10"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic, high-definition live stream scene of a stylish young creator in a professional neon-lit studio. The lighting is a blend of vibrant cyan and hot pink hues, creating a modern, high-energy atmosphere. The background is filled with blurred high-tech gaming equipment and lush indoor plants. The stream is sharp and clear, conveying a premium influencer aesthetic for a high-end social app." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxr6gQbKzgwr_AK3_YMtc64SSME501sniZzl1UHiLJg5q7ujzMqQJ1gmrxcPbrayZi4s76LBEETTjDMj-4ju-y1ZslCoE8YC1aiiBMNjxY2Xc8HFA1Q3pYe0Czs-3iqWxjrA7HZOPXvdT3aqWf7z_7KuC1YywpyO1QhbPY49aJCpFAA1yK_4YVR5nnwrdatJaADlOLYlKaso4KjGEQEt7ANfTIEKsNyaekBXS-7sRO4Vs5acZrbqEkp8YMdSGVP9HPeDQWGQF0yrg')"></div>
+</div>
+<!-- Top Navigation UI -->
+<div class="fixed top-0 left-0 w-full z-50 px-container-padding-mobile pt-12 flex justify-between items-start">
+<!-- Streamer Info -->
+<div class="flex items-center gap-stack-gap-md glass-panel p-1.5 pr-4 rounded-full">
+<div class="relative">
+<img class="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A professional close-up headshot of a charismatic digital creator with a warm smile. The person has styled dark hair and is wearing a trendy urban outfit. The photo is high-quality with soft, flattering lighting and a shallow depth of field, set against a blurred creative workspace background in soft pastel tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALxJpDnX44gSraouFKm_SBPGF8djVpwExJgsAJwvv7vfMMIyYzFaJnhmvluPBiuhSG55gIYQZJPCeNv7Ym3s__MA5yjKmYf_PhQYD2Ux6s4r5ooQqH3Bf2t2T7GRuumNjP9TMu3vJXZhduzSBMNk2zB8FPqeHQl04_1foUD2zhzFBu29pcSM2xZsGPS7IZM-KucaaTEHyEbaOnVfJsD1QcYdbCD_SI9JWKtP-I1N3dkhPPUeBn4xjAuAQi5EBmbxchldUUX2cUQrk">
+<div class="absolute -bottom-1 -right-1 bg-primary text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full border border-black uppercase">Plus</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-title-lg text-[14px] leading-tight">Alex Rivera</span>
+<div class="flex items-center gap-1">
+<span class="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm flex items-center gap-1">
+<span class="w-1 h-1 bg-white rounded-full animate-pulse"></span> LIVE
+                    </span>
+<span class="text-white/80 font-label-sm text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">visibility</span> 4.2k
+                    </span>
+</div>
+</div>
+<button class="bg-primary text-white text-[12px] font-bold px-4 py-1.5 rounded-full ml-2 active-scale">Follow</button>
+</div>
+<!-- System Controls -->
+<div class="flex items-center gap-stack-gap-sm">
+<button class="glass-panel w-10 h-10 rounded-full flex items-center justify-center text-white active-scale">
+<span class="material-symbols-outlined">picture_in_picture_alt</span>
+</button>
+<button class="glass-panel w-10 h-10 rounded-full flex items-center justify-center text-white active-scale">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Right Side Action Stack -->
+<div class="fixed right-container-padding-mobile top-1/2 -translate-y-1/2 z-50 flex flex-col gap-6 items-center">
+<div class="flex flex-col items-center gap-1">
+<button class="glass-panel w-12 h-12 rounded-full flex items-center justify-center text-white active-scale">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<span class="text-white text-[12px] font-semibold">12.4k</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<button class="glass-panel w-12 h-12 rounded-full flex items-center justify-center text-white active-scale">
+<span class="material-symbols-outlined">share</span>
+</button>
+<span class="text-white text-[12px] font-semibold">Share</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<button class="glass-panel w-12 h-12 rounded-full flex items-center justify-center text-white active-scale bg-yellow-500/20">
+<span class="material-symbols-outlined text-yellow-400">card_giftcard</span>
+</button>
+<span class="text-white text-[12px] font-semibold">Gift</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<button class="glass-panel w-12 h-12 rounded-full flex items-center justify-center text-white active-scale">
+<span class="material-symbols-outlined text-secondary-fixed-dim">monetization_on</span>
+</button>
+<span class="text-white text-[12px] font-semibold">Coins</span>
+</div>
+</div>
+<!-- Bottom Interface Area -->
+<div class="fixed bottom-0 left-0 w-full z-50 pb-safe px-container-padding-mobile flex flex-col gap-4">
+<!-- Live Chat Feed -->
+<div class="w-full max-w-[280px] h-64 overflow-y-auto custom-scrollbar flex flex-col-reverse gap-2 mask-linear-gradient">
+<div class="flex flex-col gap-2" id="chat-container"><div class="flex items-start gap-2 animate-pulse">
+                <div class="glass-panel px-3 py-2 rounded-2xl rounded-tl-none inline-block">
+                    <span class="text-secondary-fixed-dim font-bold text-[13px]">TechGuru:</span>
+                    <span class="text-white text-[13px]">Subscribed! ✅</span>
+                </div>
+            </div>
+<!-- Chat Message -->
+<div class="flex items-start gap-2">
+<div class="glass-panel px-3 py-2 rounded-2xl rounded-tl-none inline-block">
+<span class="text-secondary-fixed-dim font-bold text-[13px]">Sarah_99:</span>
+<span class="text-white text-[13px]">This setup is fire! 🔥</span>
+</div>
+</div>
+<!-- Chat Message with Badge -->
+<div class="flex items-start gap-2">
+<div class="glass-panel px-3 py-2 rounded-2xl rounded-tl-none inline-block">
+<span class="bg-primary/40 text-primary-fixed text-[9px] px-1 rounded mr-1">VIP</span>
+<span class="text-yellow-400 font-bold text-[13px]">Marcus_King:</span>
+<span class="text-white text-[13px]">Just sent a Super Rocket! 🚀🚀</span>
+</div>
+</div>
+<!-- Chat Message -->
+<div class="flex items-start gap-2">
+<div class="glass-panel px-3 py-2 rounded-2xl rounded-tl-none inline-block">
+<span class="text-secondary-fixed-dim font-bold text-[13px]">ElenaV:</span>
+<span class="text-white text-[13px]">How do you get that lighting effect?</span>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<div class="glass-panel px-3 py-2 rounded-2xl rounded-tl-none inline-block">
+<span class="text-secondary-fixed-dim font-bold text-[13px]">User_402:</span>
+<span class="text-white text-[13px]">Loving the vibes today! 🙌</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Row: Shopping & Input -->
+<div class="flex items-center gap-3 w-full pb-8">
+<!-- Shopping Card Trigger -->
+<div class="glass-panel p-1 rounded-xl flex items-center gap-2 pr-4 animate-bounce hover:animate-none cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center" data-alt="A sleek, high-end professional microphone on a desktop arm, isolated against a soft studio background. The product is modern and premium, featuring brushed metal finishes and glowing LED accents. The image is captured with professional commercial lighting to highlight textures and quality, fitting the luxury tech aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwRpkiKbXH0f3gNJggaegQVX8dnfDqPRvKpFh8LOPb6T9sfrlx6-5jt7J6DKbv8Prbz8Y6CT8oeXtv9IIxvZGP0HshJdkdEr9ZHPb_GqDzDVv9UlnoRQFtEhSMQqa24rV2FujxiLp2J2V3Q2PaAS_yLhZJhqtc8rfkg5SC0V4ynmKbP5D1bjdfX-3qxEi3WANHaIU9pXvwaBKrsX9H_E08lAT5Chiw-40qR-fcgY7Z1a53A41Q_WOush8T7f3P_j8NYvg1XIFGQNE')"></div>
+<div class="flex flex-col">
+<span class="text-white text-[11px] font-bold">Pro Stream Mic</span>
+<span class="text-secondary-fixed-dim text-[11px] font-bold">$129.00</span>
+</div>
+<span class="material-symbols-outlined text-white text-[18px]">shopping_bag</span>
+</div>
+<!-- Input Bar -->
+<div class="flex-1 relative">
+<input class="w-full h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 text-white text-[14px] focus:outline-none focus:ring-1 focus:ring-primary/50 placeholder:text-white/50" placeholder="Say something..." type="text">
+<button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white active-scale">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+<!-- Reaction Button -->
+<button class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white active-scale" id="reaction-trigger">
+<span class="material-symbols-outlined text-[24px]">mood</span>
+</button>
+</div>
+</div>
+<!-- Floating Emoji Container -->
+<div class="fixed inset-0 pointer-events-none z-40 overflow-hidden" id="emoji-canvas"></div>
+<script>
+        // Emoji Reaction System
+        const reactionTrigger = document.getElementById('reaction-trigger');
+        const emojiCanvas = document.getElementById('emoji-canvas');
+        const emojis = ['❤️', '🔥', '👏', '🙌', '✨', '🤩', '🚀', '💯'];
+
+        function spawnEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji-animation text-2xl';
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Randomize position slightly
+            const randomX = Math.random() * 60 - 30; // -30px to +30px
+            emoji.style.right = (20 + randomX) + 'px';
+            
+            emojiCanvas.appendChild(emoji);
+            
+            // Clean up
+            setTimeout(() => {
+                emoji.remove();
+            }, 2500);
+        }
+
+        reactionTrigger.addEventListener('click', () => {
+            // Spawn multiple emojis on click
+            for(let i=0; i<5; i++) {
+                setTimeout(spawnEmoji, i * 100);
+            }
+        });
+
+        // Simulate incoming chat messages
+        const chatContainer = document.getElementById('chat-container');
+        const userNames = ['Aria_Stream', 'Neo_Gamer', 'TechGuru', 'PixelArt', 'DesignLover'];
+        const messages = ['WOW!', 'Incredible!', 'Where is this?', 'Link in bio?', 'Subscribed! ✅', 'Love the mood!'];
+
+        function addMessage() {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'flex items-start gap-2 animate-pulse';
+            msgDiv.innerHTML = `
+                <div class="glass-panel px-3 py-2 rounded-2xl rounded-tl-none inline-block">
+                    <span class="text-secondary-fixed-dim font-bold text-[13px]">${userNames[Math.floor(Math.random() * userNames.length)]}:</span>
+                    <span class="text-white text-[13px]">${messages[Math.floor(Math.random() * messages.length)]}</span>
+                </div>
+            `;
+            chatContainer.insertBefore(msgDiv, chatContainer.firstChild);
+            
+            // Limit messages to avoid performance issues
+            if (chatContainer.children.length > 20) {
+                chatContainer.lastElementChild.remove();
+            }
+            
+            // Remove pulse animation after intro
+            setTimeout(() => { msgDiv.classList.remove('animate-pulse'); }, 1000);
+        }
+
+        setInterval(() => {
+            if (Math.random() > 0.6) addMessage();
+        }, 3000);
+
+        // Auto-spawn occasional emojis to simulate live environment
+        setInterval(() => {
+            if (Math.random() > 0.8) spawnEmoji();
+        }, 1500);
+    </script>
+</body></html>

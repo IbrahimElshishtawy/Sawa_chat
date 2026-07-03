@@ -1,0 +1,290 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Customize Profile - Sawa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d3e4fe",
+                    "outline": "#737686",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#0b1c30",
+                    "primary-container": "#2563eb",
+                    "on-secondary-container": "#006172",
+                    "surface": "#f8f9ff",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "primary": "#004ac6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#57dffe",
+                    "secondary": "#00687a",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#acedff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#001f26",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c3c6d7",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#0053db",
+                    "tertiary-container": "#007e37",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-surface-variant": "#434655",
+                    "tertiary": "#006229",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-tablet": "32px",
+                    "stack-gap-md": "16px",
+                    "stack-gap-sm": "8px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "container-padding-mobile": "20px",
+                    "section-margin": "40px",
+                    "stack-gap-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-focus-ring:focus-within {
+            box-shadow: 0 0 0 2px theme('colors.primary-container');
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Header Navigation (Linear/Transactional Suppression of Shell) -->
+<header class="fixed top-0 left-0 w-full z-50 glass-panel h-16 flex items-center justify-between px-container-mobile">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined text-on-surface">close</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-on-surface">Edit Profile</h1>
+<button class="font-label-md text-label-md font-bold text-primary px-4 py-2 hover:opacity-80 active:scale-95 transition-all">
+            Save
+        </button>
+</header>
+<main class="pt-16 max-w-2xl mx-auto">
+<!-- Profile Header Section -->
+<section class="relative">
+<!-- Cover Photo Area -->
+<div class="relative w-full h-48 md:h-64 bg-surface-container-high overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700" data-alt="A professional high-end architectural photography of a minimalist loft with large glass windows. The lighting is soft and natural, reflecting a premium light-mode aesthetic with neutral tones of grey and white. The composition is clean and airy, perfectly suited for a sophisticated social platform profile banner." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBBCfgcx5kfPIo1NIOI2UfCv-BVPsl_8vn9fvkRl8Kb_0EGI8-huvtmVIPHChQUrdHGzujSnkkJZQ84Y6bGJZ5Rg-1NN6rvcojDcXL1gCi3cA8UvnN031ygLJZIHYc1tVevVtLXxwFB-PlbpwJF5HWzgdl5Dqq7GtR6MOHSj5GUjh74kabZxpaxOMGXitwCosotv8lEKFl2aaRo_FwtH5QbQ89IhvV-BBPxCkTCsT4ryGLS5-FEwZyzx3c8Dep_-HGC5WXeBOW6noA')">
+</div>
+<div class="absolute inset-0 bg-black/10"></div>
+<button class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full border border-white/30 text-white hover:bg-white/40 transition-all active:scale-90">
+<span class="material-symbols-outlined">photo_camera</span>
+</button>
+</div>
+<!-- Profile Avatar Overlap -->
+<div class="px-container-mobile -mt-12 relative flex items-end">
+<div class="relative group">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-background overflow-hidden shadow-xl bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a confident young professional with a warm, friendly smile. The background is a soft, out-of-focus studio grey, highlighting the subject's features. The lighting is flattering and bright, embodying the 'Fluid Sophistication' brand identity with high clarity and professional polish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_mNUclbkUQRS6vdJHESLUwVHgG7BRn7UocS1LgSPrKQ9WdP6GWS1ptedCjDNsHCaG8tNWk7h8UR07_4ESVYGy1cgvMCHTJx51Db0qxrJyA-7yGicS8KOyS_s4KTUeEaZh0JafwfD-6cJKv7QUC1iGFK2gxMVbEVXm2nLeEMGcms17mT7MUggTYawNpBkszjmpqTm4CAlWHb1cAF-LHIRUq5ECTGTNHWxX38Ct-luRfzgRPhtnwmpmkL8FDeKd2uaPAvDW_WtMsrk">
+</div>
+<button class="absolute inset-0 flex items-center justify-center bg-black/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="material-symbols-outlined text-white text-3xl">photo_camera</span>
+</button>
+<div class="absolute bottom-1 right-1 bg-primary text-white p-1.5 rounded-full border-2 border-background shadow-lg">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Editor Fields Section -->
+<section class="px-container-mobile mt-stack-gap-lg space-y-stack-gap-lg">
+<!-- Basic Info Group -->
+<div class="space-y-stack-gap-md">
+<label class="block">
+<span class="font-label-md text-label-md text-outline px-1 mb-2 block">Bio</span>
+<textarea class="w-full bg-surface-container-low border-none rounded-2xl p-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary-container transition-all resize-none" placeholder="Tell the world about yourself..." rows="4">Crafting digital experiences at the intersection of design and technology. Always exploring new horizons.</textarea>
+</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap-md">
+<label class="block">
+<span class="font-label-md text-label-md text-outline px-1 mb-2 block">Website</span>
+<div class="flex items-center bg-surface-container-low rounded-2xl px-4 focus-within:ring-2 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">link</span>
+<input class="w-full bg-transparent border-none py-4 px-0 font-body-md text-body-md text-on-surface focus:ring-0" placeholder="https://yourwebsite.com" type="url" value="https://sawaconnect.app">
+</div>
+</label>
+<label class="block">
+<span class="font-label-md text-label-md text-outline px-1 mb-2 block">Location</span>
+<div class="flex items-center bg-surface-container-low rounded-2xl px-4 focus-within:ring-2 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">location_on</span>
+<input class="w-full bg-transparent border-none py-4 px-0 font-body-md text-body-md text-on-surface focus:ring-0" placeholder="City, Country" type="text" value="San Francisco, CA">
+</div>
+</label>
+</div>
+<label class="block">
+<span class="font-label-md text-label-md text-outline px-1 mb-2 block">Occupation</span>
+<div class="flex items-center bg-surface-container-low rounded-2xl px-4 focus-within:ring-2 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">work</span>
+<input class="w-full bg-transparent border-none py-4 px-0 font-body-md text-body-md text-on-surface focus:ring-0" placeholder="What do you do?" type="text" value="Product Designer">
+</div>
+</label>
+</div>
+<!-- Social Links Section -->
+<div class="space-y-stack-gap-md">
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface pt-4">Social Links</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-3xl overflow-hidden shadow-sm">
+<!-- Instagram -->
+<div class="flex items-center justify-between p-4 border-b border-outline-variant/30 hover:bg-surface-variant/10 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Instagram</p>
+<p class="text-[12px] text-outline">@sawa_connect</p>
+</div>
+</div>
+<button class="text-primary font-semibold text-sm">Change</button>
+</div>
+<!-- Twitter (X) -->
+<div class="flex items-center justify-between p-4 border-b border-outline-variant/30 hover:bg-surface-variant/10 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white">
+<span class="font-bold text-sm">𝕏</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Twitter</p>
+<p class="text-[12px] text-outline">Not connected</p>
+</div>
+</div>
+<button class="text-primary font-semibold text-sm">Connect</button>
+</div>
+<!-- Threads -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-variant/10 transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-on-surface flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Threads</p>
+<p class="text-[12px] text-outline">@sawa_user</p>
+</div>
+</div>
+<button class="text-error font-semibold text-sm">Disconnect</button>
+</div>
+</div>
+</div>
+<!-- Advanced Settings / More info -->
+<div class="py-stack-gap-lg">
+<button class="w-full flex items-center justify-between bg-surface-container-low p-4 rounded-2xl group active:scale-[0.98] transition-transform">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Verification Status</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Actions (Mobile focused) -->
+<div class="fixed bottom-0 left-0 w-full p-container-mobile bg-gradient-to-t from-background via-background/95 to-transparent pt-10">
+<div class="max-w-2xl mx-auto">
+<button class="w-full h-14 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-lg shadow-xl hover:opacity-90 active:scale-95 transition-all flex items-center justify-center space-x-2">
+<span>Save Changes</span>
+</button>
+</div>
+</div>
+<script>
+        // Micro-interactions for input fields
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('shadow-md');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('shadow-md');
+            });
+        });
+
+        // Simple button press effect
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.97)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = '';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+    </script>
+</body></html>

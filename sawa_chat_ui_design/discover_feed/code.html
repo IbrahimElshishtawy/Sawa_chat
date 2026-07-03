@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sawa - Discover Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#001f26",
+                        "tertiary": "#006229",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#006172",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "outline": "#737686",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#57dffe",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary": "#00687a",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#0b1c30",
+                        "outline-variant": "#c3c6d7",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-container": "#007e37",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "surface-tint": "#0053db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "20px",
+                        "section-margin": "40px",
+                        "stack-gap-md": "16px",
+                        "stack-gap-lg": "24px",
+                        "gutter": "16px",
+                        "stack-gap-sm": "8px",
+                        "container-padding-tablet": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .masonry-grid {
+            columns: 2;
+            column-gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid {
+                columns: 3;
+                column-gap: 24px;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+        }
+        @media (min-width: 768px) {
+            .masonry-item {
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait of a stylish young individual with a creative aesthetic, set against a soft-focus background of a modern urban studio. The lighting is warm and cinematic, reflecting a premium lifestyle vibe. The image uses a palette of soft blues and crisp whites consistent with a high-end social application profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa-epitYC23XOguYvADspg225WxQkv6qjDj6agV5ymWJemuFgzBneUv-NCeLsHsdCgJwI-Dfl-iIvxqbd6v8OKrKMpYf32wCkulz838Ds7sm163r2KTTQR4YR2cgDn8Mc1l7aS1y0zRw8l8EGyia0GbkQ19ScbZ6LetO0JHevJwRBYgcmrOx4aAn64dXGMLkjOhnXVdcKXk9yDgI6uW66MfdmcjSUx07f2j62zphv345i4NCW0BWZOrZvLYSlzWBEhw2MWhhnSp9s"/>
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary">Sawa</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity">search</button>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity">notifications</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 min-h-screen max-w-7xl mx-auto px-4 md:px-8">
+<!-- Category Tabs -->
+<section class="mb-8">
+<div class="flex overflow-x-auto no-scrollbar gap-3 pb-2">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap shadow-md">For You</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Design</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Tech</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Travel</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Architecture</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Fashion</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Gaming</button>
+</div>
+</section>
+<!-- Daily Discovery Section -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-on-background">Daily Discovery</h2>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Refreshes in 4h</span>
+</div>
+<div class="relative w-full h-[320px] md:h-[400px] rounded-[32px] overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A breathtaking landscape of a futuristic sustainable city integrated with lush green mountains and cascading waterfalls. The architecture features fluid, organic glass structures reflecting a soft sunset glow. The atmosphere is ethereal and high-resolution, evoking a sense of wonder and advanced technology in a light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVb015kWlI0UJftRBIW4SmdgEpdHXzZjLDN74eLOMH_Jkglsk58mwHEkNMJ0eEIHcEI1NowUuA2n9QsL3BI2e5OXgZtLgpx3fq4D5Pgrxgb8AGqzJOM73__Qg7pZ4KS_TO11LkrE9EjgmG3OrcwcJJfhFJ9m20j6xUZDGhbhsYoQ4A1ToKLyVVWg_9E4HRUtL8Mwx2_fHC5G35TTaTMSl29kvVYn-bPcfvOkH0Tz7W4gBq5_naF7FQvt6JZO0rScE8Ly8fJpI28Xs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-8 flex flex-col gap-2">
+<span class="inline-block px-3 py-1 rounded-full bg-secondary-container/90 text-on-secondary-container font-label-sm text-label-sm w-fit uppercase">Architecture</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-white max-w-lg">Designing the Future: Why organic forms are winning the decade.</h3>
+<div class="flex items-center gap-3 mt-4">
+<div class="w-8 h-8 rounded-full border border-white/50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female architect with glasses, set against a clean, light-filled studio with architectural models in the background. She has a confident and welcoming expression. The lighting is natural and bright, highlighting a professional yet creative persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA_Qa-0eQRyZ25KvehSIGoRZDklfZN1FUzPqWvv9vGQ5Ly57ZTtYMY7DHz3b9CYFDqP6PDQ8Mnufz1_86aNDCdMFqYuDn9qGJ1AZx8RC8Xsl6rJueoY7oKo3_JQHkFsczmlKfj65-H0Ae6-GWef9z8yYD3jRSdOFMWZRWSQ-VLn9boJm1AUR94Zaus-fJtfnYHr9Zu-DesBwxl7mmTXpe5IvEonpSzKVlLSlxNR_Qk8Odm8yhNYa9PWJV_xezSJIdR3T0IFpAVISs"/>
+</div>
+<span class="text-white/90 font-label-md">Elena Vance • 8 min read</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stories Row -->
+<section class="mb-10">
+<h2 class="font-title-lg text-title-lg mb-4 text-on-background">Trending Stories</h2>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4">
+<!-- Story 1 -->
+<div class="flex-shrink-0 w-32 aspect-[9/16] rounded-2xl overflow-hidden relative border-2 border-primary/40 p-[2px]">
+<div class="w-full h-full rounded-[14px] overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A vibrant macro shot of colorful tropical flowers in a high-tech greenhouse, with soft water droplets reflecting neon light-blue and pink accents. The style is crisp and detailed, emphasizing natural beauty through a digital-first lifestyle lens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqwd6Jmd5LdCJfloWp74bRhA1JV1hattepYc5yVThgq2woD3i5WD7rmhddGhEnN7qv9soyAbVAKaYOeuSSTJMh5LbP6guG1DV24YmYg2CJ9Ei11I8Deo0SRosUvW30KNbLDYLW52WRQ78CvLmvenE54JrKMJsKT2c9p1rvELulOx3RqCgAAOchBn3JtaTRJoTxJ1WMA8OKa-SCty3EjaJqLuR3XTWkWX29xjNIPZBI-W44wFUwqOyf41vAWZk1kkQBy6fjP4mizDc"/>
+<div class="absolute bottom-2 left-2 right-2 text-[10px] font-bold text-white leading-tight">Botany VR</div>
+</div>
+</div>
+<!-- Story 2 -->
+<div class="flex-shrink-0 w-32 aspect-[9/16] rounded-2xl overflow-hidden relative p-[2px]">
+<div class="w-full h-full rounded-[14px] overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="An aerial view of a minimalist surf resort on a pristine beach with turquoise water. The sand is white and the layout is symmetrical and clean. The aesthetic is bright, airy, and high-end, representing a luxury travel experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5RJhlSNtV8dsUWUfS9QRFe2AOeApKl1fyCv5O4OVxdh1tUkd_Wfop41j4HZt5i8H1DGjIGI10uQ5-kJ3NN0nljSkOfcmchoAXSd1L9bfSiIyGZLk0wTYFX1crZytji0XthYRJgiFT5kmvJINXu8sg7mWfmWri4cns54FSydpfP2-6GthlIfc9K7UPYw7NGXvY2QpFw5dhFCMAQVWyPZ5Wk_O2kcUl8Bx7Wn4jQkZI-DBVQItDVvI7cJ9b7wmJovf9YndOd7KFQrQ"/>
+<div class="absolute bottom-2 left-2 right-2 text-[10px] font-bold text-white leading-tight">Surf Club</div>
+</div>
+</div>
+<!-- Story 3 -->
+<div class="flex-shrink-0 w-32 aspect-[9/16] rounded-2xl overflow-hidden relative p-[2px]">
+<div class="w-full h-full rounded-[14px] overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A modern industrial workspace with a dual-monitor setup showing complex 3D modeling software. The desk is clean with a single cup of artisan coffee. The lighting is cool-toned and professional, showcasing a high-productivity tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD205JpPn_8mS7WsGATfWqk1q4ISd03FnokXfwnb_5QPPqAB7n7_91q18I3uHzVnyS0blc50S8SeITCzBAK6bBI9Qjw4XYSCPPt_XiGRwlihZPoD2egIHGFFhFWEe799H1Di3OFDlHkQ0RGiJ6gb36XaU_wIksiaNFGeA8sQZhPoH5SXs-uuWd30NFqBbHgdjSSYlcpokoTos_tcIW-Vkjz598AYcy7j3ZTMBxDM8_XXp_qle7RZrQonqn3z6VArXvOGeaV70n8rmk"/>
+<div class="absolute bottom-2 left-2 right-2 text-[10px] font-bold text-white leading-tight">Workflows</div>
+</div>
+</div>
+<!-- Story 4 -->
+<div class="flex-shrink-0 w-32 aspect-[9/16] rounded-2xl overflow-hidden relative p-[2px]">
+<div class="w-full h-full rounded-[14px] overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A high-fashion street portrait in a minimalist concrete urban environment. The model is wearing avant-garde sustainable clothing with bold textures. The image uses high-contrast natural lighting, creating a premium editorial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPyKWVs5WNP_hgtRd7a6dLXP69A6jj_CZDokcqh_FR8oV43MS07jasEgJ7IrUCKmkdDpDxpd4XMydFNCbDY6wy6T2sdrIBHvz5ZuMqTa5U3zl0H20XP2HGX_4sUHCCChdXSMIOwTE3EJiheET1mGx92fGFEU-dLtSmd9fl3VJsZTmm5ssu_mRouXZjp2EAWP_lT6TQaj_jMweATkoOiC9hjhAnQbP8-G3_r3I2qPP2FktDq3VGJ6XVYH4AefUtEL-JcVWXKVozpuo"/>
+<div class="absolute bottom-2 left-2 right-2 text-[10px] font-bold text-white leading-tight">Eco-Style</div>
+</div>
+</div>
+<!-- Story 5 -->
+<div class="flex-shrink-0 w-32 aspect-[9/16] rounded-2xl overflow-hidden relative p-[2px]">
+<div class="w-full h-full rounded-[14px] overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A futuristic kitchen setup with floating holographic recipe cards and sleek, metallic appliances. The mood is warm and inviting yet highly technological, blending home comfort with cutting-edge digital experiences." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4gj2KE3ZSqeN-JZ6Ykx-qFiqboFlbwFQTGnfci9YThmiTS3nFdeRN0dXT2PMF4m5iLy8HVpkn8jfPj7BlscMFkqFHnfpPj6C4j7pBBHbSQFyiJjXTjaEKLLn0hi1yPBK7a8dgQSjJZYLPwj00oQeIYEpcRSnk6b8JEZtlCPstzjKUjeTjb7Rqz8NeAcUiKxErJLLN-TWFY38I8qiUen1LnjFBoRnRi3XbiUWBiNU9paS_C7qbDFgyCQACu0NctT5XPkqlYN0CT0o"/>
+<div class="absolute bottom-2 left-2 right-2 text-[10px] font-bold text-white leading-tight">Smart Eats</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Discovery Grid -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-background">Explore Feed</h2>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">grid_view</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</div>
+<div class="masonry-grid">
+<!-- Post 1 -->
+<div class="masonry-item rounded-[28px] overflow-hidden bg-white shadow-sm border border-outline-variant/30 group">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A detailed shot of a minimalist geometric sculpture made of translucent glass and polished chrome, catching light in a way that creates rainbow prisms. The background is a clean, neutral gallery wall. The aesthetic is sophisticated, artistic, and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXAnmCHg_RBLorOtbdfGUmkO2uaAq4QK6EusTH3bsklAJZZbYtPlkXJgm4pcH-r24Mg1DyOuOSJ92cjxN_LwWk8Mgn-zoXZ1YX0NiaUc7G2udW63PhXvnfbzpgfxGkWQ4CRAA6_Bq9GLznHRtTXSRF_Sswwtp6WBK33HwuQp8-Uo5_b7RkPAhnkMT1-ifwaO9Q9UoPtzQtZHmtme8KmBr-em33oiQb91YXnlykBIxItW7ceiRobFyjEZB8tqKVRfwRNYaN8WGnJAA"/>
+<div class="absolute top-4 right-4 bg-black/30 backdrop-blur-md rounded-full p-2">
+<span class="material-symbols-outlined text-white text-base">video_library</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-title-lg text-body-lg font-bold mb-2 line-clamp-2">Abstract form: The beauty of light interaction.</h4>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant"></div>
+<span class="text-label-md font-label-md text-on-surface-variant">Studio Bloom</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">favorite</span>
+</div>
+</div>
+</div>
+<!-- Post 2 -->
+<div class="masonry-item rounded-[28px] overflow-hidden bg-white shadow-sm border border-outline-variant/30 group">
+<div class="relative aspect-square overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A clean top-down view of a designer's desk with an iPad showing a digital illustration, a minimalist keyboard, and a small succulent plant. The desk is a light wood texture. The lighting is soft and even, suggesting a bright and inspiring workspace for creative professionals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7xTRbNlxxXG_KSmuJuSNJnaVYTkChQzNVlnmQXq2S1eqYLx0S9v_pxm9zE2dLfxkJ5E1fZrzhKSmwzYNnAC1VndH2QrH_-ezep3RHi2ZyU2U8IYTI1NmrOSn7_iX6idISGl3-uiTR7K02RK-fanNOUvcpCWm6nI8kWXthrtX2PtIeCszaZIU-VUBEnsIBie8lFSmp8o4GTmfzS764uAdJEllh-VYoiqSjGaug6ZKOieMbdbHiBylYNfkJSROfWUMhFYORuddYwNE"/>
+</div>
+<div class="p-5">
+<h4 class="font-title-lg text-body-lg font-bold mb-2">My 2024 Remote Setup</h4>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant"></div>
+<span class="text-label-md font-label-md text-on-surface-variant">TechWise</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">favorite</span>
+</div>
+</div>
+</div>
+<!-- Post 3 -->
+<div class="masonry-item rounded-[28px] overflow-hidden bg-white shadow-sm border border-outline-variant/30 group">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A wide-angle landscape shot of the Swiss Alps in spring, featuring snow-capped peaks and vibrant green meadows filled with wildflowers. A small, modern wooden cabin sits in the foreground. The image is crisp, with deep blue skies and high-key brightness, perfect for a high-end travel feed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFDs0-L1W7BuMcgBKocv6D3Xbvgar3qQI4BwplC0iGX-K-WvuAxNu28f_hU3Aw4oGpk0koqzhUc8UpjuuAbxooiaHwcYYNOQViotrJ6QoCWmVX9bTYl-cUAyVpRC4AtMB7vBzuolOutUcs1vluv8TVy-HGuhnkZbT45RWtHfyk7OOOIUTA1tiVssyTIQpeG9rQs0exPGabT2_fYCo418MLfDr2Sn_egsf2eOgrgZlZgBQyH3l_33U-V2RU5bnr4UBMrxVXwdfSpwA"/>
+</div>
+<div class="p-5">
+<h4 class="font-title-lg text-body-lg font-bold mb-2">Escape to the Peaks</h4>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant"></div>
+<span class="text-label-md font-label-md text-on-surface-variant">Wanderlust</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">favorite</span>
+</div>
+</div>
+</div>
+<!-- Post 4 -->
+<div class="masonry-item rounded-[28px] overflow-hidden bg-white shadow-sm border border-outline-variant/30 group">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A close-up of a high-tech electric car dashboard showing a sleek, minimalist UI with glowing blue navigation lines. The interior uses premium vegan leather and recycled materials. The aesthetic is clean, forward-thinking, and environmentally conscious tech luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYtjQktRWpd_Oq1T1SSh54WwSnUlrtSkEY-664dAeRpCsTzoGyA1RQXSYFlt96kSrtvz9CColk_oH0pAV7WdSsl_hXyq_OBbXVJW2Ke3doSGBBd_WtvMVbUI1uFS6v58mJvbIwgEKJTYrF1kJVr86gJahX3W_J0fXZh4MaySeE2naEd3sLxtuj_BOQCgjXGhDBi9-L7xAJ7oktxv4kQxnUu-oLjtV9NQQbu0jYPVMHL9NI83AeUXcEgSGJQlZI9YUW_X09F_oGAgM"/>
+</div>
+<div class="p-5">
+<h4 class="font-title-lg text-body-lg font-bold mb-2">EV Revolution: Inside the Neo-S</h4>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant"></div>
+<span class="text-label-md font-label-md text-on-surface-variant">AutoFuture</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">favorite</span>
+</div>
+</div>
+</div>
+<!-- Post 5 -->
+<div class="masonry-item rounded-[28px] overflow-hidden bg-white shadow-sm border border-outline-variant/30 group">
+<div class="relative aspect-[2/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A portrait of a person wearing a futuristic augmented reality headset in a dimly lit, high-tech environment. The lenses of the headset glow with soft interface elements. The image is cinematic and moody, with a strong emphasis on digital immersion and cutting-edge gadgetry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5M1TOSAkIZeTufu12drn6T3lPuHcnkn2TjYLCca8aaq9eTmswZK5m_rfAR4Bq3YfprDtS3Nr1wXffPyiWGa4tWq_CD0JJunxfb-FHwYJvmsUMVbjEesXQFCwy7lkjsEA35pZUH0p_TvrZwye-0BaeQQOA8zH7KVzC3X78hPRCrw21xx2fZa9VoBSQMnMAQ1jeEXJUvmep5UIawtHiA9dZtTvSrZAsCm1JBB_ttcVBR1VQICWd5VzmYWxlhJ24uyy0XVDMRGa4cJ4"/>
+</div>
+<div class="p-5">
+<h4 class="font-title-lg text-body-lg font-bold mb-2">The AR Frontier: What's Next?</h4>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant"></div>
+<span class="text-label-md font-label-md text-on-surface-variant">NextGen</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">favorite</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-8 h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-200 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-200 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-200 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-200 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<script>
+        // Micro-interactions and subtle scroll effects
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.style.transform = 'translateY(-100%)';
+                header.style.transition = 'transform 0.3s ease-in-out';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Simple Masonry Hover logic (Optional expansion)
+        document.querySelectorAll('.masonry-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-4px)';
+                item.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

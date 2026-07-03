@@ -1,0 +1,320 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sawa - Chat Media Gallery</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Shared Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed": "#002109",
+                "on-error-container": "#93000a",
+                "inverse-surface": "#213145",
+                "surface-container": "#e5eeff",
+                "secondary-fixed": "#acedff",
+                "surface-container-high": "#dce9ff",
+                "surface-container-low": "#eff4ff",
+                "on-tertiary-fixed-variant": "#005321",
+                "on-secondary-container": "#006172",
+                "inverse-primary": "#b4c5ff",
+                "tertiary-container": "#007e37",
+                "primary": "#004ac6",
+                "on-background": "#0b1c30",
+                "inverse-on-surface": "#eaf1ff",
+                "on-tertiary-container": "#c1ffc5",
+                "on-secondary": "#ffffff",
+                "error": "#ba1a1a",
+                "primary-container": "#2563eb",
+                "surface-tint": "#0053db",
+                "secondary": "#00687a",
+                "background": "#f8f9ff",
+                "on-secondary-fixed": "#001f26",
+                "on-surface-variant": "#434655",
+                "on-surface": "#0b1c30",
+                "on-primary-fixed": "#00174b",
+                "surface-dim": "#cbdbf5",
+                "outline": "#737686",
+                "on-error": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed-dim": "#4cd7f6",
+                "on-secondary-fixed-variant": "#004e5c",
+                "on-primary-container": "#eeefff",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed-dim": "#4ae176",
+                "tertiary": "#006229",
+                "surface-container-highest": "#d3e4fe",
+                "surface-bright": "#f8f9ff",
+                "surface": "#f8f9ff",
+                "outline-variant": "#c3c6d7",
+                "tertiary-fixed": "#6bff8f",
+                "surface-variant": "#d3e4fe",
+                "primary-fixed": "#dbe1ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "secondary-container": "#57dffe",
+                "on-primary": "#ffffff",
+                "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-padding-tablet": "32px",
+                "container-padding-mobile": "20px",
+                "gutter": "16px",
+                "stack-gap-sm": "8px",
+                "section-margin": "40px",
+                "stack-gap-md": "16px",
+                "stack-gap-lg": "24px",
+                "unit": "4px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Inter"],
+                "title-lg": ["Inter"],
+                "label-sm": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "body-md": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "body-lg": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .masonry {
+            column-count: 2;
+            column-gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .masonry {
+                column-count: 3;
+                column-gap: 16px;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+        }
+        @media (min-width: 768px) {
+            .masonry-item {
+                margin-bottom: 16px;
+            }
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-primary/20">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-mobile h-16 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary">Media Gallery</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined text-on-surface">more_vert</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-24 min-h-screen px-container-mobile max-w-5xl mx-auto">
+<!-- Search Bar Section -->
+<div class="mb-6">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-12 bg-surface-container-low border-none rounded-full pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md placeholder:text-outline transition-all shadow-sm" placeholder="Search in media..." type="text">
+</div>
+</div>
+<!-- Filter Chips (Tabs) -->
+<nav class="flex overflow-x-auto gap-2 mb-8 hide-scrollbar">
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-md shadow-primary/20 transition-transform active:scale-95">Photos</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Videos</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Files</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Voice</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Links</button>
+</nav>
+<!-- Media Grid (Masonry Layout) -->
+<div class="masonry">
+<!-- Gallery Item 1 -->
+<div class="masonry-item relative group overflow-hidden rounded-[28px] bg-surface-container shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A stunning high-resolution cinematic shot of a modern architectural building with clean glass lines and soft blue lighting. The overall aesthetic is minimal and sophisticated, echoing a luxury light-mode design language with subtle cyan accents. The depth of field highlights the texture of the glass surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLltLCwabt3VqeybRPwRR0-9aYwepqPWfwo3Y6qpdvBBU5EdozT0iVAKGZVBi3mCTWWk9LPULj2St_yeDKgsLBssqmOiDa9D_mLMQrqeMguYo-jj1-B0Y8oYZKNerOLuZOU-tJ3Xu64S6zv5VW9a7GZMAJY7I-mOO_D9CXRprB828RouNHE6e-iB6hEONr2E8JgZszfE9Q-ARHmsM-DSeAO9rFnQH45aFZvMPkcldP2Q9pTN9Nwf0dETTaFhqduyaCEIrN0tXV380">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex justify-between items-center text-white">
+<span class="text-label-sm font-label-sm">July 12, 2024</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-[20px] hover:text-secondary-container">download</span>
+<span class="material-symbols-outlined text-[20px] hover:text-secondary-container">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Gallery Item 2 (Video Placeholder) -->
+<div class="masonry-item relative group overflow-hidden rounded-[28px] bg-surface-container shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer">
+<div class="aspect-[4/5] relative">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A tranquil outdoor scene featuring a lush, green tropical landscape with a calm turquoise lake at sunrise. The soft morning mist creates a dreamlike atmosphere, and the lighting is airy and high-key. The composition is artistic and minimalist, reflecting a premium lifestyle aesthetic with vibrant natural tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWXoL1PKIbPWZBCad6N8J9eyhRprU3TjxtUfaHz4d0qiAuQNJiFtyudFZTpNYFRspj4rLnSMrjkfLt1cjNqeeTFjdBdL70ciUp5jq4l9TlSapdJMudtgFApdvckGYkrKpCcK9jxbGMHeHL_yNRFVN7BjoD0RwUjJ0I6Z_q2m4LZp6wJvWeyhdboHu3FN2wjSo7Cj7I-ID9QpR1La80Zse3sIiV0MTyzQ3JNCXbCYVkvSMTNI35YB_j9SE93HexTW45fWAHH617Im4">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 glass rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex justify-between items-center text-white">
+<span class="text-label-sm font-label-sm">0:45 • June 28</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="masonry-item relative group overflow-hidden rounded-[28px] bg-surface-container shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Close up photography of organic glass-like structures flowing like liquid waves. The material is translucent with internal reflections of soft blue and deep teal light. The style is fluid sophistication, emphasizing smooth geometry and airy negative space. The lighting is elegant and directional, creating a sense of physical depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKhzsaR6M3Qdc-IFMHGypr-DcNNAA8AKdIzZr9laIlJ4WfahSVsaWVtmS57kvAIDbDCyolYF1XP3JfoYn7QMS68XLpP7xW02YRp_kCvAlectPDl8Z_j0TvLEFIqfok2LeHg5LMqSzrM3y5NCtmOnCqHEPy6dfHMghWRPCSigNh1NlZSb08QdG0tUjvCIoi1clCQSXbqPMTHp8lT6shyTj4yT_yjFRQZ2QaxilHFlw77B24bbl6GiFpB0P09paBD5K0AM5aPCvL3Ks">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex justify-between items-center text-white">
+<span class="text-label-sm font-label-sm">May 15, 2024</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="masonry-item relative group overflow-hidden rounded-[28px] bg-surface-container shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A minimalist workspace interior with a large window overlooking a foggy morning forest. A single glass coffee cup sits on a white desk beside a high-tech laptop. The color palette is composed of pristine whites, soft grays, and natural wood accents, creating a calm, premium, and airy atmosphere typical of modern lifestyle photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM0f5CXw7q2I5mILioJ5OI9oH6Q784Vh9TbW42TSMQNFSfOTe9XpHqdFMTj1r2XEXnpNfDbl9ob6mfjDhxZvZWh7SoZVnRpSc3563MLzx8XS5Y1k637TsOxSgX_D1UGvOnOYBr7hEAx9UZ6VZCmKA3PO1eDFXhAKoIXOFKf54Dg2GHyMpXvQDZPpa-LSzV1t_C2MWe9k8VwLRtJq0-zlyGgpqtfbYJ-tVQkIZvJI0M1hgZzsT-q484NJsfqnZwrBRlMxe3h5vXtSc">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex justify-between items-center text-white">
+<span class="text-label-sm font-label-sm">Yesterday</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Gallery Item 5 -->
+<div class="masonry-item relative group overflow-hidden rounded-[28px] bg-surface-container shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer">
+<div class="aspect-square relative">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Abstract macro shot of vibrant blue ink swirling in clear water. The ink forms intricate, feather-like patterns that expand gracefully. The background is a clean, bright white, highlighting the saturated blue and cyan hues. The image feels energetic yet controlled, perfectly matching a professional and expressive UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANLTpbxFqor8bvcoPR5UoWdPdGiQk0BVcTQxqHGLXd6jErVDV1Qz2ZcCSF0U2fZsMANKyJKTWEt_hBNCv-daIP-cI7wCWaFQ2DeyZ3gzln1LBF80pzUL01wOyVLuekvT10GEx5o7bO-GdUHSLv-QZQhLvW6vQ6wV2AKevHuNGVvUsjKWB2jD2SqVLi-LhnGkhwodqORmR0nc3KKH8kaKdMSnXF_b_dM_mNpBfXRC04O-gKU4ELFu02WsFxayEx772qkEL4LCbACdE">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex justify-between items-center text-white">
+<span class="text-label-sm font-label-sm">2h ago</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Gallery Item 6 -->
+<div class="masonry-item relative group overflow-hidden rounded-[28px] bg-surface-container shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Night cityscape from a high-altitude balcony, showing blurred neon lights in tones of blue and purple. The focus is on a champagne flute in the foreground, catching the city reflections. The atmosphere is luxurious and moody, blending professional night-mode lighting with creative energy and expressive depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvttVmbOKKTkfzCkzS3PGB3ITThjVDWUGWD1oBEStm4CnePITe9rEC_i9ivZxRjprjgMiAgcjJXhZ3oFaJBrB-IcD_tQkIKEzqNnYDM4qx7P6JRVlSL4f0vBLzQw8MfKbB5Zu5mNmudNxGodjvOjpBsIhJxiyq_0zUCEIX0WI_BkjIIreYr7PoL5fewjN1V2mBwNDybxM9wImsjxSdW0HqKa-b9QAOTDQYmpskrFxB8nQrkD95LCZfJI3VZMKA2M78Ol8CHE-4VRQ">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex justify-between items-center text-white">
+<span class="text-label-sm font-label-sm">Oct 05, 2023</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe h-20 bg-surface/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm mt-1">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Groups</span>
+</a>
+</nav>
+<!-- Floating Action Button (Optional contextual add) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-[20px] bg-gradient-to-br from-primary to-secondary text-white shadow-lg shadow-primary/30 flex items-center justify-center transform hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined">add_photo_alternate</span>
+</button>
+<script>
+        // Micro-interaction for tab switching
+        const tabs = document.querySelectorAll('nav button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-primary', 'text-on-primary', 'shadow-md', 'shadow-primary/20');
+                    t.classList.add('bg-surface-container-highest', 'text-on-surface-variant');
+                });
+                tab.classList.add('bg-primary', 'text-on-primary', 'shadow-md', 'shadow-primary/20');
+                tab.classList.remove('bg-surface-container-highest', 'text-on-surface-variant');
+            });
+        });
+
+        // Basic image lazy loading observation (aesthetic simulation)
+        const galleryItems = document.querySelectorAll('.masonry-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('translate-y-0', 'opacity-100');
+                    entry.target.classList.remove('translate-y-4', 'opacity-0');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        galleryItems.forEach(item => {
+            item.classList.add('translate-y-4', 'opacity-0', 'transition-all', 'duration-700');
+            observer.observe(item);
+        });
+    </script>
+</body></html>
